@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Vender con Essencia - Landing Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#222222",
+                        "background-light": "#ffffff",
+                        "background-dark": "#101922",
+                        "editorial-black": "#222222",
+                        "editorial-gray": "#f6f7f8",
+                        "charcoal": "#222222",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                    },
+                    borderRadius: { "DEFAULT": "0rem", "lg": "0rem", "xl": "0rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        :root {
+            --primary-color: #222222;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-editorial-black dark:text-white font-display overflow-x-hidden antialiased">
+    <header
+        class="fixed top-0 left-0 w-full z-50 bg-white/95 dark:bg-[#101922]/95 backdrop-blur-sm border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img alt="Essencia Logo" class="h-8 object-contain"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRLA911FrVPs7VJkVM_kLFJtjZNJKVbOH6V8NvtWZ_8CblficROXT_v418zgcb_0iJnifhmnoRHZ-6GzJSH4_vTcMSTdbYDnylJ9uTU4gMAUY3usqfCA6zfCPEeYwyG0bgAcgPMt58vutv1upVyTLdGBc_tPfvzGAWzIN64Kvw0Uu3rI48dSoRJFAQsbAzbAqY6Fya5CJEgfwgbhsh2I0ukVZNa3yoc45GyrnZhkpMtorF0G5uwNn1kDYm6w27znGlbGXHOt4F" />
+            </div>
+            <nav class="hidden md:flex items-center gap-10">
+                <a class="text-sm font-bold tracking-tight hover:text-gray-500 transition-colors" href="#">Comprar</a>
+                <a class="text-sm font-bold tracking-tight hover:text-gray-500 transition-colors" href="#">Vender</a>
+                <a class="text-sm font-bold tracking-tight hover:text-gray-500 transition-colors"
+                    href="#">Valoración</a>
+                <a class="text-sm font-bold tracking-tight hover:text-gray-500 transition-colors" href="#">Blog</a>
+            </nav>
+            <div class="flex items-center gap-8">
+                <div class="hidden lg:flex items-center gap-3 text-[10px] font-bold tracking-widest text-gray-400">
+                    <span class="text-editorial-black border-b border-editorial-black cursor-pointer">ES</span>
+                    <span class="hover:text-editorial-black cursor-pointer transition-colors">EN</span>
+                    <span class="hover:text-editorial-black cursor-pointer transition-colors">FR</span>
+                    <span class="hover:text-editorial-black cursor-pointer transition-colors">DE</span>
+                </div>
+                <a class="hidden sm:flex h-10 px-6 items-center justify-center bg-editorial-black text-white text-[10px] font-black uppercase tracking-[0.2em] hover:bg-gray-800 transition-colors"
+                    href="#">
+                    Contacto
+                </a>
+                <button class="md:hidden p-2 text-editorial-black">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <section class="relative h-screen min-h-[700px] w-full flex items-center justify-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img alt="Interior de Villa Mediterránea" class="w-full h-full object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6CVDb-uj3cAC0Ob6Xoldojbr8fXAlqgRkajY38_fEYtheLsJfhvgNqCXQoidNSph5pxxTIA4A-xhr-pY90ZuV6kh2DC_7KoE4yBIYtDccfKzP1CcdpXDsNXLOROI7cvlTEDUDGK7e7POqLad-y3lLKyfffcbEcwqN9yGejMHM5xKcKUdYutySJ4gKxwHil_TPn5cms3boBRB4bDas5vt7CzfzSedfRnX3LOZiliuJrw2B0gk4vAdiAgkIfndu1DmSEjAfvSQw" />
+            <div class="absolute inset-0 bg-white/20 dark:bg-black/40"></div>
+            <div
+                class="absolute inset-0 bg-gradient-to-t from-white/90 via-white/20 to-transparent dark:from-background-dark dark:via-background-dark/20 dark:to-transparent">
+            </div>
+        </div>
+        <div class="relative z-10 max-w-5xl mx-auto px-6 text-center flex flex-col items-center">
+            <h1
+                class="font-display text-5xl sm:text-7xl lg:text-8xl font-black text-editorial-black dark:text-white mb-6 leading-[1.1] tracking-tighter">
+                Experiencia local.<br />
+                <span class="opacity-40">Alcance global.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-800 dark:text-gray-200 max-w-2xl mb-12 font-medium leading-relaxed">
+                La autoridad inmobiliaria premium para los más exigentes.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center gap-6">
+                <button
+                    class="h-14 px-10 bg-editorial-black hover:bg-gray-800 text-white text-xs font-black tracking-[0.2em] uppercase transition-all duration-300 flex items-center justify-center">
+                    VALORACIÓN GRATUITA
+                </button>
+                <button
+                    class="h-14 px-10 bg-white hover:bg-gray-100 text-editorial-black border border-editorial-black text-xs font-black tracking-[0.2em] uppercase transition-all duration-300 flex items-center justify-center">
+                    VER VENTAS RECIENTES
+                </button>
+            </div>
+        </div>
+    </section>
+    <section class="py-16 px-6 lg:px-12 bg-white dark:bg-background-dark border-b border-gray-100 dark:border-gray-800">
+        <div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div
+                class="bg-[#f6f7f8] dark:bg-white/5 p-12 flex flex-col justify-center items-start min-h-[280px] group cursor-pointer hover:bg-gray-200 dark:hover:bg-white/10 transition-colors">
+                <span
+                    class="material-symbols-outlined text-4xl mb-6 text-editorial-black dark:text-white">laptop_mac</span>
+                <h3 class="text-2xl font-black mb-2 text-editorial-black dark:text-white tracking-tight">Valoración
+                    online</h3>
+                <p class="text-gray-500 font-medium text-sm mb-8">(Rápida) Estimación inmediata basada en datos.</p>
+                <span
+                    class="text-[10px] font-black uppercase tracking-[0.2em] border-b border-gray-300 pb-1 group-hover:border-black transition-colors">Empezar
+                    ahora</span>
+            </div>
+            <div
+                class="bg-[#f6f7f8] dark:bg-white/5 p-12 flex flex-col justify-center items-start min-h-[280px] group cursor-pointer hover:bg-gray-200 dark:hover:bg-white/10 transition-colors">
+                <span class="material-symbols-outlined text-4xl mb-6 text-editorial-black dark:text-white">person</span>
+                <h3 class="text-2xl font-black mb-2 text-editorial-black dark:text-white tracking-tight">Valoración
+                    presencial</h3>
+                <p class="text-gray-500 font-medium text-sm mb-8">(Precisa) Visita técnica de un experto local.</p>
+                <span
+                    class="text-[10px] font-black uppercase tracking-[0.2em] border-b border-gray-300 pb-1 group-hover:border-black transition-colors">Agendar
+                    visita</span>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 px-6 lg:px-12 bg-white dark:bg-background-dark">
+        <div class="max-w-[1440px] mx-auto">
+            <div class="mb-16 border-b border-gray-100 dark:border-gray-800 pb-8 flex justify-between items-end">
+                <div>
+                    <h2 class="text-4xl lg:text-5xl font-black tracking-tighter">Por qué vender<br />con Essencia</h2>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 pt-8">
+                <div>
+                    <span class="text-3xl text-gray-200 font-black mb-4 block">01</span>
+                    <h4 class="text-xs font-black uppercase tracking-[0.15em] mb-3">Conocimiento Local</h4>
+                    <p class="text-xs text-gray-500 font-medium leading-relaxed">Dominio absoluto del mercado de Gandia
+                        y la costa de Valencia.</p>
+                </div>
+                <div>
+                    <span class="text-3xl text-gray-200 font-black mb-4 block">02</span>
+                    <h4 class="text-xs font-black uppercase tracking-[0.15em] mb-3">Red Global</h4>
+                    <p class="text-xs text-gray-500 font-medium leading-relaxed">Conexión directa con compradores
+                        internacionales e inversores.</p>
+                </div>
+                <div>
+                    <span class="text-3xl text-gray-200 font-black mb-4 block">03</span>
+                    <h4 class="text-xs font-black uppercase tracking-[0.15em] mb-3">Marketing Premium</h4>
+                    <p class="text-xs text-gray-500 font-medium leading-relaxed">Producción editorial que eleva el valor
+                        percibido de su activo.</p>
+                </div>
+                <div>
+                    <span class="text-3xl text-gray-200 font-black mb-4 block">04</span>
+                    <h4 class="text-xs font-black uppercase tracking-[0.15em] mb-3">Gestión Integral</h4>
+                    <p class="text-xs text-gray-500 font-medium leading-relaxed">Nos ocupamos de todo, desde la
+                        valoración hasta la notaría.</p>
+                </div>
+                <div>
+                    <span class="text-3xl text-gray-200 font-black mb-4 block">05</span>
+                    <h4 class="text-xs font-black uppercase tracking-[0.15em] mb-3">Transparencia</h4>
+                    <p class="text-xs text-gray-500 font-medium leading-relaxed">Informes semanales y comunicación clara
+                        en cada paso.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 px-6 lg:px-24 bg-editorial-gray dark:bg-background-dark">
+        <div class="max-w-[1440px] mx-auto">
+            <div
+                class="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-gray-200 dark:border-gray-800 pb-12">
+                <div>
+                    <h2 class="text-5xl lg:text-6xl font-black tracking-tighter mb-6 leading-tight">Marketing
+                        como<br />evento mediático</h2>
+                    <p class="text-gray-500 dark:text-gray-400 max-w-md text-sm font-medium">Nuestro enfoque fusiona el
+                        arte con algoritmos. Su propiedad no es solo un anuncio, es un lanzamiento.</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[minmax(350px,auto)]">
+                <div class="md:col-span-7 relative group overflow-hidden bg-gray-100">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDSY-PXU4Aos5QXaijac90faiHIS204YriutHKAaYujVG4SZWwVd-HQk8IKShLRCD2mrH-OIVWer2XgAErCzUC_oChNo4RnkugwMaJ3Y-zSOq4-4jfCFa4ISvMZbRaPTdOFCUDu2OiWp1iS4ocb6Hoi5XneGiWUooX_Q_oi2cHRd5pjRF8ffN10TAKH57NDYH0CIdA-DNBnj73Sz9ReE_PJrBw6i0hkrS7KR1gsgila22DVBrYFBJwsrMLzBagtmE9zU1ZrYHK8");'>
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80">
+                    </div>
+                    <div class="absolute bottom-0 left-0 p-10 text-white">
+                        <span class="material-symbols-outlined text-3xl mb-4 text-white">camera_alt</span>
+                        <h3 class="text-2xl font-black tracking-tight mb-2">Visuales de revista</h3>
+                        <p class="text-gray-300 text-sm max-w-sm font-medium">Fotografía arquitectónica y videografía
+                            cinematográfica.</p>
+                    </div>
+                </div>
+                <div class="md:col-span-5 row-span-2 relative group overflow-hidden bg-gray-100">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBeO_psb5EsZUge1Q9z9Z0VTEVDOkjmZqJ0_iWuqs1ZjDjturTC925sUpjY4SLbxjQNJNqlgkcv568Kjd5zvvCEIqbffK35jIWjZbAI_u5r_d_Sj57l_m9A8bJN7LcCmSlWATG8dzcBzvdTPFArI7AAtc--NaEpg0seD4lB3ek7ceC2iRhSFh-4fCJ4WP6rjzsj8Ow9cQB3NTjhprnKxcP9IcaFNAN9hsEGC0TUGR1IfZGlIpMPtAeaP1480Wg3sxZR8HyGCiot");'>
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80">
+                    </div>
+                    <div class="absolute bottom-0 left-0 p-10 text-white">
+                        <span class="material-symbols-outlined text-3xl mb-4 text-white">public</span>
+                        <h3 class="text-2xl font-black tracking-tight mb-2">Distribución multicanal</h3>
+                        <p class="text-gray-300 text-sm max-w-sm font-medium">Presencia en portales de lujo nacionales e
+                            internacionales y redes sociales.</p>
+                    </div>
+                </div>
+                <div class="md:col-span-4 bg-editorial-black text-white p-10 flex flex-col justify-between group">
+                    <div>
+                        <span
+                            class="material-symbols-outlined text-3xl mb-8 text-white group-hover:text-gray-300 transition-colors">filter_alt</span>
+                        <h3 class="text-xl font-black tracking-tight mb-6">Filtrado de leads</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed font-medium">
+                            Cualificamos rigurosamente a cada interesado. Solo organizamos visitas con compradores
+                            reales y solventes.
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-8 border-t border-white/10">
+                        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">Calidad sobre
+                            cantidad</span>
+                    </div>
+                </div>
+                <div class="md:col-span-3 relative group overflow-hidden bg-gray-100">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBTz0ljfPf17SA1GJ6uA8AFFp69r4QCIx9qAKheWPLsqb3SR9EiRThZW2pQrqT8Xq0ZMQkBXl7TkM-iW4Lv75dvy8PdbK9O30nJ35aX4fCg0S2feJ6JRYQQUGVRE_VdRjOjItcvyPHOCtbhJGoZS93wph_XgdsTjs-JRfjRxvz_Higm4ZVlH2KwIft4FCcypZ5tuZEmBATyNa2qENR5ZQOIjoGYF2i9mkiBN3wOiCJV8sOAVou3Y3J1JWjUk8qVNOGMTPeMEmtA");'>
+                    </div>
+                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+                    <div class="absolute bottom-0 left-0 p-8 text-white">
+                        <h3 class="text-lg font-black tracking-tight mb-1">Home staging</h3>
+                        <p class="text-gray-300 text-xs">Puesta en escena.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 bg-white dark:bg-[#151f2b] overflow-hidden">
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-24">
+            <div class="flex items-center justify-between mb-16">
+                <h2 class="text-4xl font-black tracking-tighter">Ventas recientes</h2>
+                <div class="flex gap-4">
+                    <button
+                        class="w-12 h-12 border border-editorial-black dark:border-white/20 flex items-center justify-center hover:bg-editorial-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all">
+                        <span class="material-symbols-outlined">arrow_back</span>
+                    </button>
+                    <button
+                        class="w-12 h-12 bg-editorial-black dark:bg-white dark:text-black text-white flex items-center justify-center hover:bg-gray-800 transition-all">
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+            <div class="flex overflow-x-auto gap-8 pb-12 hide-scrollbar snap-x snap-mandatory">
+                <div
+                    class="snap-center shrink-0 w-[85vw] md:w-[600px] bg-white dark:bg-background-dark shadow-sm flex flex-col md:flex-row h-auto md:h-[280px]">
+                    <div class="w-full md:w-5/12 bg-cover bg-center h-56 md:h-full grayscale hover:grayscale-0 transition-all duration-500"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCCYCoLLGH8m6STpxs2Ok3leDZaZBOdic-RRxvSn3L6SKrp2cUA-O4x0Pu9ufIundVGAsD17DY5fkQxdKGMzKcy4xR0ut31MsMWW5BP3Je_Zf7d8cDI3Z1Bh87chviHz1rJNMgCZD3plwoi1hL7PJjPywPwiCKnlCv2YoNCI4SOeUKrfQdePCHjaTr6aGz-Qi3QhIUGYns-9fd75ddyqDSPSlRpFU9j1mppa5sdr5oHdFOSEP7TLBQR3YMUSIlm9f_83E9pcr9G");'>
+                    </div>
+                    <div
+                        class="w-full md:w-7/12 p-8 flex flex-col justify-center border border-gray-100 dark:border-gray-800 md:border-l-0">
+                        <div class="mb-6">
+                            <span
+                                class="text-[10px] font-black text-white bg-editorial-black px-2 py-1 uppercase tracking-[0.2em] mb-3 inline-block">Vendido</span>
+                            <h3 class="text-xl font-black tracking-tight leading-none mb-1">Villa en Oliva Nova</h3>
+                            <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-1">Estrategia:
+                                Off-market</p>
+                        </div>
+                        <div class="space-y-3 border-t border-gray-100 dark:border-gray-800 pt-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Zona</span>
+                                <span class="text-xs font-black text-editorial-black dark:text-white uppercase">Oliva,
+                                    Valencia</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Tiempo</span>
+                                <span class="text-xs font-black">14 Días</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="snap-center shrink-0 w-[85vw] md:w-[600px] bg-white dark:bg-background-dark shadow-sm flex flex-col md:flex-row h-auto md:h-[280px]">
+                    <div class="w-full md:w-5/12 bg-cover bg-center h-56 md:h-full grayscale hover:grayscale-0 transition-all duration-500"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAjzENM8T9Tfr_TKw_FUCGQblUaSNsWttDPWKmig4d9rqpW7zv9dAOGGDCnnsJIEl5MQvTRQ8cIK2_CGc6dAoRcSDwZ4WpcxPFRn_X334-Qd4g3dWHkVhkRlNZtmaniVcP37BOvuGRyDPLcSDaNFsiizx1qPuvcaAHqTS6PCBb5gLGMGoEyq36HuJdYbiAPcNa8a3cfuAKD48IhYvVkAjJFz5ktXpnbJbc4THNxE0FAqxFU8pw2iZOCwUfrMIV3t9BqPlufMZvj");'>
+                    </div>
+                    <div
+                        class="w-full md:w-7/12 p-8 flex flex-col justify-center border border-gray-100 dark:border-gray-800 md:border-l-0">
+                        <div class="mb-6">
+                            <span
+                                class="text-[10px] font-black text-white bg-editorial-black px-2 py-1 uppercase tracking-[0.2em] mb-3 inline-block">Vendido</span>
+                            <h3 class="text-xl font-black tracking-tight leading-none mb-1">Ático en Gandia</h3>
+                            <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-1">Estrategia:
+                                Subasta</p>
+                        </div>
+                        <div class="space-y-3 border-t border-gray-100 dark:border-gray-800 pt-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Zona</span>
+                                <span class="text-xs font-black text-editorial-black dark:text-white uppercase">Centro,
+                                    Gandia</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Tiempo</span>
+                                <span class="text-xs font-black">3 Días</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 bg-[#f6f7f8] dark:bg-background-dark px-6">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-black tracking-tighter text-center mb-16">Proceso de venta</h2>
+            <div class="relative">
+                <div
+                    class="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gray-300 dark:bg-gray-700 md:-translate-x-1/2">
+                </div>
+                <div class="relative flex flex-col md:flex-row items-start md:items-center mb-12">
+                    <div class="md:w-1/2 md:pr-12 md:text-right pl-12 md:pl-0">
+                        <h3 class="text-xl font-black uppercase tracking-wide">Diagnóstico</h3>
+                        <p class="text-sm text-gray-500 mt-2">Análisis de la propiedad y objetivos del vendedor.</p>
+                    </div>
+                    <div
+                        class="absolute left-0 md:left-1/2 top-0 md:top-1/2 w-8 h-8 -translate-y-0 md:-translate-y-1/2 md:-translate-x-1/2 bg-editorial-black text-white rounded-full flex items-center justify-center text-[10px] font-bold z-10">
+                        1</div>
+                    <div class="hidden md:block md:w-1/2"></div>
+                </div>
+                <div class="relative flex flex-col md:flex-row items-start md:items-center mb-12">
+                    <div class="hidden md:block md:w-1/2"></div>
+                    <div
+                        class="absolute left-0 md:left-1/2 top-0 md:top-1/2 w-8 h-8 -translate-y-0 md:-translate-y-1/2 md:-translate-x-1/2 bg-white border-2 border-editorial-black text-editorial-black rounded-full flex items-center justify-center text-[10px] font-bold z-10">
+                        2</div>
+                    <div class="md:w-1/2 md:pl-12 pl-12">
+                        <h3 class="text-xl font-black uppercase tracking-wide">Valoración</h3>
+                        <p class="text-sm text-gray-500 mt-2">Estudio de mercado comparativo y fijación de precio.</p>
+                    </div>
+                </div>
+                <div class="relative flex flex-col md:flex-row items-start md:items-center mb-12">
+                    <div class="md:w-1/2 md:pr-12 md:text-right pl-12 md:pl-0">
+                        <h3 class="text-xl font-black uppercase tracking-wide">Producción</h3>
+                        <p class="text-sm text-gray-500 mt-2">Home staging, fotografía, vídeo y materiales de venta.</p>
+                    </div>
+                    <div
+                        class="absolute left-0 md:left-1/2 top-0 md:top-1/2 w-8 h-8 -translate-y-0 md:-translate-y-1/2 md:-translate-x-1/2 bg-white border-2 border-editorial-black text-editorial-black rounded-full flex items-center justify-center text-[10px] font-bold z-10">
+                        3</div>
+                    <div class="hidden md:block md:w-1/2"></div>
+                </div>
+                <div class="relative flex flex-col md:flex-row items-start md:items-center mb-12">
+                    <div class="hidden md:block md:w-1/2"></div>
+                    <div
+                        class="absolute left-0 md:left-1/2 top-0 md:top-1/2 w-8 h-8 -translate-y-0 md:-translate-y-1/2 md:-translate-x-1/2 bg-white border-2 border-editorial-black text-editorial-black rounded-full flex items-center justify-center text-[10px] font-bold z-10">
+                        4</div>
+                    <div class="md:w-1/2 md:pl-12 pl-12">
+                        <h3 class="text-xl font-black uppercase tracking-wide">Distribución</h3>
+                        <p class="text-sm text-gray-500 mt-2">Lanzamiento en canales premium y base de datos.</p>
+                    </div>
+                </div>
+                <div class="relative flex flex-col md:flex-row items-start md:items-center">
+                    <div class="md:w-1/2 md:pr-12 md:text-right pl-12 md:pl-0">
+                        <h3 class="text-xl font-black uppercase tracking-wide">Cierre</h3>
+                        <p class="text-sm text-gray-500 mt-2">Negociación, contratos y firma en notaría.</p>
+                    </div>
+                    <div
+                        class="absolute left-0 md:left-1/2 top-0 md:top-1/2 w-8 h-8 -translate-y-0 md:-translate-y-1/2 md:-translate-x-1/2 bg-editorial-black text-white rounded-full flex items-center justify-center text-[10px] font-bold z-10">
+                        5</div>
+                    <div class="hidden md:block md:w-1/2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 bg-white dark:bg-background-dark px-6">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-4xl font-black tracking-tighter text-center mb-16">Preguntas frecuentes</h2>
+            <div class="space-y-4">
+                <details class="group py-4 border-b border-gray-100 dark:border-gray-800 cursor-pointer">
+                    <summary
+                        class="flex items-center justify-between font-bold text-lg hover:text-gray-500 transition-colors">
+                        ¿Cómo determinan el precio de mi propiedad?
+                        <span
+                            class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+                    </summary>
+                    <p class="pt-4 text-sm text-gray-500 leading-relaxed font-medium">Utilizamos datos de mercado en
+                        tiempo real, comparables vendidos recientemente y nuestra experiencia local para fijar un precio
+                        competitivo y realista.</p>
+                </details>
+                <details class="group py-4 border-b border-gray-100 dark:border-gray-800 cursor-pointer">
+                    <summary
+                        class="flex items-center justify-between font-bold text-lg hover:text-gray-500 transition-colors">
+                        ¿Trabajan con contrato de exclusividad?
+                        <span
+                            class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+                    </summary>
+                    <p class="pt-4 text-sm text-gray-500 leading-relaxed font-medium">Sí, para garantizar la máxima
+                        inversión en marketing y dedicación de nuestro equipo, trabajamos con mandatos de venta
+                        exclusivos.</p>
+                </details>
+                <details class="group py-4 border-b border-gray-100 dark:border-gray-800 cursor-pointer">
+                    <summary
+                        class="flex items-center justify-between font-bold text-lg hover:text-gray-500 transition-colors">
+                        ¿Cuánto tiempo tardará en venderse?
+                        <span
+                            class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+                    </summary>
+                    <p class="pt-4 text-sm text-gray-500 leading-relaxed font-medium">El tiempo medio varía según la
+                        propiedad, pero nuestra estrategia de marketing intensiva suele reducir los plazos del mercado
+                        significativamente.</p>
+                </details>
+                <details class="group py-4 border-b border-gray-100 dark:border-gray-800 cursor-pointer">
+                    <summary
+                        class="flex items-center justify-between font-bold text-lg hover:text-gray-500 transition-colors">
+                        ¿Qué incluye su comisión?
+                        <span
+                            class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+                    </summary>
+                    <p class="pt-4 text-sm text-gray-500 leading-relaxed font-medium">Incluye valoración, home staging,
+                        fotografía profesional, marketing internacional, gestión de visitas y trámites legales hasta la
+                        firma.</p>
+                </details>
+                <details class="group py-4 border-b border-gray-100 dark:border-gray-800 cursor-pointer">
+                    <summary
+                        class="flex items-center justify-between font-bold text-lg hover:text-gray-500 transition-colors">
+                        ¿Debo reformar antes de vender?
+                        <span
+                            class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+                    </summary>
+                    <p class="pt-4 text-sm text-gray-500 leading-relaxed font-medium">No siempre. Realizamos un
+                        diagnóstico para recomendar solo las mejoras que aumenten realmente el valor de venta.</p>
+                </details>
+                <details class="group py-4 border-b border-gray-100 dark:border-gray-800 cursor-pointer">
+                    <summary
+                        class="flex items-center justify-between font-bold text-lg hover:text-gray-500 transition-colors">
+                        ¿Cómo filtran a los compradores?
+                        <span
+                            class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+                    </summary>
+                    <p class="pt-4 text-sm text-gray-500 leading-relaxed font-medium">Verificamos la identidad y
+                        capacidad financiera de cada interesado antes de organizar una visita física.</p>
+                </details>
+                <details class="group py-4 border-b border-gray-100 dark:border-gray-800 cursor-pointer">
+                    <summary
+                        class="flex items-center justify-between font-bold text-lg hover:text-gray-500 transition-colors">
+                        ¿Se encargan de los trámites legales?
+                        <span
+                            class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+                    </summary>
+                    <p class="pt-4 text-sm text-gray-500 leading-relaxed font-medium">Absolutamente. Nuestro
+                        departamento jurídico supervisa contratos, certificados y coordina con la notaría.</p>
+                </details>
+                <details class="group py-4 border-b border-gray-100 dark:border-gray-800 cursor-pointer">
+                    <summary
+                        class="flex items-center justify-between font-bold text-lg hover:text-gray-500 transition-colors">
+                        ¿Qué pasa si no se vende?
+                        <span
+                            class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+                    </summary>
+                    <p class="pt-4 text-sm text-gray-500 leading-relaxed font-medium">Si no vendemos su propiedad en el
+                        plazo acordado, no cobramos nada. Asumimos el riesgo de la inversión en marketing.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 bg-white dark:bg-background-dark relative overflow-hidden">
+        <div class="absolute right-0 top-0 w-1/3 h-full bg-editorial-black opacity-[0.03] -skew-x-12 hidden lg:block">
+        </div>
+        <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
+            <span class="text-editorial-black font-black tracking-[0.3em] uppercase text-[10px] mb-6 block">Comience
+                ahora</span>
+            <h2
+                class="text-5xl md:text-6xl font-black mb-8 text-editorial-black dark:text-white tracking-tighter leading-none">
+                ¿Listo para vender?</h2>
+            <p class="text-lg text-gray-500 mb-12 max-w-2xl mx-auto font-medium">Dé el primer paso hacia una venta
+                exitosa. Sin compromiso.</p>
+            <div
+                class="bg-white dark:bg-gray-800 p-2 border-2 border-editorial-black dark:border-gray-700 flex flex-col sm:flex-row gap-2 max-w-2xl mx-auto">
+                <div class="relative grow">
+                    <span
+                        class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 material-symbols-outlined">location_on</span>
+                    <input
+                        class="w-full h-14 pl-12 pr-4 bg-transparent border-none focus:ring-0 text-editorial-black dark:text-white placeholder-gray-400 text-sm font-bold uppercase tracking-wider"
+                        placeholder="Dirección de la propiedad" type="text" />
+                </div>
+                <button
+                    class="h-14 px-10 bg-editorial-black hover:bg-gray-800 text-white font-black text-xs uppercase tracking-widest transition-colors whitespace-nowrap">
+                    EMPEZAR VALORACIÓN
+                </button>
+            </div>
+        </div>
+    </section>
+    <footer class="bg-editorial-black text-white pt-24 pb-12 px-6 lg:px-24">
+        <div class="max-w-[1440px] mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20 border-b border-white/10 pb-16">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-8">
+                        <img alt="Essencia Logo" class="h-6 brightness-0 invert"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0QpHGuNIFw3RZMZgGIek-rl5UIB4BLfUhcOMUeTd2DMqFWmNcRTxmUGu-NY2hFXSBA3N1Hm37v-LAnPuEOiXhRxVhGf7ieV74mhzRZ4umxuhEILACgwMYmcBY3DFck7UaERtNshL6SVuuVq4aHeVt0GlsIDUGa0bDdiqJflYDJ3mouV_YALR5PKv9KqkxlE-nELiplgRBB204wmtFqzFNxFGqsweY29JMw9piIKyGzROfuDh46roi3UXpzUM8ZONjpReujEwz" />
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed font-medium">
+                        Redefiniendo el sector inmobiliario de lujo en Valencia.
+                    </p>
+                </div>
+                <div>
+                    <h5 class="font-black text-[10px] uppercase tracking-[0.3em] mb-8 text-gray-500">Descubrir</h5>
+                    <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-gray-300">
+                        <li><a class="hover:text-white transition-colors" href="#">Propiedades</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Vender</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Valoración</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-black text-[10px] uppercase tracking-[0.3em] mb-8 text-gray-500">Empresa</h5>
+                    <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-gray-300">
+                        <li><a class="hover:text-white transition-colors" href="#">Sobre Essencia</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Equipo</a></li>
+                        <li><a class="hover:text-white transition-colors" href="#">Prensa</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-black text-[10px] uppercase tracking-[0.3em] mb-8 text-gray-500">Contacto</h5>
+                    <ul class="space-y-5 text-xs font-bold tracking-widest text-gray-300">
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-white text-xl">location_on</span>
+                            <span class="uppercase">Carrer Major, 45<br />46701 Gandia, Valencia</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-white text-xl">call</span>
+                            <span>+34 962 123 456</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">
+                <p>© 2024 Essencia Real Estate.</p>
+                <div class="flex gap-10">
+                    <a class="hover:text-white transition-colors" href="#">Aviso Legal</a>
+                    <a class="hover:text-white transition-colors" href="#">Privacidad</a>
+                    <a class="hover:text-white transition-colors" href="#">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
