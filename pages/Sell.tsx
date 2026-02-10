@@ -222,66 +222,7 @@ const Sell: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-24 px-6 lg:px-24 bg-white">
-        <div className="max-w-[1440px] mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-12">
-            <div>
-              <h2 className="text-4xl font-black tracking-tight mb-4">{t('home.marketing.title')}</h2>
-              <p className="text-gray-500 max-w-md">{t('home.marketing.subtitle')}</p>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Marketing Card 1 */}
-            <Link to="/contact?interest=Marketing+Visuals" className="group relative aspect-[4/5] overflow-hidden bg-gray-100 block">
-              <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuDSY-PXU4Aos5QXaijac90faiHIS204YriutHKAaYujVG4SZWwVd-HQk8IKShLRCD2mrH-OIVWer2XgAErCzUC_oChNo4RnkugwMaJ3Y-zSOq4-4jfCFa4ISvMZbRaPTdOFCUDu2OiWp1iS4ocb6Hoi5XneGiWUooX_Q_oi2cHRd5pjRF8ffN10TAKH57NDYH0CIdA-DNBnj73Sz9ReE_PJrBw6i0hkrS7KR1gsgila22DVBrYFBJwsrMLzBagtmE9zU1ZrYHK8")' }}
-              ></div>
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
-              <div className="absolute bottom-0 left-0 p-8 w-full bg-gradient-to-t from-black/80 to-transparent">
-                <span className="text-xs font-bold text-white/80 uppercase tracking-widest mb-2 block">{t('sell.marketing.visuals')}</span>
-                <h3 className="text-2xl font-bold text-white">{t('home.marketing.visuals.title')}</h3>
-                <div className="h-0 group-hover:h-auto overflow-hidden transition-all duration-300">
-                  <p className="text-gray-300 text-sm mt-2 opacity-0 group-hover:opacity-100 transition-opacity delay-100">{t('home.marketing.visuals.desc')}</p>
-                </div>
-              </div>
-            </Link>
-            {/* Marketing Card 2 */}
-            <Link to="/contact?interest=3D+Tours" className="group relative aspect-[4/5] overflow-hidden bg-gray-100 lg:translate-y-12 block">
-              <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuAjzENM8T9Tfr_TKw_FUCGQblUaSNsWttDPWKmig4d9rqpW7zv9dAOGGDCnnsJIEl5MQvTRQ8cIK2_CGc6dAoRcSDwZ4WpcxPFRn_X334-Qd4g3dWHkVhkRlNZtmaniVcP37BOvuGRyDPLcSDaNFsiizx1qPuvcaAHqTS6PCBb5gLGMGoEyq36HuJdYbiAPcNa8a3cfuAKD48IhYvVkAjJFz5ktXpnbJbc4THNxE0FAqxFU8pw2iZOCwUfrMIV3t9BqPlufMZvj")' }}
-              ></div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-16 h-16 rounded-full border border-white/50 flex items-center justify-center backdrop-blur-sm group-hover:bg-white group-hover:text-black text-white transition-all">
-                  <span className="material-symbols-outlined text-3xl">3d_rotation</span>
-                </div>
-              </div>
-              <div className="absolute bottom-0 left-0 p-8 w-full bg-gradient-to-t from-black/80 to-transparent">
-                <span className="text-xs font-bold text-white/80 uppercase tracking-widest mb-2 block">{t('sell.marketing.technology')}</span>
-                <h3 className="text-2xl font-bold text-white">{t('sell.marketing.3d_tours')}</h3>
-                <div className="h-0 group-hover:h-auto overflow-hidden transition-all duration-300">
-                  <p className="text-gray-300 text-sm mt-2 opacity-0 group-hover:opacity-100 transition-opacity delay-100">{t('sell.marketing.3d_desc')}</p>
-                </div>
-              </div>
-            </Link>
-            {/* Marketing Card 3 */}
-            <Link to="/contact?interest=Syndication" className="group relative aspect-[4/5] overflow-hidden bg-gray-100 block">
-              <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuBeO_psb5EsZUge1Q9z9Z0VTEVDOkjmZqJ0_iWuqs1ZjDjturTC925sUpjY4SLbxjQNJNqlgkcv568Kjd5zvvCEIqbffK35jIWjZbAI_u5r_d_Sj57l_m9A8bJN7LcCmSlWATG8dzcBzvdTPFArI7AAtc--NaEpg0seD4lB3ek7ceC2iRhSFh-4fCJ4WP6rjzsj8Ow9cQB3NTjhprnKxcP9IcaFNAN9hsEGC0TUGR1IfZGlIpMPtAeaP1480Wg3sxZR8HyGCiot")' }}
-              ></div>
-              <div className="absolute bottom-0 left-0 p-8 w-full bg-gradient-to-t from-black/80 to-transparent">
-                <span className="text-xs font-bold text-white/80 uppercase tracking-widest mb-2 block">{t('sell.marketing.reach')}</span>
-                <h3 className="text-2xl font-bold text-white">{t('home.marketing.syndication.title')}</h3>
-                <div className="h-0 group-hover:h-auto overflow-hidden transition-all duration-300">
-                  <p className="text-gray-300 text-sm mt-2 opacity-0 group-hover:opacity-100 transition-opacity delay-100">{t('home.marketing.syndication.desc')}</p>
-                </div>
-              </div>
-            </Link>
-          </div>
-        </div>
-      </section>
+
 
       <section className="py-32 bg-white relative">
         <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
