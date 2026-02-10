@@ -229,7 +229,7 @@ const PropertyDetail: React.FC = () => {
                   <div className="w-12 h-12 rounded-full bg-gray-200 bg-cover bg-center" style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuBeO_psb5EsZUge1Q9z9Z0VTEVDOkjmZqJ0_iWuqs1ZjDjturTC925sUpjY4SLbxjQNJNqlgkcv568Kjd5zvvCEIqbffK35jIWjZbAI_u5r_d_Sj57l_m9A8bJN7LcCmSlWATG8dzcBzvdTPFArI7AAtc--NaEpg0seD4lB3ek7ceC2iRhSFh-4fCJ4WP6rjzsj8Ow9cQB3NTjhprnKxcP9IcaFNAN9hsEGC0TUGR1IfZGlIpMPtAeaP1480Wg3sxZR8HyGCiot")' }}></div>
                   <div>
                     <p className="text-sm font-bold text-gray-900">Agent</p>
-                    <p className="text-xs text-gray-500 uppercase tracking-wide">Lion Style Estate</p>
+                    <p className="text-xs text-gray-500 uppercase tracking-wide">Essencia Inmobiliaria</p>
                   </div>
                 </div>
                 <h3 className="text-2xl font-bold mb-2">{t('detail.book_tour')}</h3>

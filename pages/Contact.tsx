@@ -118,15 +118,15 @@ const Contact: React.FC = () => {
             <div className="space-y-12">
               <div>
                 <h4 className="font-bold text-lg mb-2">{t('contact.headquarters')}</h4>
-                <p className="text-gray-600">Carrer Major, 45</p>
-                <p className="text-gray-600">46701 Gandia, Valencia</p>
+                <p className="text-gray-600">C/ Sant Vicent Ferrer 24</p>
+                <p className="text-gray-600">46701 Gandia, València</p>
                 <p className="text-gray-600">{t('contact.address.country')}</p>
               </div>
 
               <div>
                 <h4 className="font-bold text-lg mb-2">{t('nav.contact')}</h4>
-                <p className="text-gray-600 mb-1"><a href="mailto:hello@lionstyle.es" className="hover:text-primary transition-colors">hello@lionstyle.es</a></p>
-                <p className="text-gray-600"><a href="tel:+34962123456" className="hover:text-primary transition-colors">+34 962 123 456</a></p>
+                <p className="text-gray-600 mb-1"><a href="mailto:santitorres@essenciainmobiliaria.com" className="hover:text-primary transition-colors">santitorres@essenciainmobiliaria.com</a></p>
+                <p className="text-gray-600"><a href="tel:+34647803355" className="hover:text-primary transition-colors">+34 647 803 355</a></p>
               </div>
 
               <div>
@@ -159,15 +159,15 @@ const Contact: React.FC = () => {
                 <Marker position={[38.967, -0.181]}>
                   <Popup className="font-display">
                     <div className="text-center p-2">
-                      <strong className="block text-lg mb-1">Lion Style HQ</strong>
-                      <span className="text-gray-500 text-sm block mb-3">Carrer Major, 45, Gandia</span>
+                      <strong className="block text-lg mb-1">{t('contact.hq')}</strong>
+                      <span className="text-gray-500 text-sm block mb-3">C/ Sant Vicent Ferrer 24, Gandia</span>
                       <a
-                        href="https://www.google.com/maps/dir/?api=1&destination=38.967,-0.181"
+                        href="https://www.google.com/maps/dir/?api=1&destination=C/ Sant Vicent Ferrer 24, 46701 Gandia, València"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-block bg-primary text-white text-xs font-bold uppercase tracking-widest px-3 py-2 rounded hover:bg-black transition-colors"
                       >
-                        Get Directions
+                        {t('contact.directions')}
                       </a>
                     </div>
                   </Popup>
@@ -278,7 +278,7 @@ const Contact: React.FC = () => {
                   </button>
                 </div>
                 <p className="text-xs text-center text-gray-400">
-                  This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.
+                  {t('contact.recaptcha')}
                 </p>
               </form>
             )}

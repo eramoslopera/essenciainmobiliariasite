@@ -12,7 +12,7 @@ import Contact from './pages/Contact';
 import About from './pages/About';
 import Landing from './pages/Landing';
 import Developments from './pages/Developments';
-import { LanguageProvider } from './context/LanguageContext';
+import { LanguageProvider, useLanguage } from './context/LanguageContext';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -51,13 +51,25 @@ const Layout: React.FC = () => {
   );
 };
 
+const AppContent: React.FC = () => { // Renamed App to AppContent to use useLanguage hook
+  const { language } = useLanguage();
+
+  React.useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
+
+  return (
+    <Router>
+      <ScrollToTop />
+      <Layout />
+    </Router>
+  );
+};
+
 const App: React.FC = () => {
   return (
     <LanguageProvider>
-      <Router>
-        <ScrollToTop />
-        <Layout />
-      </Router>
+      <AppContent /> {/* Render AppContent inside LanguageProvider */}
     </LanguageProvider>
   );
 };

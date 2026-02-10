@@ -27,6 +27,10 @@ const LandingFooter: React.FC = () => {
                                 <span className="material-symbols-outlined text-white text-xl">call</span>
                                 <a href="tel:+34647803355" className="hover:text-white transition-colors">+34 647 803 355</a>
                             </li>
+                            <li className="flex items-center gap-3">
+                                <span className="material-symbols-outlined text-white text-xl">mail</span>
+                                <a href="mailto:santitorres@essenciainmobiliaria.com" className="hover:text-white transition-colors">santitorres@essenciainmobiliaria.com</a>
+                            </li>
                         </ul>
                     </div>
                 </div>

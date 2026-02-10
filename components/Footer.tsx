@@ -42,11 +42,11 @@ const Footer: React.FC = () => {
               </li>
               <li className="flex items-center gap-3">
                 <span className="material-symbols-outlined text-primary text-lg">call</span>
-                <a href="tel:+34962123456" className="hover:text-primary transition-colors">+34 962 123 456</a>
+                <a href="tel:+34647803355" className="hover:text-primary transition-colors">+34 647 803 355</a>
               </li>
               <li className="flex items-center gap-3">
                 <span className="material-symbols-outlined text-primary text-lg">mail</span>
-                <a href="mailto:hello@lionstyle.es" className="hover:text-primary transition-colors">hello@lionstyle.es</a>
+                <a href="mailto:santitorres@essenciainmobiliaria.com" className="hover:text-primary transition-colors">santitorres@essenciainmobiliaria.com</a>
               </li>
             </ul>
           </div>

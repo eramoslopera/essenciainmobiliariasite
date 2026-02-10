@@ -22,7 +22,7 @@ const Landing: React.FC = () => {
 
     // SEO Title
     useEffect(() => {
-        document.title = `${t('landing.hero.title')} - Essencia Inmobiliaria`;
+        document.title = `Essencia Inmobiliaria - ${t('landing.hero.title')}`;
     }, [t]);
 
     const FEATURED_SOLD: Property[] = [

@@ -11,7 +11,7 @@ const Stories: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 pb-8 border-b border-gray-200">
           <div>
             <span className="text-primary font-bold tracking-widest uppercase text-xs mb-3 block">{t('stories.journal')}</span>
-            <h1 className="text-5xl md:text-7xl font-black text-editorial-black tracking-tight">Lion Style <span className="font-serif italic font-normal">{t('stories.title')}</span></h1>
+            <h1 className="text-5xl md:text-7xl font-black text-editorial-black tracking-tight">Essencia Inmobiliaria <span className="font-serif italic font-normal">{t('stories.title')}</span></h1>
           </div>
           <nav className="flex gap-6 mt-8 md:mt-0">
             <button className="text-editorial-black font-bold text-sm border-b-2 border-editorial-black pb-1">{t('stories.nav.all')}</button>
