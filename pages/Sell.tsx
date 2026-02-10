@@ -1,12 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
+import { fetchProperties } from '../src/utils/xmlParser';
+import { Property } from '../src/types/property';
 
 const Sell: React.FC = () => {
   const { t } = useLanguage();
   const navigate = useNavigate();
   const [address, setAddress] = useState('');
   const [activeStep, setActiveStep] = useState(1);
+  const [soldProperties, setSoldProperties] = useState<Property[]>([]);
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const loadProperties = async () => {
+      const data = await fetchProperties();
+      // Filter for sold properties. 
+      // Note: Real feed might not have many 'sold' items publicly visible if they are removed. 
+      // For demo/dev purposes, if no sold properties are found, we might want to show some available ones 
+      // or Mock them, but user asked for "Real Data". 
+      // I will filter strict 'sold' first.
+      const sold = data.filter(p => p.status === 'sold');
+      setSoldProperties(sold);
+    };
+    loadProperties();
+  }, []);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (carouselRef.current) {
+      const scrollAmount = 400;
+      const currentScroll = carouselRef.current.scrollLeft;
+      const targetScroll = direction === 'left' ? currentScroll - scrollAmount : currentScroll + scrollAmount;
+      carouselRef.current.scrollTo({
+        left: targetScroll,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   const handleStartValuation = (e: React.FormEvent) => {
     e.preventDefault();
