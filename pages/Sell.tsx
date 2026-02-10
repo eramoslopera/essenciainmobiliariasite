@@ -48,15 +48,15 @@ const Sell: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-white/20">
             <div className="p-4">
               <span className="block text-4xl font-black text-white mb-2">{t('sell.stats.impacts')}</span>
-              <span className="text-xs uppercase tracking-widest text-gray-400">Total Reach</span>
+              <span className="text-xs uppercase tracking-widest text-gray-400">{t('sell.stats.label.reach')}</span>
             </div>
             <div className="p-4">
               <span className="block text-4xl font-black text-white mb-2">{t('sell.stats.followers')}</span>
-              <span className="text-xs uppercase tracking-widest text-gray-400">Community</span>
+              <span className="text-xs uppercase tracking-widest text-gray-400">{t('sell.stats.label.community')}</span>
             </div>
             <div className="p-4">
               <span className="block text-4xl font-black text-white mb-2">{t('sell.stats.views')}</span>
-              <span className="text-xs uppercase tracking-widest text-gray-400">Engagement</span>
+              <span className="text-xs uppercase tracking-widest text-gray-400">{t('sell.stats.label.engagement')}</span>
             </div>
           </div>
         </div>
@@ -140,93 +140,33 @@ const Sell: React.FC = () => {
             <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gray-300 transform md:-translate-x-1/2"></div>
 
             {[1, 2, 3, 4, 5].map((step, index) => (
-              <div key={step} className="relative flex flex-col md:flex-row items-center mb-16 group">
+              <div key={step} className="relative flex flex-col md:flex-row items-center mb-16 last:mb-0 group">
+                {/* Left Side (Text for Odd, Number for Even on Desktop) */}
                 <div className={`md:w-1/2 md:pr-12 md:text-right pl-8 md:pl-0 mb-4 md:mb-0 w-full ${index % 2 !== 0 ? 'md:hidden' : ''}`}>
                   <h3 className="text-2xl font-bold mb-2 text-editorial-black">{t(`sell.step${step}`)}</h3>
                   <p className="text-gray-500 text-sm">{t(`sell.step${step}.desc`)}</p>
                 </div>
 
+                {/* Center Dot */}
                 <div className="absolute left-[-5px] md:left-1/2 w-3 h-3 bg-white border-2 border-editorial-black rounded-full transform md:-translate-x-[5px] z-10 group-hover:bg-primary group-hover:border-primary transition-colors"></div>
 
+                {/* Right Side (Number for Odd, Text for Even on Desktop) */}
                 <div className={`md:w-1/2 md:pl-12 w-full pl-8 ${index % 2 === 0 ? 'hidden md:block' : ''}`}>
                   <span className="text-6xl font-black text-gray-200">0{step}</span>
                 </div>
 
+                {/* Logic for Odd steps where Order is Number -> Text on Desktop */}
                 <div className={`md:w-1/2 md:pl-12 w-full pl-8 ${index % 2 !== 0 ? '' : 'hidden'}`}>
                   <h3 className="text-2xl font-bold mb-2 text-editorial-black hidden md:block">{t(`sell.step${step}`)}</h3>
                   <p className="text-gray-500 text-sm hidden md:block">{t(`sell.step${step}.desc`)}</p>
                 </div>
-
-                {/* Mobile View Adjustment for odd steps (right side on desktop, but shown first on mobile) - Logic above handles Left Side (Even/Odd). 
-                    Let's simplify. The original code manually alternated. 
-                */}
               </div>
             ))}
-
-            {/* Re-implementing manually to ensure correct alternating layout matching original styling without complex logic errors */}
-            {/* Step 1 (Left Text, Right Number) */}
-            <div className="relative flex flex-col md:flex-row items-center mb-16 group">
-              <div className="md:w-1/2 md:pr-12 md:text-right pl-8 md:pl-0 mb-4 md:mb-0 w-full">
-                <h3 className="text-2xl font-bold mb-2 text-editorial-black">{t('sell.step1')}</h3>
-                <p className="text-gray-500 text-sm">{t('sell.step1.desc')}</p>
-              </div>
-              <div className="absolute left-[-5px] md:left-1/2 w-3 h-3 bg-white border-2 border-editorial-black rounded-full transform md:-translate-x-[5px] z-10 group-hover:bg-primary group-hover:border-primary transition-colors"></div>
-              <div className="md:w-1/2 md:pl-12 w-full pl-8 md:block hidden">
-                <span className="text-6xl font-black text-gray-200">01</span>
-              </div>
-            </div>
-
-            {/* Step 2 (Left Number, Right Text) */}
-            <div className="relative flex flex-col md:flex-row items-center mb-16 group">
-              <div className="md:w-1/2 md:pr-12 md:text-right hidden md:block">
-                <span className="text-6xl font-black text-gray-200">02</span>
-              </div>
-              <div className="absolute left-[-5px] md:left-1/2 w-3 h-3 bg-white border-2 border-editorial-black rounded-full transform md:-translate-x-[5px] z-10 group-hover:bg-primary group-hover:border-primary transition-colors"></div>
-              <div className="md:w-1/2 md:pl-12 pl-8 w-full">
-                <h3 className="text-2xl font-bold mb-2 text-editorial-black">{t('sell.step2')}</h3>
-                <p className="text-gray-500 text-sm">{t('sell.step2.desc')}</p>
-              </div>
-            </div>
-
-            {/* Step 3 (Left Text, Right Number) */}
-            <div className="relative flex flex-col md:flex-row items-center mb-16 group">
-              <div className="md:w-1/2 md:pr-12 md:text-right pl-8 md:pl-0 mb-4 md:mb-0 w-full">
-                <h3 className="text-2xl font-bold mb-2 text-editorial-black">{t('sell.step3')}</h3>
-                <p className="text-gray-500 text-sm">{t('sell.step3.desc')}</p>
-              </div>
-              <div className="absolute left-[-5px] md:left-1/2 w-3 h-3 bg-white border-2 border-editorial-black rounded-full transform md:-translate-x-[5px] z-10 group-hover:bg-primary group-hover:border-primary transition-colors"></div>
-              <div className="md:w-1/2 md:pl-12 w-full pl-8 md:block hidden">
-                <span className="text-6xl font-black text-gray-200">03</span>
-              </div>
-            </div>
-
-            {/* Step 4 (Left Number, Right Text) */}
-            <div className="relative flex flex-col md:flex-row items-center mb-16 group">
-              <div className="md:w-1/2 md:pr-12 md:text-right hidden md:block">
-                <span className="text-6xl font-black text-gray-200">04</span>
-              </div>
-              <div className="absolute left-[-5px] md:left-1/2 w-3 h-3 bg-white border-2 border-editorial-black rounded-full transform md:-translate-x-[5px] z-10 group-hover:bg-primary group-hover:border-primary transition-colors"></div>
-              <div className="md:w-1/2 md:pl-12 pl-8 w-full">
-                <h3 className="text-2xl font-bold mb-2 text-editorial-black">{t('sell.step4')}</h3>
-                <p className="text-gray-500 text-sm">{t('sell.step4.desc')}</p>
-              </div>
-            </div>
-
-            {/* Step 5 (Left Text, Right Number) - NEW */}
-            <div className="relative flex flex-col md:flex-row items-center mb-16 group">
-              <div className="md:w-1/2 md:pr-12 md:text-right pl-8 md:pl-0 mb-4 md:mb-0 w-full">
-                <h3 className="text-2xl font-bold mb-2 text-editorial-black">{t('sell.step5')}</h3>
-                <p className="text-gray-500 text-sm">{t('sell.step5.desc')}</p>
-              </div>
-              <div className="absolute left-[-5px] md:left-1/2 w-3 h-3 bg-white border-2 border-editorial-black rounded-full transform md:-translate-x-[5px] z-10 group-hover:bg-primary group-hover:border-primary transition-colors"></div>
-              <div className="md:w-1/2 md:pl-12 w-full pl-8 md:block hidden">
-                <span className="text-6xl font-black text-gray-200">05</span>
-              </div>
-            </div>
-
           </div>
         </div>
       </section>
+
+
 
       <section className="py-24 px-6 lg:px-24 bg-white">
         <div className="max-w-[1440px] mx-auto">
