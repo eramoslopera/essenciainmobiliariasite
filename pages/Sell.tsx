@@ -99,73 +99,7 @@ const Sell: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-24 px-6 lg:px-24 bg-white border-b border-gray-100">
-        <div className="max-w-[1440px] mx-auto">
-          <div className="mb-16 md:w-1/2">
-            <h2 className="text-4xl font-bold tracking-tight mb-4">{t('sell.package.title')}</h2>
-            <p className="text-gray-500 text-lg">{t('sell.package.desc')}</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Card 1 */}
-            <Link to="/contact?interest=Sell+Package:+Marketing" className="group p-10 border border-gray-200 hover:border-editorial-black transition-colors duration-300 bg-white block">
-              <span className="material-symbols-outlined text-5xl mb-8 text-primary font-light">campaign</span>
-              <h3 className="text-xl font-bold uppercase tracking-wide mb-4">{t('sell.card1.title')}</h3>
-              <ul className="space-y-3 text-gray-500">
-                <li className="flex items-start gap-3 text-sm">
-                  <span className="w-1.5 h-1.5 mt-1.5 bg-gray-300 rounded-full"></span>
-                  {t('sell.card1.list1')}
-                </li>
-                <li className="flex items-start gap-3 text-sm">
-                  <span className="w-1.5 h-1.5 mt-1.5 bg-gray-300 rounded-full"></span>
-                  {t('sell.card1.list2')}
-                </li>
-                <li className="flex items-start gap-3 text-sm">
-                  <span className="w-1.5 h-1.5 mt-1.5 bg-gray-300 rounded-full"></span>
-                  {t('sell.card1.list3')}
-                </li>
-              </ul>
-            </Link>
-            {/* Card 2 */}
-            <Link to="/contact?interest=Sell+Package:+Legal" className="group p-10 border border-gray-200 hover:border-editorial-black transition-colors duration-300 bg-white block">
-              <span className="material-symbols-outlined text-5xl mb-8 text-primary font-light">gavel</span>
-              <h3 className="text-xl font-bold uppercase tracking-wide mb-4">{t('sell.card2.title')}</h3>
-              <ul className="space-y-3 text-gray-500">
-                <li className="flex items-start gap-3 text-sm">
-                  <span className="w-1.5 h-1.5 mt-1.5 bg-gray-300 rounded-full"></span>
-                  {t('sell.card2.list1')}
-                </li>
-                <li className="flex items-start gap-3 text-sm">
-                  <span className="w-1.5 h-1.5 mt-1.5 bg-gray-300 rounded-full"></span>
-                  {t('sell.card2.list2')}
-                </li>
-                <li className="flex items-start gap-3 text-sm">
-                  <span className="w-1.5 h-1.5 mt-1.5 bg-gray-300 rounded-full"></span>
-                  {t('sell.card2.list3')}
-                </li>
-              </ul>
-            </Link>
-            {/* Card 3 */}
-            <Link to="/contact?interest=Sell+Package:+Admin" className="group p-10 border border-gray-200 hover:border-editorial-black transition-colors duration-300 bg-white block">
-              <span className="material-symbols-outlined text-5xl mb-8 text-primary font-light">edit_document</span>
-              <h3 className="text-xl font-bold uppercase tracking-wide mb-4">{t('sell.card3.title')}</h3>
-              <ul className="space-y-3 text-gray-500">
-                <li className="flex items-start gap-3 text-sm">
-                  <span className="w-1.5 h-1.5 mt-1.5 bg-gray-300 rounded-full"></span>
-                  {t('sell.card3.list1')}
-                </li>
-                <li className="flex items-start gap-3 text-sm">
-                  <span className="w-1.5 h-1.5 mt-1.5 bg-gray-300 rounded-full"></span>
-                  {t('sell.card3.list2')}
-                </li>
-                <li className="flex items-start gap-3 text-sm">
-                  <span className="w-1.5 h-1.5 mt-1.5 bg-gray-300 rounded-full"></span>
-                  {t('sell.card3.list3')}
-                </li>
-              </ul>
-            </Link>
-          </div>
-        </div>
-      </section>
+
 
       <section className="py-32 px-6 lg:px-24 bg-white">
         <div className="max-w-[1440px] mx-auto">
