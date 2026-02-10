@@ -6,6 +6,7 @@ const Sell: React.FC = () => {
   const { t } = useLanguage();
   const navigate = useNavigate();
   const [address, setAddress] = useState('');
+  const [activeStep, setActiveStep] = useState(1);
 
   const handleStartValuation = (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,21 +43,57 @@ const Sell: React.FC = () => {
         </div>
       </section>
 
-      {/* Stats Bar (Lion Capital Inspired) */}
-      <section className="bg-editorial-black py-12 border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-white/20">
-            <div className="p-4">
-              <span className="block text-4xl font-black text-white mb-2">{t('sell.stats.impacts')}</span>
-              <span className="text-xs uppercase tracking-widest text-gray-400">{t('sell.stats.label.reach')}</span>
+      {/* Editorial Marketing Section (Instagram Inspired) */}
+      <section className="bg-editorial-black text-white py-24 border-b border-white/10">
+        <div className="max-w-[1440px] mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="inline-block py-1 px-3 border border-white/30 rounded-full text-xs font-medium tracking-widest uppercase mb-4">{t('sell.marketing.editorial.title')}</span>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tight">{t('sell.marketing.editorial.subtitle')}</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Card 1: Photography */}
+            <div className="group relative aspect-[3/4] overflow-hidden bg-gray-900">
+              <div
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
+                style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=2664&auto=format&fit=crop")' }}
+              ></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 p-8">
+                <h3 className="text-2xl font-bold mb-2">{t('sell.marketing.editorial.photo')}</h3>
+                <p className="text-gray-400 text-sm font-light leading-relaxed">{t('sell.marketing.editorial.photo_desc')}</p>
+              </div>
             </div>
-            <div className="p-4">
-              <span className="block text-4xl font-black text-white mb-2">{t('sell.stats.followers')}</span>
-              <span className="text-xs uppercase tracking-widest text-gray-400">{t('sell.stats.label.community')}</span>
+
+            {/* Card 2: Video */}
+            <div className="group relative aspect-[3/4] overflow-hidden bg-gray-900 md:-translate-y-8">
+              <div
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
+                style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1512403754473-27835f7b9984?q=80&w=2670&auto=format&fit=crop")' }}
+              ></div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-16 h-16 rounded-full border border-white/30 flex items-center justify-center backdrop-blur-md bg-white/10 group-hover:bg-white group-hover:text-black transition-all duration-300">
+                  <span className="material-symbols-outlined text-3xl">play_arrow</span>
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 p-8">
+                <h3 className="text-2xl font-bold mb-2">{t('sell.marketing.editorial.video')}</h3>
+                <p className="text-gray-400 text-sm font-light leading-relaxed">{t('sell.marketing.editorial.video_desc')}</p>
+              </div>
             </div>
-            <div className="p-4">
-              <span className="block text-4xl font-black text-white mb-2">{t('sell.stats.views')}</span>
-              <span className="text-xs uppercase tracking-widest text-gray-400">{t('sell.stats.label.engagement')}</span>
+
+            {/* Card 3: Lifestyle */}
+            <div className="group relative aspect-[3/4] overflow-hidden bg-gray-900">
+              <div
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
+                style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1600210492486-bccad645abb3?q=80&w=2574&auto=format&fit=crop")' }}
+              ></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 p-8">
+                <h3 className="text-2xl font-bold mb-2">{t('sell.marketing.editorial.lifestyle')}</h3>
+                <p className="text-gray-400 text-sm font-light leading-relaxed">{t('sell.marketing.editorial.lifestyle_desc')}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -130,38 +167,71 @@ const Sell: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-24 px-6 lg:px-24 bg-editorial-gray">
-        <div className="max-w-[1000px] mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-primary font-bold tracking-widest uppercase text-xs mb-3 block">{t('sell.process.label')}</span>
-            <h2 className="text-4xl font-black tracking-tight">{t('sell.process.title')}</h2>
+      <section className="py-32 px-6 lg:px-24 bg-white">
+        <div className="max-w-[1440px] mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-24">
+            <div className="md:w-1/2">
+              <span className="text-primary font-bold tracking-widest uppercase text-xs mb-3 block">{t('sell.process.label')}</span>
+              <h2 className="text-4xl md:text-5xl font-black tracking-tight">{t('sell.process.title')}</h2>
+            </div>
+            <div className="md:w-1/2 md:text-right hidden md:block">
+              <p className="text-gray-400 text-lg max-w-md ml-auto">
+                A refined journey from valuation to closing.
+              </p>
+            </div>
           </div>
+
+          {/* Horizontal Process Slider */}
           <div className="relative">
-            <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gray-300 transform md:-translate-x-1/2"></div>
+            {/* Progress Bar Line */}
+            <div className="absolute top-[24px] left-0 right-0 h-px bg-gray-200 hidden md:block"></div>
 
-            {[1, 2, 3, 4, 5].map((step, index) => (
-              <div key={step} className="relative flex flex-col md:flex-row items-center mb-16 last:mb-0 group">
-                {/* Left Side (Text for Odd, Number for Even on Desktop) */}
-                <div className={`md:w-1/2 md:pr-12 md:text-right pl-8 md:pl-0 mb-4 md:mb-0 w-full ${index % 2 !== 0 ? 'md:hidden' : ''}`}>
-                  <h3 className="text-2xl font-bold mb-2 text-editorial-black">{t(`sell.step${step}`)}</h3>
-                  <p className="text-gray-500 text-sm">{t(`sell.step${step}.desc`)}</p>
+            {/* Navigation Steps */}
+            <div className="flex justify-between items-start relative z-10 mb-16 overflow-x-auto pb-4 md:pb-0 hide-scrollbar">
+              {[1, 2, 3, 4, 5].map((step) => (
+                <button
+                  key={step}
+                  onClick={() => setActiveStep(step)}
+                  className={`flex flex-col items-center group min-w-[100px] md:min-w-0 transition-all duration-300 ${activeStep === step ? 'opacity-100' : 'opacity-40 hover:opacity-70'}`}
+                >
+                  <div className={`w-12 h-12 flex items-center justify-center rounded-full text-lg font-bold border-2 transition-all duration-300 mb-6 bg-white 
+                    ${activeStep === step ? 'border-editorial-black text-editorial-black scale-110 shadow-lg' : 'border-gray-200 text-gray-400 group-hover:border-gray-400'}`}>
+                    0{step}
+                  </div>
+                  <span className={`text-sm font-bold uppercase tracking-widest text-center max-w-[150px] hidden md:block transition-colors duration-300 ${activeStep === step ? 'text-editorial-black' : 'text-gray-400'}`}>
+                    {t(`sell.step${step}`)}
+                  </span>
+                </button>
+              ))}
+            </div>
+
+            {/* Active Content Content */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center bg-editorial-gray p-8 md:p-16 rounded-sm transition-all duration-500 min-h-[400px]">
+              <div className="order-2 md:order-1">
+                <span className="text-9xl font-black text-white/50 block leading-none -ml-2 mb-6 select-none">0{activeStep}</span>
+                <h3 className="text-3xl md:text-4xl font-bold mb-6 text-editorial-black">{t(`sell.step${activeStep}`)}</h3>
+                <p className="text-xl text-gray-600 leading-relaxed max-w-lg">{t(`sell.step${activeStep}.desc`)}</p>
+              </div>
+              <div className="order-1 md:order-2 h-full min-h-[300px] bg-white border border-gray-100 p-8 flex items-center justify-center relative overflow-hidden">
+                <div className="absolute top-0 right-0 p-4 opacity-10">
+                  <span className="material-symbols-outlined text-9xl">
+                    {activeStep === 1 ? 'analytics' :
+                      activeStep === 2 ? 'camera_indoor' :
+                        activeStep === 3 ? 'rocket_launch' :
+                          activeStep === 4 ? 'handshake' : 'verified'}
+                  </span>
                 </div>
-
-                {/* Center Dot */}
-                <div className="absolute left-[-5px] md:left-1/2 w-3 h-3 bg-white border-2 border-editorial-black rounded-full transform md:-translate-x-[5px] z-10 group-hover:bg-primary group-hover:border-primary transition-colors"></div>
-
-                {/* Right Side (Number for Odd, Text for Even on Desktop) */}
-                <div className={`md:w-1/2 md:pl-12 w-full pl-8 ${index % 2 === 0 ? 'hidden md:block' : ''}`}>
-                  <span className="text-6xl font-black text-gray-200">0{step}</span>
-                </div>
-
-                {/* Logic for Odd steps where Order is Number -> Text on Desktop */}
-                <div className={`md:w-1/2 md:pl-12 w-full pl-8 ${index % 2 !== 0 ? '' : 'hidden'}`}>
-                  <h3 className="text-2xl font-bold mb-2 text-editorial-black hidden md:block">{t(`sell.step${step}`)}</h3>
-                  <p className="text-gray-500 text-sm hidden md:block">{t(`sell.step${step}.desc`)}</p>
+                <div className="relative z-10 text-center">
+                  <span className="material-symbols-outlined text-6xl mb-6 text-editorial-black">
+                    {activeStep === 1 ? 'analytics' :
+                      activeStep === 2 ? 'camera_indoor' :
+                        activeStep === 3 ? 'rocket_launch' :
+                          activeStep === 4 ? 'handshake' : 'verified'}
+                  </span>
+                  <p className="text-sm uppercase tracking-widest text-gray-400 font-bold">Essencia Standard</p>
                 </div>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
@@ -229,24 +299,30 @@ const Sell: React.FC = () => {
         </div>
       </section>
 
-      <section className="py-32 bg-editorial-black text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/cubes.png")' }}></div>
+      <section className="py-32 bg-white relative">
         <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
-          <h2 className="text-5xl md:text-6xl font-black mb-8">{t('sell.ready.title')}</h2>
-          <p className="text-xl text-gray-400 mb-12 font-light max-w-2xl mx-auto">{t('sell.ready.subtitle')}</p>
-          <form className="max-w-lg mx-auto flex flex-col sm:flex-row gap-0" onSubmit={handleStartValuation}>
-            <input
-              className="w-full h-16 px-6 bg-white text-editorial-black placeholder-gray-500 border-none focus:ring-0 text-lg"
-              placeholder={t('home.value.placeholder')}
-              type="text"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-            />
-            <button type="submit" className="h-16 px-10 bg-primary hover:bg-black text-white text-lg font-bold uppercase tracking-widest whitespace-nowrap transition-colors rounded-none flex items-center justify-center">
-              {t('sell.hero.start')}
-            </button>
+          <h2 className="text-5xl md:text-6xl font-black mb-8 text-editorial-black tracking-tighter">{t('sell.ready.title')}</h2>
+          <p className="text-xl text-gray-500 mb-16 font-light max-w-2xl mx-auto">{t('sell.ready.subtitle')}</p>
+
+          <form className="max-w-2xl mx-auto" onSubmit={handleStartValuation}>
+            <div className="relative group">
+              <input
+                className="w-full h-20 px-0 bg-transparent text-editorial-black placeholder-gray-300 border-b-2 border-gray-200 focus:border-editorial-black focus:ring-0 text-3xl md:text-4xl font-bold tracking-tight text-center transition-all duration-300 outline-none"
+                placeholder={t('home.value.placeholder') + '...'}
+                type="text"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+              />
+              <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-editorial-black transition-all duration-500 group-hover:w-full"></div>
+            </div>
+
+            <div className="mt-12">
+              <button type="submit" className="h-16 px-12 bg-editorial-black hover:bg-primary text-white text-lg font-bold uppercase tracking-widest whitespace-nowrap transition-all rounded-none shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
+                {t('sell.hero.start')}
+              </button>
+            </div>
           </form>
-          <p className="mt-6 text-sm text-gray-500">{t('sell.disclaimer')}</p>
+          <p className="mt-12 text-xs text-gray-400 uppercase tracking-widest">{t('sell.disclaimer')}</p>
         </div>
       </section>
     </>
