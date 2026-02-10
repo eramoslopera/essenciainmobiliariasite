@@ -43,63 +43,115 @@ const Sell: React.FC = () => {
         </div>
       </section>
 
-      {/* Editorial Marketing Section (Instagram Inspired) */}
+      {/* Pack Visual PRO Section (Instagram Inspired) */}
       <section className="bg-editorial-black text-white py-24 border-b border-white/10">
         <div className="max-w-[1440px] mx-auto px-6">
           <div className="text-center mb-16">
-            <span className="inline-block py-1 px-3 border border-white/30 rounded-full text-xs font-medium tracking-widest uppercase mb-4">{t('sell.marketing.editorial.title')}</span>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tight">{t('sell.marketing.editorial.subtitle')}</h2>
+            <span className="inline-block py-1 px-3 border border-white/30 rounded-full text-xs font-medium tracking-widest uppercase mb-4">{t('sell.visual.title')}</span>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tight mb-4">{t('sell.visual.subtitle')}</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Card 1: Photography */}
-            <div className="group relative aspect-[3/4] overflow-hidden bg-gray-900">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* 1. Professional Photography */}
+            <div className="group relative aspect-[4/3] overflow-hidden bg-gray-900">
               <div
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
                 style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=2664&auto=format&fit=crop")' }}
               ></div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
               <div className="absolute bottom-0 left-0 p-8">
-                <h3 className="text-2xl font-bold mb-2">{t('sell.marketing.editorial.photo')}</h3>
-                <p className="text-gray-400 text-sm font-light leading-relaxed">{t('sell.marketing.editorial.photo_desc')}</p>
+                <span className="material-symbols-outlined text-4xl mb-3 text-white/90">photo_camera</span>
+                <h3 className="text-xl font-bold mb-1">{t('sell.visual.photo')}</h3>
+                <p className="text-gray-400 text-sm font-light leading-relaxed">{t('sell.visual.photo_desc')}</p>
               </div>
             </div>
 
-            {/* Card 2: Video */}
-            <div className="group relative aspect-[3/4] overflow-hidden bg-gray-900 md:-translate-y-8">
+            {/* 2. Cinematic Video */}
+            <div className="group relative aspect-[4/3] overflow-hidden bg-gray-900">
               <div
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
                 style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1512403754473-27835f7b9984?q=80&w=2670&auto=format&fit=crop")' }}
               ></div>
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-16 h-16 rounded-full border border-white/30 flex items-center justify-center backdrop-blur-md bg-white/10 group-hover:bg-white group-hover:text-black transition-all duration-300">
-                  <span className="material-symbols-outlined text-3xl">play_arrow</span>
+                <div className="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center backdrop-blur-md bg-white/10 group-hover:bg-white group-hover:text-black transition-all duration-300">
+                  <span className="material-symbols-outlined text-2xl">play_arrow</span>
                 </div>
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
               <div className="absolute bottom-0 left-0 p-8">
-                <h3 className="text-2xl font-bold mb-2">{t('sell.marketing.editorial.video')}</h3>
-                <p className="text-gray-400 text-sm font-light leading-relaxed">{t('sell.marketing.editorial.video_desc')}</p>
+                <span className="material-symbols-outlined text-4xl mb-3 text-white/90">videocam</span>
+                <h3 className="text-xl font-bold mb-1">{t('sell.visual.video')}</h3>
+                <p className="text-gray-400 text-sm font-light leading-relaxed">{t('sell.visual.video_desc')}</p>
               </div>
             </div>
 
-            {/* Card 3: Lifestyle */}
-            <div className="group relative aspect-[3/4] overflow-hidden bg-gray-900">
+            {/* 3. Drone Cinematography */}
+            <div className="group relative aspect-[4/3] overflow-hidden bg-gray-900">
               <div
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
-                style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1600210492486-bccad645abb3?q=80&w=2574&auto=format&fit=crop")' }}
+                style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1473968512647-3e447244af8f?q=80&w=2670&auto=format&fit=crop")' }}
               ></div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
               <div className="absolute bottom-0 left-0 p-8">
-                <h3 className="text-2xl font-bold mb-2">{t('sell.marketing.editorial.lifestyle')}</h3>
-                <p className="text-gray-400 text-sm font-light leading-relaxed">{t('sell.marketing.editorial.lifestyle_desc')}</p>
+                <span className="material-symbols-outlined text-4xl mb-3 text-white/90">flight</span>
+                <h3 className="text-xl font-bold mb-1">{t('sell.visual.drone')}</h3>
+                <p className="text-gray-400 text-sm font-light leading-relaxed">{t('sell.visual.drone_desc')}</p>
               </div>
             </div>
+
+            {/* 4. Virtual Tour */}
+            <div className="group relative aspect-[4/3] overflow-hidden bg-gray-900">
+              <div
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
+                style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2653&auto=format&fit=crop")' }}
+              ></div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center backdrop-blur-md bg-white/10 group-hover:bg-white group-hover:text-black transition-all duration-300">
+                  <span className="material-symbols-outlined text-2xl">360</span>
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 p-8">
+                <span className="material-symbols-outlined text-4xl mb-3 text-white/90">view_in_ar</span>
+                <h3 className="text-xl font-bold mb-1">{t('sell.visual.tour')}</h3>
+                <p className="text-gray-400 text-sm font-light leading-relaxed">{t('sell.visual.tour_desc')}</p>
+              </div>
+            </div>
+
+            {/* 5. 3D Floor Plan */}
+            <div className="group relative aspect-[4/3] overflow-hidden bg-gray-900">
+              <div
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
+                style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1599809275372-b7c5950a7c4a?q=80&w=2670&auto=format&fit=crop")' }}
+              ></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 p-8">
+                <span className="material-symbols-outlined text-4xl mb-3 text-white/90">floor</span>
+                <h3 className="text-xl font-bold mb-1">{t('sell.visual.plan')}</h3>
+                <p className="text-gray-400 text-sm font-light leading-relaxed">{t('sell.visual.plan_desc')}</p>
+              </div>
+            </div>
+
+            {/* 6. AI Rendering */}
+            <div className="group relative aspect-[4/3] overflow-hidden bg-gray-900">
+              <div
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
+                style={{ backgroundImage: 'url("https://plus.unsplash.com/premium_photo-1680100256127-e73d3f1f3376?q=80&w=2544&auto=format&fit=crop")' }}
+              ></div>
+              <div className="absolute top-4 right-4 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded tracking-widest uppercase">
+                AI Enhanced
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 p-8">
+                <span className="material-symbols-outlined text-4xl mb-3 text-white/90">auto_awesome</span>
+                <h3 className="text-xl font-bold mb-1">{t('sell.visual.render')}</h3>
+                <p className="text-gray-400 text-sm font-light leading-relaxed">{t('sell.visual.render_desc')}</p>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
-
-
 
       <section className="py-32 px-6 lg:px-24 bg-white">
         <div className="max-w-[1440px] mx-auto">
@@ -169,8 +221,6 @@ const Sell: React.FC = () => {
           </div>
         </div>
       </section>
-
-
 
       <section className="py-24 px-6 lg:px-24 bg-white">
         <div className="max-w-[1440px] mx-auto">
