@@ -109,7 +109,7 @@ const Contact: React.FC = () => {
 
           {/* Left Column: Info */}
           <div>
-            <span className="text-primary font-bold tracking-widest uppercase text-xs mb-3 block">{t('nav.contact')}</span>
+            <span className="text-brand-blue-600 font-bold tracking-widest uppercase text-xs mb-3 block">{t('nav.contact')}</span>
             <h1 className="text-5xl md:text-6xl font-black text-editorial-black tracking-tight mb-8">{t('contact.title')}</h1>
             <p className="text-xl text-gray-500 mb-12 font-medium leading-relaxed max-w-md">
               {t('contact.subtitle')}
@@ -125,8 +125,8 @@ const Contact: React.FC = () => {
 
               <div>
                 <h4 className="font-bold text-lg mb-2">{t('nav.contact')}</h4>
-                <p className="text-gray-600 mb-1"><a href="mailto:santitorres@essenciainmobiliaria.com" className="hover:text-primary transition-colors">santitorres@essenciainmobiliaria.com</a></p>
-                <p className="text-gray-600"><a href="tel:+34647803355" className="hover:text-primary transition-colors">+34 647 803 355</a></p>
+                <p className="text-gray-600 mb-1"><a href="mailto:santitorres@essenciainmobiliaria.com" className="hover:text-brand-blue-600 transition-colors">santitorres@essenciainmobiliaria.com</a></p>
+                <p className="text-gray-600"><a href="tel:+34647803355" className="hover:text-brand-blue-600 transition-colors">+34 647 803 355</a></p>
               </div>
 
               <div>
@@ -195,7 +195,7 @@ const Contact: React.FC = () => {
                       name="firstName"
                       value={formData.firstName}
                       onChange={handleChange}
-                      className={`w-full bg-white border ${errors.firstName ? 'border-red-500' : 'border-none'} rounded px-4 py-3 focus:ring-2 focus:ring-primary`}
+                      className={`w-full bg-white border ${errors.firstName ? 'border-red-500' : 'border-none'} rounded px-4 py-3 focus:ring-2 focus:ring-brand-blue-500`}
                       placeholder="Jane"
                     />
                     {errors.firstName && <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>}
@@ -207,7 +207,7 @@ const Contact: React.FC = () => {
                       name="lastName"
                       value={formData.lastName}
                       onChange={handleChange}
-                      className={`w-full bg-white border ${errors.lastName ? 'border-red-500' : 'border-none'} rounded px-4 py-3 focus:ring-2 focus:ring-primary`}
+                      className={`w-full bg-white border ${errors.lastName ? 'border-red-500' : 'border-none'} rounded px-4 py-3 focus:ring-2 focus:ring-brand-blue-500`}
                       placeholder="Doe"
                     />
                     {errors.lastName && <p className="text-red-500 text-xs mt-1">{errors.lastName}</p>}
@@ -221,7 +221,7 @@ const Contact: React.FC = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className={`w-full bg-white border ${errors.email ? 'border-red-500' : 'border-none'} rounded px-4 py-3 focus:ring-2 focus:ring-primary`}
+                    className={`w-full bg-white border ${errors.email ? 'border-red-500' : 'border-none'} rounded px-4 py-3 focus:ring-2 focus:ring-brand-blue-500`}
                     placeholder="jane@example.com"
                   />
                   {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
@@ -234,7 +234,7 @@ const Contact: React.FC = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className={`w-full bg-white border ${errors.phone ? 'border-red-500' : 'border-none'} rounded px-4 py-3 focus:ring-2 focus:ring-primary`}
+                    className={`w-full bg-white border ${errors.phone ? 'border-red-500' : 'border-none'} rounded px-4 py-3 focus:ring-2 focus:ring-brand-blue-500`}
                     placeholder="+34..."
                   />
                   {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
@@ -246,7 +246,7 @@ const Contact: React.FC = () => {
                     name="interest"
                     value={formData.interest}
                     onChange={handleChange}
-                    className="w-full bg-white border-none rounded px-4 py-3 focus:ring-2 focus:ring-primary"
+                    className="w-full bg-white border-none rounded px-4 py-3 focus:ring-2 focus:ring-brand-blue-500"
                   >
                     <option value={t('contact.form.buy')}>{t('contact.form.buy')}</option>
                     <option value={t('contact.form.sell')}>{t('contact.form.sell')}</option>
@@ -262,7 +262,7 @@ const Contact: React.FC = () => {
                     value={formData.message}
                     onChange={handleChange}
                     rows={4}
-                    className={`w-full bg-white border ${errors.message ? 'border-red-500' : 'border-none'} rounded px-4 py-3 focus:ring-2 focus:ring-primary`}
+                    className={`w-full bg-white border ${errors.message ? 'border-red-500' : 'border-none'} rounded px-4 py-3 focus:ring-2 focus:ring-brand-blue-500`}
                     placeholder="Tell us more about your needs..."
                   ></textarea>
                   {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
@@ -272,7 +272,7 @@ const Contact: React.FC = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`w-full py-4 bg-editorial-black text-white font-bold uppercase tracking-widest rounded hover:bg-primary transition-colors shadow-lg flex items-center justify-center gap-2 ${isSubmitting ? 'opacity-75 cursor-not-allowed' : ''}`}
+                    className={`w-full py-4 bg-editorial-black text-white font-bold uppercase tracking-widest rounded hover:bg-brand-blue-600 transition-colors shadow-lg flex items-center justify-center gap-2 ${isSubmitting ? 'opacity-75 cursor-not-allowed' : ''}`}
                   >
                     {isSubmitting ? t('common.loading') : t('common.send')}
                   </button>

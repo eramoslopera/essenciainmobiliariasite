@@ -20,33 +20,33 @@ const Footer: React.FC = () => {
           <div>
             <h5 className="font-bold text-sm uppercase tracking-widest mb-6 text-white">{t('footer.discover')}</h5>
             <ul className="space-y-4 text-sm text-gray-400">
-              <li><Link to="/properties" className="hover:text-primary transition-colors">{t('nav.properties')}</Link></li>
-              <li><Link to="/developments" className="hover:text-primary transition-colors">{t('nav.developments')}</Link></li>
-              <li><Link to="/stories" className="hover:text-primary transition-colors">{t('stories.newsletter.title')}</Link></li>
-              <li><Link to="/properties" className="hover:text-primary transition-colors">{t('home.recent.sold')}</Link></li>
+              <li><Link to="/properties" className="hover:text-brand-blue-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm">{t('nav.properties')}</Link></li>
+              <li><Link to="/developments" className="hover:text-brand-blue-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm">{t('nav.developments')}</Link></li>
+
+              <li><Link to="/properties" className="hover:text-brand-blue-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm">{t('home.recent.sold')}</Link></li>
             </ul>
           </div>
           <div>
             <h5 className="font-bold text-sm uppercase tracking-widest mb-6 text-white">{t('footer.company')}</h5>
             <ul className="space-y-4 text-sm text-gray-400">
-              <li><Link to="/about" className="hover:text-primary transition-colors">{t('nav.about')}</Link></li>
-              <li><Link to="/about" className="hover:text-primary transition-colors">{t('about.collective')}</Link></li>
+              <li><Link to="/about" className="hover:text-brand-blue-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm">{t('nav.about')}</Link></li>
+              <li><Link to="/about" className="hover:text-brand-blue-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm">{t('about.collective')}</Link></li>
             </ul>
           </div>
           <div>
             <h5 className="font-bold text-sm uppercase tracking-widest mb-6 text-white">{t('footer.contact')}</h5>
             <ul className="space-y-4 text-sm text-gray-400">
               <li className="flex items-start gap-3">
-                <span className="material-symbols-outlined text-primary text-lg">location_on</span>
+                <span className="material-symbols-outlined text-brand-blue-400 text-lg">location_on</span>
                 <span dangerouslySetInnerHTML={{ __html: t('footer.address') }}></span>
               </li>
               <li className="flex items-center gap-3">
-                <span className="material-symbols-outlined text-primary text-lg">call</span>
-                <a href="tel:+34647803355" className="hover:text-primary transition-colors">+34 647 803 355</a>
+                <span className="material-symbols-outlined text-brand-blue-400 text-lg">call</span>
+                <a href="tel:+34647803355" className="hover:text-brand-blue-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm">+34 647 803 355</a>
               </li>
               <li className="flex items-center gap-3">
-                <span className="material-symbols-outlined text-primary text-lg">mail</span>
-                <a href="mailto:santitorres@essenciainmobiliaria.com" className="hover:text-primary transition-colors">santitorres@essenciainmobiliaria.com</a>
+                <span className="material-symbols-outlined text-brand-blue-400 text-lg">mail</span>
+                <a href="mailto:santitorres@essenciainmobiliaria.com" className="hover:text-brand-blue-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm">santitorres@essenciainmobiliaria.com</a>
               </li>
             </ul>
           </div>
@@ -54,18 +54,18 @@ const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-gray-500">
           <p>{t('footer.rights')}</p>
           <div className="flex gap-6">
-            <Link to="/about" className="hover:text-white transition-colors">{t('footer.privacy')}</Link>
-            <Link to="/about" className="hover:text-white transition-colors">{t('footer.terms')}</Link>
-            <Link to="/about" className="hover:text-white transition-colors">{t('footer.cookies')}</Link>
+            <Link to="/about" className="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm">{t('footer.privacy')}</Link>
+            <Link to="/about" className="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm">{t('footer.terms')}</Link>
+            <Link to="/about" className="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm">{t('footer.cookies')}</Link>
           </div>
           <div className="flex gap-4">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-white/10 flex items-center justify-center hover:bg-white hover:text-editorial-black transition-colors text-white rounded-none">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-8 h-8 bg-white/10 flex items-center justify-center hover:bg-brand-blue-500 hover:text-white transition-colors text-white rounded-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500">
               <span className="text-xs font-bold">{t('footer.social.ig')}</span>
             </a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-white/10 flex items-center justify-center hover:bg-white hover:text-editorial-black transition-colors text-white rounded-none">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-8 h-8 bg-white/10 flex items-center justify-center hover:bg-brand-blue-500 hover:text-white transition-colors text-white rounded-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500">
               <span className="text-xs font-bold">{t('footer.social.fb')}</span>
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-white/10 flex items-center justify-center hover:bg-white hover:text-editorial-black transition-colors text-white rounded-none">
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-8 h-8 bg-white/10 flex items-center justify-center hover:bg-brand-blue-500 hover:text-white transition-colors text-white rounded-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500">
               <span className="text-xs font-bold">{t('footer.social.li')}</span>
             </a>
           </div>

@@ -43,10 +43,10 @@ const Home: React.FC = () => {
             {t('home.hero.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row items-center gap-8">
-            <Link to="/valuation" className="h-14 px-10 bg-charcoal hover:bg-black text-white text-sm font-bold tracking-widest uppercase rounded shadow-xl hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center">
+            <Link to="/valuation" className="h-14 px-10 bg-charcoal hover:bg-brand-blue-600 text-white text-sm font-bold tracking-widest uppercase rounded shadow-xl hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2">
               {t('home.hero.cta.valuation')}
             </Link>
-            <Link to="/properties" className="group text-editorial-black font-bold text-sm tracking-wide border-b border-editorial-black pb-1 hover:text-primary hover:border-primary transition-all flex items-center gap-2">
+            <Link to="/properties" className="group text-editorial-black font-bold text-sm tracking-wide border-b border-editorial-black pb-1 hover:text-brand-blue-600 hover:border-brand-blue-600 transition-all flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500">
               {t('home.hero.cta.sold')}
               <span className="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
             </Link>
@@ -61,7 +61,7 @@ const Home: React.FC = () => {
               <h2 className="text-4xl lg:text-5xl font-black tracking-tight mb-4">{t('home.marketing.title')}</h2>
               <p className="text-gray-500 max-w-md">{t('home.marketing.subtitle')}</p>
             </div>
-            <Link to="/sell" className="hidden md:flex items-center gap-2 font-bold hover:text-primary transition-colors mt-6 md:mt-0">
+            <Link to="/sell" className="hidden md:flex items-center gap-2 font-bold hover:text-brand-blue-600 transition-colors mt-6 md:mt-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500">
               {t('home.marketing.link')} <span className="material-symbols-outlined">arrow_right_alt</span>
             </Link>
           </div>
@@ -123,10 +123,10 @@ const Home: React.FC = () => {
           <div className="flex items-center justify-between mb-12">
             <h2 className="text-3xl font-bold">{t('home.recent.title')}</h2>
             <div className="flex gap-2">
-              <button onClick={() => scroll('left')} className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-white transition-colors">
+              <button onClick={() => scroll('left')} aria-label="Previous property" className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500">
                 <span className="material-symbols-outlined">arrow_back</span>
               </button>
-              <button onClick={() => scroll('right')} className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-black transition-colors">
+              <button onClick={() => scroll('right')} aria-label="Next property" className="w-10 h-10 rounded-full bg-brand-blue-500 text-white flex items-center justify-center hover:bg-brand-blue-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500">
                 <span className="material-symbols-outlined">arrow_forward</span>
               </button>
             </div>
@@ -254,7 +254,7 @@ const Home: React.FC = () => {
       <section className="py-24 bg-white relative overflow-hidden">
         <div className="absolute right-0 top-0 w-1/3 h-full bg-primary/5 -skew-x-12 hidden lg:block"></div>
         <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
-          <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">{t('home.value.tag')}</span>
+          <span className="text-brand-blue-600 font-bold tracking-widest uppercase text-sm mb-4 block">{t('home.value.tag')}</span>
           <h2 className="text-4xl md:text-5xl font-black mb-6 text-editorial-black">{t('home.value.title')}</h2>
           <p className="text-lg text-gray-500 mb-10 max-w-2xl mx-auto">{t('home.value.subtitle')}</p>
           <div className="bg-white p-2 rounded shadow-xl border border-gray-100 flex flex-col sm:flex-row gap-2 max-w-2xl mx-auto">
@@ -262,7 +262,7 @@ const Home: React.FC = () => {
               <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 material-symbols-outlined">search</span>
               <input type="text" placeholder={t('home.value.placeholder')} className="w-full h-12 pl-12 pr-4 bg-transparent border-none focus:ring-0 text-editorial-black placeholder-gray-400 rounded" />
             </div>
-            <Link to="/valuation" className="h-12 px-8 bg-primary hover:bg-black text-white font-bold rounded transition-colors whitespace-nowrap flex items-center justify-center">
+            <Link to="/valuation" className="h-12 px-8 bg-brand-blue-500 hover:bg-brand-blue-600 text-white font-bold rounded transition-colors whitespace-nowrap flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500">
               {t('home.value.button')}
             </Link>
           </div>
