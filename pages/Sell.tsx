@@ -168,7 +168,7 @@ const Sell: React.FC = () => {
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
                 style={{ backgroundImage: 'url("https://plus.unsplash.com/premium_photo-1680100256127-e73d3f1f3376?q=80&w=2544&auto=format&fit=crop")' }}
               ></div>
-              <div className="absolute top-4 right-4 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded tracking-widest uppercase">
+              <div className="absolute top-4 right-4 bg-brand-blue-600 text-white text-[10px] font-bold px-2 py-1 rounded tracking-widest uppercase">
                 AI Enhanced
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
@@ -264,7 +264,7 @@ const Sell: React.FC = () => {
                 <button onClick={() => scroll('left')} className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-white transition-colors">
                   <span className="material-symbols-outlined">arrow_back</span>
                 </button>
-                <button onClick={() => scroll('right')} className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-black transition-colors">
+                <button onClick={() => scroll('right')} className="w-10 h-10 rounded-full bg-brand-blue-600 text-white flex items-center justify-center hover:bg-brand-blue-700 transition-colors">
                   <span className="material-symbols-outlined">arrow_forward</span>
                 </button>
               </div>
@@ -353,28 +353,28 @@ const Sell: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Step 1: Reserva */}
             <div className="bg-white p-8 rounded shadow-sm hover:shadow-xl transition-all duration-300 group">
-              <div className="w-12 h-12 bg-editorial-black text-white rounded-full flex items-center justify-center text-xl font-bold mb-6 group-hover:bg-primary transition-colors">1</div>
+              <div className="w-12 h-12 bg-editorial-black text-white rounded-full flex items-center justify-center text-xl font-bold mb-6 group-hover:bg-brand-blue-600 transition-colors">1</div>
               <h3 className="text-xl font-bold mb-4">{t('sell.step.reserva')}</h3>
               <p className="text-gray-500 leading-relaxed text-sm">{t('sell.step.reserva.desc')}</p>
             </div>
 
             {/* Step 2: Arras */}
             <div className="bg-white p-8 rounded shadow-sm hover:shadow-xl transition-all duration-300 group md:translate-y-8">
-              <div className="w-12 h-12 bg-editorial-black text-white rounded-full flex items-center justify-center text-xl font-bold mb-6 group-hover:bg-primary transition-colors">2</div>
+              <div className="w-12 h-12 bg-editorial-black text-white rounded-full flex items-center justify-center text-xl font-bold mb-6 group-hover:bg-brand-blue-600 transition-colors">2</div>
               <h3 className="text-xl font-bold mb-4">{t('sell.step.arras')}</h3>
               <p className="text-gray-500 leading-relaxed text-sm">{t('sell.step.arras.desc')}</p>
             </div>
 
             {/* Step 3: Notaria */}
             <div className="bg-white p-8 rounded shadow-sm hover:shadow-xl transition-all duration-300 group">
-              <div className="w-12 h-12 bg-editorial-black text-white rounded-full flex items-center justify-center text-xl font-bold mb-6 group-hover:bg-primary transition-colors">3</div>
+              <div className="w-12 h-12 bg-editorial-black text-white rounded-full flex items-center justify-center text-xl font-bold mb-6 group-hover:bg-brand-blue-600 transition-colors">3</div>
               <h3 className="text-xl font-bold mb-4">{t('sell.step.notaria')}</h3>
               <p className="text-gray-500 leading-relaxed text-sm">{t('sell.step.notaria.desc')}</p>
             </div>
 
             {/* Step 4: Postventa */}
             <div className="bg-white p-8 rounded shadow-sm hover:shadow-xl transition-all duration-300 group md:translate-y-8">
-              <div className="w-12 h-12 bg-editorial-black text-white rounded-full flex items-center justify-center text-xl font-bold mb-6 group-hover:bg-primary transition-colors">4</div>
+              <div className="w-12 h-12 bg-editorial-black text-white rounded-full flex items-center justify-center text-xl font-bold mb-6 group-hover:bg-brand-blue-600 transition-colors">4</div>
               <h3 className="text-xl font-bold mb-4">{t('sell.step.postventa')}</h3>
               <p className="text-gray-500 leading-relaxed text-sm">{t('sell.step.postventa.desc')}</p>
             </div>
@@ -400,7 +400,7 @@ const Sell: React.FC = () => {
             </div>
 
             <div className="mt-12">
-              <button type="submit" className="h-16 px-12 bg-editorial-black hover:bg-primary text-white text-lg font-bold uppercase tracking-widest whitespace-nowrap transition-all rounded-none shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
+              <button type="submit" className="h-16 px-12 bg-editorial-black hover:bg-brand-blue-600 text-white text-lg font-bold uppercase tracking-widest whitespace-nowrap transition-all rounded-none shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
                 {t('sell.hero.start')}
               </button>
             </div>

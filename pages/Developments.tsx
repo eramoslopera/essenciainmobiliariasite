@@ -8,7 +8,7 @@ const Developments: React.FC = () => {
   return (
     <div className="pt-28 pb-20">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12 mb-16">
-        <span className="text-primary font-bold tracking-widest uppercase text-xs mb-3 block">{t('dev.label.future_living')}</span>
+        <span className="text-brand-blue-600 font-bold tracking-widest uppercase text-xs mb-3 block">{t('dev.label.future_living')}</span>
         <h1 className="text-5xl md:text-7xl font-black text-editorial-black tracking-tight mb-8">{t('dev.title')}</h1>
         <p className="text-xl text-gray-500 max-w-2xl font-medium leading-relaxed">
           {t('dev.subtitle')}
@@ -35,7 +35,7 @@ const Developments: React.FC = () => {
               {t('dev.p1.desc')}
             </p>
             <div className="grid grid-cols-2 gap-4 mb-8">
-              <div className="border-l-2 border-primary pl-4">
+              <div className="border-l-2 border-brand-blue-500 pl-4">
                 <span className="block text-2xl font-bold">€1.2M</span>
                 <span className="text-xs text-gray-500">{t('dev.start_price')}</span>
               </div>
@@ -44,7 +44,7 @@ const Developments: React.FC = () => {
                 <span className="text-xs text-gray-500">{t('detail.beds')}</span>
               </div>
             </div>
-            <Link to="/contact?interest=Azure+Heights+Brochure" className="inline-flex items-center justify-center h-12 px-8 border border-editorial-black hover:bg-editorial-black hover:text-white font-bold uppercase tracking-widest text-sm transition-colors rounded-none">
+            <Link to="/contact?interest=Azure+Heights+Brochure" className="inline-flex items-center justify-center h-12 px-8 border border-editorial-black hover:bg-brand-blue-600 hover:text-white hover:border-brand-blue-600 font-bold uppercase tracking-widest text-sm transition-colors rounded-none">
               {t('dev.download')}
             </Link>
           </div>
@@ -57,7 +57,7 @@ const Developments: React.FC = () => {
               className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
               style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuBeO_psb5EsZUge1Q9z9Z0VTEVDOkjmZqJ0_iWuqs1ZjDjturTC925sUpjY4SLbxjQNJNqlgkcv568Kjd5zvvCEIqbffK35jIWjZbAI_u5r_d_Sj57l_m9A8bJN7LcCmSlWATG8dzcBzvdTPFArI7AAtc--NaEpg0seD4lB3ek7ceC2iRhSFh-4fCJ4WP6rjzsj8Ow9cQB3NTjhprnKxcP9IcaFNAN9hsEGC0TUGR1IfZGlIpMPtAeaP1480Wg3sxZR8HyGCiot")' }}
             ></div>
-            <div className="absolute top-6 right-6 bg-primary text-white px-4 py-2 text-xs font-bold uppercase tracking-widest rounded-sm">
+            <div className="absolute top-6 right-6 bg-brand-blue-600 text-white px-4 py-2 text-xs font-bold uppercase tracking-widest rounded-sm">
               {t('dev.status.launching')}
             </div>
           </div>
@@ -68,7 +68,7 @@ const Developments: React.FC = () => {
               {t('dev.p2.desc')}
             </p>
             <div className="grid grid-cols-2 gap-4 mb-8">
-              <div className="border-l-2 border-primary pl-4">
+              <div className="border-l-2 border-brand-blue-500 pl-4">
                 <span className="block text-2xl font-bold">€350k</span>
                 <span className="text-xs text-gray-500">{t('dev.start_price')}</span>
               </div>
@@ -77,7 +77,7 @@ const Developments: React.FC = () => {
                 <span className="text-xs text-gray-500">{t('dev.label.sizes')}</span>
               </div>
             </div>
-            <Link to="/contact?interest=The+Silk+District+Registration" className="inline-flex items-center justify-center h-12 px-8 bg-editorial-black text-white hover:bg-primary font-bold uppercase tracking-widest text-sm transition-colors rounded-none">
+            <Link to="/contact?interest=The+Silk+District+Registration" className="inline-flex items-center justify-center h-12 px-8 bg-editorial-black text-white hover:bg-brand-blue-600 font-bold uppercase tracking-widest text-sm transition-colors rounded-none">
               {t('dev.register')}
             </Link>
           </div>
@@ -101,7 +101,7 @@ const Developments: React.FC = () => {
               {t('dev.p3.desc')}
             </p>
             <div className="grid grid-cols-2 gap-4 mb-8">
-              <div className="border-l-2 border-primary pl-4">
+              <div className="border-l-2 border-brand-blue-500 pl-4">
                 <span className="block text-2xl font-bold">€590k</span>
                 <span className="text-xs text-gray-500">{t('dev.start_price')}</span>
               </div>
@@ -110,7 +110,7 @@ const Developments: React.FC = () => {
                 <span className="text-xs text-gray-500">{t('dev.label.remaining')}</span>
               </div>
             </div>
-            <Link to="/contact?interest=Duna+Beach+Floorplans" className="inline-flex items-center justify-center h-12 px-8 border border-editorial-black hover:bg-editorial-black hover:text-white font-bold uppercase tracking-widest text-sm transition-colors rounded-none">
+            <Link to="/contact?interest=Duna+Beach+Floorplans" className="inline-flex items-center justify-center h-12 px-8 border border-editorial-black hover:bg-brand-blue-600 hover:text-white hover:border-brand-blue-600 font-bold uppercase tracking-widest text-sm transition-colors rounded-none">
               {t('dev.view_floorplans')}
             </Link>
           </div>

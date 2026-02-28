@@ -45,11 +45,11 @@ const Valuation: React.FC = () => {
         <div className="lg:col-span-7 xl:col-span-8">
           <div className="mb-10">
             <div className="flex justify-between items-end mb-3">
-              <span className="text-xs font-bold uppercase tracking-widest text-primary">{t('valuation.process.step1_of_4')}</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-brand-blue-600">{t('valuation.process.step1_of_4')}</span>
               <span className="text-xs font-semibold text-gray-400">{t('valuation.process.completed')}</span>
             </div>
             <div className="w-full h-1 bg-gray-200 rounded-full overflow-hidden">
-              <div className="h-full bg-primary w-1/4 rounded-full"></div>
+              <div className="h-full bg-brand-blue-500 w-1/4 rounded-full"></div>
             </div>
           </div>
           <div className="bg-white rounded-xl shadow-editorial p-8 md:p-12 border border-gray-100">
@@ -67,10 +67,10 @@ const Valuation: React.FC = () => {
                   </label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                      <span className="material-symbols-outlined text-gray-400 group-focus-within:text-primary transition-colors">search</span>
+                      <span className="material-symbols-outlined text-gray-400 group-focus-within:text-brand-blue-500 transition-colors">search</span>
                     </div>
                     <input
-                      className="block w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-lg text-lg font-medium text-editorial-black placeholder-gray-400 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm"
+                      className="block w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-lg text-lg font-medium text-editorial-black placeholder-gray-400 focus:ring-2 focus:ring-brand-blue-500/20 focus:border-brand-blue-500 transition-all shadow-sm"
                       id="address"
                       placeholder={t('valuation.placeholder')}
                       type="text"
@@ -96,13 +96,13 @@ const Valuation: React.FC = () => {
                     <label className="block text-xs font-bold text-gray-500 mb-2 uppercase tracking-wide" htmlFor="floor">
                       {t('valuation.form.floor')}
                     </label>
-                    <input className="block w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-base focus:ring-1 focus:ring-primary focus:border-primary" id="floor" placeholder="e.g. 4" type="text" />
+                    <input className="block w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-base focus:ring-1 focus:ring-brand-blue-500 focus:border-brand-blue-500" id="floor" placeholder="e.g. 4" type="text" />
                   </div>
                   <div>
                     <label className="block text-xs font-bold text-gray-500 mb-2 uppercase tracking-wide" htmlFor="door">
                       {t('valuation.form.door')}
                     </label>
-                    <input className="block w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-base focus:ring-1 focus:ring-primary focus:border-primary" id="door" placeholder="e.g. B" type="text" />
+                    <input className="block w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-base focus:ring-1 focus:ring-brand-blue-500 focus:border-brand-blue-500" id="door" placeholder="e.g. B" type="text" />
                   </div>
                 </div>
                 <div className="pt-6 border-t border-gray-100 flex items-center justify-between">
@@ -110,7 +110,7 @@ const Valuation: React.FC = () => {
                     <span className="material-symbols-outlined text-lg">arrow_back</span>
                     {t('valuation.back')}
                   </Link>
-                  <button className="px-8 py-4 bg-primary hover:bg-black text-white text-base font-bold rounded-lg shadow-lg shadow-gray-500/30 transition-all transform hover:-translate-y-0.5 flex items-center gap-2" type="submit">
+                  <button className="px-8 py-4 bg-brand-blue-600 hover:bg-brand-blue-700 text-white text-base font-bold rounded-lg shadow-lg shadow-brand-blue-500/30 transition-all transform hover:-translate-y-0.5 flex items-center gap-2" type="submit">
                     {t('valuation.continue')}
                     <span className="material-symbols-outlined text-xl">arrow_forward</span>
                   </button>
@@ -126,10 +126,10 @@ const Valuation: React.FC = () => {
         <div className="lg:col-span-5 xl:col-span-4 flex flex-col gap-8 lg:pt-16">
           <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm relative overflow-hidden group">
             <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-              <span className="material-symbols-outlined text-6xl text-primary">timer</span>
+              <span className="material-symbols-outlined text-6xl text-brand-blue-500">timer</span>
             </div>
             <div className="flex items-start gap-4 relative z-10">
-              <div className="w-12 h-12 bg-gray-50 text-primary rounded-full flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 bg-brand-blue-50 text-brand-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
                 <span className="material-symbols-outlined text-2xl">bolt</span>
               </div>
               <div>
@@ -170,7 +170,7 @@ const Valuation: React.FC = () => {
               <p className="text-sm font-bold text-editorial-black">{t('valuation.help.title')}</p>
               <p className="text-xs text-gray-500">{t('valuation.help.subtitle')}</p>
             </div>
-            <Link to="/contact" className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors shadow-sm">
+            <Link to="/contact" className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-brand-blue-500 hover:text-white transition-colors shadow-sm">
               <span className="material-symbols-outlined">call</span>
             </Link>
           </div>

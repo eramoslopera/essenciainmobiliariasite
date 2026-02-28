@@ -165,7 +165,7 @@ const Contact: React.FC = () => {
                         href="https://www.google.com/maps/dir/?api=1&destination=C/ Sant Vicent Ferrer 24, 46701 Gandia, València"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-block bg-primary text-white text-xs font-bold uppercase tracking-widest px-3 py-2 rounded hover:bg-black transition-colors"
+                        className="inline-block bg-brand-blue-600 text-white text-xs font-bold uppercase tracking-widest px-3 py-2 rounded hover:bg-brand-blue-700 transition-colors"
                       >
                         {t('contact.directions')}
                       </a>

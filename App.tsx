@@ -12,6 +12,8 @@ import Contact from './pages/Contact';
 import About from './pages/About';
 import Landing from './pages/Landing';
 import Developments from './pages/Developments';
+import Breadcrumbs from './components/Breadcrumbs';
+import SchemaMarkup from './components/SchemaMarkup';
 import { LanguageProvider, useLanguage } from './context/LanguageContext';
 
 const ScrollToTop = () => {
@@ -36,7 +38,9 @@ const Layout: React.FC = () => {
       <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-brand-blue-500 focus:text-white focus:px-4 focus:py-2 focus:font-bold focus:text-sm">
         Skip to content
       </a>
+      <SchemaMarkup />
       {!isLandingPage && <Header />}
+      {!isLandingPage && location.pathname !== '/' && <Breadcrumbs />}
       <main id="main-content">
         <Routes>
           <Route path="/" element={<Home />} />

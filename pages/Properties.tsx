@@ -456,7 +456,7 @@ const Properties: React.FC = () => {
                   <option value="beds">{t('properties.sort.beds')}</option>
                 </select>
               </div>
-              <button className="ml-auto lg:ml-4 h-10 px-6 bg-editorial-black hover:bg-primary text-white font-bold text-sm tracking-wide rounded transition-colors flex items-center gap-2">
+              <button className="ml-auto lg:ml-4 h-10 px-6 bg-editorial-black hover:bg-brand-blue-600 text-white font-bold text-sm tracking-wide rounded transition-colors flex items-center gap-2">
                 {t('common.search')}
               </button>
             </div>
@@ -547,10 +547,10 @@ const Properties: React.FC = () => {
                           {/* Info */}
                           <div className="flex justify-between items-start mb-2">
                             <div>
-                              <h3 className="text-xl font-bold text-editorial-black leading-tight group-hover:text-primary transition-colors">{property.title}</h3>
+                              <h3 className="text-xl font-bold text-editorial-black leading-tight group-hover:text-brand-blue-600 transition-colors">{property.title}</h3>
                               <p className="text-sm text-gray-500 font-medium">{property.location}</p>
                             </div>
-                            <span className={`text-xl font-bold ${property.price === 'On Request' ? 'text-gray-400' : 'text-primary'}`}>{property.price}</span>
+                            <span className={`text-xl font-bold ${property.price === 'On Request' ? 'text-gray-400' : 'text-brand-blue-600'}`}>{property.price}</span>
                           </div>
 
                           {/* Features */}
@@ -589,13 +589,13 @@ const Properties: React.FC = () => {
                             <span className="material-symbols-outlined text-[150px]">trending_up</span>
                           </div>
                           <div className="flex-1 relative z-10">
-                            <div className="flex items-center gap-2 mb-3 text-primary">
+                            <div className="flex items-center gap-2 mb-3 text-brand-blue-600">
                               <span className="text-xs font-bold uppercase tracking-widest bg-white px-2 py-1 rounded">{t('properties.market_insight')}</span>
                             </div>
                             <h3 className="text-2xl font-black mb-2 leading-tight">{t('properties.market_insight_title')}</h3>
                             <p className="text-sm text-gray-500">{t('properties.market_insight_desc')}</p>
                           </div>
-                          <Link to="/stories" className="shrink-0 font-bold text-sm border-b-2 border-editorial-black pb-0.5 hover:text-primary hover:border-primary transition-colors relative z-10">{t('stories.read_report')}</Link>
+                          <Link to={`/property/${property.id}`} className="shrink-0 font-bold text-sm border-b-2 border-editorial-black pb-0.5 hover:text-brand-blue-600 hover:border-brand-blue-500 transition-colors relative z-10">{t('detail.view')}</Link>
                         </div>
                       )}
                     </React.Fragment>
@@ -673,7 +673,7 @@ const Properties: React.FC = () => {
                           <div className="aspect-video bg-gray-100 rounded-sm mb-2 bg-cover bg-center" style={{ backgroundImage: `url(${property.image})` }}></div>
                           <h3 className="font-bold text-sm mb-1">{property.title}</h3>
                           <p className="text-xs text-gray-500 mb-1">{property.location}</p>
-                          <p className="font-bold text-primary">{property.price}</p>
+                          <p className="font-bold text-brand-blue-600">{property.price}</p>
                         </div>
                       </Popup>
                     </Marker>

@@ -57,7 +57,7 @@ const PropertyDetail: React.FC = () => {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center pt-20 gap-4">
         <h1 className="text-2xl font-bold">Property not found</h1>
-        <Link to="/properties" className="text-primary hover:underline">Return to properties</Link>
+        <Link to="/properties" className="text-brand-blue-600 hover:underline">{t('detail.return')}</Link>
       </div>
     );
   }
@@ -150,7 +150,7 @@ const PropertyDetail: React.FC = () => {
                 >
                   <img src={img} alt={`View ${idx + 1}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                   {currentImageIndex === idx && (
-                    <div className="absolute inset-0 bg-primary/10"></div>
+                    <div className="absolute inset-0 bg-brand-blue-500/10"></div>
                   )}
                 </button>
               ))}
@@ -211,7 +211,7 @@ const PropertyDetail: React.FC = () => {
                 {property.features && property.features.length > 0 ? (
                   property.features.map((feature, idx) => (
                     <div key={idx} className="flex items-center gap-3">
-                      <span className="material-symbols-outlined text-primary text-sm">check_circle</span>
+                      <span className="material-symbols-outlined text-brand-blue-500 text-sm">check_circle</span>
                       <span className="text-sm font-medium">{translateFeature(feature, language as 'es' | 'en' | 'fr' | 'de' | 'va')}</span>
                     </div>
                   ))
@@ -247,7 +247,7 @@ const PropertyDetail: React.FC = () => {
                     <label className="block text-xs font-bold uppercase text-gray-400 mb-1">{t('common.phone')}</label>
                     <input className="w-full bg-editorial-gray border-none rounded px-4 py-3 text-sm focus:ring-2 focus:ring-primary" placeholder="Phone" type="tel" />
                   </div>
-                  <button type="button" onClick={() => alert("Request sent!")} className="w-full bg-black text-white font-bold py-4 rounded mt-4 hover:bg-primary transition-colors flex items-center justify-center gap-2">
+                  <button type="button" onClick={() => alert("Request sent!")} className="w-full bg-black text-white font-bold py-4 rounded mt-4 hover:bg-brand-blue-600 transition-colors flex items-center justify-center gap-2">
                     {t('detail.request')}
                     <span className="material-symbols-outlined text-sm">arrow_forward</span>
                   </button>
@@ -263,10 +263,10 @@ const PropertyDetail: React.FC = () => {
                 </Link>
 
                 <div className="mt-8 pt-6 border-t border-gray-100 flex justify-center gap-6">
-                  <a href="#" className="flex items-center gap-2 text-sm font-bold text-gray-600 hover:text-primary transition-colors">
+                  <a href="#" className="flex items-center gap-2 text-sm font-bold text-gray-600 hover:text-brand-blue-600 transition-colors">
                     <span className="material-symbols-outlined text-lg">call</span> {t('detail.call')}
                   </a>
-                  <a href="https://wa.me/34600000000" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-bold text-gray-600 hover:text-primary transition-colors">
+                  <a href="https://wa.me/34600000000" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-bold text-gray-600 hover:text-brand-blue-600 transition-colors">
                     <span className="material-symbols-outlined text-lg">chat</span> {t('detail.whatsapp')}
                   </a>
                 </div>
@@ -280,7 +280,7 @@ const PropertyDetail: React.FC = () => {
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <div className="flex flex-col md:flex-row gap-12">
             <div className="w-full md:w-1/3">
-              <span className="text-primary font-bold tracking-widest uppercase text-xs mb-3 block">{t('detail.location_insights')}</span>
+              <span className="text-brand-blue-600 font-bold tracking-widest uppercase text-xs mb-3 block">{t('detail.location_insights')}</span>
               <h2 className="text-4xl font-bold mb-6">{property.location}</h2>
               <p className="text-gray-600 mb-8 leading-relaxed">
                 {(() => {
@@ -291,7 +291,7 @@ const PropertyDetail: React.FC = () => {
                   return t('detail.location_desc.default');
                 })()}
               </p>
-              <button onClick={handleDownload} className="mt-8 text-sm font-bold uppercase tracking-wider border-b-2 border-black pb-1 hover:text-primary hover:border-primary transition-colors">
+              <button onClick={handleDownload} className="mt-8 text-sm font-bold uppercase tracking-wider border-b-2 border-black pb-1 hover:text-brand-blue-600 hover:border-brand-blue-500 transition-colors">
                 {t('detail.location.download')}
               </button>
             </div>
