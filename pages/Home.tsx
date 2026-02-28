@@ -73,7 +73,7 @@ const Home: React.FC = () => {
               ></div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
               <div className="absolute bottom-0 left-0 p-8 text-white">
-                <span className="material-symbols-outlined text-4xl mb-4 text-primary">chair</span>
+                <span className="material-symbols-outlined text-4xl mb-4 text-brand-blue-500">chair</span>
                 <h3 className="text-2xl font-bold mb-2">{t('home.marketing.staging.title')}</h3>
                 <p className="text-gray-300 text-sm max-w-sm">{t('home.marketing.staging.desc')}</p>
               </div>
@@ -85,14 +85,14 @@ const Home: React.FC = () => {
               ></div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
               <div className="absolute bottom-0 left-0 p-8 text-white">
-                <span className="material-symbols-outlined text-4xl mb-4 text-primary">public</span>
+                <span className="material-symbols-outlined text-4xl mb-4 text-brand-blue-500">public</span>
                 <h3 className="text-2xl font-bold mb-2">{t('home.marketing.syndication.title')}</h3>
                 <p className="text-gray-300 text-sm max-w-sm">{t('home.marketing.syndication.desc')}</p>
               </div>
             </Link>
             <Link to="/sell" className="md:col-span-4 bg-editorial-black text-white p-8 flex flex-col justify-between rounded group block transition-colors hover:bg-gray-900">
               <div>
-                <span className="material-symbols-outlined text-4xl mb-6 text-primary">camera_alt</span>
+                <span className="material-symbols-outlined text-4xl mb-6 text-brand-blue-500">camera_alt</span>
                 <h3 className="text-xl font-bold mb-4">{t('home.marketing.visuals.title')}</h3>
                 <p className="text-gray-400 text-sm leading-relaxed">
                   {t('home.marketing.visuals.desc')}
@@ -101,7 +101,7 @@ const Home: React.FC = () => {
               <div className="mt-8 pt-8 border-t border-gray-700">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold uppercase tracking-widest text-gray-500 group-hover:text-white transition-colors">{t('home.marketing.readmore')}</span>
-                  <span className="material-symbols-outlined text-primary">add_circle</span>
+                  <span className="material-symbols-outlined text-brand-blue-500">add_circle</span>
                 </div>
               </div>
             </Link>
@@ -114,6 +114,44 @@ const Home: React.FC = () => {
                 <span className="text-white font-bold text-lg border border-white px-4 py-2">{t('home.marketing.details')}</span>
               </div>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Essencia — adapted from Landing */}
+      <section className="py-24 px-6 lg:px-12 bg-white border-b border-gray-100">
+        <div className="max-w-[1440px] mx-auto">
+          <div className="mb-16 border-b border-gray-100 pb-8 flex justify-between items-end">
+            <div>
+              <h2 className="text-4xl lg:text-5xl font-black tracking-tighter">{t('landing.why.title')}<br />Essencia</h2>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 pt-8">
+            <div>
+              <span className="text-3xl text-gray-200 font-black mb-4 block">01</span>
+              <h4 className="text-xs font-black tracking-[0.15em] mb-3">{t('landing.why.1.title')}</h4>
+              <p className="text-xs text-gray-500 font-medium leading-relaxed">{t('landing.why.1.desc')}</p>
+            </div>
+            <div>
+              <span className="text-3xl text-gray-200 font-black mb-4 block">02</span>
+              <h4 className="text-xs font-black tracking-[0.15em] mb-3">{t('landing.why.2.title')}</h4>
+              <p className="text-xs text-gray-500 font-medium leading-relaxed">{t('landing.why.2.desc')}</p>
+            </div>
+            <div>
+              <span className="text-3xl text-gray-200 font-black mb-4 block">03</span>
+              <h4 className="text-xs font-black tracking-[0.15em] mb-3">{t('landing.why.3.title')}</h4>
+              <p className="text-xs text-gray-500 font-medium leading-relaxed">{t('landing.why.3.desc')}</p>
+            </div>
+            <div>
+              <span className="text-3xl text-gray-200 font-black mb-4 block">04</span>
+              <h4 className="text-xs font-black tracking-[0.15em] mb-3">{t('landing.why.4.title')}</h4>
+              <p className="text-xs text-gray-500 font-medium leading-relaxed">{t('landing.why.4.desc')}</p>
+            </div>
+            <div>
+              <span className="text-3xl text-gray-200 font-black mb-4 block">05</span>
+              <h4 className="text-xs font-black tracking-[0.15em] mb-3">{t('landing.why.5.title')}</h4>
+              <p className="text-xs text-gray-500 font-medium leading-relaxed">{t('landing.why.5.desc')}</p>
+            </div>
           </div>
         </div>
       </section>
@@ -144,7 +182,7 @@ const Home: React.FC = () => {
               </div>
               <div className="p-6 relative z-10 bg-white">
                 <div className="mb-6">
-                  <h3 className="text-xl font-bold leading-tight mb-1 group-hover:text-primary transition-colors">{t('home.recent.card1.title')}</h3>
+                  <h3 className="text-xl font-bold leading-tight mb-1 group-hover:text-brand-blue-600 transition-colors">{t('home.recent.card1.title')}</h3>
                   <p className="text-sm text-gray-500">{t('home.location.velazquez')}</p>
                 </div>
                 <div className="space-y-3 bg-gray-50 p-4 rounded-md">
@@ -172,7 +210,7 @@ const Home: React.FC = () => {
               </div>
               <div className="p-6 relative z-10 bg-white">
                 <div className="mb-6">
-                  <h3 className="text-xl font-bold leading-tight mb-1 group-hover:text-primary transition-colors">{t('home.recent.card2.title')}</h3>
+                  <h3 className="text-xl font-bold leading-tight mb-1 group-hover:text-brand-blue-600 transition-colors">{t('home.recent.card2.title')}</h3>
                   <p className="text-sm text-gray-500">{t('home.location.germanies')}</p>
                 </div>
                 <div className="space-y-3 bg-gray-50 p-4 rounded-md">
@@ -200,7 +238,7 @@ const Home: React.FC = () => {
               </div>
               <div className="p-6 relative z-10 bg-white">
                 <div className="mb-6">
-                  <h3 className="text-xl font-bold leading-tight mb-1 group-hover:text-primary transition-colors">{t('home.recent.card3.title')}</h3>
+                  <h3 className="text-xl font-bold leading-tight mb-1 group-hover:text-brand-blue-600 transition-colors">{t('home.recent.card3.title')}</h3>
                   <p className="text-sm text-gray-500">{t('home.location.daimus')}</p>
                 </div>
                 <div className="space-y-3 bg-gray-50 p-4 rounded-md">
@@ -228,7 +266,7 @@ const Home: React.FC = () => {
               </div>
               <div className="p-6 relative z-10 bg-white">
                 <div className="mb-6">
-                  <h3 className="text-xl font-bold leading-tight mb-1 group-hover:text-primary transition-colors">{t('home.recent.card4.title')}</h3>
+                  <h3 className="text-xl font-bold leading-tight mb-1 group-hover:text-brand-blue-600 transition-colors">{t('home.recent.card4.title')}</h3>
                   <p className="text-sm text-gray-500">{t('home.location.camino')}</p>
                 </div>
                 <div className="space-y-3 bg-gray-50 p-4 rounded-md">
@@ -252,7 +290,7 @@ const Home: React.FC = () => {
       </section>
 
       <section className="py-24 bg-white relative overflow-hidden">
-        <div className="absolute right-0 top-0 w-1/3 h-full bg-primary/5 -skew-x-12 hidden lg:block"></div>
+        <div className="absolute right-0 top-0 w-1/3 h-full bg-brand-blue-500/5 -skew-x-12 hidden lg:block"></div>
         <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
           <span className="text-brand-blue-600 font-bold tracking-widest uppercase text-sm mb-4 block">{t('home.value.tag')}</span>
           <h2 className="text-4xl md:text-5xl font-black mb-6 text-editorial-black">{t('home.value.title')}</h2>

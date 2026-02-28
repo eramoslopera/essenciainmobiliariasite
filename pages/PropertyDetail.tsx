@@ -146,7 +146,7 @@ const PropertyDetail: React.FC = () => {
                 <button
                   key={idx}
                   onClick={() => setCurrentImageIndex(idx)}
-                  className={`relative aspect-[4/3] rounded-lg overflow-hidden transition-all duration-300 group ${currentImageIndex === idx ? 'ring-2 ring-primary ring-offset-2 opacity-100' : 'opacity-60 hover:opacity-100'}`}
+                  className={`relative aspect-[4/3] rounded-lg overflow-hidden transition-all duration-300 group ${currentImageIndex === idx ? 'ring-2 ring-brand-blue-500 ring-offset-2 opacity-100' : 'opacity-60 hover:opacity-100'}`}
                 >
                   <img src={img} alt={`View ${idx + 1}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                   {currentImageIndex === idx && (
@@ -237,15 +237,15 @@ const PropertyDetail: React.FC = () => {
                 <form className="space-y-4">
                   <div>
                     <label className="block text-xs font-bold uppercase text-gray-400 mb-1">{t('common.name')}</label>
-                    <input className="w-full bg-editorial-gray border-none rounded px-4 py-3 text-sm focus:ring-2 focus:ring-primary" placeholder="Name" type="text" />
+                    <input className="w-full bg-editorial-gray border-none rounded px-4 py-3 text-sm focus:ring-2 focus:ring-brand-blue-500" placeholder="Name" type="text" />
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase text-gray-400 mb-1">{t('common.email')}</label>
-                    <input className="w-full bg-editorial-gray border-none rounded px-4 py-3 text-sm focus:ring-2 focus:ring-primary" placeholder="Email" type="email" />
+                    <input className="w-full bg-editorial-gray border-none rounded px-4 py-3 text-sm focus:ring-2 focus:ring-brand-blue-500" placeholder="Email" type="email" />
                   </div>
                   <div>
                     <label className="block text-xs font-bold uppercase text-gray-400 mb-1">{t('common.phone')}</label>
-                    <input className="w-full bg-editorial-gray border-none rounded px-4 py-3 text-sm focus:ring-2 focus:ring-primary" placeholder="Phone" type="tel" />
+                    <input className="w-full bg-editorial-gray border-none rounded px-4 py-3 text-sm focus:ring-2 focus:ring-brand-blue-500" placeholder="Phone" type="tel" />
                   </div>
                   <button type="button" onClick={() => alert("Request sent!")} className="w-full bg-black text-white font-bold py-4 rounded mt-4 hover:bg-brand-blue-600 transition-colors flex items-center justify-center gap-2">
                     {t('detail.request')}

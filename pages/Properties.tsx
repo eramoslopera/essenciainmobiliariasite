@@ -3,6 +3,7 @@ import { fetchProperties } from '../src/utils/xmlParser';
 import { Property, Badge } from '../src/types/property';
 import { Link, useNavigate } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
+import PropertySkeleton from '../components/PropertySkeleton';
 import { MapContainer, TileLayer, Marker, Popup, useMap, LayersControl } from 'react-leaflet';
 import L from 'leaflet';
 
@@ -409,7 +410,7 @@ const Properties: React.FC = () => {
                 <select
                   value={filterZone}
                   onChange={(e) => setFilterZone(e.target.value)}
-                  className="bg-transparent border-b border-gray-200 py-2 pr-8 pl-0 text-sm font-bold text-editorial-black focus:ring-0 focus:border-primary cursor-pointer min-w-[140px]"
+                  className="bg-transparent border-b border-gray-200 py-2 pr-8 pl-0 text-sm font-bold text-editorial-black focus:ring-0 focus:border-brand-blue-500 cursor-pointer min-w-[140px]"
                 >
                   <option>{t('prop.filters.all_zones')}</option>
                   <option>{t('properties.location.gandia')}</option>
@@ -422,7 +423,7 @@ const Properties: React.FC = () => {
                 <select
                   value={filterType}
                   onChange={(e) => setFilterType(e.target.value)}
-                  className="bg-transparent border-b border-gray-200 py-2 pr-8 pl-0 text-sm font-bold text-editorial-black focus:ring-0 focus:border-primary cursor-pointer min-w-[140px]"
+                  className="bg-transparent border-b border-gray-200 py-2 pr-8 pl-0 text-sm font-bold text-editorial-black focus:ring-0 focus:border-brand-blue-500 cursor-pointer min-w-[140px]"
                 >
                   <option>{t('prop.filters.all_types')}</option>
                   <option>{t('prop.filters.villas')}</option>
@@ -435,7 +436,7 @@ const Properties: React.FC = () => {
                 <select
                   value={filterPrice}
                   onChange={(e) => setFilterPrice(e.target.value)}
-                  className="bg-transparent border-b border-gray-200 py-2 pr-8 pl-0 text-sm font-bold text-editorial-black focus:ring-0 focus:border-primary cursor-pointer min-w-[140px]"
+                  className="bg-transparent border-b border-gray-200 py-2 pr-8 pl-0 text-sm font-bold text-editorial-black focus:ring-0 focus:border-brand-blue-500 cursor-pointer min-w-[140px]"
                 >
                   <option>{t('prop.filters.any_price')}</option>
                   <option>{t('properties.price.range1')}</option>
@@ -448,7 +449,7 @@ const Properties: React.FC = () => {
                 <select
                   value={sortOption}
                   onChange={(e) => setSortOption(e.target.value)}
-                  className="bg-transparent border-b border-gray-200 py-2 pr-8 pl-0 text-sm font-bold text-editorial-black focus:ring-0 focus:border-primary cursor-pointer min-w-[140px]"
+                  className="bg-transparent border-b border-gray-200 py-2 pr-8 pl-0 text-sm font-bold text-editorial-black focus:ring-0 focus:border-brand-blue-500 cursor-pointer min-w-[140px]"
                 >
                   <option value="newest">{t('properties.sort.newest')}</option>
                   <option value="price_asc">{t('properties.sort.price_low')}</option>
@@ -469,7 +470,11 @@ const Properties: React.FC = () => {
 
           {/* List Column */}
           <div className="lg:col-span-7 xl:col-span-8 h-full overflow-y-auto pr-2 pb-20 hide-scrollbar">
-            {sortedProperties.length === 0 ? (
+            {isLoading ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
+                <PropertySkeleton count={6} />
+              </div>
+            ) : sortedProperties.length === 0 ? (
               <div className="flex flex-col items-center justify-center h-64 text-gray-400">
                 <span className="material-symbols-outlined text-4xl mb-2">filter_alt_off</span>
                 <p className="font-bold">{t('properties.no_results')}</p>
@@ -489,7 +494,7 @@ const Properties: React.FC = () => {
                         ref={(el) => { if (el) propertyRefs.current.set(property.id, el); }}
                         onMouseEnter={() => setActivePropertyId(property.id)}
                         onMouseLeave={() => setActivePropertyId(null)}
-                        className={`rounded-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-xl ${activePropertyId === property.id ? 'ring-2 ring-primary ring-offset-4 scale-[1.02] shadow-xl' : ''}`}
+                        className={`rounded-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-xl ${activePropertyId === property.id ? 'ring-2 ring-brand-blue-500 ring-offset-4 scale-[1.02] shadow-xl' : ''}`}
                       >
                         <Link to={`/property/${property.id}`} className="group cursor-pointer block">
                           <div className="relative aspect-[4/3] overflow-hidden rounded bg-gray-100 mb-4">
@@ -530,7 +535,7 @@ const Properties: React.FC = () => {
                                 );
                               }
                               // Standard badges
-                              const bgClass = badge.variant === 'primary' ? 'bg-primary' : (badge.variant === 'white' ? 'bg-white' : (badge.variant === 'black' ? 'bg-editorial-black' : 'bg-gray-100'));
+                              const bgClass = badge.variant === 'primary' ? 'bg-brand-blue-600' : (badge.variant === 'white' ? 'bg-white' : (badge.variant === 'black' ? 'bg-editorial-black' : 'bg-gray-100'));
                               const textClass = badge.variant === 'primary' ? 'text-white' : (badge.variant === 'white' ? 'text-editorial-black' : (badge.variant === 'black' ? 'text-white' : 'text-gray-800'));
 
                               // Check if it is the recently sold badge to apply animation

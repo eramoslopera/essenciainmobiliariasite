@@ -10,7 +10,7 @@ const Stories: React.FC = () => {
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 pb-8 border-b border-gray-200">
           <div>
-            <span className="text-primary font-bold tracking-widest uppercase text-xs mb-3 block">{t('stories.journal')}</span>
+            <span className="text-brand-blue-600 font-bold tracking-widest uppercase text-xs mb-3 block">{t('stories.journal')}</span>
             <h1 className="text-5xl md:text-7xl font-black text-editorial-black tracking-tight">Essencia Inmobiliaria <span className="font-serif italic font-normal">{t('stories.title')}</span></h1>
           </div>
           <nav className="flex gap-6 mt-8 md:mt-0">
@@ -37,7 +37,7 @@ const Stories: React.FC = () => {
               <p className="text-gray-500 mb-8 leading-relaxed">
                 {t('stories.feat.desc')}
               </p>
-              <Link to="/contact?interest=Report:Valencia+Luxury+Market" className="flex items-center gap-2 font-bold text-editorial-black hover:text-primary transition-colors uppercase text-xs tracking-widest">
+              <Link to="/contact?interest=Report:Valencia+Luxury+Market" className="flex items-center gap-2 font-bold text-editorial-black hover:text-brand-blue-600 transition-colors uppercase text-xs tracking-widest">
                 {t('stories.read_report')} <span className="material-symbols-outlined text-lg">arrow_forward</span>
               </Link>
             </div>
@@ -56,10 +56,10 @@ const Stories: React.FC = () => {
             </div>
             <div className="flex flex-col">
               <div className="flex justify-between items-center mb-3">
-                <span className="text-primary font-bold text-xs uppercase tracking-widest">{t('stories.nav.architecture')}</span>
+                <span className="text-brand-blue-600 font-bold text-xs uppercase tracking-widest">{t('stories.nav.architecture')}</span>
                 <span className="text-gray-400 text-xs font-bold">5 {t('stories.read_time')}</span>
               </div>
-              <h3 className="text-xl font-bold text-editorial-black mb-3 group-hover:text-primary transition-colors">{t('stories.s1.title')}</h3>
+              <h3 className="text-xl font-bold text-editorial-black mb-3 group-hover:text-brand-blue-600 transition-colors">{t('stories.s1.title')}</h3>
               <p className="text-gray-500 text-sm line-clamp-3 leading-relaxed">
                 {t('stories.s1.desc')}
               </p>
@@ -76,10 +76,10 @@ const Stories: React.FC = () => {
             </div>
             <div className="flex flex-col">
               <div className="flex justify-between items-center mb-3">
-                <span className="text-primary font-bold text-xs uppercase tracking-widest">{t('stories.nav.lifestyle')}</span>
+                <span className="text-brand-blue-600 font-bold text-xs uppercase tracking-widest">{t('stories.nav.lifestyle')}</span>
                 <span className="text-gray-400 text-xs font-bold">3 {t('stories.read_time')}</span>
               </div>
-              <h3 className="text-xl font-bold text-editorial-black mb-3 group-hover:text-primary transition-colors">{t('stories.s2.title')}</h3>
+              <h3 className="text-xl font-bold text-editorial-black mb-3 group-hover:text-brand-blue-600 transition-colors">{t('stories.s2.title')}</h3>
               <p className="text-gray-500 text-sm line-clamp-3 leading-relaxed">
                 {t('stories.s2.desc')}
               </p>
@@ -96,10 +96,10 @@ const Stories: React.FC = () => {
             </div>
             <div className="flex flex-col">
               <div className="flex justify-between items-center mb-3">
-                <span className="text-primary font-bold text-xs uppercase tracking-widest">{t('stories.nav.interior')}</span>
+                <span className="text-brand-blue-600 font-bold text-xs uppercase tracking-widest">{t('stories.nav.interior')}</span>
                 <span className="text-gray-400 text-xs font-bold">7 {t('stories.read_time')}</span>
               </div>
-              <h3 className="text-xl font-bold text-editorial-black mb-3 group-hover:text-primary transition-colors">{t('stories.s3.title')}</h3>
+              <h3 className="text-xl font-bold text-editorial-black mb-3 group-hover:text-brand-blue-600 transition-colors">{t('stories.s3.title')}</h3>
               <p className="text-gray-500 text-sm line-clamp-3 leading-relaxed">
                 {t('stories.s3.desc')}
               </p>
@@ -116,10 +116,10 @@ const Stories: React.FC = () => {
             </div>
             <div className="flex flex-col">
               <div className="flex justify-between items-center mb-3">
-                <span className="text-primary font-bold text-xs uppercase tracking-widest">{t('stories.nav.market')}</span>
+                <span className="text-brand-blue-600 font-bold text-xs uppercase tracking-widest">{t('stories.nav.market')}</span>
                 <span className="text-gray-400 text-xs font-bold">4 {t('stories.read_time')}</span>
               </div>
-              <h3 className="text-xl font-bold text-editorial-black mb-3 group-hover:text-primary transition-colors">{t('stories.s4.title')}</h3>
+              <h3 className="text-xl font-bold text-editorial-black mb-3 group-hover:text-brand-blue-600 transition-colors">{t('stories.s4.title')}</h3>
               <p className="text-gray-500 text-sm line-clamp-3 leading-relaxed">
                 {t('stories.s4.desc')}
               </p>
@@ -136,10 +136,10 @@ const Stories: React.FC = () => {
             </div>
             <div className="flex flex-col">
               <div className="flex justify-between items-center mb-3">
-                <span className="text-primary font-bold text-xs uppercase tracking-widest">{t('stories.nav.culture')}</span>
+                <span className="text-brand-blue-600 font-bold text-xs uppercase tracking-widest">{t('stories.nav.culture')}</span>
                 <span className="text-gray-400 text-xs font-bold">6 {t('stories.read_time')}</span>
               </div>
-              <h3 className="text-xl font-bold text-editorial-black mb-3 group-hover:text-primary transition-colors">{t('stories.s5.title')}</h3>
+              <h3 className="text-xl font-bold text-editorial-black mb-3 group-hover:text-brand-blue-600 transition-colors">{t('stories.s5.title')}</h3>
               <p className="text-gray-500 text-sm line-clamp-3 leading-relaxed">
                 {t('stories.s5.desc')}
               </p>
@@ -156,10 +156,10 @@ const Stories: React.FC = () => {
             </div>
             <div className="flex flex-col">
               <div className="flex justify-between items-center mb-3">
-                <span className="text-primary font-bold text-xs uppercase tracking-widest">{t('stories.nav.events')}</span>
+                <span className="text-brand-blue-600 font-bold text-xs uppercase tracking-widest">{t('stories.nav.events')}</span>
                 <span className="text-gray-400 text-xs font-bold">2 {t('stories.read_time')}</span>
               </div>
-              <h3 className="text-xl font-bold text-editorial-black mb-3 group-hover:text-primary transition-colors">{t('stories.s6.title')}</h3>
+              <h3 className="text-xl font-bold text-editorial-black mb-3 group-hover:text-brand-blue-600 transition-colors">{t('stories.s6.title')}</h3>
               <p className="text-gray-500 text-sm line-clamp-3 leading-relaxed">
                 {t('stories.s6.desc')}
               </p>
@@ -169,7 +169,7 @@ const Stories: React.FC = () => {
 
         {/* Newsletter */}
         <div className="mt-24 bg-editorial-black text-white p-12 lg:p-24 text-center rounded">
-          <span className="material-symbols-outlined text-5xl text-primary mb-6">mark_email_read</span>
+          <span className="material-symbols-outlined text-5xl text-brand-blue-600 mb-6">mark_email_read</span>
           <h3 className="text-4xl font-black mb-4">{t('stories.newsletter.title')}</h3>
           <p className="text-gray-400 max-w-xl mx-auto mb-10 text-lg">
             {t('stories.newsletter.desc')}
@@ -178,9 +178,9 @@ const Stories: React.FC = () => {
             <input
               type="email"
               placeholder={t('common.email')}
-              className="flex-grow bg-white/10 border-white/20 text-white placeholder-gray-500 rounded focus:ring-primary focus:border-primary"
+              className="flex-grow bg-white/10 border-white/20 text-white placeholder-gray-500 rounded focus:ring-brand-blue-500 focus:border-brand-blue-500"
             />
-            <button className="px-6 py-3 bg-white text-editorial-black font-bold uppercase tracking-wider rounded hover:bg-primary hover:text-white transition-colors">
+            <button className="px-6 py-3 bg-white text-editorial-black font-bold uppercase tracking-wider rounded hover:bg-brand-blue-600 hover:text-white transition-colors">
               {t('common.subscribe')}
             </button>
           </div>

@@ -187,7 +187,7 @@ const Sell: React.FC = () => {
         <div className="max-w-[1440px] mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-end mb-24">
             <div className="md:w-1/2">
-              <span className="text-primary font-bold tracking-widest uppercase text-xs mb-3 block">{t('sell.process.label')}</span>
+              <span className="text-brand-blue-600 font-bold tracking-widest uppercase text-xs mb-3 block">{t('sell.process.label')}</span>
               <h2 className="text-4xl md:text-5xl font-black tracking-tight">{t('sell.process.title')}</h2>
             </div>
             <div className="md:w-1/2 md:text-right hidden md:block">
@@ -291,7 +291,7 @@ const Sell: React.FC = () => {
 
                   <div className="p-6 relative z-10 bg-white">
                     <div className="mb-6">
-                      <h3 className="text-lg font-bold leading-tight mb-1 group-hover:text-primary transition-colors truncate">{property.title}</h3>
+                      <h3 className="text-lg font-bold leading-tight mb-1 group-hover:text-brand-blue-600 transition-colors truncate">{property.title}</h3>
                       <p className="text-sm text-gray-500 flex items-center gap-1">
                         <span className="material-symbols-outlined text-sm">location_on</span>
                         {property.location}

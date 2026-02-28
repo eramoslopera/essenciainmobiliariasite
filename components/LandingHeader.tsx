@@ -78,11 +78,11 @@ const LandingHeader: React.FC = () => {
                         ))}
                     </nav>
                     <div className="flex gap-4 justify-center border-t border-gray-100 dark:border-gray-800 pt-6">
-                        <button onClick={() => setLanguage('es')} className={`text-sm font-bold ${language === 'es' ? 'text-primary' : 'text-gray-400'}`}>ES</button>
-                        <button onClick={() => setLanguage('en')} className={`text-sm font-bold ${language === 'en' ? 'text-primary' : 'text-gray-400'}`}>EN</button>
-                        <button onClick={() => setLanguage('fr')} className={`text-sm font-bold ${language === 'fr' ? 'text-primary' : 'text-gray-400'}`}>FR</button>
-                        <button onClick={() => setLanguage('de')} className={`text-sm font-bold ${language === 'de' ? 'text-primary' : 'text-gray-400'}`}>DE</button>
-                        <button onClick={() => setLanguage('va')} className={`text-sm font-bold ${language === 'va' ? 'text-primary' : 'text-gray-400'}`}>VA</button>
+                        <button onClick={() => setLanguage('es')} className={`text-sm font-bold ${language === 'es' ? 'text-brand-blue-500' : 'text-gray-400'}`}>ES</button>
+                        <button onClick={() => setLanguage('en')} className={`text-sm font-bold ${language === 'en' ? 'text-brand-blue-500' : 'text-gray-400'}`}>EN</button>
+                        <button onClick={() => setLanguage('fr')} className={`text-sm font-bold ${language === 'fr' ? 'text-brand-blue-500' : 'text-gray-400'}`}>FR</button>
+                        <button onClick={() => setLanguage('de')} className={`text-sm font-bold ${language === 'de' ? 'text-brand-blue-500' : 'text-gray-400'}`}>DE</button>
+                        <button onClick={() => setLanguage('va')} className={`text-sm font-bold ${language === 'va' ? 'text-brand-blue-500' : 'text-gray-400'}`}>VA</button>
                     </div>
                     <a href="tel:+34647803355" className="w-full h-12 flex items-center justify-center bg-editorial-black text-white font-bold uppercase tracking-widest">
                         +34 647 803 355
