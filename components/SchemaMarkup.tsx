@@ -13,7 +13,7 @@ const SchemaMarkup: React.FC = () => {
         "url": baseUrl,
         "logo": `${baseUrl}/Logo_Negro.svg`,
         "image": `${baseUrl}/Logo_Negro.svg`,
-        "description": "Exclusive real estate properties in Valencia, Spain. Buy, sell, and value your home with Essencia Inmobiliaria.",
+        "description": "Propiedades inmobiliarias exclusivas en Valencia. Compra, vende y valora tu vivienda con Essencia Inmobiliaria, la inmobiliaria premium de Gandia y la costa de Valencia.",
         "telephone": "+34647803355",
         "email": "santitorres@essenciainmobiliaria.com",
         "address": {

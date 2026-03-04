@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import MiaMethodSection from '../components/MiaMethodSection';
 
 const About: React.FC = () => {
   const { t } = useLanguage();
@@ -27,6 +28,8 @@ const About: React.FC = () => {
           </div>
         </div>
       </section>
+
+      <MiaMethodSection />
 
       <section className="py-24 bg-white">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">

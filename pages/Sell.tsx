@@ -3,12 +3,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { fetchProperties } from '../src/utils/xmlParser';
 import { Property } from '../src/types/property';
+import VisualProSection from '../components/VisualProSection';
+import SalesProcessSection from '../components/SalesProcessSection';
 
 const Sell: React.FC = () => {
   const { t } = useLanguage();
   const navigate = useNavigate();
   const [address, setAddress] = useState('');
-  const [activeStep, setActiveStep] = useState(1);
   const [soldProperties, setSoldProperties] = useState<Property[]>([]);
   const carouselRef = useRef<HTMLDivElement>(null);
 
@@ -73,184 +74,9 @@ const Sell: React.FC = () => {
         </div>
       </section>
 
-      {/* Pack Visual PRO Section (Instagram Inspired) */}
-      <section className="bg-editorial-black text-white py-24 border-b border-white/10">
-        <div className="max-w-[1440px] mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="inline-block py-1 px-3 border border-white/30 rounded-full text-xs font-medium tracking-widest uppercase mb-4">{t('sell.visual.title')}</span>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tight mb-4">{t('sell.visual.subtitle')}</h2>
-          </div>
+      <VisualProSection />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* 1. Professional Photography */}
-            <div className="group relative aspect-[4/3] overflow-hidden bg-gray-900">
-              <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
-                style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=2664&auto=format&fit=crop")' }}
-              ></div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 p-8">
-                <span className="material-symbols-outlined text-4xl mb-3 text-white/90">photo_camera</span>
-                <h3 className="text-xl font-bold mb-1">{t('sell.visual.photo')}</h3>
-                <p className="text-gray-400 text-sm font-light leading-relaxed">{t('sell.visual.photo_desc')}</p>
-              </div>
-            </div>
-
-            {/* 2. Cinematic Video */}
-            <div className="group relative aspect-[4/3] overflow-hidden bg-gray-900">
-              <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
-                style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1512403754473-27835f7b9984?q=80&w=2670&auto=format&fit=crop")' }}
-              ></div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center backdrop-blur-md bg-white/10 group-hover:bg-white group-hover:text-black transition-all duration-300">
-                  <span className="material-symbols-outlined text-2xl">play_arrow</span>
-                </div>
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 p-8">
-                <span className="material-symbols-outlined text-4xl mb-3 text-white/90">videocam</span>
-                <h3 className="text-xl font-bold mb-1">{t('sell.visual.video')}</h3>
-                <p className="text-gray-400 text-sm font-light leading-relaxed">{t('sell.visual.video_desc')}</p>
-              </div>
-            </div>
-
-            {/* 3. Drone Cinematography */}
-            <div className="group relative aspect-[4/3] overflow-hidden bg-gray-900">
-              <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
-                style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1473968512647-3e447244af8f?q=80&w=2670&auto=format&fit=crop")' }}
-              ></div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 p-8">
-                <span className="material-symbols-outlined text-4xl mb-3 text-white/90">flight</span>
-                <h3 className="text-xl font-bold mb-1">{t('sell.visual.drone')}</h3>
-                <p className="text-gray-400 text-sm font-light leading-relaxed">{t('sell.visual.drone_desc')}</p>
-              </div>
-            </div>
-
-            {/* 4. Virtual Tour */}
-            <div className="group relative aspect-[4/3] overflow-hidden bg-gray-900">
-              <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
-                style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2653&auto=format&fit=crop")' }}
-              ></div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center backdrop-blur-md bg-white/10 group-hover:bg-white group-hover:text-black transition-all duration-300">
-                  <span className="material-symbols-outlined text-2xl">360</span>
-                </div>
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 p-8">
-                <span className="material-symbols-outlined text-4xl mb-3 text-white/90">view_in_ar</span>
-                <h3 className="text-xl font-bold mb-1">{t('sell.visual.tour')}</h3>
-                <p className="text-gray-400 text-sm font-light leading-relaxed">{t('sell.visual.tour_desc')}</p>
-              </div>
-            </div>
-
-            {/* 5. 3D Floor Plan */}
-            <div className="group relative aspect-[4/3] overflow-hidden bg-gray-900">
-              <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
-                style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1599809275372-b7c5950a7c4a?q=80&w=2670&auto=format&fit=crop")' }}
-              ></div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 p-8">
-                <span className="material-symbols-outlined text-4xl mb-3 text-white/90">floor</span>
-                <h3 className="text-xl font-bold mb-1">{t('sell.visual.plan')}</h3>
-                <p className="text-gray-400 text-sm font-light leading-relaxed">{t('sell.visual.plan_desc')}</p>
-              </div>
-            </div>
-
-            {/* 6. AI Rendering */}
-            <div className="group relative aspect-[4/3] overflow-hidden bg-gray-900">
-              <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
-                style={{ backgroundImage: 'url("https://plus.unsplash.com/premium_photo-1680100256127-e73d3f1f3376?q=80&w=2544&auto=format&fit=crop")' }}
-              ></div>
-              <div className="absolute top-4 right-4 bg-brand-blue-600 text-white text-[10px] font-bold px-2 py-1 rounded tracking-widest uppercase">
-                AI Enhanced
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 p-8">
-                <span className="material-symbols-outlined text-4xl mb-3 text-white/90">auto_awesome</span>
-                <h3 className="text-xl font-bold mb-1">{t('sell.visual.render')}</h3>
-                <p className="text-gray-400 text-sm font-light leading-relaxed">{t('sell.visual.render_desc')}</p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      <section className="py-32 px-6 lg:px-24 bg-white">
-        <div className="max-w-[1440px] mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-24">
-            <div className="md:w-1/2">
-              <span className="text-brand-blue-600 font-bold tracking-widest uppercase text-xs mb-3 block">{t('sell.process.label')}</span>
-              <h2 className="text-4xl md:text-5xl font-black tracking-tight">{t('sell.process.title')}</h2>
-            </div>
-            <div className="md:w-1/2 md:text-right hidden md:block">
-              <p className="text-gray-400 text-lg max-w-md ml-auto">
-                A refined journey from valuation to closing.
-              </p>
-            </div>
-          </div>
-
-          {/* Horizontal Process Slider */}
-          <div className="relative">
-            {/* Progress Bar Line */}
-            <div className="absolute top-[24px] left-0 right-0 h-px bg-gray-200 hidden md:block"></div>
-
-            {/* Navigation Steps */}
-            <div className="flex justify-between items-start relative z-10 mb-16 overflow-x-auto pb-4 md:pb-0 hide-scrollbar">
-              {[1, 2, 3, 4, 5].map((step) => (
-                <button
-                  key={step}
-                  onClick={() => setActiveStep(step)}
-                  className={`flex flex-col items-center group min-w-[100px] md:min-w-0 transition-all duration-300 ${activeStep === step ? 'opacity-100' : 'opacity-40 hover:opacity-70'}`}
-                >
-                  <div className={`w-12 h-12 flex items-center justify-center rounded-full text-lg font-bold border-2 transition-all duration-300 mb-6 bg-white 
-                    ${activeStep === step ? 'border-brand-blue-500 text-brand-blue-600 scale-110 shadow-lg' : 'border-gray-200 text-gray-400 group-hover:border-gray-400'}`}>
-                    0{step}
-                  </div>
-                  <span className={`text-sm font-bold uppercase tracking-widest text-center max-w-[150px] hidden md:block transition-colors duration-300 ${activeStep === step ? 'text-editorial-black' : 'text-gray-400'}`}>
-                    {t(`sell.step${step}`)}
-                  </span>
-                </button>
-              ))}
-            </div>
-
-            {/* Active Content Content */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center bg-editorial-gray p-8 md:p-16 rounded-sm transition-all duration-500 min-h-[400px]">
-              <div className="order-2 md:order-1">
-                <span className="text-9xl font-black text-white/50 block leading-none -ml-2 mb-6 select-none">0{activeStep}</span>
-                <h3 className="text-3xl md:text-4xl font-bold mb-6 text-editorial-black">{t(`sell.step${activeStep}`)}</h3>
-                <p className="text-xl text-gray-600 leading-relaxed max-w-lg">{t(`sell.step${activeStep}.desc`)}</p>
-              </div>
-              <div className="order-1 md:order-2 h-full min-h-[300px] bg-white border border-gray-100 p-8 flex items-center justify-center relative overflow-hidden">
-                <div className="absolute top-0 right-0 p-4 opacity-10">
-                  <span className="material-symbols-outlined text-9xl">
-                    {activeStep === 1 ? 'analytics' :
-                      activeStep === 2 ? 'camera_indoor' :
-                        activeStep === 3 ? 'rocket_launch' :
-                          activeStep === 4 ? 'handshake' : 'verified'}
-                  </span>
-                </div>
-                <div className="relative z-10 text-center">
-                  <span className="material-symbols-outlined text-6xl mb-6 text-editorial-black">
-                    {activeStep === 1 ? 'analytics' :
-                      activeStep === 2 ? 'camera_indoor' :
-                        activeStep === 3 ? 'rocket_launch' :
-                          activeStep === 4 ? 'handshake' : 'verified'}
-                  </span>
-                  <p className="text-sm uppercase tracking-widest text-gray-400 font-bold">{t('sell.standard')}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <SalesProcessSection />
 
 
 

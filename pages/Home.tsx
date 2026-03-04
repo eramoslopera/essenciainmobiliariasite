@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
+import StatsSection from '../components/StatsSection';
 
 const Home: React.FC = () => {
   const { t } = useLanguage();
@@ -53,6 +54,9 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Stats Section — animated counters */}
+      <StatsSection />
 
       <section className="py-24 px-6 lg:px-24 bg-white">
         <div className="max-w-[1440px] mx-auto">
