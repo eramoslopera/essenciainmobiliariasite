@@ -1,9 +1,14 @@
 
+/// <reference types="vite/client" />
 import { Property } from '../types/property';
 
 export const fetchProperties = async (): Promise<Property[]> => {
     try {
-        const response = await fetch('/api/feed');
+        const feedUrl = import.meta.env.PROD
+            ? `${import.meta.env.BASE_URL}feed.php`
+            : '/api/feed';
+
+        const response = await fetch(feedUrl);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
