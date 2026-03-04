@@ -46,182 +46,6 @@ const soldIcon = new L.Icon({
 
 
 
-// Helper to get properties with current translations
-const getProperties = (t: (key: string) => string): Property[] => [
-  {
-    id: 1,
-    title: "Villa Mar Blau",
-    location: t('properties.location.oliva') + ", Valencia",
-    price: "€1,250,000",
-    beds: 4,
-    baths: 3,
-    size: "450 m²",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCCYCoLLGH8m6STpxs2Ok3leDZaZBOdic-RRxvSn3L6SKrp2cUA-O4x0Pu9ufIundVGAsD17DY5fkQxdKGMzKcy4xR0ut31MsMWW5BP3Je_Zf7d8cDI3Z1Bh87chviHz1rJNMgCZD3plwoi1hL7PJjPywPwiCKnlCv2YoNCI4SOeUKrfQdePCHjaTr6aGz-Qi3QhIUGYns-9fd75ddyqDSPSlRpFU9j1mppa5sdr5oHdFOSEP7TLBQR3YMUSIlm9f_83E9pcr9G",
-    type: 'Villa',
-    badges: [
-      { text: t('properties.badges.exclusive'), type: 'standard', variant: 'white' },
-      { text: "12", type: 'photo' }
-    ],
-    dateListed: '2024-01-15',
-    lat: 38.9216,
-    lng: -0.1206,
-    status: 'available',
-    priceFreq: 'sale'
-  },
-  {
-    id: 2,
-    title: "Skyline Penthouse",
-    location: t('properties.location.gandia') + ", Valencia",
-    price: "€680,000",
-    beds: 3,
-    baths: 2,
-    size: "180 m²",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAjzENM8T9Tfr_TKw_FUCGQblUaSNsWttDPWKmig4d9rqpW7zv9dAOGGDCnnsJIEl5MQvTRQ8cIK2_CGc6dAoRcSDwZ4WpcxPFRn_X334-Qd4g3dWHkVhkRlNZtmaniVcP37BOvuGRyDPLcSDaNFsiizx1qPuvcaAHqTS6PCBb5gLGMGoEyq36HuJdYbiAPcNa8a3cfuAKD48IhYvVkAjJFz5ktXpnbJbc4THNxE0FAqxFU8pw2iZOCwUfrMIV3t9BqPlufMZvj",
-    type: 'Apartment',
-    dateListed: '2024-03-10',
-    lat: 38.9667,
-    lng: -0.1805,
-    status: 'available',
-    priceFreq: 'sale'
-  },
-  {
-    id: 3,
-    title: "Casa de la Luz",
-    location: "Daimús Beach, Valencia",
-    price: "€890,000",
-    beds: 5,
-    baths: 4,
-    size: "320 m²",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuApVdluFbbEXPQangUFFxfb62P34yITGii4BnFZ8ma20PBBscwMxMTw-vA8QDC6aQ4M_y6-isvnvMGpYRD_XkqxNa2R9dNr33SSMTQswINCNprUf-n1_K738buWnMtmuo_rhenflL3xSr166iAnDHJQgkfuyBhnxhnvZHmqHsCFNXbZEbavBOHLj41bX9xqIIVeJx_Hog8UAkDxRdzzIdOowQCNSP1gCaxMv2Xr43VakqvPdaQim68ffuyC6Gzjpvd5zjM3AClx",
-    type: 'Villa',
-    badges: [
-      { text: t('properties.badges.new'), type: 'standard', variant: 'primary' }
-    ],
-    dateListed: '2024-05-20',
-    lat: 38.9722,
-    lng: -0.1542,
-    status: 'available',
-    priceFreq: 'sale'
-  },
-  {
-    id: 4,
-    title: "Modern Loft",
-    location: "Ruzafa, " + t('properties.location.valencia'),
-    price: "€425,000",
-    beds: 2,
-    baths: 2,
-    size: "120 m²",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDSY-PXU4Aos5QXaijac90faiHIS204YriutHKAaYujVG4SZWwVd-HQk8IKShLRCD2mrH-OIVWer2XgAErCzUC_oChNo4RnkugwMaJ3Y-zSOq4-4jfCFa4ISvMZbRaPTdOFCUDu2OiWp1iS4ocb6Hoi5XneGiWUooX_Q_oi2cHRd5pjRF8ffN10TAKH57NDYH0CIdA-DNBnj73Sz9ReE_PJrBw6i0hkrS7KR1gsgila22DVBrYFBJwsrMLzBagtmE9zU1ZrYHK8",
-    type: 'Apartment',
-    dateListed: '2024-02-05',
-    dateSold: new Date().toISOString().split('T')[0], // Recently Sold
-    lat: 39.4616,
-    lng: -0.3751,
-    status: 'sold',
-    priceFreq: 'sale'
-  },
-  {
-    id: 5,
-    title: "The Edge Project",
-    location: "Cullera, Valencia",
-    price: t('properties.price.on_request'),
-    size: "800 m²",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBeO_psb5EsZUge1Q9z9Z0VTEVDOkjmZqJ0_iWuqs1ZjDjturTC925sUpjY4SLbxjQNJNqlgkcv568Kjd5zvvCEIqbffK35jIWjZbAI_u5r_d_Sj57l_m9A8bJN7LcCmSlWATG8dzcBzvdTPFArI7AAtc--NaEpg0seD4lB3ek7ceC2iRhSFh-4fCJ4WP6rjzsj8Ow9cQB3NTjhprnKxcP9IcaFNAN9hsEGC0TUGR1IfZGlIpMPtAeaP1480Wg3sxZR8HyGCiot",
-    type: 'Project',
-    isComingSoon: true,
-    badges: [
-      { text: t('properties.badges.coming'), type: 'coming-soon' }
-    ],
-    dateListed: '2024-06-01',
-    lat: 39.1670,
-    lng: -0.2520,
-    status: 'available',
-    priceFreq: 'sale'
-  },
-
-  {
-    id: 6,
-    title: "Historic Estate",
-    location: "Xàtiva, Valencia",
-    price: "€1,500,000",
-    beds: 8,
-    baths: 6,
-    size: "900 m²",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBTz0ljfPf17SA1GJ6uA8AFFp69r4QCIx9qAKheWPLsqb3SR9EiRThZW2pQrqT8Xq0ZMQkBXl7TkM-iW4Lv75dvy8PdbK9O30nJ35aX4fCg0S2feJ6JRYQQUGVRE_VdRjOjItcvyPHOCtbhJGoZS93wph_XgdsTjs-JRfjRxvz_Higm4ZVlH2KwIft4FCcypZ5tuZEmBATyNa2qENR5ZQOIjoGYF2i9mkiBN3wOiCJV8sOAVou3Y3J1JWjUk8qVNOGMTPeMEmtA",
-    type: 'Estate',
-    dateListed: '2023-11-12',
-    lat: 38.9890,
-    lng: -0.5180,
-    status: 'available',
-    priceFreq: 'sale'
-  },
-  // Featured Sold Properties
-  {
-    id: 'sold-1',
-    title: "Adosado Reformado",
-    location: "Benidoleig, Alicante",
-    price: "€140,000",
-    beds: 3,
-    baths: 2,
-    size: "120 m²",
-    image: "https://fotos15.apinmo.com/1909/27341402/3-1.jpg",
-    type: 'Townhouse',
-    dateListed: '2024-01-01',
-    lat: 38.7917,
-    lng: -0.0278,
-    status: 'sold',
-    priceFreq: 'sale'
-  },
-  {
-    id: 'sold-2',
-    title: "Casa de Pueblo",
-    location: "Real de Gandía, Valencia",
-    price: "€164,900",
-    beds: 4,
-    baths: 2,
-    size: "180 m²",
-    image: "https://fotos15.apinmo.com/1909/23491575/15-1.jpg",
-    type: 'House',
-    dateListed: '2024-02-01',
-    lat: 38.949,
-    lng: -0.190,
-    status: 'sold',
-    priceFreq: 'sale'
-  },
-  {
-    id: 'sold-3',
-    title: "Apt. Costero",
-    location: "Playa de Bellreguard",
-    price: "€170,000",
-    beds: 3,
-    baths: 2,
-    size: "95 m²",
-    image: "https://fotos15.apinmo.com/1909/26037790/9-1.jpg",
-    type: 'Apartment',
-    dateListed: '2024-03-01',
-    lat: 38.950,
-    lng: -0.150,
-    status: 'sold',
-    priceFreq: 'sale'
-  },
-  {
-    id: 'sold-4',
-    title: "Apt. Familiar",
-    location: "Playa de Gandía",
-    price: "€215,000",
-    beds: 3,
-    baths: 2,
-    size: "105 m²",
-    image: "https://fotos15.apinmo.com/1909/25828355/10-1.jpg",
-    type: 'Apartment',
-    dateListed: '2024-02-15',
-    lat: 39.000,
-    lng: -0.160,
-    status: 'sold',
-    priceFreq: 'sale'
-  }
-];
-
 // Component to handle map interactions based on props
 const MapController: React.FC<{ activeId: number | null; properties: Property[] }> = ({ activeId, properties }) => {
   const map = useMap();
@@ -261,22 +85,11 @@ const Properties: React.FC = () => {
     const loadProperties = async () => {
       setIsLoading(true);
       const fetched = await fetchProperties();
-      const hardcoded = getProperties(t);
-      const soldProperties = hardcoded.filter(p => p.status === 'sold');
-
-      if (fetched.length > 0) {
-        // Merge fetched properties with the special sold ones
-        const combined = [...fetched, ...soldProperties];
-        // Remove duplicates if any (based on ID, though IDs are likely different)
-        const unique = Array.from(new Map(combined.map(item => [item.id, item])).values());
-        setProperties(unique);
-      } else {
-        setProperties(hardcoded);
-      }
+      setProperties(fetched);
       setIsLoading(false);
     };
     loadProperties();
-  }, [t]); // Re-fetch if language changes? Ideally translate static text but data comes from feed. Feed might have languages.
+  }, [t]);
 
   // Use state properties instead of constant
   const PROPERTIES = properties;
@@ -395,7 +208,7 @@ const Properties: React.FC = () => {
   };
 
   return (
-    <div className="pt-20 h-screen flex flex-col">
+    <div className="pt-20 flex flex-col min-h-screen">
       {/* Header Filters */}
       <div className="sticky top-20 z-40 bg-white/95 backdrop-blur-sm border-b border-gray-100 transition-colors shrink-0">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12 py-6">
@@ -465,11 +278,11 @@ const Properties: React.FC = () => {
         </div>
       </div>
 
-      <div className="flex-grow max-w-[1440px] mx-auto w-full px-6 lg:px-12 py-8 overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 h-full">
+      <div className="flex-grow max-w-[1440px] mx-auto w-full px-6 lg:px-12 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 relative items-start">
 
           {/* List Column */}
-          <div className="lg:col-span-7 xl:col-span-8 h-full overflow-y-auto pr-2 pb-20 hide-scrollbar">
+          <div className="lg:col-span-7 xl:col-span-8 pb-20">
             {isLoading ? (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
                 <PropertySkeleton count={6} />
@@ -622,7 +435,7 @@ const Properties: React.FC = () => {
           </div>
 
           {/* Map Column (Sticky) */}
-          <div className="hidden lg:block lg:col-span-5 xl:col-span-4 h-[calc(100vh-140px)] sticky top-36">
+          <div className="hidden lg:block lg:col-span-5 xl:col-span-4 h-[calc(100vh-12rem)] sticky top-[10.5rem]">
             <div className="w-full h-full rounded-xl overflow-hidden shadow-2xl border border-gray-200 relative">
               <MapContainer
                 center={[39.1, -0.3]}
