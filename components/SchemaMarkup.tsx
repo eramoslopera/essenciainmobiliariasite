@@ -69,6 +69,22 @@ const SchemaMarkup: React.FC = () => {
         };
     };
 
+    // WebSite schema — enables sitelinks search box in Google
+    const websiteSchema = {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Essencia Inmobiliaria",
+        "url": baseUrl,
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": `${baseUrl}/properties?q={search_term_string}`
+            },
+            "query-input": "required name=search_term_string"
+        }
+    };
+
     const breadcrumbSchema = getBreadcrumbSchema();
 
     return (
@@ -76,6 +92,10 @@ const SchemaMarkup: React.FC = () => {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
             />
             {breadcrumbSchema && (
                 <script

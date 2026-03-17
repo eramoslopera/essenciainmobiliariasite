@@ -1,12 +1,18 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import MiaMethodSection from '../components/MiaMethodSection';
+import SEOHead from '../components/SEOHead';
 
 const About: React.FC = () => {
   const { t } = useLanguage();
 
   return (
     <>
+      <SEOHead
+        title="Sobre Nosotros — La Inmobiliaria con Alma"
+        description="Conoce a Essencia Inmobiliaria: la agencia inmobiliaria premium de Gandia centrada en marketing editorial, atención personalizada y resultados excepcionales."
+        canonical="https://essenciainmobiliaria.com/about"
+      />
       <section className="relative pt-32 pb-24 bg-editorial-black text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/cubes.png")' }}></div>
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">

@@ -1,11 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
+import SEOHead from '../components/SEOHead';
 
 const Stories: React.FC = () => {
   const { t } = useLanguage();
 
   return (
+    <>
+    <SEOHead
+      title="Stories — Inspiración y Estilo de Vida"
+      description="El journal de Essencia Inmobiliaria: tendencias del mercado, arquitectura, interiorismo y lifestyle en la costa de Valencia."
+      canonical="https://essenciainmobiliaria.com/stories"
+    />
     <div className="pt-28 pb-20">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 pb-8 border-b border-gray-200">
@@ -187,6 +194,7 @@ const Stories: React.FC = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

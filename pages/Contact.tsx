@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { MapContainer, TileLayer, Marker, Popup, LayersControl } from 'react-leaflet';
 import L from 'leaflet';
 import { useLanguage } from '../context/LanguageContext';
+import SEOHead from '../components/SEOHead';
 
 // Fix for default marker icon
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -103,6 +104,12 @@ const Contact: React.FC = () => {
   };
 
   return (
+    <>
+    <SEOHead
+      title="Contacto — Hablemos de tu Propiedad"
+      description="Contacta con Essencia Inmobiliaria en Gandia. Visítanos en C/ Sant Vicent Ferrer 24, llama al +34 647 803 355 o escríbenos. Estamos aquí para ayudarte."
+      canonical="https://essenciainmobiliaria.com/contact"
+    />
     <div className="pt-28 pb-20">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
@@ -286,6 +293,7 @@ const Contact: React.FC = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

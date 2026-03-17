@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
 import { useLanguage } from '../context/LanguageContext';
+import SEOHead from '../components/SEOHead';
 
 // Fix icon issue (same as in Properties)
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -40,6 +41,12 @@ const Valuation: React.FC = () => {
   };
 
   return (
+    <>
+    <SEOHead
+      title="Valoración Gratuita de tu Vivienda"
+      description="¿Cuánto vale tu vivienda? Solicita una valoración gratuita y profesional de tu propiedad en Gandia, Oliva, Denia o la costa de Valencia con Essencia Inmobiliaria."
+      canonical="https://essenciainmobiliaria.com/valuation"
+    />
     <main className="flex-grow pt-28 pb-20 px-6 lg:px-12">
       <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
         <div className="lg:col-span-7 xl:col-span-8">
@@ -177,6 +184,7 @@ const Valuation: React.FC = () => {
         </div>
       </div>
     </main>
+    </>
   );
 };
 

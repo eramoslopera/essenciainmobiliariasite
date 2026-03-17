@@ -5,6 +5,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { fetchProperties } from '../src/utils/xmlParser';
 import { Property } from '../src/types/property';
 import { translateFeature } from '../src/utils/translator';
+import SEOHead from '../components/SEOHead';
 
 const PropertyDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -73,6 +74,12 @@ const PropertyDetail: React.FC = () => {
 
   return (
     <>
+      <SEOHead
+        title={`${property.title} — ${property.location}`}
+        description={`${property.type} en ${property.location}. ${property.beds ? property.beds + ' habitaciones, ' : ''}${property.baths ? property.baths + ' baños, ' : ''}${property.area ? property.area + ' m². ' : ''}${property.price ? property.price + '.' : ''}`}
+        canonical={`https://essenciainmobiliaria.com/property/${property.id}`}
+        ogImage={property.images?.[0]}
+      />
       <main className="pt-28 pb-16">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12 mb-8">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">

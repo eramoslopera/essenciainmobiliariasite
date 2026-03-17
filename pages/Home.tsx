@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import StatsSection from '../components/StatsSection';
+import SEOHead from '../components/SEOHead';
 
 const Home: React.FC = () => {
   const { t } = useLanguage();
@@ -22,6 +23,11 @@ const Home: React.FC = () => {
 
   return (
     <>
+      <SEOHead
+        title="Inmobiliaria de Lujo en Gandia y Valencia"
+        description="Essencia Inmobiliaria — Compra, vende y valora tu vivienda con la inmobiliaria premium de Gandia y la costa de Valencia. Marketing editorial, valoración gratuita y alcance internacional."
+        canonical="https://essenciainmobiliaria.com/"
+      />
       <section className="relative h-screen min-h-[700px] w-full flex items-center justify-center pt-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img

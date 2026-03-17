@@ -9,6 +9,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { fetchProperties } from '../src/utils/xmlParser';
 import { Property } from '../src/types/property';
+import SEOHead from '../components/SEOHead';
 
 
 const Landing: React.FC = () => {
@@ -192,6 +193,11 @@ const Landing: React.FC = () => {
 
     return (
         <>
+            <SEOHead
+                title="Vende tu Vivienda al Mejor Precio en Gandia"
+                description="¿Quieres vender tu piso, chalet o ático en Gandia o la Safor? Essencia Inmobiliaria consigue el mejor precio con marketing profesional y valoración gratuita."
+                canonical="https://essenciainmobiliaria.com/landing"
+            />
             <LandingHeader />
             <main className="bg-background-light dark:bg-background-dark text-editorial-black dark:text-white font-display overflow-x-hidden antialiased pt-20">
                 {/* Hero Section */}

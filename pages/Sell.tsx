@@ -5,6 +5,7 @@ import { fetchProperties } from '../src/utils/xmlParser';
 import { Property } from '../src/types/property';
 import VisualProSection from '../components/VisualProSection';
 import SalesProcessSection from '../components/SalesProcessSection';
+import SEOHead from '../components/SEOHead';
 
 const Sell: React.FC = () => {
   const { t } = useLanguage();
@@ -46,6 +47,11 @@ const Sell: React.FC = () => {
 
   return (
     <>
+      <SEOHead
+        title="Vende tu Propiedad con Marketing Premium"
+        description="Vende tu vivienda en Gandia y Valencia con Essencia Inmobiliaria. Home staging profesional, fotografía editorial, recorridos virtuales y alcance internacional."
+        canonical="https://essenciainmobiliaria.com/sell"
+      />
       <section className="relative pt-20 min-h-[90vh] flex items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"

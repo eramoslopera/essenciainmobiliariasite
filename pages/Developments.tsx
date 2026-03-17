@@ -1,11 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
+import SEOHead from '../components/SEOHead';
 
 const Developments: React.FC = () => {
   const { t } = useLanguage();
 
   return (
+    <>
+    <SEOHead
+      title="Obra Nueva — Promociones y Desarrollos"
+      description="Descubre las mejores promociones de obra nueva en Gandia y la costa de Valencia. Pisos, chalets y áticos de nueva construcción con las mejores calidades."
+      canonical="https://essenciainmobiliaria.com/developments"
+    />
     <div className="pt-28 pb-20">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12 mb-16">
         <span className="text-brand-blue-600 font-bold tracking-widest uppercase text-xs mb-3 block">{t('dev.label.future_living')}</span>
@@ -118,6 +125,7 @@ const Developments: React.FC = () => {
 
       </div>
     </div>
+    </>
   );
 };
 

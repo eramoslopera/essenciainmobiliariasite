@@ -4,6 +4,7 @@ import { Property, Badge } from '../src/types/property';
 import { Link, useNavigate } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import PropertySkeleton from '../components/PropertySkeleton';
+import SEOHead from '../components/SEOHead';
 import { MapContainer, TileLayer, Marker, Popup, useMap, LayersControl } from 'react-leaflet';
 import L from 'leaflet';
 
@@ -208,6 +209,12 @@ const Properties: React.FC = () => {
   };
 
   return (
+    <>
+    <SEOHead
+      title="Propiedades Exclusivas en Venta"
+      description="Explora propiedades de lujo en Gandia, Oliva, Denia y la costa de Valencia. Villas, chalets, áticos y pisos en ubicaciones privilegiadas."
+      canonical="https://essenciainmobiliaria.com/properties"
+    />
     <div className="pt-20 flex flex-col min-h-screen">
       {/* Header Filters */}
       <div className="sticky top-20 z-40 bg-white/95 backdrop-blur-sm border-b border-gray-100 transition-colors shrink-0">
@@ -509,6 +516,7 @@ const Properties: React.FC = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
