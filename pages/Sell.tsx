@@ -127,10 +127,8 @@ const Sell: React.FC = () => {
         </motion.div>
       </section>
 
-      {/* ─── 2. PROCESS STEPS — INICIO DEL PROCESO ──────────────────────────── */}
-      <ProcessSteps />
+      {/* ─── 2. SERVICE CHOICE CARDS (Servicio Completo) ────────────────────── */}
 
-      {/* ─── 3. SERVICE CHOICE CARDS ────────────────────────────────────────── */}
       <section className="bg-editorial-black text-white py-24 px-6 md:px-12">
         <div className="max-w-[1440px] mx-auto">
           <motion.p
@@ -239,11 +237,14 @@ const Sell: React.FC = () => {
         </div>
       </section>
 
-      {/* ─── 4. VISUAL PRO (fotografía, staging, 3D) ────────────────────────── */}
-      <VisualProSection />
+      {/* ─── 3. PROCESS STEPS ────────────────────────────────────────────────── */}
+      <ProcessSteps />
 
-      {/* ─── 5. MÉTODO MIA (10 pasos) ───────────────────────────────────────── */}
+      {/* ─── 4. MÉTODO MIA (10 pasos) ───────────────────────────────────────── */}
       <MiaMethodSection />
+
+      {/* ─── 5. VISUAL PRO (fotografía, staging, 3D) ────────────────────────── */}
+      <VisualProSection />
 
       {/* ─── 6. GESTIÓN + CIERRE ─────────────────────────────────────────────── */}
       <ManagementClosingSection />
