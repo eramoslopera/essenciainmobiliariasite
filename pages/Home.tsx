@@ -19,6 +19,82 @@ const HERO_IMAGES = [
   },
 ];
 
+const HomeContactForm: React.FC = () => {
+  const { t } = useLanguage();
+  const [name, setName] = React.useState('');
+  const [phone, setPhone] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [reason, setReason] = React.useState('buy');
+  const [message, setMessage] = React.useState('');
+  const [sent, setSent] = React.useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const waMessage = [
+      `¡Hola! Me pongo en contacto desde vuestra web.`,
+      ``,
+      `*Nombre:* ${name}`,
+      email ? `*Email:* ${email}` : '',
+      phone ? `*Teléfono:* ${phone}` : '',
+      `*Interés:* ${reason}`,
+      message ? `\n*Mensaje:*\n${message}` : ''
+    ].filter(Boolean).join('\n');
+
+    window.open(`https://wa.me/34647803355?text=${encodeURIComponent(waMessage)}`, '_blank', 'noopener,noreferrer');
+    setSent(true);
+    setTimeout(() => setSent(false), 4000);
+  };
+
+  return (
+    <div className="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm">
+      {sent ? (
+        <div className="flex flex-col items-center justify-center h-full min-h-[320px] gap-4 text-center">
+          <span className="material-symbols-outlined text-5xl text-green-400">check_circle</span>
+          <p className="text-white font-bold text-lg">¡WhatsApp abierto!</p>
+          <p className="text-gray-400 text-sm">Envía el mensaje para que os podamos contactar.</p>
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit} className="space-y-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">{t('common.name') || 'Nombre'}</label>
+              <input type="text" required value={name} onChange={e => setName(e.target.value)} placeholder="María García" className="w-full bg-white/10 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:border-transparent transition-all" />
+            </div>
+            <div>
+              <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">{t('common.phone') || 'Teléfono'}</label>
+              <input type="tel" value={phone} onChange={e => setPhone(e.target.value)} placeholder="+34 600 000 000" className="w-full bg-white/10 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:border-transparent transition-all" />
+            </div>
+          </div>
+          <div>
+            <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">{t('common.email') || 'Email'}</label>
+            <input type="email" required value={email} onChange={e => setEmail(e.target.value)} placeholder="maria@example.com" className="w-full bg-white/10 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:border-transparent transition-all" />
+          </div>
+          <div>
+            <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">{t('home.contact.reason.label')}</label>
+            <select value={reason} onChange={e => setReason(e.target.value)} className="w-full bg-white/10 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:border-transparent transition-all appearance-none">
+              <option value="buy" className="bg-gray-900">{t('home.contact.reason.buy')}</option>
+              <option value="sell" className="bg-gray-900">{t('home.contact.reason.sell')}</option>
+              <option value="valuation" className="bg-gray-900">{t('home.contact.reason.valuation')}</option>
+              <option value="invest" className="bg-gray-900">{t('home.contact.reason.invest')}</option>
+              <option value="other" className="bg-gray-900">{t('home.contact.reason.other')}</option>
+            </select>
+          </div>
+          <div>
+            <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">{t('common.message')}</label>
+            <textarea rows={4} value={message} onChange={e => setMessage(e.target.value)} placeholder={t('home.contact.message.placeholder')} className="w-full bg-white/10 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:border-transparent transition-all resize-none" />
+          </div>
+          <button type="submit" className="w-full bg-brand-blue-500 hover:bg-brand-blue-600 text-white font-bold py-4 rounded-lg transition-colors flex items-center justify-center gap-2 text-sm tracking-wide mt-2">
+            {t('home.contact.send') || 'Enviar mensaje'}
+            <span className="material-symbols-outlined text-sm">send</span>
+          </button>
+          <p className="text-xs text-center text-gray-500 mt-2">{t('detail.form.privacy') || 'Tu información está protegida. Nunca compartimos tus datos.'}</p>
+        </form>
+      )}
+    </div>
+  );
+};
+
+
 const Home: React.FC = () => {
   const { t } = useLanguage();
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -403,67 +479,7 @@ const Home: React.FC = () => {
             </div>
 
             {/* Right — form */}
-            <div className="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm">
-              <form
-                onSubmit={(e) => { e.preventDefault(); alert('Mensaje enviado. ¡Nos pondremos en contacto pronto!'); }}
-                className="space-y-5"
-              >
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">{t('common.name') || 'Nombre'}</label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="María García"
-                      className="w-full bg-white/10 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:border-transparent transition-all"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">{t('common.phone') || 'Teléfono'}</label>
-                    <input
-                      type="tel"
-                      placeholder="+34 600 000 000"
-                      className="w-full bg-white/10 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:border-transparent transition-all"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">{t('common.email') || 'Email'}</label>
-                  <input
-                    type="email"
-                    required
-                    placeholder="maria@example.com"
-                    className="w-full bg-white/10 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:border-transparent transition-all"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">{t('home.contact.reason.label')}</label>
-                  <select className="w-full bg-white/10 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:border-transparent transition-all appearance-none">
-                    <option value="buy" className="bg-gray-900">{t('home.contact.reason.buy')}</option>
-                    <option value="sell" className="bg-gray-900">{t('home.contact.reason.sell')}</option>
-                    <option value="valuation" className="bg-gray-900">{t('home.contact.reason.valuation')}</option>
-                    <option value="invest" className="bg-gray-900">{t('home.contact.reason.invest')}</option>
-                    <option value="other" className="bg-gray-900">{t('home.contact.reason.other')}</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">{t('common.message')}</label>
-                  <textarea
-                    rows={4}
-                    placeholder={t('home.contact.message.placeholder')}
-                    className="w-full bg-white/10 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:border-transparent transition-all resize-none"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full bg-brand-blue-500 hover:bg-brand-blue-600 text-white font-bold py-4 rounded-lg transition-colors flex items-center justify-center gap-2 text-sm tracking-wide mt-2"
-                >
-                  {t('home.contact.send') || 'Enviar mensaje'}
-                  <span className="material-symbols-outlined text-sm">send</span>
-                </button>
-                <p className="text-xs text-center text-gray-500 mt-2">{t('detail.form.privacy') || 'Tu información está protegida. Nunca compartimos tus datos.'}</p>
-              </form>
-            </div>
+            <HomeContactForm />
           </div>
         </div>
       </section>
