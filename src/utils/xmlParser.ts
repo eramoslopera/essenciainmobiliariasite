@@ -4,9 +4,7 @@ import { Property } from '../types/property';
 
 export const fetchProperties = async (): Promise<Property[]> => {
     try {
-        const feedUrl = import.meta.env.PROD
-            ? `${import.meta.env.BASE_URL}feed.php`
-            : '/api/feed';
+        const feedUrl = '/api/feed';
 
         const response = await fetch(feedUrl);
         if (!response.ok) {

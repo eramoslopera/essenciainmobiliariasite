@@ -360,12 +360,16 @@ const Home: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Left — copy */}
             <div>
-              <span className="text-brand-blue-400 font-bold tracking-widest uppercase text-xs mb-4 block">{t('home.contact.tag') || 'Contacto'}</span>
+              <span className="text-brand-blue-400 font-bold tracking-widest uppercase text-xs mb-4 block">{t('home.contact.tag')}</span>
               <h2 className="text-4xl md:text-5xl font-black text-white mb-6 leading-tight">
-                {t('home.contact.title') || <>Ponte en<br /><span className="text-brand-blue-400">contacto</span></>}
+                {t('home.contact.title').split('\n').map((line, i, arr) =>
+                  i < arr.length - 1
+                    ? <span key={i}>{line}<br /></span>
+                    : <span key={i} className="text-brand-blue-400">{line}</span>
+                )}
               </h2>
               <p className="text-gray-400 text-lg leading-relaxed mb-10">
-                {t('home.contact.subtitle') || 'Nuestro equipo está disponible para responder todas tus preguntas sobre compra, venta o valoración de tu vivienda.'}
+                {t('home.contact.subtitle')}
               </p>
               <div className="space-y-5">
                 <div className="flex items-center gap-4">
@@ -373,8 +377,8 @@ const Home: React.FC = () => {
                     <span className="material-symbols-outlined text-brand-blue-400 text-base">call</span>
                   </div>
                   <div>
-                    <p className="text-xs uppercase tracking-widest text-gray-500 mb-0.5">{t('common.phone') || 'Teléfono'}</p>
-                    <a href="tel:+34600000000" className="text-white font-semibold hover:text-brand-blue-400 transition-colors">+34 600 000 000</a>
+                    <p className="text-xs uppercase tracking-widest text-gray-500 mb-0.5">{t('common.phone')}</p>
+                    <a href="tel:+34618063000" className="text-white font-semibold hover:text-brand-blue-400 transition-colors">+34 618 063 000</a>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
@@ -382,7 +386,7 @@ const Home: React.FC = () => {
                     <span className="material-symbols-outlined text-brand-blue-400 text-base">mail</span>
                   </div>
                   <div>
-                    <p className="text-xs uppercase tracking-widest text-gray-500 mb-0.5">{t('common.email') || 'Email'}</p>
+                    <p className="text-xs uppercase tracking-widest text-gray-500 mb-0.5">{t('common.email')}</p>
                     <a href="mailto:hola@essenciainmobiliaria.com" className="text-white font-semibold hover:text-brand-blue-400 transition-colors">hola@essenciainmobiliaria.com</a>
                   </div>
                 </div>
@@ -392,7 +396,7 @@ const Home: React.FC = () => {
                   </div>
                   <div>
                     <p className="text-xs uppercase tracking-widest text-gray-500 mb-0.5">{t('footer.office') || 'Oficina'}</p>
-                    <p className="text-white font-semibold">C/ Mayor 12, Gandia, Valencia</p>
+                    <p className="text-white font-semibold">C/ Sant Vicent Ferrer 24, Gandia, Valencia</p>
                   </div>
                 </div>
               </div>
@@ -433,19 +437,20 @@ const Home: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">{t('contact.subject') || 'Motivo de contacto'}</label>
+                  <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">{t('home.contact.reason.label')}</label>
                   <select className="w-full bg-white/10 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:border-transparent transition-all appearance-none">
-                    <option value="buy" className="bg-gray-900">{t('contact.reason.buy') || 'Quiero comprar'}</option>
-                    <option value="sell" className="bg-gray-900">{t('contact.reason.sell') || 'Quiero vender'}</option>
-                    <option value="valuation" className="bg-gray-900">{t('contact.reason.valuation') || 'Valoración gratuita'}</option>
-                    <option value="other" className="bg-gray-900">{t('contact.reason.other') || 'Otra consulta'}</option>
+                    <option value="buy" className="bg-gray-900">{t('home.contact.reason.buy')}</option>
+                    <option value="sell" className="bg-gray-900">{t('home.contact.reason.sell')}</option>
+                    <option value="valuation" className="bg-gray-900">{t('home.contact.reason.valuation')}</option>
+                    <option value="invest" className="bg-gray-900">{t('home.contact.reason.invest')}</option>
+                    <option value="other" className="bg-gray-900">{t('home.contact.reason.other')}</option>
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">{t('contact.message') || 'Mensaje'}</label>
+                  <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">{t('common.message')}</label>
                   <textarea
                     rows={4}
-                    placeholder={t('contact.placeholder') || '¿Cómo podemos ayudarte?'}
+                    placeholder={t('home.contact.message.placeholder')}
                     className="w-full bg-white/10 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:border-transparent transition-all resize-none"
                   />
                 </div>
