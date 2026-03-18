@@ -289,7 +289,7 @@ const Properties: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 relative items-start">
 
           {/* List Column */}
-          <div className="lg:col-span-7 xl:col-span-8 pb-20">
+          <div className="lg:col-span-6 pb-20">
             {isLoading ? (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
                 <PropertySkeleton count={6} />
@@ -300,7 +300,7 @@ const Properties: React.FC = () => {
                 <p className="font-bold">{t('properties.no_results')}</p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-8">
 
                 {sortedProperties.map((property, index) => {
                   const badges: Badge[] = [...(property.badges || [])];
@@ -317,7 +317,7 @@ const Properties: React.FC = () => {
                         className={`rounded-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-xl ${activePropertyId === property.id ? 'ring-2 ring-brand-blue-500 ring-offset-4 scale-[1.02] shadow-xl' : ''}`}
                       >
                         <Link to={`/property/${property.id}`} className="group cursor-pointer block">
-                          <div className="relative aspect-[4/3] overflow-hidden rounded bg-gray-100 mb-4">
+                          <div className="relative aspect-[3/2] overflow-hidden rounded bg-gray-100 mb-3">
                             {/* Image */}
                             <div
                               className={`absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 ${property.isComingSoon ? 'grayscale hover:grayscale-0' : ''}`}
@@ -371,11 +371,11 @@ const Properties: React.FC = () => {
 
                           {/* Info */}
                           <div className="flex justify-between items-start mb-2">
-                            <div>
-                              <h3 className="text-xl font-bold text-editorial-black leading-tight group-hover:text-brand-blue-600 transition-colors">{property.title}</h3>
-                              <p className="text-sm text-gray-500 font-medium">{property.location}</p>
-                            </div>
-                            <span className={`text-xl font-bold ${property.price === 'On Request' ? 'text-gray-400' : 'text-brand-blue-600'}`}>{property.price}</span>
+                              <div>
+                                <h3 className="text-base font-bold text-editorial-black leading-tight group-hover:text-brand-blue-600 transition-colors">{property.title}</h3>
+                                <p className="text-xs text-gray-500 font-medium">{property.location}</p>
+                              </div>
+                              <span className={`text-base font-bold ${property.price === 'On Request' ? 'text-gray-400' : 'text-brand-blue-600'}`}>{property.price}</span>
                           </div>
 
                           {/* Features */}
@@ -393,17 +393,16 @@ const Properties: React.FC = () => {
                           </div>
 
                           {/* Contact Agent Button */}
-                          <button
-                            onClick={(e) => {
-                              e.preventDefault();
-                              e.stopPropagation();
-                              navigate(`/contact?interest=Buying+a+property&message=${encodeURIComponent(`I would like to inquire about ${property.title} in ${property.location}.`)}`);
-                            }}
-                            className="w-full mt-4 py-2 border border-gray-200 hover:border-editorial-black text-editorial-black text-xs font-bold uppercase tracking-widest hover:bg-editorial-black hover:text-white transition-colors rounded flex items-center justify-center gap-2"
+                          <a
+                            href={`https://wa.me/34618063000?text=${encodeURIComponent(`Hola, me interesa la propiedad ${property.title} en ${property.location}. ¿Podéis darme más información?`)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="w-full mt-3 py-2 border border-gray-200 hover:border-[#25D366] text-editorial-black hover:text-[#25D366] text-xs font-bold uppercase tracking-widest hover:bg-[#25D366]/5 transition-colors rounded flex items-center justify-center gap-2"
                           >
-                            <span className="material-symbols-outlined text-sm">mail</span>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="" className="w-3.5 h-3.5" />
                             {t('detail.contact_agent')}
-                          </button>
+                          </a>
                         </Link>
                       </div>
 
@@ -442,7 +441,7 @@ const Properties: React.FC = () => {
           </div>
 
           {/* Map Column (Sticky) */}
-          <div className="hidden lg:block lg:col-span-5 xl:col-span-4 h-[calc(100vh-12rem)] sticky top-[10.5rem]">
+          <div className="hidden lg:block lg:col-span-6 h-[calc(100vh-10rem)] sticky top-[10.5rem]">
             <div className="w-full h-full rounded-xl overflow-hidden shadow-2xl border border-gray-200 relative">
               <MapContainer
                 center={[39.1, -0.3]}

@@ -27,7 +27,7 @@ const ScrollToTop = () => {
 };
 
 import FloatingWhatsApp from './components/FloatingWhatsApp';
-import StickyBuyBanner from './components/StickyBuyBanner';
+
 
 const Layout: React.FC = () => {
   const location = useLocation();
@@ -58,7 +58,7 @@ const Layout: React.FC = () => {
       </main>
       {!isLandingPage && <Footer />}
       <FloatingWhatsApp />
-      {!isLandingPage && <StickyBuyBanner />}
+
     </div>
   );
 };

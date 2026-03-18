@@ -84,7 +84,22 @@ const Contact: React.FC = () => {
 
     if (Object.keys(validationErrors).length === 0) {
       setIsSubmitting(true);
-      // Simulate API call
+
+      // Build WhatsApp message with all form data
+      const waMessage = [
+        `¡Hola! Me pongo en contacto desde vuestra web.`,
+        ``,
+        `*Nombre:* ${formData.firstName} ${formData.lastName}`,
+        `*Email:* ${formData.email}`,
+        `*Teléfono:* ${formData.phone}`,
+        `*Interés:* ${formData.interest}`,
+        ``,
+        `*Mensaje:*`,
+        formData.message
+      ].join('\n');
+
+      const waUrl = `https://wa.me/34618063000?text=${encodeURIComponent(waMessage)}`;
+
       setTimeout(() => {
         setIsSubmitting(false);
         setIsSuccess(true);
@@ -97,9 +112,12 @@ const Contact: React.FC = () => {
           message: ''
         });
 
+        // Open WhatsApp in new tab
+        window.open(waUrl, '_blank', 'noopener,noreferrer');
+
         // Reset success message after 5 seconds
         setTimeout(() => setIsSuccess(false), 5000);
-      }, 1500);
+      }, 800);
     }
   };
 
