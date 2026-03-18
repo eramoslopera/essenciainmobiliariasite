@@ -1,12 +1,35 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import StatsSection from '../components/StatsSection';
 import SEOHead from '../components/SEOHead';
 
+const HERO_IMAGES = [
+  {
+    src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD6CVDb-uj3cAC0Ob6Xoldojbr8fXAlqgRkajY38_fEYtheLsJfhvgNqCXQoidNSph5pxxTIA4A-xhr-pY90ZuV6kh2DC_7KoE4yBIYtDccfKzP1CcdpXDsNXLOROI7cvlTEDUDGK7e7POqLad-y3lLKyfffcbEcwqN9yGejMHM5xKcKUdYutySJ4gKxwHil_TPn5cms3boBRB4bDas5vt7CzfzSedfRnX3LOZiliuJrw2B0gk4vAdiAgkIfndu1DmSEjAfvSQw',
+    position: 'center',
+  },
+  {
+    src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDSY-PXU4Aos5QXaijac90faiHIS204YriutHKAaYujVG4SZWwVd-HQk8IKShLRCD2mrH-OIVWer2XgAErCzUC_oChNo4RnkugwMaJ3Y-zSOq4-4jfCFa4ISvMZbRaPTdOFCUDu2OiWp1iS4ocb6Hoi5XneGiWUooX_Q_oi2cHRd5pjRF8ffN10TAKH57NDYH0CIdA-DNBnj73Sz9ReE_PJrBw6i0hkrS7KR1gsgila22DVBrYFBJwsrMLzBagtmE9zU1ZrYHK8',
+    position: 'center 30%',
+  },
+  {
+    src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBTz0ljfPf17SA1GJ6uA8AFFp69r4QCIx9qAKheWPLsqb3SR9EiRThZW2pQrqT8Xq0ZMQkBXl7TkM-iW4Lv75dvy8PdbK9O30nJ35aX4fCg0S2feJ6JRYQQUGVRE_VdRjOjItcvyPHOCtbhJGoZS93wph_XgdsTjs-JRfjRxvz_Higm4ZVlH2KwIft4FCcypZ5tuZEmBATyNa2qENR5ZQOIjoGYF2i9mkiBN3wOiCJV8sOAVou3Y3J1JWjUk8qVNOGMTPeMEmtA',
+    position: 'center 60%',
+  },
+];
+
 const Home: React.FC = () => {
   const { t } = useLanguage();
   const carouselRef = useRef<HTMLDivElement>(null);
+  const [heroIndex, setHeroIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setHeroIndex((prev) => (prev + 1) % HERO_IMAGES.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
   const scroll = (direction: 'left' | 'right') => {
     if (carouselRef.current) {
@@ -28,17 +51,33 @@ const Home: React.FC = () => {
         description="Essencia Inmobiliaria — Compra, vende y valora tu vivienda con la inmobiliaria premium de Gandia y la costa de Valencia. Marketing editorial, valoración gratuita y alcance internacional."
         canonical="https://essenciainmobiliaria.com/"
       />
+      {/* ================= HERO SLIDER — Ken Burns ================= */}
       <section className="relative h-screen min-h-[700px] w-full flex items-center justify-center pt-20 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img
-            alt={t('home.alt.interior')}
-            className="w-full h-full object-cover"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6CVDb-uj3cAC0Ob6Xoldojbr8fXAlqgRkajY38_fEYtheLsJfhvgNqCXQoidNSph5pxxTIA4A-xhr-pY90ZuV6kh2DC_7KoE4yBIYtDccfKzP1CcdpXDsNXLOROI7cvlTEDUDGK7e7POqLad-y3lLKyfffcbEcwqN9yGejMHM5xKcKUdYutySJ4gKxwHil_TPn5cms3boBRB4bDas5vt7CzfzSedfRnX3LOZiliuJrw2B0gk4vAdiAgkIfndu1DmSEjAfvSQw"
-          />
-          <div className="absolute inset-0 bg-white/50"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/30 to-white/70"></div>
-        </div>
-        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center flex flex-col items-center">
+        {/* Ken Burns image layers */}
+        {HERO_IMAGES.map((img, i) => (
+          <div
+            key={i}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${i === heroIndex ? 'opacity-100' : 'opacity-0'}`}
+            style={{ zIndex: 0 }}
+          >
+            <div
+              className={`w-full h-full bg-cover transition-transform duration-[8000ms] ease-linear ${
+                i === heroIndex ? 'scale-110' : 'scale-100'
+              }`}
+              style={{
+                backgroundImage: `url("${img.src}")`,
+                backgroundPosition: img.position,
+              }}
+            />
+          </div>
+        ))}
+
+        {/* Gradient overlays */}
+        <div className="absolute inset-0 bg-white/50" style={{ zIndex: 1 }} />
+        <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/30 to-white/70" style={{ zIndex: 1 }} />
+
+        {/* Hero content */}
+        <div className="relative max-w-5xl mx-auto px-6 text-center flex flex-col items-center" style={{ zIndex: 2 }}>
           <span className="inline-block py-1 px-4 mb-8 text-xs font-bold tracking-[0.2em] uppercase bg-white/90 backdrop-blur-sm text-charcoal border border-gray-200 rounded-full shadow-sm">
             {t('home.hero.tag')}
           </span>
@@ -57,6 +96,20 @@ const Home: React.FC = () => {
               {t('home.hero.cta.sold')}
               <span className="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
             </Link>
+          </div>
+
+          {/* Dot indicators */}
+          <div className="flex gap-3 mt-12" style={{ zIndex: 2 }}>
+            {HERO_IMAGES.map((_, i) => (
+              <button
+                key={i}
+                aria-label={`Ir a imagen ${i + 1}`}
+                onClick={() => setHeroIndex(i)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 ${
+                  i === heroIndex ? 'bg-editorial-black scale-125' : 'bg-gray-400 hover:bg-gray-600'
+                }`}
+              />
+            ))}
           </div>
         </div>
       </section>
@@ -299,6 +352,118 @@ const Home: React.FC = () => {
         </div>
       </section>
 
+      {/* ================= CONTACT FORM SECTION ================= */}
+      <section className="py-24 bg-editorial-black relative overflow-hidden">
+        {/* Decorative geometric accent */}
+        <div className="absolute right-0 top-0 w-1/2 h-full opacity-5 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 80% 50%, #2563eb 0%, transparent 70%)' }} />
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Left — copy */}
+            <div>
+              <span className="text-brand-blue-400 font-bold tracking-widest uppercase text-xs mb-4 block">{t('home.contact.tag') || 'Contacto'}</span>
+              <h2 className="text-4xl md:text-5xl font-black text-white mb-6 leading-tight">
+                {t('home.contact.title') || <>Ponte en<br /><span className="text-brand-blue-400">contacto</span></>}
+              </h2>
+              <p className="text-gray-400 text-lg leading-relaxed mb-10">
+                {t('home.contact.subtitle') || 'Nuestro equipo está disponible para responder todas tus preguntas sobre compra, venta o valoración de tu vivienda.'}
+              </p>
+              <div className="space-y-5">
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-brand-blue-500/20 flex items-center justify-center shrink-0">
+                    <span className="material-symbols-outlined text-brand-blue-400 text-base">call</span>
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase tracking-widest text-gray-500 mb-0.5">{t('common.phone') || 'Teléfono'}</p>
+                    <a href="tel:+34600000000" className="text-white font-semibold hover:text-brand-blue-400 transition-colors">+34 600 000 000</a>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-brand-blue-500/20 flex items-center justify-center shrink-0">
+                    <span className="material-symbols-outlined text-brand-blue-400 text-base">mail</span>
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase tracking-widest text-gray-500 mb-0.5">{t('common.email') || 'Email'}</p>
+                    <a href="mailto:hola@essenciainmobiliaria.com" className="text-white font-semibold hover:text-brand-blue-400 transition-colors">hola@essenciainmobiliaria.com</a>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-brand-blue-500/20 flex items-center justify-center shrink-0">
+                    <span className="material-symbols-outlined text-brand-blue-400 text-base">location_on</span>
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase tracking-widest text-gray-500 mb-0.5">{t('footer.office') || 'Oficina'}</p>
+                    <p className="text-white font-semibold">C/ Mayor 12, Gandia, Valencia</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right — form */}
+            <div className="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm">
+              <form
+                onSubmit={(e) => { e.preventDefault(); alert('Mensaje enviado. ¡Nos pondremos en contacto pronto!'); }}
+                className="space-y-5"
+              >
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">{t('common.name') || 'Nombre'}</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="María García"
+                      className="w-full bg-white/10 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:border-transparent transition-all"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">{t('common.phone') || 'Teléfono'}</label>
+                    <input
+                      type="tel"
+                      placeholder="+34 600 000 000"
+                      className="w-full bg-white/10 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:border-transparent transition-all"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">{t('common.email') || 'Email'}</label>
+                  <input
+                    type="email"
+                    required
+                    placeholder="maria@example.com"
+                    className="w-full bg-white/10 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:border-transparent transition-all"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">{t('contact.subject') || 'Motivo de contacto'}</label>
+                  <select className="w-full bg-white/10 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:border-transparent transition-all appearance-none">
+                    <option value="buy" className="bg-gray-900">{t('contact.reason.buy') || 'Quiero comprar'}</option>
+                    <option value="sell" className="bg-gray-900">{t('contact.reason.sell') || 'Quiero vender'}</option>
+                    <option value="valuation" className="bg-gray-900">{t('contact.reason.valuation') || 'Valoración gratuita'}</option>
+                    <option value="other" className="bg-gray-900">{t('contact.reason.other') || 'Otra consulta'}</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">{t('contact.message') || 'Mensaje'}</label>
+                  <textarea
+                    rows={4}
+                    placeholder={t('contact.placeholder') || '¿Cómo podemos ayudarte?'}
+                    className="w-full bg-white/10 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:border-transparent transition-all resize-none"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="w-full bg-brand-blue-500 hover:bg-brand-blue-600 text-white font-bold py-4 rounded-lg transition-colors flex items-center justify-center gap-2 text-sm tracking-wide mt-2"
+                >
+                  {t('home.contact.send') || 'Enviar mensaje'}
+                  <span className="material-symbols-outlined text-sm">send</span>
+                </button>
+                <p className="text-xs text-center text-gray-500 mt-2">{t('detail.form.privacy') || 'Tu información está protegida. Nunca compartimos tus datos.'}</p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= FREE VALUATION CTA ================= */}
       <section className="py-24 bg-white relative overflow-hidden">
         <div className="absolute right-0 top-0 w-1/3 h-full bg-brand-blue-500/5 -skew-x-12 hidden lg:block"></div>
         <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
