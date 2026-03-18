@@ -207,8 +207,8 @@ const Contact: React.FC = () => {
             {isSuccess ? (
               <div className="bg-green-50 border border-green-200 text-green-800 p-6 rounded text-center">
                 <span className="material-symbols-outlined text-4xl mb-2">check_circle</span>
-                <p className="font-bold">Message sent successfully!</p>
-                <p className="text-sm">We will get back to you shortly.</p>
+                <p className="font-bold">{t('contact.success.title')}</p>
+                <p className="text-sm">{t('contact.success.subtitle')}</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6" noValidate>

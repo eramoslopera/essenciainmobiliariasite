@@ -10,7 +10,7 @@ import VisualProSection from '../components/VisualProSection';
 import ProcessSteps from '../components/ProcessSteps';
 import MiaMethodSection from '../components/MiaMethodSection';
 import ManagementClosingSection from '../components/ManagementClosingSection';
-import SalesProcessSection from '../components/SalesProcessSection';
+
 
 const Sell: React.FC = () => {
   const { t } = useLanguage();
@@ -127,7 +127,10 @@ const Sell: React.FC = () => {
         </motion.div>
       </section>
 
-      {/* ─── 2. SERVICE CHOICE CARDS ────────────────────────────────────────── */}
+      {/* ─── 2. PROCESS STEPS — INICIO DEL PROCESO ──────────────────────────── */}
+      <ProcessSteps />
+
+      {/* ─── 3. SERVICE CHOICE CARDS ────────────────────────────────────────── */}
       <section className="bg-editorial-black text-white py-24 px-6 md:px-12">
         <div className="max-w-[1440px] mx-auto">
           <motion.p
@@ -236,20 +239,14 @@ const Sell: React.FC = () => {
         </div>
       </section>
 
-      {/* ─── 3. VISUAL PRO (photography, staging, 3D) ───────────────────────── */}
+      {/* ─── 4. VISUAL PRO (fotografía, staging, 3D) ────────────────────────── */}
       <VisualProSection />
 
-      {/* ─── 4. PROCESS STEPS (first contact, consultation, valuation) ──────── */}
-      <ProcessSteps />
-
-      {/* ─── 5. MIA METHOD (10 steps) ───────────────────────────────────────── */}
+      {/* ─── 5. MÉTODO MIA (10 pasos) ───────────────────────────────────────── */}
       <MiaMethodSection />
 
-      {/* ─── 6. MANAGEMENT + CLOSING ────────────────────────────────────────── */}
+      {/* ─── 6. GESTIÓN + CIERRE ─────────────────────────────────────────────── */}
       <ManagementClosingSection />
-
-      {/* ─── 7. SALES PROCESS INTERACTIVE CAROUSEL ──────────────────────────── */}
-      <SalesProcessSection />
 
       {/* ─── 8. SOLD PROPERTIES ─────────────────────────────────────────────── */}
       {soldProperties.length > 0 && (
@@ -312,9 +309,9 @@ const Sell: React.FC = () => {
                         <span className="text-sm font-bold text-green-600">{property.price}</span>
                       </div>
                       <div className="flex justify-between items-center text-xs text-gray-500">
-                        <span>{property.beds} Beds</span>
+                        <span>{property.beds} {t('property.beds')}</span>
                         <span>•</span>
-                        <span>{property.baths} Baths</span>
+                        <span>{property.baths} {t('property.baths')}</span>
                         <span>•</span>
                         <span>{property.size}</span>
                       </div>
