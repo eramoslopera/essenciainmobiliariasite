@@ -10,6 +10,7 @@ import 'leaflet/dist/leaflet.css';
 import { fetchProperties } from '../src/utils/xmlParser';
 import { Property } from '../src/types/property';
 import SEOHead from '../components/SEOHead';
+import StickyBuyBanner from '../components/StickyBuyBanner';
 
 
 const Landing: React.FC = () => {
@@ -648,6 +649,7 @@ const Landing: React.FC = () => {
             </main>
             <LandingFooter />
             <FloatingWhatsApp />
+            <StickyBuyBanner />
             <button
                 onClick={scrollToTop}
                 className={`fixed bottom-24 right-6 z-40 w-12 h-12 bg-white dark:bg-background-dark text-editorial-black dark:text-white shadow-lg border border-gray-100 dark:border-gray-700 flex items-center justify-center transition-all duration-300 hover:-translate-y-1 ${showBackToTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}

@@ -289,9 +289,9 @@ const Properties: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 relative items-start">
 
           {/* List Column */}
-          <div className="lg:col-span-5 pb-20">
+          <div className="lg:col-span-4 pb-20">
             {isLoading ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
+              <div className="grid grid-cols-1 gap-y-8">
                 <PropertySkeleton count={6} />
               </div>
             ) : sortedProperties.length === 0 ? (
@@ -300,7 +300,7 @@ const Properties: React.FC = () => {
                 <p className="font-bold">{t('properties.no_results')}</p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-8">
+              <div className="grid grid-cols-1 gap-y-8">
 
                 {sortedProperties.map((property, index) => {
                   const badges: Badge[] = [...(property.badges || [])];
@@ -317,7 +317,7 @@ const Properties: React.FC = () => {
                         className={`rounded-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-xl ${activePropertyId === property.id ? 'ring-2 ring-brand-blue-500 ring-offset-4 scale-[1.02] shadow-xl' : ''}`}
                       >
                         <Link to={`/property/${property.id}`} className="group cursor-pointer block">
-                          <div className="relative aspect-[4/3] overflow-hidden rounded bg-gray-100 mb-3">
+                          <div className="relative aspect-[3/2] overflow-hidden rounded bg-gray-100 mb-3">
                             {/* Image */}
                             <div
                               className={`absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 ${property.isComingSoon ? 'grayscale hover:grayscale-0' : ''}`}
@@ -441,7 +441,7 @@ const Properties: React.FC = () => {
           </div>
 
           {/* Map Column (Sticky) */}
-          <div className="hidden lg:block lg:col-span-7 h-[calc(100vh-10rem)] sticky top-[10.5rem]">
+          <div className="hidden lg:block lg:col-span-8 h-[calc(100vh-10rem)] sticky top-[10.5rem]">
             <div className="w-full h-full rounded-xl overflow-hidden shadow-2xl border border-gray-200 relative">
               <MapContainer
                 center={[39.1, -0.3]}
