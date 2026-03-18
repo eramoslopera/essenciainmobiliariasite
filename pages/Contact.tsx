@@ -98,7 +98,7 @@ const Contact: React.FC = () => {
         formData.message
       ].join('\n');
 
-      const waUrl = `https://wa.me/34618063000?text=${encodeURIComponent(waMessage)}`;
+      const waUrl = `https://wa.me/34647803355?text=${encodeURIComponent(waMessage)}`;
 
       setTimeout(() => {
         setIsSubmitting(false);

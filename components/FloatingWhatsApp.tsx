@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const FloatingWhatsApp: React.FC = () => {
-    const whatsappUrl = "https://wa.me/34618063000";
+    const whatsappUrl = "https://wa.me/34647803355";
     const [isAutoVisible, setIsAutoVisible] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
 

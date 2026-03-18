@@ -394,7 +394,7 @@ const Properties: React.FC = () => {
 
                           {/* Contact Agent Button */}
                           <a
-                            href={`https://wa.me/34618063000?text=${encodeURIComponent(`Hola, me interesa la propiedad ${property.title} en ${property.location}. ¿Podéis darme más información?`)}`}
+                            href={`https://wa.me/34647803355?text=${encodeURIComponent(`Hola, me interesa la propiedad ${property.title} en ${property.location}. ¿Podéis darme más información?`)}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={(e) => e.stopPropagation()}
