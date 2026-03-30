@@ -288,7 +288,7 @@ const Contact: React.FC = () => {
                     onChange={handleChange}
                     rows={4}
                     className={`w-full bg-white border ${errors.message ? 'border-red-500' : 'border-none'} rounded px-4 py-3 focus:ring-2 focus:ring-brand-blue-500`}
-                    placeholder="Tell us more about your needs..."
+                    placeholder={t('contact.form.message_placeholder')}
                   ></textarea>
                   {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
                 </div>

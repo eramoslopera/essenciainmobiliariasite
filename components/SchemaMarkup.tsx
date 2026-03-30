@@ -36,9 +36,9 @@ const SchemaMarkup: React.FC = () => {
             "closes": "19:00"
         },
         "sameAs": [
-            "https://instagram.com/essenciainmobiliaria",
-            "https://facebook.com/essenciainmobiliaria",
-            "https://linkedin.com/company/essenciainmobiliaria"
+            "https://www.instagram.com/essencia_inmobiliaria/",
+            "https://www.facebook.com/essenciainmobiliariagandia",
+            "https://www.linkedin.com/in/santi-torres-essencia-a9497311/"
         ],
         "areaServed": {
             "@type": "State",

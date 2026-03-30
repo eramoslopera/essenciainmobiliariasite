@@ -12,6 +12,9 @@ import Contact from './pages/Contact';
 import About from './pages/About';
 import Landing from './pages/Landing';
 import Developments from './pages/Developments';
+import Privacy from './pages/Privacy';
+import Terms from './pages/Terms';
+import Cookies from './pages/Cookies';
 import Breadcrumbs from './components/Breadcrumbs';
 import SchemaMarkup from './components/SchemaMarkup';
 import { LanguageProvider, useLanguage } from './context/LanguageContext';
@@ -54,6 +57,9 @@ const Layout: React.FC = () => {
           <Route path="/about" element={<About />} />
           <Route path="/landing" element={<Landing />} />
           <Route path="/developments" element={<Developments />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/cookies" element={<Cookies />} />
         </Routes>
       </main>
       {!isLandingPage && <Footer />}

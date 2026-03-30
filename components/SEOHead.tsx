@@ -11,7 +11,7 @@ interface SEOHeadProps {
 }
 
 const BASE_URL = 'https://essenciainmobiliaria.com';
-const DEFAULT_OG_IMAGE = `${BASE_URL}/Logo_Negro.svg`;
+const DEFAULT_OG_IMAGE = `${BASE_URL}/og-image.png`;
 const SITE_NAME = 'Essencia Inmobiliaria';
 
 const SEOHead: React.FC<SEOHeadProps> = ({

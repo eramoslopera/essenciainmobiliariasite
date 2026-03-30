@@ -54,18 +54,18 @@ const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-gray-500">
           <p>{t('footer.rights')}</p>
           <div className="flex gap-6">
-            <Link to="/about" className="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm">{t('footer.privacy')}</Link>
-            <Link to="/about" className="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm">{t('footer.terms')}</Link>
-            <Link to="/about" className="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm">{t('footer.cookies')}</Link>
+            <Link to="/privacy" className="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm">{t('footer.privacy')}</Link>
+            <Link to="/terms" className="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm">{t('footer.terms')}</Link>
+            <Link to="/cookies" className="hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm">{t('footer.cookies')}</Link>
           </div>
           <div className="flex gap-4">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-8 h-8 bg-white/10 flex items-center justify-center hover:bg-brand-blue-500 hover:text-white transition-colors text-white rounded-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500">
+            <a href="https://www.instagram.com/essencia_inmobiliaria/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-8 h-8 bg-white/10 flex items-center justify-center hover:bg-brand-blue-500 hover:text-white transition-colors text-white rounded-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500">
               <span className="text-xs font-bold">{t('footer.social.ig')}</span>
             </a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-8 h-8 bg-white/10 flex items-center justify-center hover:bg-brand-blue-500 hover:text-white transition-colors text-white rounded-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500">
+            <a href="https://www.facebook.com/essenciainmobiliariagandia" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-8 h-8 bg-white/10 flex items-center justify-center hover:bg-brand-blue-500 hover:text-white transition-colors text-white rounded-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500">
               <span className="text-xs font-bold">{t('footer.social.fb')}</span>
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-8 h-8 bg-white/10 flex items-center justify-center hover:bg-brand-blue-500 hover:text-white transition-colors text-white rounded-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500">
+            <a href="https://www.linkedin.com/in/santi-torres-essencia-a9497311/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-8 h-8 bg-white/10 flex items-center justify-center hover:bg-brand-blue-500 hover:text-white transition-colors text-white rounded-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500">
               <span className="text-xs font-bold">{t('footer.social.li')}</span>
             </a>
           </div>
