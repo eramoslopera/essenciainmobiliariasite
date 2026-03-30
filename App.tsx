@@ -30,6 +30,7 @@ const ScrollToTop = () => {
 };
 
 import FloatingWhatsApp from './components/FloatingWhatsApp';
+import BackToTop from './components/BackToTop';
 
 
 const Layout: React.FC = () => {
@@ -64,6 +65,7 @@ const Layout: React.FC = () => {
       </main>
       {!isLandingPage && <Footer />}
       <FloatingWhatsApp />
+      <BackToTop />
 
     </div>
   );
