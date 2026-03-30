@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import StatsSection from '../components/StatsSection';
 import SEOHead from '../components/SEOHead';
+import { Property } from '../src/types/property';
+import { fetchProperties } from '../src/utils/xmlParser';
 
 const HERO_IMAGES = [
   {
@@ -96,15 +98,29 @@ const HomeContactForm: React.FC = () => {
 
 
 const Home: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const carouselRef = useRef<HTMLDivElement>(null);
   const [heroIndex, setHeroIndex] = useState(0);
+  const [recentProperties, setRecentProperties] = useState<Property[]>([]);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setHeroIndex((prev) => (prev + 1) % HERO_IMAGES.length);
     }, 5000);
     return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const loadProperties = async () => {
+      const fetched = await fetchProperties();
+      const recent = fetched.filter(p => p.status === 'sold' || p.status === 'reserved');
+      const sorted = recent.sort((a,b) => {
+        if (!a.dateListed || !b.dateListed) return 0;
+        return new Date(b.dateListed).getTime() - new Date(a.dateListed).getTime();
+      });
+      setRecentProperties(sorted.slice(0, 8));
+    };
+    loadProperties();
   }, []);
 
   const scroll = (direction: 'left' | 'right') => {
@@ -312,118 +328,42 @@ const Home: React.FC = () => {
             ref={carouselRef}
             className="flex overflow-x-auto gap-8 pb-8 hide-scrollbar snap-x snap-mandatory scroll-smooth"
           >
-            {/* Card 1 */}
-            <Link to="/properties" className="snap-center shrink-0 w-[85vw] md:w-[500px] bg-white rounded-lg overflow-hidden shadow-editorial hover:shadow-xl transition-shadow duration-300 block group">
-              <div className="w-full h-64 bg-cover bg-center group-hover:scale-105 transition-transform duration-700" style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuCCYCoLLGH8m6STpxs2Ok3leDZaZBOdic-RRxvSn3L6SKrp2cUA-O4x0Pu9ufIundVGAsD17DY5fkQxdKGMzKcy4xR0ut31MsMWW5BP3Je_Zf7d8cDI3Z1Bh87chviHz1rJNMgCZD3plwoi1hL7PJjPywPwiCKnlCv2YoNCI4SOeUKrfQdePCHjaTr6aGz-Qi3QhIUGYns-9fd75ddyqDSPSlRpFU9j1mppa5sdr5oHdFOSEP7TLBQR3YMUSIlm9f_83E9pcr9G")' }}>
-                <div className="p-4 flex justify-end">
-                  <span className="bg-editorial-black text-white text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-sm">{t('home.recent.sold')}</span>
+            {recentProperties.map(property => {
+              const statusText = property.status === 'sold' ? t('home.recent.sold') : (language === 'es' ? 'Reservado' : 'Reserved');
+              const displayImage = property.image || (property.images && property.images.length > 0 ? property.images[0] : '');
+              
+              return (
+              <Link key={property.id} to={`/property/${property.id}`} className="snap-center shrink-0 w-[85vw] md:w-[500px] bg-white rounded-lg overflow-hidden shadow-editorial hover:shadow-xl transition-shadow duration-300 block group">
+                <div className="w-full h-64 bg-cover bg-center group-hover:scale-105 transition-transform duration-700" style={{ backgroundImage: `url("${displayImage}")` }}>
+                  <div className="p-4 flex justify-end">
+                    <span className="bg-editorial-black text-white text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-sm">{statusText}</span>
+                  </div>
                 </div>
+                <div className="p-6 relative z-10 bg-white">
+                  <div className="mb-6">
+                    <h3 className="text-xl font-bold leading-tight mb-1 group-hover:text-brand-blue-600 transition-colors line-clamp-1 truncate">{property.title}</h3>
+                    <p className="text-sm text-gray-500 truncate">{property.location}</p>
+                  </div>
+                  <div className="space-y-3 bg-gray-50 p-4 rounded-md">
+                    <div className="flex justify-between items-center pb-2 border-b border-gray-200 border-dashed">
+                      <span className="text-xs font-bold uppercase text-gray-400 tracking-wide">{t('home.recent.sold_price')}</span>
+                      <span className="text-sm font-bold text-green-600">{property.price}</span>
+                    </div>
+                    {property.dateListed && (
+                    <div className="flex justify-between items-center">
+                      <span className="text-xs font-bold uppercase text-gray-400 tracking-wide">{language === 'es' ? 'Publicado' : 'Listed'}</span>
+                      <span className="text-sm font-bold text-editorial-black">{property.dateListed}</span>
+                    </div>
+                    )}
+                  </div>
+                </div>
+              </Link>
+            )})}
+            {recentProperties.length === 0 && (
+              <div className="w-full text-center py-12 text-gray-500 font-medium tracking-wide">
+                {language === 'es' ? 'No hay transacciones recientes disponibles en el CRM.' : 'No recent transactions available in the CRM.'}
               </div>
-              <div className="p-6 relative z-10 bg-white">
-                <div className="mb-6">
-                  <h3 className="text-xl font-bold leading-tight mb-1 group-hover:text-brand-blue-600 transition-colors">{t('home.recent.card1.title')}</h3>
-                  <p className="text-sm text-gray-500">{t('home.location.velazquez')}</p>
-                </div>
-                <div className="space-y-3 bg-gray-50 p-4 rounded-md">
-                  <div className="flex justify-between items-center pb-2 border-b border-gray-200 border-dashed">
-                    <span className="text-xs font-bold uppercase text-gray-400 tracking-wide">{t('home.recent.listed')}</span>
-                    <span className="text-sm font-semibold line-through decoration-red-500 text-gray-400">€1.2M</span>
-                  </div>
-                  <div className="flex justify-between items-center pb-2 border-b border-gray-200 border-dashed">
-                    <span className="text-xs font-bold uppercase text-gray-400 tracking-wide">{t('home.recent.sold_price')}</span>
-                    <span className="text-sm font-bold text-green-600">€1.15M</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-xs font-bold uppercase text-gray-400 tracking-wide">{t('home.recent.time')}</span>
-                    <span className="text-sm font-bold text-editorial-black">14 {t('home.recent.days')}</span>
-                  </div>
-                </div>
-              </div>
-            </Link>
-            {/* Card 2 */}
-            <Link to="/properties" className="snap-center shrink-0 w-[85vw] md:w-[500px] bg-white rounded-lg overflow-hidden shadow-editorial hover:shadow-xl transition-shadow duration-300 block group">
-              <div className="w-full h-64 bg-cover bg-center group-hover:scale-105 transition-transform duration-700" style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuAjzENM8T9Tfr_TKw_FUCGQblUaSNsWttDPWKmig4d9rqpW7zv9dAOGGDCnnsJIEl5MQvTRQ8cIK2_CGc6dAoRcSDwZ4WpcxPFRn_X334-Qd4g3dWHkVhkRlNZtmaniVcP37BOvuGRyDPLcSDaNFsiizx1qPuvcaAHqTS6PCBb5gLGMGoEyq36HuJdYbiAPcNa8a3cfuAKD48IhYvVkAjJFz5ktXpnbJbc4THNxE0FAqxFU8pw2iZOCwUfrMIV3t9BqPlufMZvj")' }}>
-                <div className="p-4 flex justify-end">
-                  <span className="bg-editorial-black text-white text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-sm">{t('home.recent.sold')}</span>
-                </div>
-              </div>
-              <div className="p-6 relative z-10 bg-white">
-                <div className="mb-6">
-                  <h3 className="text-xl font-bold leading-tight mb-1 group-hover:text-brand-blue-600 transition-colors">{t('home.recent.card2.title')}</h3>
-                  <p className="text-sm text-gray-500">{t('home.location.germanies')}</p>
-                </div>
-                <div className="space-y-3 bg-gray-50 p-4 rounded-md">
-                  <div className="flex justify-between items-center pb-2 border-b border-gray-200 border-dashed">
-                    <span className="text-xs font-bold uppercase text-gray-400 tracking-wide">{t('home.recent.listed')}</span>
-                    <span className="text-sm font-semibold text-gray-400">€450k</span>
-                  </div>
-                  <div className="flex justify-between items-center pb-2 border-b border-gray-200 border-dashed">
-                    <span className="text-xs font-bold uppercase text-gray-400 tracking-wide">{t('home.recent.sold_price')}</span>
-                    <span className="text-sm font-bold text-green-600">€465k</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-xs font-bold uppercase text-gray-400 tracking-wide">{t('home.recent.time')}</span>
-                    <span className="text-sm font-bold text-editorial-black">3 {t('home.recent.days')}</span>
-                  </div>
-                </div>
-              </div>
-            </Link>
-            {/* Card 3 */}
-            <Link to="/properties" className="snap-center shrink-0 w-[85vw] md:w-[500px] bg-white rounded-lg overflow-hidden shadow-editorial hover:shadow-xl transition-shadow duration-300 block group">
-              <div className="w-full h-64 bg-cover bg-center group-hover:scale-105 transition-transform duration-700" style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuApVdluFbbEXPQangUFFxfb62P34yITGii4BnFZ8ma20PBBscwMxMTw-vA8QDC6aQ4M_y6-isvnvMGpYRD_XkqxNa2R9dNr33SSMTQswINCNprUf-n1_K738buWnMtmuo_rhenflL3xSr166iAnDHJQgkfuyBhnxhnvZHmqHsCFNXbZEbavBOHLj41bX9xqIIVeJx_Hog8UAkDxRdzzIdOowQCNSP1gCaxMv2Xr43VakqvPdaQim68ffuyC6Gzjpvd5zjM3AClx")' }}>
-                <div className="p-4 flex justify-end">
-                  <span className="bg-editorial-black text-white text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-sm">{t('home.recent.sold')}</span>
-                </div>
-              </div>
-              <div className="p-6 relative z-10 bg-white">
-                <div className="mb-6">
-                  <h3 className="text-xl font-bold leading-tight mb-1 group-hover:text-brand-blue-600 transition-colors">{t('home.recent.card3.title')}</h3>
-                  <p className="text-sm text-gray-500">{t('home.location.daimus')}</p>
-                </div>
-                <div className="space-y-3 bg-gray-50 p-4 rounded-md">
-                  <div className="flex justify-between items-center pb-2 border-b border-gray-200 border-dashed">
-                    <span className="text-xs font-bold uppercase text-gray-400 tracking-wide">{t('home.recent.listed')}</span>
-                    <span className="text-sm font-semibold text-gray-400">€890k</span>
-                  </div>
-                  <div className="flex justify-between items-center pb-2 border-b border-gray-200 border-dashed">
-                    <span className="text-xs font-bold uppercase text-gray-400 tracking-wide">{t('home.recent.sold_price')}</span>
-                    <span className="text-sm font-bold text-green-600">€880k</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-xs font-bold uppercase text-gray-400 tracking-wide">{t('home.recent.time')}</span>
-                    <span className="text-sm font-bold text-editorial-black">21 {t('home.recent.days')}</span>
-                  </div>
-                </div>
-              </div>
-            </Link>
-            {/* Card 4 */}
-            <Link to="/properties" className="snap-center shrink-0 w-[85vw] md:w-[500px] bg-white rounded-lg overflow-hidden shadow-editorial hover:shadow-xl transition-shadow duration-300 block group">
-              <div className="w-full h-64 bg-cover bg-center group-hover:scale-105 transition-transform duration-700" style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuBTz0ljfPf17SA1GJ6uA8AFFp69r4QCIx9qAKheWPLsqb3SR9EiRThZW2pQrqT8Xq0ZMQkBXl7TkM-iW4Lv75dvy8PdbK9O30nJ35aX4fCg0S2feJ6JRYQQUGVRE_VdRjOjItcvyPHOCtbhJGoZS93wph_XgdsTjs-JRfjRxvz_Higm4ZVlH2KwIft4FCcypZ5tuZEmBATyNa2qENR5ZQOIjoGYF2i9mkiBN3wOiCJV8sOAVou3Y3J1JWjUk8qVNOGMTPeMEmtA")' }}>
-                <div className="p-4 flex justify-end">
-                  <span className="bg-editorial-black text-white text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-sm">{t('home.recent.sold')}</span>
-                </div>
-              </div>
-              <div className="p-6 relative z-10 bg-white">
-                <div className="mb-6">
-                  <h3 className="text-xl font-bold leading-tight mb-1 group-hover:text-brand-blue-600 transition-colors">{t('home.recent.card4.title')}</h3>
-                  <p className="text-sm text-gray-500">{t('home.location.camino')}</p>
-                </div>
-                <div className="space-y-3 bg-gray-50 p-4 rounded-md">
-                  <div className="flex justify-between items-center pb-2 border-b border-gray-200 border-dashed">
-                    <span className="text-xs font-bold uppercase text-gray-400 tracking-wide">{t('home.recent.listed')}</span>
-                    <span className="text-sm font-semibold text-gray-400">€2.1M</span>
-                  </div>
-                  <div className="flex justify-between items-center pb-2 border-b border-gray-200 border-dashed">
-                    <span className="text-xs font-bold uppercase text-gray-400 tracking-wide">{t('home.recent.sold_price')}</span>
-                    <span className="text-sm font-bold text-green-600">€2.0M</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-xs font-bold uppercase text-gray-400 tracking-wide">{t('home.recent.time')}</span>
-                    <span className="text-sm font-bold text-editorial-black">45 {t('home.recent.days')}</span>
-                  </div>
-                </div>
-              </div>
-            </Link>
+            )}
           </div>
         </div>
       </section>

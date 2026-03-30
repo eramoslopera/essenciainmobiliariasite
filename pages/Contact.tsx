@@ -221,7 +221,7 @@ const Contact: React.FC = () => {
                       value={formData.firstName}
                       onChange={handleChange}
                       className={`w-full bg-white border ${errors.firstName ? 'border-red-500' : 'border-none'} rounded px-4 py-3 focus:ring-2 focus:ring-brand-blue-500`}
-                      placeholder="Jane"
+                      placeholder="Juan"
                     />
                     {errors.firstName && <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>}
                   </div>
@@ -233,7 +233,7 @@ const Contact: React.FC = () => {
                       value={formData.lastName}
                       onChange={handleChange}
                       className={`w-full bg-white border ${errors.lastName ? 'border-red-500' : 'border-none'} rounded px-4 py-3 focus:ring-2 focus:ring-brand-blue-500`}
-                      placeholder="Doe"
+                      placeholder="García"
                     />
                     {errors.lastName && <p className="text-red-500 text-xs mt-1">{errors.lastName}</p>}
                   </div>
@@ -247,7 +247,7 @@ const Contact: React.FC = () => {
                     value={formData.email}
                     onChange={handleChange}
                     className={`w-full bg-white border ${errors.email ? 'border-red-500' : 'border-none'} rounded px-4 py-3 focus:ring-2 focus:ring-brand-blue-500`}
-                    placeholder="jane@example.com"
+                    placeholder="juan@ejemplo.com"
                   />
                   {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
                 </div>

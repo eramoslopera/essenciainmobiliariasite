@@ -27,7 +27,7 @@ const BackToTop: React.FC = () => {
           transition={{ duration: 0.25 }}
           onClick={scrollToTop}
           aria-label="Volver arriba"
-          className="fixed bottom-6 left-6 z-50 w-14 h-14 bg-editorial-black border border-white/20 rounded-full shadow-lg flex items-center justify-center text-white hover:bg-brand-blue-500 hover:border-brand-blue-500 hover:scale-110 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500"
+          className="fixed bottom-6 left-6 z-50 w-14 h-14 bg-brand-blue-500 border border-brand-blue-500 rounded-full shadow-lg flex items-center justify-center text-white hover:bg-brand-blue-600 hover:border-brand-blue-600 hover:scale-110 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
