@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import StatsSection from '../components/StatsSection';
 import SEOHead from '../components/SEOHead';
+import InteractiveMarketingSection from '../components/InteractiveMarketingSection';
 import { Property } from '../src/types/property';
 import { fetchProperties } from '../src/utils/xmlParser';
 
@@ -97,6 +98,73 @@ const HomeContactForm: React.FC = () => {
 };
 
 
+const FEATURED_SOLD: Property[] = [
+  {
+    id: 'sold-1',
+    title: "Adosado Reformado",
+    location: "Benidoleig, Alicante",
+    price: "€140,000",
+    beds: 3,
+    baths: 2,
+    size: "120 m²",
+    image: "https://fotos15.apinmo.com/1909/27341402/3-1.jpg",
+    type: 'Townhouse',
+    dateListed: '2024-01-01',
+    lat: 38.7917,
+    lng: -0.0278,
+    status: 'sold',
+    priceFreq: 'sale'
+  },
+  {
+    id: 'sold-2',
+    title: "Casa de Pueblo con Encanto",
+    location: "Real de Gandía, Valencia",
+    price: "€164,900",
+    beds: 4,
+    baths: 2,
+    size: "180 m²",
+    image: "https://fotos15.apinmo.com/1909/23491575/15-1.jpg",
+    type: 'House',
+    dateListed: '2024-02-01',
+    lat: 38.949,
+    lng: -0.190,
+    status: 'sold',
+    priceFreq: 'sale'
+  },
+  {
+    id: 'sold-3',
+    title: "Apartamento Costero",
+    location: "Playa de Bellreguard",
+    price: "€170,000",
+    beds: 3,
+    baths: 2,
+    size: "95 m²",
+    image: "https://fotos15.apinmo.com/1909/26037790/9-1.jpg",
+    type: 'Apartment',
+    dateListed: '2024-03-01',
+    lat: 38.950,
+    lng: -0.150,
+    status: 'sold',
+    priceFreq: 'sale'
+  },
+  {
+    id: 'sold-4',
+    title: "Apartamento Familiar",
+    location: "Playa de Gandía",
+    price: "€215,000",
+    beds: 3,
+    baths: 2,
+    size: "105 m²",
+    image: "https://fotos15.apinmo.com/1909/25828355/10-1.jpg",
+    type: 'Apartment',
+    dateListed: '2024-02-15',
+    lat: 39.000,
+    lng: -0.160,
+    status: 'sold',
+    priceFreq: 'sale'
+  }
+];
+
 const Home: React.FC = () => {
   const { t, language } = useLanguage();
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -112,8 +180,16 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     const loadProperties = async () => {
-      const fetched = await fetchProperties();
-      const recent = fetched.filter(p => p.status === 'sold' || p.status === 'reserved');
+      let recent = [...FEATURED_SOLD];
+      try {
+        const fetched = await fetchProperties();
+        const apiRecent = fetched.filter(p => p.status === 'sold' || p.status === 'reserved');
+        if (apiRecent.length > 0) {
+            recent = [...recent, ...apiRecent];
+        }
+      } catch (err) {
+        console.error(err);
+      }
       const sorted = recent.sort((a,b) => {
         if (!a.dateListed || !b.dateListed) return 0;
         return new Date(b.dateListed).getTime() - new Date(a.dateListed).getTime();
@@ -209,107 +285,8 @@ const Home: React.FC = () => {
       {/* Stats Section — animated counters */}
       <StatsSection />
 
-      <section className="py-24 px-6 lg:px-24 bg-white">
-        <div className="max-w-[1440px] mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-gray-200 pb-8">
-            <div>
-              <h2 className="text-4xl lg:text-5xl font-black tracking-tight mb-4">{t('home.marketing.title')}</h2>
-              <p className="text-gray-500 max-w-md">{t('home.marketing.subtitle')}</p>
-            </div>
-            <Link to="/sell" className="hidden md:flex items-center gap-2 font-bold hover:text-brand-blue-600 transition-colors mt-6 md:mt-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500">
-              {t('home.marketing.link')} <span className="material-symbols-outlined">arrow_right_alt</span>
-            </Link>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[minmax(300px,auto)]">
-            <Link to="/sell" className="md:col-span-7 relative group overflow-hidden rounded bg-gray-100 block">
-              <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 grayscale hover:grayscale-0"
-                style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuDSY-PXU4Aos5QXaijac90faiHIS204YriutHKAaYujVG4SZWwVd-HQk8IKShLRCD2mrH-OIVWer2XgAErCzUC_oChNo4RnkugwMaJ3Y-zSOq4-4jfCFa4ISvMZbRaPTdOFCUDu2OiWp1iS4ocb6Hoi5XneGiWUooX_Q_oi2cHRd5pjRF8ffN10TAKH57NDYH0CIdA-DNBnj73Sz9ReE_PJrBw6i0hkrS7KR1gsgila22DVBrYFBJwsrMLzBagtmE9zU1ZrYHK8")' }}
-              ></div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
-              <div className="absolute bottom-0 left-0 p-8 text-white">
-                <span className="material-symbols-outlined text-4xl mb-4 text-brand-blue-500">chair</span>
-                <h3 className="text-2xl font-bold mb-2">{t('home.marketing.staging.title')}</h3>
-                <p className="text-gray-300 text-sm max-w-sm">{t('home.marketing.staging.desc')}</p>
-              </div>
-            </Link>
-            <Link to="/sell" className="md:col-span-5 row-span-2 relative group overflow-hidden rounded bg-gray-100 block">
-              <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 grayscale hover:grayscale-0"
-                style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuBeO_psb5EsZUge1Q9z9Z0VTEVDOkjmZqJ0_iWuqs1ZjDjturTC925sUpjY4SLbxjQNJNqlgkcv568Kjd5zvvCEIqbffK35jIWjZbAI_u5r_d_Sj57l_m9A8bJN7LcCmSlWATG8dzcBzvdTPFArI7AAtc--NaEpg0seD4lB3ek7ceC2iRhSFh-4fCJ4WP6rjzsj8Ow9cQB3NTjhprnKxcP9IcaFNAN9hsEGC0TUGR1IfZGlIpMPtAeaP1480Wg3sxZR8HyGCiot")' }}
-              ></div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
-              <div className="absolute bottom-0 left-0 p-8 text-white">
-                <span className="material-symbols-outlined text-4xl mb-4 text-brand-blue-500">public</span>
-                <h3 className="text-2xl font-bold mb-2">{t('home.marketing.syndication.title')}</h3>
-                <p className="text-gray-300 text-sm max-w-sm">{t('home.marketing.syndication.desc')}</p>
-              </div>
-            </Link>
-            <Link to="/sell" className="md:col-span-4 bg-editorial-black text-white p-8 flex flex-col justify-between rounded group block transition-colors hover:bg-gray-900">
-              <div>
-                <span className="material-symbols-outlined text-4xl mb-6 text-brand-blue-500">camera_alt</span>
-                <h3 className="text-xl font-bold mb-4">{t('home.marketing.visuals.title')}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed">
-                  {t('home.marketing.visuals.desc')}
-                </p>
-              </div>
-              <div className="mt-8 pt-8 border-t border-gray-700">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold uppercase tracking-widest text-gray-500 group-hover:text-white transition-colors">{t('home.marketing.readmore')}</span>
-                  <span className="material-symbols-outlined text-brand-blue-500">add_circle</span>
-                </div>
-              </div>
-            </Link>
-            <Link to="/sell" className="md:col-span-3 relative group overflow-hidden rounded bg-gray-100 block">
-              <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 grayscale"
-                style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuBTz0ljfPf17SA1GJ6uA8AFFp69r4QCIx9qAKheWPLsqb3SR9EiRThZW2pQrqT8Xq0ZMQkBXl7TkM-iW4Lv75dvy8PdbK9O30nJ35aX4fCg0S2feJ6JRYQQUGVRE_VdRjOjItcvyPHOCtbhJGoZS93wph_XgdsTjs-JRfjRxvz_Higm4ZVlH2KwIft4FCcypZ5tuZEmBATyNa2qENR5ZQOIjoGYF2i9mkiBN3wOiCJV8sOAVou3Y3J1JWjUk8qVNOGMTPeMEmtA")' }}
-              ></div>
-              <div className="absolute inset-0 flex items-center justify-center bg-black/40 hover:bg-black/20 transition-colors">
-                <span className="text-white font-bold text-lg border border-white px-4 py-2">{t('home.marketing.details')}</span>
-              </div>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Essencia — adapted from Landing */}
-      <section className="py-24 px-6 lg:px-12 bg-white border-b border-gray-100">
-        <div className="max-w-[1440px] mx-auto">
-          <div className="mb-16 border-b border-gray-100 pb-8 flex justify-between items-end">
-            <div>
-              <h2 className="text-4xl lg:text-5xl font-black tracking-tighter">{t('landing.why.title')}<br />Essencia</h2>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 pt-8">
-            <div>
-              <span className="text-3xl text-gray-200 font-black mb-4 block">01</span>
-              <h4 className="text-xs font-black tracking-[0.15em] mb-3">{t('landing.why.1.title')}</h4>
-              <p className="text-xs text-gray-500 font-medium leading-relaxed">{t('landing.why.1.desc')}</p>
-            </div>
-            <div>
-              <span className="text-3xl text-gray-200 font-black mb-4 block">02</span>
-              <h4 className="text-xs font-black tracking-[0.15em] mb-3">{t('landing.why.2.title')}</h4>
-              <p className="text-xs text-gray-500 font-medium leading-relaxed">{t('landing.why.2.desc')}</p>
-            </div>
-            <div>
-              <span className="text-3xl text-gray-200 font-black mb-4 block">03</span>
-              <h4 className="text-xs font-black tracking-[0.15em] mb-3">{t('landing.why.3.title')}</h4>
-              <p className="text-xs text-gray-500 font-medium leading-relaxed">{t('landing.why.3.desc')}</p>
-            </div>
-            <div>
-              <span className="text-3xl text-gray-200 font-black mb-4 block">04</span>
-              <h4 className="text-xs font-black tracking-[0.15em] mb-3">{t('landing.why.4.title')}</h4>
-              <p className="text-xs text-gray-500 font-medium leading-relaxed">{t('landing.why.4.desc')}</p>
-            </div>
-            <div>
-              <span className="text-3xl text-gray-200 font-black mb-4 block">05</span>
-              <h4 className="text-xs font-black tracking-[0.15em] mb-3">{t('landing.why.5.title')}</h4>
-              <p className="text-xs text-gray-500 font-medium leading-relaxed">{t('landing.why.5.desc')}</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Sticky Scroll Interactive Marketing Section */}
+      <InteractiveMarketingSection />
 
       <section className="py-24 bg-editorial-gray overflow-hidden">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-24">
