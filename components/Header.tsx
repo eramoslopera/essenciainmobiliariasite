@@ -33,7 +33,7 @@ const Header: React.FC = () => {
     `text-sm font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2 rounded-sm px-1 ${isActive(path) ? 'text-editorial-black border-b-2 border-brand-blue-500 pb-0.5' : 'text-gray-500 hover:text-brand-blue-600'}`;
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 transition-colors duration-300">
+    <header className="fixed top-0 left-0 w-full z-50 bg-white/70 backdrop-blur-xl border-b border-white/50 shadow-[0_4px_30px_rgba(0,0,0,0.03)] transition-colors duration-300">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
 
         {/* Logo */}
@@ -64,7 +64,7 @@ const Header: React.FC = () => {
 
             {/* Dropdown Content */}
             <div
-              className={`absolute top-[calc(100%-1px)] left-1/2 -translate-x-1/2 w-56 bg-white shadow-xl border border-gray-100 border-t-2 border-t-brand-blue-500 transition-all duration-200 transform ${isBuyOpen ? 'visible opacity-100 translate-y-0' : 'invisible opacity-0 translate-y-2'
+              className={`absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 w-56 bg-white shadow-diffusion border border-white/20 rounded-2xl overflow-hidden transition-all duration-200 transform ${isBuyOpen ? 'visible opacity-100 translate-y-0' : 'invisible opacity-0 translate-y-2'
                 }`}
               role="menu"
             >
@@ -114,7 +114,7 @@ const Header: React.FC = () => {
               <span className={`material-symbols-outlined text-sm transition-transform duration-200 ${isLangOpen ? 'rotate-180' : ''}`}>expand_more</span>
             </button>
             <div
-              className={`absolute top-full right-0 w-24 bg-white shadow-xl border border-gray-100 transition-all duration-200 transform ${isLangOpen ? 'visible opacity-100 translate-y-0' : 'invisible opacity-0 translate-y-2'
+              className={`absolute top-[calc(100%+8px)] right-0 w-24 bg-white shadow-diffusion border border-white/20 rounded-2xl overflow-hidden transition-all duration-200 transform ${isLangOpen ? 'visible opacity-100 translate-y-0' : 'invisible opacity-0 translate-y-2'
                 }`}
               role="menu"
               aria-label="Language options"
@@ -134,7 +134,7 @@ const Header: React.FC = () => {
 
           <Link
             to="/contact"
-            className="hidden sm:flex items-center justify-center h-10 px-6 bg-editorial-black text-white text-xs font-bold uppercase tracking-widest hover:bg-brand-blue-600 transition-all shadow-md hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
+            className="hidden sm:flex items-center justify-center h-10 px-6 bg-editorial-black text-white text-xs font-bold uppercase tracking-widest hover:bg-brand-blue-600 transition-all shadow-diffusion hover:shadow-diffusion-hover rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
           >
             {t('nav.contact')}
           </Link>
@@ -187,7 +187,7 @@ const Header: React.FC = () => {
         </div>
 
         <div className="mt-auto pt-8">
-          <Link to="/contact" className="flex items-center justify-center w-full h-14 bg-brand-blue-700 text-white font-bold uppercase tracking-widest hover:bg-brand-blue-500 hover:shadow-[0_8px_24px_rgba(34,211,238,0.35)] transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.98]">
+          <Link to="/contact" className="flex items-center justify-center w-full h-14 bg-brand-blue-700 text-white font-bold uppercase tracking-widest hover:bg-brand-blue-500 hover:shadow-diffusion-hover rounded-full transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.98]">
             {t('nav.contact')}
           </Link>
         </div>

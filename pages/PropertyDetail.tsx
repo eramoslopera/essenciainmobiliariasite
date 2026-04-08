@@ -159,16 +159,16 @@ const PropertyDetail: React.FC = () => {
                 {property.title}
               </h1>
               {property.ref && (
-                <p className="mt-2 text-xs text-gray-400 font-mono">Ref. {property.ref}</p>
+                <p className="mt-4 text-xs text-brand-blue-600 font-bold tracking-widest uppercase">Ref. {property.ref}</p>
               )}
             </div>
-            <div className="flex flex-col items-start lg:items-end">
-              <p className="text-3xl lg:text-5xl font-bold tracking-tight text-editorial-black mb-1">
+            <div className="flex flex-col items-start lg:items-end mt-6 lg:mt-0">
+              <p className="text-4xl lg:text-6xl font-light tracking-tighter tabular-nums text-editorial-black mb-1">
                 {property.price}
-                {property.priceFreq === 'rent' && <span className="text-lg font-normal text-gray-400 ml-1">/mes</span>}
+                {property.priceFreq === 'rent' && <span className="text-xl font-medium tracking-normal text-gray-400 ml-2">/mes</span>}
               </p>
               {property.size && parseInt(property.size) > 0 && (
-                <p className="text-sm text-gray-500 font-medium">
+                <p className="text-sm text-gray-500 font-bold tracking-widest uppercase mt-1">
                   {`€${Math.round(parseInt(property.price.replace(/\D/g, '')) / parseInt(property.size)).toLocaleString()}/m²`}
                 </p>
               )}
@@ -277,99 +277,83 @@ const PropertyDetail: React.FC = () => {
         >
           <div className="lg:col-span-8">
             {/* Property stats — staggered spring entrance */}
+            {/* Property stats — staggered spring entrance */}
+            <h2 className="sr-only">Atributos principales</h2>
             <motion.div
               variants={staggerContainer}
               initial="hidden"
               animate="visible"
-              className="flex flex-wrap gap-8 py-8 border-y border-gray-100 mb-10"
+              className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-y-8 gap-x-6 py-8 border-y border-gray-200/60 mb-12"
             >
               {property.beds ? (
-                <motion.div variants={statItem} className="flex items-center gap-3">
-                  <span className="material-symbols-outlined text-3xl text-gray-400 font-light">bed</span>
-                  <div>
-                    <p className="text-lg font-bold">{property.beds}</p>
-                    <p className="text-xs uppercase text-gray-400 tracking-wider">{t('detail.beds')}</p>
-                  </div>
+                <motion.div variants={statItem} className="flex flex-col gap-1 border-l pl-4 border-gray-200">
+                  <p className="text-xs uppercase text-gray-400 tracking-widest font-bold">{t('detail.beds')}</p>
+                  <p className="text-3xl font-light text-editorial-black tabular-nums tracking-tight">{property.beds}</p>
                 </motion.div>
               ) : null}
               {property.baths ? (
-                <motion.div variants={statItem} className="flex items-center gap-3">
-                  <span className="material-symbols-outlined text-3xl text-gray-400 font-light">bathtub</span>
-                  <div>
-                    <p className="text-lg font-bold">{property.baths}</p>
-                    <p className="text-xs uppercase text-gray-400 tracking-wider">{t('detail.baths')}</p>
-                  </div>
+                <motion.div variants={statItem} className="flex flex-col gap-1 border-l pl-4 border-gray-200">
+                  <p className="text-xs uppercase text-gray-400 tracking-widest font-bold">{t('detail.baths')}</p>
+                  <p className="text-3xl font-light text-editorial-black tabular-nums tracking-tight">{property.baths}</p>
                 </motion.div>
               ) : null}
               {property.size && (
-                <motion.div variants={statItem} className="flex items-center gap-3">
-                  <span className="material-symbols-outlined text-3xl text-gray-400 font-light">square_foot</span>
-                  <div>
-                    <p className="text-lg font-bold">{property.size}</p>
-                    <p className="text-xs uppercase text-gray-400 tracking-wider">{t('detail.interior')}</p>
-                  </div>
+                <motion.div variants={statItem} className="flex flex-col gap-1 border-l pl-4 border-gray-200">
+                  <p className="text-xs uppercase text-gray-400 tracking-widest font-bold">{t('detail.interior')}</p>
+                  <p className="text-3xl font-light text-editorial-black tabular-nums tracking-tight">{property.size}</p>
                 </motion.div>
               )}
               {property.plot && (
-                <motion.div variants={statItem} className="flex items-center gap-3">
-                  <span className="material-symbols-outlined text-3xl text-gray-400 font-light">landscape</span>
-                  <div>
-                    <p className="text-lg font-bold">{property.plot}</p>
-                    <p className="text-xs uppercase text-gray-400 tracking-wider">Parcela</p>
-                  </div>
+                <motion.div variants={statItem} className="flex flex-col gap-1 border-l pl-4 border-gray-200">
+                  <p className="text-xs uppercase text-gray-400 tracking-widest font-bold">Parcela</p>
+                  <p className="text-3xl font-light text-editorial-black tabular-nums tracking-tight">{property.plot}</p>
                 </motion.div>
               )}
               {hasGarage && (
-                <motion.div variants={statItem} className="flex items-center gap-3">
-                  <span className="material-symbols-outlined text-3xl text-gray-400 font-light">garage_home</span>
-                  <div>
-                    <p className="text-lg font-bold">Sí</p>
-                    <p className="text-xs uppercase text-gray-400 tracking-wider">{t('detail.garage')}</p>
-                  </div>
+                <motion.div variants={statItem} className="flex flex-col gap-1 border-l pl-4 border-gray-200">
+                  <p className="text-xs uppercase text-gray-400 tracking-widest font-bold">{t('detail.garage')}</p>
+                  <p className="text-3xl font-light text-editorial-black tracking-tight">Sí</p>
                 </motion.div>
               )}
               {property.pool && (
-                <motion.div variants={statItem} className="flex items-center gap-3">
-                  <span className="material-symbols-outlined text-3xl text-gray-400 font-light">pool</span>
-                  <div>
-                    <p className="text-lg font-bold">Sí</p>
-                    <p className="text-xs uppercase text-gray-400 tracking-wider">Piscina</p>
-                  </div>
+                <motion.div variants={statItem} className="flex flex-col gap-1 border-l pl-4 border-gray-200">
+                  <p className="text-xs uppercase text-gray-400 tracking-widest font-bold">Piscina</p>
+                  <p className="text-3xl font-light text-editorial-black tracking-tight">Sí</p>
                 </motion.div>
               )}
             </motion.div>
 
             <div className="prose prose-lg max-w-none mb-16">
-              <h3 className="text-2xl font-bold mb-6">{t('detail.about_property')} {property.title}</h3>
+              <h2 className="text-3xl font-bold mb-6 tracking-tight text-editorial-black">{t('detail.about_property')}</h2>
               {descParagraphs.length > 0 ? (
-                descParagraphs.map((p, i) => <p key={i} className="text-gray-600 leading-relaxed mb-6">{p}</p>)
+                descParagraphs.map((p, i) => <p key={i} className="text-gray-600 leading-[1.8] font-medium mb-6">{p}</p>)
               ) : (
-                <p className="text-gray-600 leading-relaxed mb-6">No description available.</p>
+                <p className="text-gray-600 leading-[1.8] font-medium mb-6">No description available.</p>
               )}
             </div>
 
-            <div className="bg-editorial-gray p-8 rounded-sm mb-12">
-              <h4 className="font-bold text-lg mb-6 uppercase tracking-widest">{t('detail.amenities')}</h4>
+            <div className="bg-editorial-gray p-8 sm:p-10 rounded-sm mb-12 border border-gray-100">
+              <h3 className="text-sm font-bold mb-8 uppercase tracking-[0.2em] text-editorial-black">{t('detail.amenities')}</h3>
               <motion.div
                 variants={staggerContainer}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.15 }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-8"
+                className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-12"
               >
                 {property.features && property.features.length > 0 ? (
                   property.features.map((feature, idx) => (
                     <motion.div
                       key={idx}
                       variants={statItem}
-                      className="flex items-center gap-3"
+                      className="flex items-center gap-4 py-3 border-b border-gray-200/50"
                     >
-                      <span className="material-symbols-outlined text-brand-blue-500 text-sm">check_circle</span>
-                      <span className="text-sm font-medium">{translateFeature(feature, language as 'es' | 'en' | 'fr' | 'de' | 'va')}</span>
+                      <span className="material-symbols-outlined text-brand-blue-500 text-lg font-light">check</span>
+                      <span className="text-[15px] font-medium text-gray-800">{translateFeature(feature, language as 'es' | 'en' | 'fr' | 'de' | 'va')}</span>
                     </motion.div>
                   ))
                 ) : (
-                  <p className="text-gray-500 italic col-span-2">Sin características listadas.</p>
+                  <p className="text-gray-500 col-span-2 text-sm italic">Sin características listadas.</p>
                 )}
               </motion.div>
             </div>

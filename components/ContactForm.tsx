@@ -36,8 +36,8 @@ const ContactForm: React.FC<ContactFormProps> = ({ theme = 'dark', defaultReason
   };
 
   const containerClasses = isDark
-    ? "bg-white/5 border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] rounded-xl p-8 backdrop-blur-md"
-    : "bg-white border border-gray-100 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] rounded-xl p-8";
+    ? "bg-white/5 border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] rounded-3xl p-8 backdrop-blur-md"
+    : "bg-white border border-gray-100 shadow-diffusion rounded-3xl p-8";
 
   const labelClasses = `block text-xs font-bold uppercase tracking-widest mb-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`;
   const inputClasses = `w-full bg-transparent border-b rounded-none px-0 py-3 text-sm focus:outline-none transition-colors ${
@@ -86,10 +86,10 @@ const ContactForm: React.FC<ContactFormProps> = ({ theme = 'dark', defaultReason
           </div>
           <button 
             type="submit" 
-            className={`w-full font-bold py-4 rounded-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-[0.98] flex items-center justify-center gap-2 text-xs tracking-[0.2em] uppercase mt-6 border ${
+            className={`w-full font-bold py-4 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-[0.98] flex items-center justify-center gap-2 text-xs tracking-[0.2em] uppercase mt-6 border ${
               isDark
-                ? 'bg-white text-editorial-black border border-gray-200 hover:bg-gray-50 hover:border-gray-300 focus:ring-white shadow-sm'
-                : 'bg-editorial-black text-white border-transparent hover:bg-gray-900 focus:ring-editorial-black shadow-lg shadow-black/10'
+                ? 'bg-white text-editorial-black border border-gray-200 hover:bg-gray-50 hover:border-gray-300 hover:-translate-y-0.5 focus:ring-white shadow-sm'
+                : 'bg-editorial-black text-white border-transparent hover:bg-gray-900 hover:shadow-diffusion-hover hover:-translate-y-0.5 focus:ring-editorial-black shadow-diffusion'
             }`}
           >
             {t('home.contact.send') || 'Enviar mensaje'}

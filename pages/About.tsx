@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import SEOHead from '../components/SEOHead';
+import { motion } from 'framer-motion';
 
 const About: React.FC = () => {
   const { t } = useLanguage();
@@ -12,25 +13,32 @@ const About: React.FC = () => {
         description="Conoce a Essencia Inmobiliaria: la agencia inmobiliaria premium de Gandia centrada en marketing editorial, atención personalizada y resultados excepcionales."
         canonical="https://essenciainmobiliaria.com/about"
       />
-      <section className="relative pt-32 pb-24 bg-editorial-black text-white overflow-hidden">
+      <section className="relative pt-40 pb-32 bg-editorial-black text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/cubes.png")' }}></div>
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
-          <span className="text-brand-blue-600 font-bold tracking-widest uppercase text-xs mb-6 block">{t('about.agency')}</span>
-          <h1 className="text-5xl md:text-7xl font-light tracking-tighter mb-12 max-w-4xl leading-[1.1]">
-            {t('about.title')}
-          </h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-gray-800 pt-12">
-            <div>
-              <p className="text-xl font-medium leading-relaxed text-gray-200">
-                {t('about.intro.p1')}
-              </p>
-            </div>
-            <div>
-              <p className="text-gray-400 leading-relaxed mb-6">
-                {t('about.intro.p2')}
-              </p>
-            </div>
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10 flex flex-col lg:flex-row items-end justify-between gap-12">
+          
+          <div className="flex-1 max-w-4xl">
+            <motion.span 
+              initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+              className="text-white/60 font-black tracking-[0.25em] uppercase text-[10px] mb-6 block"
+            >
+              {t('about.agency')}
+            </motion.span>
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
+              className="font-display text-6xl md:text-8xl font-black tracking-[-0.03em] leading-[0.95]"
+            >
+              {t('about.title')}
+            </motion.h1>
           </div>
+
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }}
+            className="lg:w-1/3 flex flex-col gap-6 text-gray-400 text-lg leading-relaxed font-medium"
+          >
+            <p className="text-white/90 text-xl font-bold">{t('about.intro.p1')}</p>
+            <p>{t('about.intro.p2')}</p>
+          </motion.div>
         </div>
       </section>
 

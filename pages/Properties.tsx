@@ -349,20 +349,20 @@ const Properties: React.FC = () => {
                         ref={(el) => { if (el) propertyRefs.current.set(property.id, el); }}
                         onMouseEnter={() => setActivePropertyId(property.id)}
                         onMouseLeave={() => setActivePropertyId(null)}
-                        className={`rounded-sm transition-all duration-300 ${activePropertyId === property.id ? 'ring-2 ring-editorial-black ring-offset-4 shadow-md' : 'hover:shadow-md'}`}
+                        className={`group relative flex flex-col p-3 rounded-3xl transition-all duration-500 ease-out bg-white ${activePropertyId === property.id ? 'shadow-diffusion-hover -translate-y-1 ring-1 ring-black/5' : 'hover:shadow-diffusion-hover hover:-translate-y-1 hover:ring-1 hover:ring-black/5 border border-transparent'}`}
                       >
                         <Link to={`/property/${property.id}`} className="group cursor-pointer block">
-                          <div className="relative aspect-[3/2] overflow-hidden rounded-sm bg-gray-100 mb-3">
-                            {/* Image */}
-                            <div
-                              className={`absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 ${property.isComingSoon ? 'grayscale hover:grayscale-0' : ''}`}
-                              style={{ backgroundImage: `url("${property.image}")` }}
-                            ></div>
+                            <div className="relative aspect-[3/2] overflow-hidden rounded-2xl bg-gray-100 mb-4">
+                              {/* Image */}
+                              <div
+                                className={`absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105 group-hover:brightness-105 ${property.isComingSoon ? 'grayscale hover:grayscale-0' : ''}`}
+                                style={{ backgroundImage: `url("${property.image}")` }}
+                              ></div>
 
                             {/* Save Button */}
                             <button
                               onClick={(e) => toggleSave(e, property.id)}
-                              className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-white backdrop-blur-sm flex items-center justify-center hover:bg-gray-100 transition-colors shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500"
+                              className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-white/70 backdrop-blur-md border border-white/50 flex items-center justify-center hover:bg-white hover:scale-110 transition-all shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500"
                               aria-label={savedProperties.has(property.id) ? "Unsave property" : "Save property"}
                             >
                               <span
@@ -391,14 +391,11 @@ const Properties: React.FC = () => {
                                 );
                               }
                               // Standard badges
-                              const bgClass = badge.variant === 'primary' ? 'bg-brand-blue-600' : (badge.variant === 'white' ? 'bg-white' : (badge.variant === 'black' ? 'bg-editorial-black' : 'bg-gray-100'));
-                              const textClass = badge.variant === 'primary' ? 'text-white' : (badge.variant === 'white' ? 'text-editorial-black' : (badge.variant === 'black' ? 'text-white' : 'text-gray-800'));
-
-                              // Check if it is the recently sold badge to apply animation
                               const isSoldBadge = badge.variant === 'black' && badge.text === t('properties.badges.sold');
+                              const glassClass = isSoldBadge ? 'bg-editorial-black/80 text-white border border-white/10' : 'bg-white/70 text-editorial-black border border-white/50';
 
                               return (
-                                <div key={i} className={`absolute top-4 left-4 ${bgClass} ${textClass} px-3 py-1 text-xs font-bold tracking-widest uppercase rounded-sm shadow-sm ${i > 0 ? 'mt-8' : ''} ${isSoldBadge ? 'animate-badge-in' : ''}`}>
+                                <div key={i} className={`absolute top-4 left-4 ${glassClass} backdrop-blur-md px-3 py-1.5 text-[10px] font-black tracking-[0.2em] uppercase rounded-full shadow-sm ${i > 0 ? 'mt-10' : ''} ${isSoldBadge ? 'animate-badge-in' : ''}`}>
                                   {badge.text}
                                 </div>
                               );
@@ -406,16 +403,16 @@ const Properties: React.FC = () => {
                           </div>
 
                           {/* Info */}
-                          <div className="flex justify-between items-start mb-2">
-                              <div>
-                                <h3 className="text-base font-bold text-editorial-black leading-tight group-hover:text-brand-blue-600 transition-colors">{property.title}</h3>
-                                <p className="text-xs text-gray-500 font-medium">{property.location}</p>
+                          <div className="flex flex-col gap-1 px-1 mb-3">
+                              <div className="flex justify-between items-start">
+                                <h3 className="text-lg font-black text-editorial-black leading-tight group-hover:text-brand-blue-600 transition-colors pr-2 line-clamp-1">{property.title}</h3>
+                                <span className={`text-lg font-black whitespace-nowrap ${property.price === 'On Request' ? 'text-gray-400' : 'text-brand-blue-600'}`}>{property.price}</span>
                               </div>
-                              <span className={`text-base font-bold ${property.price === 'On Request' ? 'text-gray-400' : 'text-brand-blue-600'}`}>{property.price}</span>
+                              <p className="text-sm text-gray-500 font-medium">{property.location}</p>
                           </div>
 
                           {/* Features */}
-                          <div className="flex items-center gap-5 text-xs font-bold text-gray-400 uppercase tracking-wide border-t border-gray-100 pt-3 mt-1">
+                          <div className="flex items-center gap-4 text-[11px] font-bold text-gray-400 uppercase tracking-widest border-t border-gray-100 pt-3 px-1">
                             {property.beds && (
                               <span className="flex items-center gap-1.5"><span className="material-symbols-outlined text-base">bed</span> {property.beds} {t('properties.card.beds')}</span>
                             )}
@@ -436,9 +433,9 @@ const Properties: React.FC = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}
-                          className="w-full mt-3 py-2 border border-gray-200 hover:border-[#25D366] text-editorial-black hover:text-[#25D366] text-xs font-bold uppercase tracking-widest hover:bg-[#25D366]/5 transition-colors rounded-sm flex items-center justify-center gap-2"
+                          className="w-full mt-4 py-2.5 border border-gray-200 text-editorial-black hover:!text-[#25D366] hover:!border-[#25D366] group-hover:border-editorial-black group-hover:text-editorial-black text-[11px] font-black uppercase tracking-[0.2em] transition-colors rounded-full flex items-center justify-center gap-2"
                         >
-                          <WhatsappLogo weight="fill" className="w-4 h-4" aria-hidden="true" />
+                          <WhatsappLogo weight="fill" className="w-5 h-5 transition-transform group-hover:scale-110" aria-hidden="true" />
                           {t('detail.contact_agent')}
                         </a>
                       </div>

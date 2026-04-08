@@ -182,14 +182,14 @@ const Home: React.FC = () => {
           </motion.span>
           <motion.h1 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display text-5xl sm:text-7xl lg:text-8xl font-black text-editorial-black mb-6 leading-none tracking-tighter drop-shadow-sm"
+            className="font-display text-5xl sm:text-7xl lg:text-8xl md:leading-[0.95] font-black text-editorial-black mb-6 tracking-[-0.03em] drop-shadow-sm"
           >
             {t('home.hero.title1')}<br />
             <span className="text-brand-blue-500 font-extrabold">{t('home.hero.title2')}</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-lg md:text-xl text-gray-600 max-w-2xl mb-12 font-medium leading-relaxed"
+            className="text-lg md:text-xl text-gray-800/90 max-w-2xl mb-12 font-medium leading-[1.6] tracking-tight"
           >
             {t('home.hero.subtitle')}
           </motion.p>
@@ -197,10 +197,10 @@ const Home: React.FC = () => {
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-col sm:flex-row items-center gap-6"
           >
-            <Link to="/valuation" className="h-14 px-10 bg-brand-blue-700 hover:bg-brand-blue-500 text-white text-xs font-bold tracking-[0.15em] uppercase rounded-sm shadow-[0_10px_40px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_40px_-5px_rgba(34,211,238,0.35)] hover:-translate-y-1 active:scale-[0.98] active:translate-y-0 transition-all duration-300 flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2">
+            <Link to="/valuation" className="h-14 px-10 bg-editorial-black text-white text-[11px] font-black tracking-[0.2em] uppercase rounded-full shadow-diffusion hover:shadow-diffusion-hover hover:-translate-y-1 active:scale-[0.98] active:translate-y-0 transition-all duration-300 flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-editorial-black focus-visible:ring-offset-2">
               {t('home.hero.cta.valuation')}
             </Link>
-            <Link to="/properties" className="h-14 px-10 group text-editorial-black font-bold text-xs uppercase tracking-[0.15em] bg-white border border-gray-200/50 rounded-sm hover:bg-gray-50 hover:border-gray-300 hover:shadow-[0_8px_24px_rgba(0,0,0,0.1)] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500">
+            <Link to="/properties" className="h-14 px-10 group text-editorial-black font-black text-[11px] uppercase tracking-[0.2em] bg-white/70 backdrop-blur-md border border-white/50 rounded-full hover:bg-white hover:border-white hover:shadow-diffusion-hover active:scale-[0.98] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-editorial-black">
               {t('home.hero.cta.sold')}
               <span className="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
             </Link>
