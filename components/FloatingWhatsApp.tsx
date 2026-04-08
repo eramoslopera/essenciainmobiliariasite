@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { WhatsappLogo } from '@phosphor-icons/react';
 
 const FloatingWhatsApp: React.FC = () => {
     const whatsappUrl = "https://wa.me/34647803355";
@@ -60,24 +61,10 @@ const FloatingWhatsApp: React.FC = () => {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative w-16 h-16 bg-[#25D366] rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform duration-300 group"
+                className="w-[60px] h-[60px] bg-[#25d366] rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.15)] flex items-center justify-center hover:scale-110 hover:shadow-[0_6px_16px_rgba(37,211,102,0.3)] transition-all duration-300 z-50 float-right"
                 aria-label="Contactar por WhatsApp"
             >
-                {/* Ping Animation */}
-                {!isVisible && (
-                    <div className="absolute inset-0 bg-white rounded-full opacity-0 group-hover:animate-ping"></div>
-                )}
-
-                {/* Notification Badge */}
-                <div className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 border-2 border-white rounded-full flex items-center justify-center">
-                    <span className="text-[10px] font-bold text-white">1</span>
-                </div>
-
-                <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-                    alt="WhatsApp"
-                    className="w-8 h-8 filter brightness-0 invert"
-                />
+                <WhatsappLogo weight="fill" className="w-8 h-8 text-white" />
             </a>
         </div>
     );

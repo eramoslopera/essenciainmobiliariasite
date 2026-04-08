@@ -4,6 +4,7 @@ import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaf
 import L from 'leaflet';
 import { useLanguage } from '../context/LanguageContext';
 import SEOHead from '../components/SEOHead';
+import { motion } from 'framer-motion';
 
 // Fix icon issue (same as in Properties)
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -47,9 +48,15 @@ const Valuation: React.FC = () => {
       description="¿Cuánto vale tu vivienda? Solicita una valoración gratuita y profesional de tu propiedad en Gandia, Oliva, Denia o la costa de Valencia con Essencia Inmobiliaria."
       canonical="https://essenciainmobiliaria.com/valuation"
     />
-    <main className="flex-grow pt-28 pb-20 px-6 lg:px-12">
+    <main className="flex-grow pt-28 pb-20 px-4 sm:px-6 lg:px-12 overflow-hidden">
       <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
-        <div className="lg:col-span-7 xl:col-span-8">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }} 
+          whileInView={{ opacity: 1, y: 0 }} 
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} 
+          className="lg:col-span-7 xl:col-span-8"
+        >
           <div className="mb-10">
             <div className="flex justify-between items-end mb-3">
               <span className="text-xs font-bold uppercase tracking-widest text-brand-blue-600">{t('valuation.process.step1_of_4')}</span>
@@ -59,8 +66,8 @@ const Valuation: React.FC = () => {
               <div className="h-full bg-brand-blue-500 w-1/4 rounded-full"></div>
             </div>
           </div>
-          <div className="bg-white rounded-xl shadow-editorial p-8 md:p-12 border border-gray-100">
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-4 text-editorial-black leading-[1.1]">
+          <div className="bg-white rounded-sm p-8 md:p-12 border border-gray-100">
+            <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-4 text-editorial-black leading-[1.1]">
               1. {t('valuation.step1')}
             </h2>
             <p className="text-gray-500 mb-10 text-lg">
@@ -77,7 +84,7 @@ const Valuation: React.FC = () => {
                       <span className="material-symbols-outlined text-gray-400 group-focus-within:text-brand-blue-500 transition-colors">search</span>
                     </div>
                     <input
-                      className="block w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-lg text-lg font-medium text-editorial-black placeholder-gray-400 focus:ring-2 focus:ring-brand-blue-500/20 focus:border-brand-blue-500 transition-all shadow-sm"
+                      className="block w-full pl-12 pr-4 py-4 bg-transparent border-b-2 border-gray-200 rounded-none text-xl md:text-2xl font-bold text-editorial-black placeholder-gray-400 focus:outline-none focus:border-editorial-black transition-colors focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:border-transparent"
                       id="address"
                       placeholder={t('valuation.placeholder')}
                       type="text"
@@ -86,7 +93,7 @@ const Valuation: React.FC = () => {
                 </div>
 
                 {/* Interactive Map Section */}
-                <div className="rounded-xl overflow-hidden border border-gray-200 relative h-64 md:h-96 w-full z-0 shadow-inner">
+                <div className="rounded-sm overflow-hidden border border-gray-200 relative h-64 md:h-96 w-full z-0 shadow-inner">
                   <MapContainer center={[38.967, -0.181]} zoom={13} scrollWheelZoom={false} className="h-full w-full">
                     <TileLayer
                       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -100,26 +107,26 @@ const Valuation: React.FC = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-xs font-bold text-gray-500 mb-2 uppercase tracking-wide" htmlFor="floor">
+                    <label className="block text-xs font-bold text-gray-500 mb-2 uppercase tracking-[0.15em]" htmlFor="floor">
                       {t('valuation.form.floor')}
                     </label>
-                    <input className="block w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-base focus:ring-1 focus:ring-brand-blue-500 focus:border-brand-blue-500" id="floor" placeholder="e.g. 4" type="text" />
+                    <input className="block w-full px-0 py-3 bg-transparent border-b border-gray-200 rounded-none text-base focus:outline-none focus:border-editorial-black focus-visible:ring-2 focus-visible:ring-brand-blue-500 transition-colors placeholder-gray-400" id="floor" placeholder="e.g. 4" type="text" />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-gray-500 mb-2 uppercase tracking-wide" htmlFor="door">
+                    <label className="block text-xs font-bold text-gray-500 mb-2 uppercase tracking-[0.15em]" htmlFor="door">
                       {t('valuation.form.door')}
                     </label>
-                    <input className="block w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-base focus:ring-1 focus:ring-brand-blue-500 focus:border-brand-blue-500" id="door" placeholder="e.g. B" type="text" />
+                    <input className="block w-full px-0 py-3 bg-transparent border-b border-gray-200 rounded-none text-base focus:outline-none focus:border-editorial-black focus-visible:ring-2 focus-visible:ring-brand-blue-500 transition-colors placeholder-gray-400" id="door" placeholder="e.g. B" type="text" />
                   </div>
                 </div>
                 <div className="pt-6 border-t border-gray-100 flex items-center justify-between">
-                  <Link to="/" className="text-sm font-bold text-gray-500 hover:text-editorial-black transition-colors flex items-center gap-2">
-                    <span className="material-symbols-outlined text-lg">arrow_back</span>
+                  <Link to="/" className="text-sm font-bold text-gray-500 hover:text-editorial-black transition-colors flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm">
+                    <span className="material-symbols-outlined text-lg" aria-hidden="true">arrow_back</span>
                     {t('valuation.back')}
                   </Link>
-                  <button className="px-8 py-4 bg-brand-blue-600 hover:bg-brand-blue-700 text-white text-base font-bold rounded-lg shadow-lg shadow-brand-blue-500/30 transition-all transform hover:-translate-y-0.5 flex items-center gap-2" type="submit">
+                  <button className="px-8 py-4 bg-brand-blue-700 hover:bg-brand-blue-500 text-white text-xs font-bold uppercase tracking-[0.15em] rounded-sm shadow-[0_10px_40px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_40px_-5px_rgba(34,211,238,0.4)] hover:-translate-y-1 transition-all duration-300 active:scale-[0.98] flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-blue-500" type="submit">
                     {t('valuation.continue')}
-                    <span className="material-symbols-outlined text-xl">arrow_forward</span>
+                    <span className="material-symbols-outlined text-sm" aria-hidden="true">arrow_forward</span>
                   </button>
                 </div>
               </div>
@@ -129,9 +136,15 @@ const Valuation: React.FC = () => {
             <span className="material-symbols-outlined text-base">lock</span>
             {t('valuation.secure')}
           </p>
-        </div>
-        <div className="lg:col-span-5 xl:col-span-4 flex flex-col gap-8 lg:pt-16">
-          <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm relative overflow-hidden group">
+        </motion.div>
+        <motion.div 
+          initial={{ opacity: 0, x: 30 }} 
+          whileInView={{ opacity: 1, x: 0 }} 
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }} 
+          className="lg:col-span-5 xl:col-span-4 flex flex-col gap-8 lg:pt-16"
+        >
+          <div className="bg-white p-6 rounded-sm border border-gray-100 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] relative overflow-hidden group">
             <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
               <span className="material-symbols-outlined text-6xl text-brand-blue-500">timer</span>
             </div>
@@ -172,16 +185,16 @@ const Valuation: React.FC = () => {
               <p className="text-xs text-gray-500 uppercase tracking-widest font-bold mt-1">{t('valuation.valued_ytd')}</p>
             </div>
           </div>
-          <div className="bg-gray-100 rounded-lg p-5 flex items-center justify-between">
+          <div className="bg-gray-translate-y-50 rounded-sm p-5 border border-gray-100 flex items-center justify-between">
             <div>
               <p className="text-sm font-bold text-editorial-black">{t('valuation.help.title')}</p>
               <p className="text-xs text-gray-500">{t('valuation.help.subtitle')}</p>
             </div>
-            <Link to="/contact" className="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-brand-blue-500 hover:text-white transition-colors shadow-sm">
-              <span className="material-symbols-outlined">call</span>
+            <Link to="/contact" aria-label="Contact Support" className="w-10 h-10 bg-white border border-gray-200 rounded-sm flex items-center justify-center hover:bg-editorial-black hover:text-white transition-all active:scale-[0.98] shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500">
+              <span className="material-symbols-outlined" aria-hidden="true">call</span>
             </Link>
           </div>
-        </div>
+        </motion.div>
       </div>
     </main>
     </>

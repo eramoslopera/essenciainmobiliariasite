@@ -6,6 +6,28 @@ import { fetchProperties } from '../src/utils/xmlParser';
 import { Property } from '../src/types/property';
 import { translateFeature } from '../src/utils/translator';
 import SEOHead from '../components/SEOHead';
+import { motion, AnimatePresence } from 'framer-motion';
+import { WhatsappLogo } from '@phosphor-icons/react';
+
+// ─── Animation variants ───────────────────────────────────────────────────────
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.08, duration: 0.7, ease: [0.16, 1, 0.3, 1] },
+  }),
+};
+
+const staggerContainer = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.07 } },
+};
+
+const statItem = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 280, damping: 22 } },
+};
 
 const PropertyDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -46,10 +68,39 @@ const PropertyDetail: React.FC = () => {
     alert("Downloading area guide...");
   };
 
+  // Derive useful flags from CRM data
+  const hasGarage = property?.features?.some(f => f.toLowerCase().includes('garage')) ?? false;
+
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center pt-20">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+      <div className="min-h-[100dvh] pt-24 pb-16">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
+          {/* Title skeleton */}
+          <div className="animate-pulse mb-8">
+            <div className="h-4 w-32 bg-gray-200 rounded mb-4" />
+            <div className="h-14 w-3/4 bg-gray-200 rounded mb-3" />
+            <div className="h-10 w-1/3 bg-gray-200 rounded" />
+          </div>
+          {/* Hero image skeleton */}
+          <div className="w-full h-[50vh] md:h-[65vh] bg-gray-200 animate-pulse rounded-sm mb-6" />
+          {/* Thumbnails skeleton */}
+          <div className="grid grid-cols-6 gap-3 mb-20">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <div key={i} className="aspect-[4/3] bg-gray-200 animate-pulse rounded" />
+            ))}
+          </div>
+          {/* Body skeleton */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <div className="lg:col-span-8 animate-pulse space-y-4">
+              <div className="h-4 w-full bg-gray-200 rounded" />
+              <div className="h-4 w-5/6 bg-gray-200 rounded" />
+              <div className="h-4 w-4/6 bg-gray-200 rounded" />
+            </div>
+            <div className="lg:col-span-4">
+              <div className="h-72 bg-gray-200 animate-pulse rounded-sm" />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -76,70 +127,118 @@ const PropertyDetail: React.FC = () => {
     <>
       <SEOHead
         title={`${property.title} — ${property.location}`}
-        description={`${property.type} en ${property.location}. ${property.beds ? property.beds + ' habitaciones, ' : ''}${property.baths ? property.baths + ' baños, ' : ''}${property.area ? property.area + ' m². ' : ''}${property.price ? property.price + '.' : ''}`}
+        description={`${property.type} en ${property.location}. ${property.beds ? property.beds + ' habitaciones, ' : ''}${property.baths ? property.baths + ' baños, ' : ''}${property.size ? property.size + '. ' : ''}${property.price ? property.price + '.' : ''}`}
         canonical={`https://essenciainmobiliaria.com/property/${property.id}`}
         ogImage={property.images?.[0]}
       />
-      <main className="pt-28 pb-16">
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-12 mb-8">
+      <main className="pt-24 pb-16 overflow-hidden">
+        <motion.div
+          variants={fadeUp}
+          custom={0}
+          initial="hidden"
+          animate="visible"
+          className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 mb-8"
+        >
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div className="max-w-3xl">
-              <div className="flex items-center gap-2 mb-4">
-                {property.type === 'Villa' && <span className="px-2 py-1 bg-black text-white text-[10px] uppercase font-bold tracking-widest rounded-sm">{t('detail.label.exclusive')}</span>}
+              <div className="flex flex-wrap items-center gap-2 mb-4">
+                {/* Status badge */}
+                {property.status === 'sold' && (
+                  <span className="px-2 py-1 bg-red-600 text-white text-[10px] uppercase font-bold tracking-widest rounded-sm">Vendida</span>
+                )}
+                {property.status === 'reserved' && (
+                  <span className="px-2 py-1 bg-amber-500 text-white text-[10px] uppercase font-bold tracking-widest rounded-sm">Reservada</span>
+                )}
+                {/* priceFreq badge */}
+                {property.priceFreq === 'rent' && (
+                  <span className="px-2 py-1 bg-brand-blue-700 text-white text-[10px] uppercase font-bold tracking-widest rounded-sm">Alquiler</span>
+                )}
                 <span className="text-xs font-bold uppercase tracking-widest text-gray-500">{property.location}</span>
               </div>
-              <h1 className="text-5xl lg:text-7xl font-light tracking-tighter text-editorial-black leading-[0.95]">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-light tracking-tighter text-editorial-black leading-[0.95]">
                 {property.title}
               </h1>
-            </div>
-            <div className="flex flex-col items-start lg:items-end">
-              <p className="text-4xl lg:text-5xl font-bold tracking-tight text-editorial-black mb-1">{property.price}</p>
-              {property.size && <p className="text-sm text-gray-500 font-medium">{parseInt(property.price.replace(/\D/g, '')) / parseInt(property.size) > 0 ? "€" + Math.round(parseInt(property.price.replace(/\D/g, '')) / parseInt(property.size)).toLocaleString() + "/m²" : ""}</p>}
-            </div>
-          </div>
-        </div>
-
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-12 mb-24">
-          <div className="relative w-full h-[50vh] md:h-[70vh] bg-gray-100 rounded-lg overflow-hidden group mb-4">
-            {/* Main Image with Transition */}
-            <div className="w-full h-full relative">
-              {images.length > 0 ? images.map((img, index) => (
-                <div
-                  key={index}
-                  className={`absolute inset-0 bg-cover bg-center transition-opacity duration-700 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
-                  style={{ backgroundImage: `url("${img}")` }}
-                />
-              )) : (
-                <div className="absolute inset-0 flex items-center justify-center bg-gray-200 text-gray-400">No images available</div>
+              {property.ref && (
+                <p className="mt-2 text-xs text-gray-400 font-mono">Ref. {property.ref}</p>
               )}
             </div>
+            <div className="flex flex-col items-start lg:items-end">
+              <p className="text-3xl lg:text-5xl font-bold tracking-tight text-editorial-black mb-1">
+                {property.price}
+                {property.priceFreq === 'rent' && <span className="text-lg font-normal text-gray-400 ml-1">/mes</span>}
+              </p>
+              {property.size && parseInt(property.size) > 0 && (
+                <p className="text-sm text-gray-500 font-medium">
+                  {`€${Math.round(parseInt(property.price.replace(/\D/g, '')) / parseInt(property.size)).toLocaleString()}/m²`}
+                </p>
+              )}
+            </div>
+          </div>
+        </motion.div>
 
-            {/* Gradient Overlay for Text Readability */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
+        <motion.div
+          variants={fadeUp}
+          custom={1}
+          initial="hidden"
+          animate="visible"
+          className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 mb-20"
+        >
+          {/* Main gallery with AnimatePresence crossfade */}
+          <div className="relative w-full h-[50vh] md:h-[68vh] bg-gray-100 rounded-sm overflow-hidden mb-4 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)]">
+            <AnimatePresence mode="wait">
+              {images.length > 0 ? (
+                <motion.div
+                  key={currentImageIndex}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5, ease: 'easeInOut' }}
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{ backgroundImage: `url("${images[currentImageIndex]}")` }}
+                />
+              ) : (
+                <div className="absolute inset-0 flex items-center justify-center bg-gray-200 text-gray-400">Sin imágenes disponibles</div>
+              )}
+            </AnimatePresence>
 
-            {/* Navigation Arrows */}
+            {/* Gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+
+            {/* Virtual tour badge */}
+            {property.virtualTourUrl && (
+              <a
+                href={property.virtualTourUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute top-4 left-4 z-20 flex items-center gap-2 bg-white backdrop-blur-md text-gray-900 text-xs font-bold px-3 py-2 rounded-full hover:bg-gray-100 transition-all shadow-md"
+              >
+                <span className="material-symbols-outlined text-sm">360</span>
+                Tour Virtual
+              </a>
+            )}
+
+            {/* Nav arrows */}
             {images.length > 1 && (
               <>
                 <button
                   onClick={prevImage}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/20 hover:bg-white backdrop-blur-md flex items-center justify-center text-white hover:text-black transition-all transform hover:scale-110 z-20 shadow-lg border border-white/10"
-                  aria-label="Previous image"
+                  className="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/20 hover:bg-white backdrop-blur-md flex items-center justify-center text-white hover:text-black transition-all active:scale-95 z-20 shadow-lg border border-white/10"
+                  aria-label="Imagen anterior"
                 >
                   <span className="material-symbols-outlined">arrow_back</span>
                 </button>
                 <button
                   onClick={nextImage}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/20 hover:bg-white backdrop-blur-md flex items-center justify-center text-white hover:text-black transition-all transform hover:scale-110 z-20 shadow-lg border border-white/10"
-                  aria-label="Next image"
+                  className="absolute right-3 md:right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/20 hover:bg-white backdrop-blur-md flex items-center justify-center text-white hover:text-black transition-all active:scale-95 z-20 shadow-lg border border-white/10"
+                  aria-label="Imagen siguiente"
                 >
                   <span className="material-symbols-outlined">arrow_forward</span>
                 </button>
               </>
             )}
 
-            {/* Image Counter Badge */}
             {images.length > 0 && (
-              <div className="absolute bottom-6 right-6 bg-black/60 backdrop-blur-md text-white px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest border border-white/10 flex items-center gap-2">
+              <div className="absolute bottom-5 right-5 bg-black/60 backdrop-blur-md text-white px-4 py-2 rounded-full text-xs font-bold tracking-widest border border-white/10 flex items-center gap-2">
                 <span className="material-symbols-outlined text-sm">photo_library</span>
                 {currentImageIndex + 1} / {images.length}
               </div>
@@ -148,60 +247,97 @@ const PropertyDetail: React.FC = () => {
 
           {/* Thumbnails */}
           {images.length > 1 && (
-            <div className="grid grid-cols-4 md:grid-cols-8 gap-4 overflow-x-auto pb-2 hide-scrollbar">
+            <div className="grid grid-cols-5 md:grid-cols-8 lg:grid-cols-10 gap-2 overflow-x-auto pb-2 hide-scrollbar">
               {images.map((img, idx) => (
-                <button
+                <motion.button
                   key={idx}
                   onClick={() => setCurrentImageIndex(idx)}
-                  className={`relative aspect-[4/3] rounded-lg overflow-hidden transition-all duration-300 group ${currentImageIndex === idx ? 'ring-2 ring-brand-blue-500 ring-offset-2 opacity-100' : 'opacity-60 hover:opacity-100'}`}
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                  className={`relative aspect-[4/3] rounded overflow-hidden ${
+                    currentImageIndex === idx
+                      ? 'ring-2 ring-brand-blue-500 ring-offset-2 opacity-100'
+                      : 'opacity-55 hover:opacity-100'
+                  } transition-opacity duration-200`}
                 >
-                  <img src={img} alt={`View ${idx + 1}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                  {currentImageIndex === idx && (
-                    <div className="absolute inset-0 bg-brand-blue-500/10"></div>
-                  )}
-                </button>
+                  <img src={img} alt={`Vista ${idx + 1}`} className="w-full h-full object-cover" />
+                </motion.button>
               ))}
             </div>
           )}
-        </div>
+        </motion.div>
 
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+        <motion.div
+          variants={fadeUp}
+          custom={2}
+          initial="hidden"
+          animate="visible"
+          className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20"
+        >
           <div className="lg:col-span-8">
-            <div className="flex flex-wrap gap-8 py-8 border-y border-gray-100 mb-10">
+            {/* Property stats — staggered spring entrance */}
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              animate="visible"
+              className="flex flex-wrap gap-8 py-8 border-y border-gray-100 mb-10"
+            >
               {property.beds ? (
-                <div className="flex items-center gap-3">
+                <motion.div variants={statItem} className="flex items-center gap-3">
                   <span className="material-symbols-outlined text-3xl text-gray-400 font-light">bed</span>
                   <div>
                     <p className="text-lg font-bold">{property.beds}</p>
                     <p className="text-xs uppercase text-gray-400 tracking-wider">{t('detail.beds')}</p>
                   </div>
-                </div>
+                </motion.div>
               ) : null}
               {property.baths ? (
-                <div className="flex items-center gap-3">
+                <motion.div variants={statItem} className="flex items-center gap-3">
                   <span className="material-symbols-outlined text-3xl text-gray-400 font-light">bathtub</span>
                   <div>
                     <p className="text-lg font-bold">{property.baths}</p>
                     <p className="text-xs uppercase text-gray-400 tracking-wider">{t('detail.baths')}</p>
                   </div>
-                </div>
+                </motion.div>
               ) : null}
-              <div className="flex items-center gap-3">
-                <span className="material-symbols-outlined text-3xl text-gray-400 font-light">square_foot</span>
-                <div>
-                  <p className="text-lg font-bold">{property.size}</p>
-                  <p className="text-xs uppercase text-gray-400 tracking-wider">{t('detail.interior')}</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <span className="material-symbols-outlined text-3xl text-gray-400 font-light">garage_home</span>
-                <div>
-                  <p className="text-lg font-bold">Yes</p>
-                  <p className="text-xs uppercase text-gray-400 tracking-wider">{t('detail.garage')}</p>
-                </div>
-              </div>
-            </div>
+              {property.size && (
+                <motion.div variants={statItem} className="flex items-center gap-3">
+                  <span className="material-symbols-outlined text-3xl text-gray-400 font-light">square_foot</span>
+                  <div>
+                    <p className="text-lg font-bold">{property.size}</p>
+                    <p className="text-xs uppercase text-gray-400 tracking-wider">{t('detail.interior')}</p>
+                  </div>
+                </motion.div>
+              )}
+              {property.plot && (
+                <motion.div variants={statItem} className="flex items-center gap-3">
+                  <span className="material-symbols-outlined text-3xl text-gray-400 font-light">landscape</span>
+                  <div>
+                    <p className="text-lg font-bold">{property.plot}</p>
+                    <p className="text-xs uppercase text-gray-400 tracking-wider">Parcela</p>
+                  </div>
+                </motion.div>
+              )}
+              {hasGarage && (
+                <motion.div variants={statItem} className="flex items-center gap-3">
+                  <span className="material-symbols-outlined text-3xl text-gray-400 font-light">garage_home</span>
+                  <div>
+                    <p className="text-lg font-bold">Sí</p>
+                    <p className="text-xs uppercase text-gray-400 tracking-wider">{t('detail.garage')}</p>
+                  </div>
+                </motion.div>
+              )}
+              {property.pool && (
+                <motion.div variants={statItem} className="flex items-center gap-3">
+                  <span className="material-symbols-outlined text-3xl text-gray-400 font-light">pool</span>
+                  <div>
+                    <p className="text-lg font-bold">Sí</p>
+                    <p className="text-xs uppercase text-gray-400 tracking-wider">Piscina</p>
+                  </div>
+                </motion.div>
+              )}
+            </motion.div>
 
             <div className="prose prose-lg max-w-none mb-16">
               <h3 className="text-2xl font-bold mb-6">{t('detail.about_property')} {property.title}</h3>
@@ -212,78 +348,105 @@ const PropertyDetail: React.FC = () => {
               )}
             </div>
 
-            <div className="bg-editorial-gray p-8 rounded-lg mb-12">
+            <div className="bg-editorial-gray p-8 rounded-sm mb-12">
               <h4 className="font-bold text-lg mb-6 uppercase tracking-widest">{t('detail.amenities')}</h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8">
+              <motion.div
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.15 }}
+                className="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-8"
+              >
                 {property.features && property.features.length > 0 ? (
                   property.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center gap-3">
+                    <motion.div
+                      key={idx}
+                      variants={statItem}
+                      className="flex items-center gap-3"
+                    >
                       <span className="material-symbols-outlined text-brand-blue-500 text-sm">check_circle</span>
                       <span className="text-sm font-medium">{translateFeature(feature, language as 'es' | 'en' | 'fr' | 'de' | 'va')}</span>
-                    </div>
+                    </motion.div>
                   ))
                 ) : (
-                  <p className="text-gray-500 italic">No amenities listed.</p>
+                  <p className="text-gray-500 italic col-span-2">Sin características listadas.</p>
                 )}
-              </div>
+              </motion.div>
             </div>
+
+            {/* Video CTA */}
+            {property.videoUrl && (
+              <a
+                href={property.videoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-sm font-bold text-gray-700 hover:text-brand-blue-600 transition-colors mb-12 group"
+              >
+                <span className="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform">play_circle</span>
+                Ver vídeo de la propiedad
+              </a>
+            )}
           </div>
 
           <div className="lg:col-span-4 relative">
             <div className="sticky top-24">
-              <div className="bg-white border border-gray-200 shadow-2xl shadow-gray-200/50 p-8 rounded-lg">
+              <div className="bg-white border border-gray-200 shadow-md p-8 rounded-sm">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-full bg-gray-200 bg-cover bg-center" style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuBeO_psb5EsZUge1Q9z9Z0VTEVDOkjmZqJ0_iWuqs1ZjDjturTC925sUpjY4SLbxjQNJNqlgkcv568Kjd5zvvCEIqbffK35jIWjZbAI_u5r_d_Sj57l_m9A8bJN7LcCmSlWATG8dzcBzvdTPFArI7AAtc--NaEpg0seD4lB3ek7ceC2iRhSFh-4fCJ4WP6rjzsj8Ow9cQB3NTjhprnKxcP9IcaFNAN9hsEGC0TUGR1IfZGlIpMPtAeaP1480Wg3sxZR8HyGCiot")' }}></div>
+                  <div
+                    className="w-12 h-12 rounded-full bg-brand-blue-100 flex items-center justify-center shrink-0"
+                  >
+                    <span className="material-symbols-outlined text-brand-blue-600">person</span>
+                  </div>
                   <div>
-                    <p className="text-sm font-bold text-gray-900">Agent</p>
-                    <p className="text-xs text-gray-500 uppercase tracking-wide">Essencia Inmobiliaria</p>
+                    <p className="text-sm font-bold text-gray-900">Essencia Inmobiliaria</p>
+                    <p className="text-xs text-gray-500 uppercase tracking-wide">Gandía, Valencia</p>
                   </div>
                 </div>
                 <h3 className="text-2xl font-bold mb-2">{t('detail.book_tour')}</h3>
                 <p className="text-sm text-gray-500 mb-6">{t('detail.book_tour_desc')}</p>
                 <form className="space-y-4">
                   <div>
-                    <label className="block text-xs font-bold uppercase text-gray-400 mb-1">{t('common.name')}</label>
-                    <input className="w-full bg-editorial-gray border-none rounded px-4 py-3 text-sm focus:ring-2 focus:ring-brand-blue-500" placeholder="Name" type="text" />
+                    <label htmlFor="tour-name" className="block text-xs font-bold uppercase text-gray-400 mb-1">{t('common.name')}</label>
+                    <input id="tour-name" className="w-full bg-transparent border-b border-gray-200 rounded-none px-0 py-3 text-sm focus:outline-none focus:border-editorial-black focus-visible:ring-2 focus-visible:ring-brand-blue-500 transition-colors" placeholder="Name" type="text" />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold uppercase text-gray-400 mb-1">{t('common.email')}</label>
-                    <input className="w-full bg-editorial-gray border-none rounded px-4 py-3 text-sm focus:ring-2 focus:ring-brand-blue-500" placeholder="Email" type="email" />
+                    <label htmlFor="tour-email" className="block text-xs font-bold uppercase text-gray-400 mb-1">{t('common.email')}</label>
+                    <input id="tour-email" className="w-full bg-transparent border-b border-gray-200 rounded-none px-0 py-3 text-sm focus:outline-none focus:border-editorial-black focus-visible:ring-2 focus-visible:ring-brand-blue-500 transition-colors" placeholder="Email" type="email" />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold uppercase text-gray-400 mb-1">{t('common.phone')}</label>
-                    <input className="w-full bg-editorial-gray border-none rounded px-4 py-3 text-sm focus:ring-2 focus:ring-brand-blue-500" placeholder="Phone" type="tel" />
+                    <label htmlFor="tour-phone" className="block text-xs font-bold uppercase text-gray-400 mb-1">{t('common.phone')}</label>
+                    <input id="tour-phone" className="w-full bg-transparent border-b border-gray-200 rounded-none px-0 py-3 text-sm focus:outline-none focus:border-editorial-black focus-visible:ring-2 focus-visible:ring-brand-blue-500 transition-colors" placeholder="Phone" type="tel" />
                   </div>
-                  <button type="button" onClick={() => alert("Request sent!")} className="w-full bg-black text-white font-bold py-4 rounded mt-4 hover:bg-brand-blue-600 transition-colors flex items-center justify-center gap-2">
+                  <button type="button" onClick={() => alert("Request sent!")} className="w-full bg-brand-blue-700 text-white font-bold text-xs uppercase tracking-[0.15em] py-4 rounded-sm mt-4 hover:bg-brand-blue-500 hover:shadow-[0_8px_24px_rgba(34,211,238,0.4)] hover:-translate-y-0.5 shadow-[0_10px_40px_rgba(0,0,0,0.1)] transition-all duration-300 active:scale-[0.98] flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-blue-500">
                     {t('detail.request')}
-                    <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                    <span className="material-symbols-outlined text-sm" aria-hidden="true">arrow_forward</span>
                   </button>
                   <p className="text-xs text-center text-gray-400 mt-4">{t('detail.form.privacy')}</p>
                 </form>
 
                 <Link
                   to={`/contact?interest=Buying+a+property&message=I+would+like+to+inquire+about+${property.title}+ref+${property.id}`}
-                  className="w-full bg-white border border-gray-300 text-editorial-black font-bold py-4 rounded mt-4 hover:border-editorial-black hover:bg-gray-50 transition-all flex items-center justify-center gap-2 uppercase text-xs tracking-widest"
+                  className="w-full bg-white border border-gray-300 text-editorial-black font-bold py-4 rounded-sm mt-4 hover:border-brand-blue-400 hover:bg-brand-blue-50 hover:text-brand-blue-700 hover:shadow-[0_6px_16px_rgba(34,211,238,0.15)] transition-all duration-300 active:scale-[0.98] flex items-center justify-center gap-2 uppercase text-xs tracking-[0.15em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500"
                 >
-                  <span className="material-symbols-outlined text-base">person</span>
+                  <span className="material-symbols-outlined text-base" aria-hidden="true">person</span>
                   {t('detail.contact_agent')}
                 </Link>
 
                 <div className="mt-8 pt-6 border-t border-gray-100 flex justify-center gap-6">
-                  <a href="#" className="flex items-center gap-2 text-sm font-bold text-gray-600 hover:text-brand-blue-600 transition-colors">
-                    <span className="material-symbols-outlined text-lg">call</span> {t('detail.call')}
+                  <a href="tel:+34647803355" className="flex items-center gap-2 text-sm font-bold text-gray-600 hover:text-brand-blue-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm">
+                    <span className="material-symbols-outlined text-lg" aria-hidden="true">call</span> {t('detail.call')}
                   </a>
-                  <a href="https://wa.me/34600000000" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-bold text-gray-600 hover:text-brand-blue-600 transition-colors">
-                    <span className="material-symbols-outlined text-lg">chat</span> {t('detail.whatsapp')}
+                  <a href="https://wa.me/34647803355" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-bold text-gray-600 hover:text-brand-blue-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm">
+                    <WhatsappLogo weight="fill" className="w-5 h-5 text-[#25D366]" aria-hidden="true" /> {t('detail.whatsapp')}
                   </a>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </main>
 
-      <section className="py-20 bg-editorial-gray">
+      <motion.section initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="py-20 bg-editorial-gray">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <div className="flex flex-col md:flex-row gap-12">
             <div className="w-full md:w-1/3">
@@ -298,11 +461,11 @@ const PropertyDetail: React.FC = () => {
                   return t('detail.location_desc.default');
                 })()}
               </p>
-              <button onClick={handleDownload} className="mt-8 text-sm font-bold uppercase tracking-wider border-b-2 border-black pb-1 hover:text-brand-blue-600 hover:border-brand-blue-500 transition-colors">
+              <button onClick={handleDownload} className="mt-8 text-sm font-bold uppercase tracking-wider border-b-2 border-black pb-1 hover:text-brand-blue-600 hover:border-brand-blue-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm">
                 {t('detail.location.download')}
               </button>
             </div>
-            <div className="w-full md:w-2/3 h-[400px] bg-gray-200 relative rounded-lg overflow-hidden isolate map-container">
+            <div className="w-full md:w-2/3 h-[400px] bg-gray-200 relative rounded-sm overflow-hidden isolate map-container">
               {property.lat && property.lng ? (
                 <MapContainer
                   center={[property.lat, property.lng]}
@@ -326,30 +489,26 @@ const PropertyDetail: React.FC = () => {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* WhatsApp Floating Action Button */}
-      <a
-        href={`https://wa.me/34600000000?text=${encodeURIComponent(`Hola, estoy interesado/a en la propiedad: ${property.title} (ref. ${property.id}). ¿Podríais darme más información?`)}`}
+      {/* WhatsApp Floating Action Button — número real 34647803355 */}
+      <motion.a
+        href={`https://wa.me/34647803355?text=${encodeURIComponent(`Hola, estoy interesado/a en la propiedad: ${property.title}${property.ref ? ' (ref. ' + property.ref + ')' : ''}. ¿Podríais darme más información?`)}`}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Contactar por WhatsApp"
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-3 pl-4 pr-5 py-3 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-bold rounded-full shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-green-400/40 group"
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ type: 'spring', stiffness: 260, damping: 18, delay: 0.8 }}
+        whileHover={{ scale: 1.08 }}
+        whileTap={{ scale: 0.95 }}
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-3 pl-4 pr-5 py-3 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-bold rounded-full shadow-2xl transition-colors group"
         style={{ boxShadow: '0 4px 32px 0 rgba(37,211,102,0.35)' }}
       >
-        {/* Pulse ring */}
         <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-20 pointer-events-none" />
-        {/* WhatsApp icon via SVG */}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          className="w-6 h-6 shrink-0 relative z-10"
-        >
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-        </svg>
+        <WhatsappLogo weight="fill" className="w-6 h-6 shrink-0 relative z-10 text-white" />
         <span className="text-sm tracking-wide relative z-10 hidden sm:block">WhatsApp</span>
-      </a>
+      </motion.a>
     </>
   );
 };

@@ -4,6 +4,7 @@ import { MapContainer, TileLayer, Marker, Popup, LayersControl } from 'react-lea
 import L from 'leaflet';
 import { useLanguage } from '../context/LanguageContext';
 import SEOHead from '../components/SEOHead';
+import { motion } from 'framer-motion';
 
 // Fix for default marker icon
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -129,11 +130,11 @@ const Contact: React.FC = () => {
       canonical="https://essenciainmobiliaria.com/contact"
     />
     <div className="pt-28 pb-20">
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
 
           {/* Left Column: Info */}
-          <div>
+          <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}>
             <span className="text-brand-blue-600 font-bold tracking-widest uppercase text-xs mb-3 block">{t('nav.contact')}</span>
             <h1 className="text-5xl md:text-6xl font-black text-editorial-black tracking-tight mb-8">{t('contact.title')}</h1>
             <p className="text-xl text-gray-500 mb-12 font-medium leading-relaxed max-w-md">
@@ -190,7 +191,7 @@ const Contact: React.FC = () => {
                         href="https://www.google.com/maps/dir/?api=1&destination=C/ Sant Vicent Ferrer 24, 46701 Gandia, València"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-block bg-brand-blue-600 text-white text-xs font-bold uppercase tracking-widest px-3 py-2 rounded hover:bg-brand-blue-700 transition-colors"
+                        className="inline-block bg-brand-blue-700 text-white text-xs font-bold uppercase tracking-[0.15em] px-4 py-3 rounded-sm hover:bg-brand-blue-500 hover:shadow-[0_6px_16px_rgba(34,211,238,0.35)] transition-all duration-300 active:scale-[0.98]"
                       >
                         {t('contact.directions')}
                       </a>
@@ -199,40 +200,42 @@ const Contact: React.FC = () => {
                 </Marker>
               </MapContainer>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Form */}
-          <div className="bg-editorial-gray p-8 md:p-12 rounded-lg">
+          <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }} className="bg-editorial-black backdrop-blur-md shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] border border-white/5 text-white p-8 md:p-12 rounded-sm ring-1 ring-editorial-black/5">
             <h3 className="text-2xl font-bold mb-8">{t('common.send')}</h3>
             {isSuccess ? (
-              <div className="bg-green-50 border border-green-200 text-green-800 p-6 rounded text-center">
+              <div className="bg-white/10 border border-white/20 text-white p-6 rounded-sm text-center">
                 <span className="material-symbols-outlined text-4xl mb-2">check_circle</span>
                 <p className="font-bold">{t('contact.success.title')}</p>
-                <p className="text-sm">{t('contact.success.subtitle')}</p>
+                <p className="text-sm opacity-80">{t('contact.success.subtitle')}</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-xs font-bold uppercase text-gray-500 mb-2">{t('common.name')}</label>
+                    <label htmlFor="firstName" className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">{t('common.name')}</label>
                     <input
+                      id="firstName"
                       type="text"
                       name="firstName"
                       value={formData.firstName}
                       onChange={handleChange}
-                      className={`w-full bg-white border ${errors.firstName ? 'border-red-500' : 'border-none'} rounded px-4 py-3 focus:ring-2 focus:ring-brand-blue-500`}
+                      className={`w-full bg-transparent border-b ${errors.firstName ? 'border-red-500' : 'border-white/20'} rounded-none px-0 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-white transition-colors`}
                       placeholder="Juan"
                     />
                     {errors.firstName && <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>}
                   </div>
                   <div>
-                    <label className="block text-xs font-bold uppercase text-gray-500 mb-2">{t('contact.form.lastname')}</label>
+                    <label htmlFor="lastName" className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">{t('contact.form.lastname')}</label>
                     <input
+                      id="lastName"
                       type="text"
                       name="lastName"
                       value={formData.lastName}
                       onChange={handleChange}
-                      className={`w-full bg-white border ${errors.lastName ? 'border-red-500' : 'border-none'} rounded px-4 py-3 focus:ring-2 focus:ring-brand-blue-500`}
+                      className={`w-full bg-transparent border-b ${errors.lastName ? 'border-red-500' : 'border-white/20'} rounded-none px-0 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-white transition-colors`}
                       placeholder="García"
                     />
                     {errors.lastName && <p className="text-red-500 text-xs mt-1">{errors.lastName}</p>}
@@ -240,54 +243,59 @@ const Contact: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold uppercase text-gray-500 mb-2">{t('common.email')}</label>
+                  <label htmlFor="email" className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">{t('common.email')}</label>
                   <input
+                    id="email"
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className={`w-full bg-white border ${errors.email ? 'border-red-500' : 'border-none'} rounded px-4 py-3 focus:ring-2 focus:ring-brand-blue-500`}
+                    className={`w-full bg-transparent border-b ${errors.email ? 'border-red-500' : 'border-white/20'} rounded-none px-0 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-white transition-colors`}
                     placeholder="juan@ejemplo.com"
                   />
                   {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold uppercase text-gray-500 mb-2">{t('common.phone')}</label>
+                  <label htmlFor="phone" className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">{t('common.phone')}</label>
                   <input
+                    id="phone"
                     type="tel"
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className={`w-full bg-white border ${errors.phone ? 'border-red-500' : 'border-none'} rounded px-4 py-3 focus:ring-2 focus:ring-brand-blue-500`}
+                    className={`w-full bg-transparent border-b ${errors.phone ? 'border-red-500' : 'border-white/20'} rounded-none px-0 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-white transition-colors`}
                     placeholder="+34..."
                   />
                   {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold uppercase text-gray-500 mb-2">{t('contact.form.interest')}</label>
+                  <label htmlFor="interest" className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">{t('contact.form.interest')}</label>
                   <select
+                    id="interest"
                     name="interest"
                     value={formData.interest}
                     onChange={handleChange}
-                    className="w-full bg-white border-none rounded px-4 py-3 focus:ring-2 focus:ring-brand-blue-500"
+                    className="w-full bg-transparent border-b border-white/20 rounded-none px-0 py-3 text-white focus:outline-none focus:border-white transition-colors appearance-none"
+                    aria-label={t('contact.form.interest')}
                   >
-                    <option value={t('contact.form.buy')}>{t('contact.form.buy')}</option>
-                    <option value={t('contact.form.sell')}>{t('contact.form.sell')}</option>
-                    <option value={t('contact.form.valuation')}>{t('contact.form.valuation')}</option>
-                    <option value={t('contact.form.other')}>{t('contact.form.other')}</option>
+                    <option className="bg-editorial-black" value={t('contact.form.buy')}>{t('contact.form.buy')}</option>
+                    <option className="bg-editorial-black" value={t('contact.form.sell')}>{t('contact.form.sell')}</option>
+                    <option className="bg-editorial-black" value={t('contact.form.valuation')}>{t('contact.form.valuation')}</option>
+                    <option className="bg-editorial-black" value={t('contact.form.other')}>{t('contact.form.other')}</option>
                   </select>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold uppercase text-gray-500 mb-2">{t('common.message')}</label>
+                  <label htmlFor="message" className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">{t('common.message')}</label>
                   <textarea
+                    id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     rows={4}
-                    className={`w-full bg-white border ${errors.message ? 'border-red-500' : 'border-none'} rounded px-4 py-3 focus:ring-2 focus:ring-brand-blue-500`}
+                    className={`w-full bg-transparent border-b ${errors.message ? 'border-red-500' : 'border-white/20'} rounded-none px-0 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-white transition-colors resize-none`}
                     placeholder={t('contact.form.message_placeholder')}
                   ></textarea>
                   {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
@@ -297,9 +305,10 @@ const Contact: React.FC = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`w-full py-4 bg-editorial-black text-white font-bold uppercase tracking-widest rounded hover:bg-brand-blue-600 transition-colors shadow-lg flex items-center justify-center gap-2 ${isSubmitting ? 'opacity-75 cursor-not-allowed' : ''}`}
+                    className={`w-full py-4 bg-white text-editorial-black text-xs font-bold uppercase tracking-[0.15em] rounded-sm hover:bg-gray-100 active:scale-[0.98] transition-all shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.4)] flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white ${isSubmitting ? 'opacity-75 cursor-not-allowed' : ''}`}
                   >
                     {isSubmitting ? t('common.loading') : t('common.send')}
+                    <span className="material-symbols-outlined text-sm">arrow_forward</span>
                   </button>
                 </div>
                 <p className="text-xs text-center text-gray-400">
@@ -307,7 +316,7 @@ const Contact: React.FC = () => {
                 </p>
               </form>
             )}
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

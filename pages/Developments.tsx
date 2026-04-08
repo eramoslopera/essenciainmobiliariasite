@@ -51,7 +51,7 @@ const Developments: React.FC = () => {
                 <span className="text-xs text-gray-500">{t('detail.beds')}</span>
               </div>
             </div>
-            <Link to="/contact?interest=Azure+Heights+Brochure" className="inline-flex items-center justify-center h-12 px-8 border border-editorial-black hover:bg-brand-blue-600 hover:text-white hover:border-brand-blue-600 font-bold uppercase tracking-widest text-sm transition-colors rounded-none">
+            <Link to="/contact?interest=Azure+Heights+Brochure" className="inline-flex items-center justify-center h-12 px-8 border border-brand-blue-700 text-brand-blue-700 hover:bg-brand-blue-600 hover:text-white hover:border-brand-blue-600 hover:shadow-[0_8px_20px_rgba(34,211,238,0.3)] font-bold uppercase tracking-widest text-sm transition-all duration-300 rounded-none active:scale-[0.98]">
               {t('dev.download')}
             </Link>
           </div>
@@ -84,7 +84,7 @@ const Developments: React.FC = () => {
                 <span className="text-xs text-gray-500">{t('dev.label.sizes')}</span>
               </div>
             </div>
-            <Link to="/contact?interest=The+Silk+District+Registration" className="inline-flex items-center justify-center h-12 px-8 bg-editorial-black text-white hover:bg-brand-blue-600 font-bold uppercase tracking-widest text-sm transition-colors rounded-none">
+            <Link to="/contact?interest=The+Silk+District+Registration" className="inline-flex items-center justify-center h-12 px-8 bg-brand-blue-700 text-white hover:bg-brand-blue-500 hover:shadow-[0_8px_20px_rgba(34,211,238,0.35)] font-bold uppercase tracking-widest text-sm transition-all duration-300 rounded-none active:scale-[0.98] hover:-translate-y-0.5">
               {t('dev.register')}
             </Link>
           </div>

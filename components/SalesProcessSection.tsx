@@ -124,7 +124,7 @@ const SalesProcessSection: React.FC = () => {
                                 {/* Content */}
                                 <div className="pl-16 md:pl-0 w-full md:w-1/2 md:px-12 pt-2">
                                     <div
-                                        className={`group cursor-pointer p-6 rounded-2xl border transition-all duration-300 ${currentStep === index ? 'bg-gray-50 border-brand-blue-500/30 shadow-lg' : 'bg-white border-transparent hover:bg-gray-50 hover:border-gray-200'}`}
+                                        className={`group cursor-pointer p-6 rounded-2xl border transition-all duration-300 ${currentStep === index ? 'bg-gray-50 border-brand-blue-500/30 shadow-lg' : 'bg-white border-transparent hover:bg-gray-100 hover:border-gray-200'}`}
                                         onMouseEnter={() => setCurrentStep(index)}
                                     >
                                         <span className="text-6xl font-black text-gray-100 absolute -top-8 opacity-50 select-none">

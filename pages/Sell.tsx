@@ -10,12 +10,13 @@ import VisualProSection from '../components/VisualProSection';
 import ProcessSteps from '../components/ProcessSteps';
 import MiaMethodSection from '../components/MiaMethodSection';
 import ManagementClosingSection from '../components/ManagementClosingSection';
+import ContactForm from '../components/ContactForm';
 
 
 const Sell: React.FC = () => {
   const { t } = useLanguage();
   const navigate = useNavigate();
-  const [address, setAddress] = useState('');
+
   const [soldProperties, setSoldProperties] = useState<Property[]>([]);
   const carouselRef = useRef<HTMLDivElement>(null);
 
@@ -37,11 +38,6 @@ const Sell: React.FC = () => {
     }
   };
 
-  const handleStartValuation = (e: React.FormEvent) => {
-    e.preventDefault();
-    navigate('/valuation');
-  };
-
   return (
     <>
       <SEOHead
@@ -51,7 +47,7 @@ const Sell: React.FC = () => {
       />
 
       {/* ─── 1. HERO ─────────────────────────────────────────────────────────── */}
-      <section className="relative pt-20 min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative pt-20 min-h-[100dvh] flex items-center justify-center overflow-hidden">
         <motion.div
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -103,13 +99,13 @@ const Sell: React.FC = () => {
           >
             <Link
               to="/valuation"
-              className="h-14 px-10 bg-editorial-black hover:bg-brand-blue-600 text-white text-base font-bold tracking-widest uppercase rounded-none transition-all shadow-xl flex items-center justify-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500"
+              className="h-14 px-10 bg-brand-blue-700 hover:bg-brand-blue-500 text-white text-xs font-bold tracking-[0.15em] uppercase rounded-sm transition-all duration-300 shadow-[0_10px_40px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_40px_-5px_rgba(34,211,238,0.4)] hover:-translate-y-1 active:scale-[0.98] flex items-center justify-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500"
             >
               {t('sell.cta.valuation')}
             </Link>
             <Link
               to="/properties"
-              className="h-14 px-10 bg-transparent border border-editorial-black hover:bg-brand-blue-50 hover:border-brand-blue-500 text-editorial-black text-base font-bold tracking-widest uppercase rounded-none transition-all flex items-center justify-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500"
+              className="h-14 px-10 bg-transparent border border-editorial-black hover:bg-editorial-black hover:text-white text-editorial-black text-xs font-bold tracking-[0.15em] uppercase rounded-sm transition-all active:scale-[0.98] flex items-center justify-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500"
             >
               {t('nav.properties')}
             </Link>
@@ -228,10 +224,10 @@ const Sell: React.FC = () => {
           >
             <Link
               to="/valuation"
-              className="h-14 px-10 bg-white text-editorial-black hover:bg-brand-blue-600 hover:text-white text-sm font-bold tracking-widest uppercase transition-all flex items-center gap-3"
+              className="h-14 px-10 bg-white shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-5px_rgba(0,0,0,0.1)] text-editorial-black hover:bg-gray-100 font-bold tracking-[0.15em] uppercase rounded-sm transition-all active:scale-[0.98] flex items-center gap-3 text-xs"
             >
               {t('sell.cta.valuation')}
-              <span className="material-symbols-outlined text-base">arrow_forward</span>
+              <span className="material-symbols-outlined text-sm">arrow_forward</span>
             </Link>
           </motion.div>
         </div>
@@ -258,15 +254,17 @@ const Sell: React.FC = () => {
               <div className="flex gap-2">
                 <button
                   onClick={() => scroll('left')}
-                  className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-white transition-colors"
+                  aria-label="Scroll left"
+                  className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500"
                 >
-                  <span className="material-symbols-outlined">arrow_back</span>
+                  <span className="material-symbols-outlined" aria-hidden="true">arrow_back</span>
                 </button>
                 <button
                   onClick={() => scroll('right')}
-                  className="w-10 h-10 rounded-full bg-brand-blue-600 text-white flex items-center justify-center hover:bg-brand-blue-700 transition-colors"
+                  aria-label="Scroll right"
+                  className="w-10 h-10 rounded-full bg-brand-blue-600 text-white flex items-center justify-center hover:bg-brand-blue-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2"
                 >
-                  <span className="material-symbols-outlined">arrow_forward</span>
+                  <span className="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
                 </button>
               </div>
             </div>
@@ -279,7 +277,7 @@ const Sell: React.FC = () => {
                 <Link
                   key={property.id}
                   to={`/property/${property.id}`}
-                  className="snap-center shrink-0 w-[85vw] md:w-[400px] bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 block group border border-gray-100"
+                  className="snap-center shrink-0 w-[85vw] md:w-[400px] bg-white rounded-sm overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 block group border border-gray-100"
                 >
                   <div
                     className="w-full h-64 bg-cover bg-center group-hover:scale-105 transition-transform duration-700 relative"
@@ -353,27 +351,7 @@ const Sell: React.FC = () => {
           <h2 className="text-5xl md:text-6xl font-black mb-8 text-editorial-black tracking-tighter">{t('sell.ready.title')}</h2>
           <p className="text-xl text-gray-500 mb-16 font-light max-w-2xl mx-auto">{t('sell.ready.subtitle')}</p>
 
-          <form className="max-w-2xl mx-auto" onSubmit={handleStartValuation}>
-            <div className="relative group">
-              <input
-                className="w-full h-20 px-0 bg-transparent text-editorial-black placeholder-gray-300 border-b-2 border-gray-200 focus:border-editorial-black focus:ring-0 text-3xl md:text-4xl font-bold tracking-tight text-center transition-all duration-300 outline-none"
-                placeholder={t('home.value.placeholder') + '...'}
-                type="text"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-              />
-              <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-editorial-black transition-all duration-500 group-hover:w-full" />
-            </div>
-
-            <div className="mt-12">
-              <button
-                type="submit"
-                className="h-16 px-12 bg-editorial-black hover:bg-brand-blue-600 text-white text-lg font-bold uppercase tracking-widest whitespace-nowrap transition-all rounded-none shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
-              >
-                {t('sell.hero.start')}
-              </button>
-            </div>
-          </form>
+          <ContactForm theme="light" defaultReason="sell" className="max-w-2xl mx-auto text-left" />
           <p className="mt-12 text-xs text-gray-400 uppercase tracking-widest">{t('sell.disclaimer')}</p>
         </div>
       </section>

@@ -14,7 +14,7 @@ const Stories: React.FC = () => {
       canonical="https://essenciainmobiliaria.com/stories"
     />
     <div className="pt-28 pb-20">
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 pb-8 border-b border-gray-200">
           <div>
             <span className="text-brand-blue-600 font-bold tracking-widest uppercase text-xs mb-3 block">{t('stories.journal')}</span>
@@ -22,9 +22,9 @@ const Stories: React.FC = () => {
           </div>
           <nav className="flex gap-6 mt-8 md:mt-0">
             <button className="text-editorial-black font-bold text-sm border-b-2 border-editorial-black pb-1">{t('stories.nav.all')}</button>
-            <button className="text-gray-400 font-bold text-sm hover:text-editorial-black transition-colors">{t('stories.nav.market')}</button>
-            <button className="text-gray-400 font-bold text-sm hover:text-editorial-black transition-colors">{t('stories.nav.lifestyle')}</button>
-            <button className="text-gray-400 font-bold text-sm hover:text-editorial-black transition-colors">{t('stories.nav.architecture')}</button>
+            <button className="text-gray-400 font-bold text-sm hover:text-brand-blue-600 transition-colors">{t('stories.nav.market')}</button>
+            <button className="text-gray-400 font-bold text-sm hover:text-brand-blue-600 transition-colors">{t('stories.nav.lifestyle')}</button>
+            <button className="text-gray-400 font-bold text-sm hover:text-brand-blue-600 transition-colors">{t('stories.nav.architecture')}</button>
           </nav>
         </div>
 

@@ -4,6 +4,8 @@ import { useLanguage } from '../context/LanguageContext';
 import StatsSection from '../components/StatsSection';
 import SEOHead from '../components/SEOHead';
 import InteractiveMarketingSection from '../components/InteractiveMarketingSection';
+import ContactForm from '../components/ContactForm';
+import { motion } from 'framer-motion';
 import { Property } from '../src/types/property';
 import { fetchProperties } from '../src/utils/xmlParser';
 
@@ -22,80 +24,6 @@ const HERO_IMAGES = [
   },
 ];
 
-const HomeContactForm: React.FC = () => {
-  const { t } = useLanguage();
-  const [name, setName] = React.useState('');
-  const [phone, setPhone] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [reason, setReason] = React.useState('buy');
-  const [message, setMessage] = React.useState('');
-  const [sent, setSent] = React.useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const waMessage = [
-      `¡Hola! Me pongo en contacto desde vuestra web.`,
-      ``,
-      `*Nombre:* ${name}`,
-      email ? `*Email:* ${email}` : '',
-      phone ? `*Teléfono:* ${phone}` : '',
-      `*Interés:* ${reason}`,
-      message ? `\n*Mensaje:*\n${message}` : ''
-    ].filter(Boolean).join('\n');
-
-    window.open(`https://wa.me/34647803355?text=${encodeURIComponent(waMessage)}`, '_blank', 'noopener,noreferrer');
-    setSent(true);
-    setTimeout(() => setSent(false), 4000);
-  };
-
-  return (
-    <div className="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm">
-      {sent ? (
-        <div className="flex flex-col items-center justify-center h-full min-h-[320px] gap-4 text-center">
-          <span className="material-symbols-outlined text-5xl text-green-400">check_circle</span>
-          <p className="text-white font-bold text-lg">¡WhatsApp abierto!</p>
-          <p className="text-gray-400 text-sm">Envía el mensaje para que os podamos contactar.</p>
-        </div>
-      ) : (
-        <form onSubmit={handleSubmit} className="space-y-5">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <div>
-              <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">{t('common.name') || 'Nombre'}</label>
-              <input type="text" required value={name} onChange={e => setName(e.target.value)} placeholder="María García" className="w-full bg-white/10 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:border-transparent transition-all" />
-            </div>
-            <div>
-              <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">{t('common.phone') || 'Teléfono'}</label>
-              <input type="tel" value={phone} onChange={e => setPhone(e.target.value)} placeholder="+34 600 000 000" className="w-full bg-white/10 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:border-transparent transition-all" />
-            </div>
-          </div>
-          <div>
-            <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">{t('common.email') || 'Email'}</label>
-            <input type="email" required value={email} onChange={e => setEmail(e.target.value)} placeholder="maria@example.com" className="w-full bg-white/10 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:border-transparent transition-all" />
-          </div>
-          <div>
-            <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">{t('home.contact.reason.label')}</label>
-            <select value={reason} onChange={e => setReason(e.target.value)} className="w-full bg-white/10 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:border-transparent transition-all appearance-none">
-              <option value="buy" className="bg-gray-900">{t('home.contact.reason.buy')}</option>
-              <option value="sell" className="bg-gray-900">{t('home.contact.reason.sell')}</option>
-              <option value="valuation" className="bg-gray-900">{t('home.contact.reason.valuation')}</option>
-              <option value="invest" className="bg-gray-900">{t('home.contact.reason.invest')}</option>
-              <option value="other" className="bg-gray-900">{t('home.contact.reason.other')}</option>
-            </select>
-          </div>
-          <div>
-            <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">{t('common.message')}</label>
-            <textarea rows={4} value={message} onChange={e => setMessage(e.target.value)} placeholder={t('home.contact.message.placeholder')} className="w-full bg-white/10 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue-500 focus:border-transparent transition-all resize-none" />
-          </div>
-          <button type="submit" className="w-full bg-brand-blue-500 hover:bg-brand-blue-600 text-white font-bold py-4 rounded-lg transition-colors flex items-center justify-center gap-2 text-sm tracking-wide mt-2">
-            {t('home.contact.send') || 'Enviar mensaje'}
-            <span className="material-symbols-outlined text-sm">send</span>
-          </button>
-          <p className="text-xs text-center text-gray-500 mt-2">{t('detail.form.privacy') || 'Tu información está protegida. Nunca compartimos tus datos.'}</p>
-        </form>
-      )}
-    </div>
-  );
-};
 
 
 const FEATURED_SOLD: Property[] = [
@@ -220,7 +148,7 @@ const Home: React.FC = () => {
         canonical="https://essenciainmobiliaria.com/"
       />
       {/* ================= HERO SLIDER — Ken Burns ================= */}
-      <section className="relative h-screen min-h-[700px] w-full flex items-center justify-center pt-20 overflow-hidden">
+      <section className="relative min-h-[100dvh] w-full flex items-center justify-center pt-20 overflow-hidden">
         {/* Ken Burns image layers */}
         {HERO_IMAGES.map((img, i) => (
           <div
@@ -241,44 +169,59 @@ const Home: React.FC = () => {
         ))}
 
         {/* Gradient overlays */}
-        <div className="absolute inset-0 bg-white/50" style={{ zIndex: 1 }} />
-        <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/30 to-white/70" style={{ zIndex: 1 }} />
+        <div className="absolute inset-0 bg-white/40" style={{ zIndex: 1 }} />
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-white/60" style={{ zIndex: 1 }} />
 
         {/* Hero content */}
         <div className="relative max-w-5xl mx-auto px-6 text-center flex flex-col items-center" style={{ zIndex: 2 }}>
-          <span className="inline-block py-1 px-4 mb-8 text-xs font-bold tracking-[0.2em] uppercase bg-white/90 backdrop-blur-sm text-charcoal border border-gray-200 rounded-full shadow-sm">
+          <motion.span 
+            initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="inline-block py-1 px-5 mb-8 text-[10px] font-black tracking-[0.25em] uppercase bg-white/80 backdrop-blur-md text-editorial-black border border-white/40 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.04)] ring-1 ring-black/5"
+          >
             {t('home.hero.tag')}
-          </span>
-          <h1 className="font-display text-5xl sm:text-7xl lg:text-8xl font-extrabold text-editorial-black mb-8 leading-[1.1] tracking-tight">
+          </motion.span>
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="font-display text-5xl sm:text-7xl lg:text-8xl font-black text-editorial-black mb-6 leading-none tracking-tighter drop-shadow-sm"
+          >
             {t('home.hero.title1')}<br />
-            <span className="text-gray-500">{t('home.hero.title2')}</span>
-          </h1>
-          <p className="text-lg md:text-xl text-gray-600 max-w-2xl mb-12 font-medium leading-relaxed">
+            <span className="text-brand-blue-500 font-extrabold">{t('home.hero.title2')}</span>
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="text-lg md:text-xl text-gray-600 max-w-2xl mb-12 font-medium leading-relaxed"
+          >
             {t('home.hero.subtitle')}
-          </p>
-          <div className="flex flex-col sm:flex-row items-center gap-8">
-            <Link to="/valuation" className="h-14 px-10 bg-charcoal hover:bg-brand-blue-600 text-white text-sm font-bold tracking-widest uppercase rounded shadow-xl hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2">
+          </motion.p>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col sm:flex-row items-center gap-6"
+          >
+            <Link to="/valuation" className="h-14 px-10 bg-brand-blue-700 hover:bg-brand-blue-500 text-white text-xs font-bold tracking-[0.15em] uppercase rounded-sm shadow-[0_10px_40px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_40px_-5px_rgba(34,211,238,0.35)] hover:-translate-y-1 active:scale-[0.98] active:translate-y-0 transition-all duration-300 flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 focus-visible:ring-offset-2">
               {t('home.hero.cta.valuation')}
             </Link>
-            <Link to="/properties" className="group text-editorial-black font-bold text-sm tracking-wide border-b border-editorial-black pb-1 hover:text-brand-blue-600 hover:border-brand-blue-600 transition-all flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500">
+            <Link to="/properties" className="h-14 px-10 group text-editorial-black font-bold text-xs uppercase tracking-[0.15em] bg-white border border-gray-200/50 rounded-sm hover:bg-gray-50 hover:border-gray-300 hover:shadow-[0_8px_24px_rgba(0,0,0,0.1)] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500">
               {t('home.hero.cta.sold')}
-              <span className="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+              <span className="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
             </Link>
-          </div>
+          </motion.div>
 
           {/* Dot indicators */}
-          <div className="flex gap-3 mt-12" style={{ zIndex: 2 }}>
+          <motion.div 
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.5 }}
+            className="flex gap-4 mt-16" style={{ zIndex: 2 }}
+          >
             {HERO_IMAGES.map((_, i) => (
               <button
                 key={i}
                 aria-label={`Ir a imagen ${i + 1}`}
                 onClick={() => setHeroIndex(i)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 ${
-                  i === heroIndex ? 'bg-editorial-black scale-125' : 'bg-gray-400 hover:bg-gray-600'
+                className={`w-2.5 h-2.5 rounded-full transition-all duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 ${
+                  i === heroIndex ? 'bg-editorial-black scale-150' : 'bg-gray-300 hover:bg-gray-400'
                 }`}
               />
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -289,28 +232,37 @@ const Home: React.FC = () => {
       <InteractiveMarketingSection />
 
       <section className="py-24 bg-editorial-gray overflow-hidden">
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-24">
-          <div className="flex items-center justify-between mb-12">
+        <div className="max-w-[1440px] mx-auto">
+          <div className="flex items-center justify-between mb-12 px-6 lg:px-24">
             <h2 className="text-3xl font-bold">{t('home.recent.title')}</h2>
             <div className="flex gap-2">
-              <button onClick={() => scroll('left')} aria-label="Previous property" className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500">
-                <span className="material-symbols-outlined">arrow_back</span>
+              <button onClick={() => scroll('left')} aria-label={language === 'es' ? 'Propiedad anterior' : 'Previous property'} className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500">
+                <span className="material-symbols-outlined" aria-hidden="true">arrow_back</span>
               </button>
-              <button onClick={() => scroll('right')} aria-label="Next property" className="w-10 h-10 rounded-full bg-brand-blue-500 text-white flex items-center justify-center hover:bg-brand-blue-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500">
-                <span className="material-symbols-outlined">arrow_forward</span>
+              <button onClick={() => scroll('right')} aria-label={language === 'es' ? 'Siguiente propiedad' : 'Next property'} className="w-10 h-10 rounded-full bg-brand-blue-500 text-white flex items-center justify-center hover:bg-brand-blue-600 active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500">
+                <span className="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
               </button>
             </div>
           </div>
           <div
             ref={carouselRef}
-            className="flex overflow-x-auto gap-8 pb-8 hide-scrollbar snap-x snap-mandatory scroll-smooth"
+            className="flex overflow-x-auto gap-6 lg:gap-8 px-6 lg:px-24 pb-12 hide-scrollbar snap-x snap-mandatory scroll-smooth"
           >
-            {recentProperties.map(property => {
+            {recentProperties.map((property, index) => {
               const statusText = property.status === 'sold' ? t('home.recent.sold') : (language === 'es' ? 'Reservado' : 'Reserved');
               const displayImage = property.image || (property.images && property.images.length > 0 ? property.images[0] : '');
               
               return (
-              <Link key={property.id} to={`/property/${property.id}`} className="snap-center shrink-0 w-[85vw] md:w-[500px] bg-white rounded-lg overflow-hidden shadow-editorial hover:shadow-xl transition-shadow duration-300 block group">
+              <motion.div 
+                key={property.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.01, y: -4, transition: { type: 'spring', stiffness: 300, damping: 20 } }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className="snap-center shrink-0 w-[85vw] md:w-[500px]"
+              >
+              <Link to={`/property/${property.id}`} className="bg-white rounded-lg overflow-hidden shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-5px_rgba(0,0,0,0.1)] transition-shadow duration-300 block group h-full">
                 <div className="w-full h-64 bg-cover bg-center group-hover:scale-105 transition-transform duration-700" style={{ backgroundImage: `url("${displayImage}")` }}>
                   <div className="p-4 flex justify-end">
                     <span className="bg-editorial-black text-white text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-sm">{statusText}</span>
@@ -335,87 +287,86 @@ const Home: React.FC = () => {
                   </div>
                 </div>
               </Link>
+              </motion.div>
             )})}
             {recentProperties.length === 0 && (
-              <div className="w-full text-center py-12 text-gray-500 font-medium tracking-wide">
+              <div className="w-full text-center py-12 text-gray-500 font-medium tracking-wide lg:col-span-3">
                 {language === 'es' ? 'No hay transacciones recientes disponibles en el CRM.' : 'No recent transactions available in the CRM.'}
               </div>
+            )}
+            
+            {/* Fake element to allow scrolling to the end with proper padding */}
+            {recentProperties.length > 0 && (
+              <div className="shrink-0 w-[1px] snap-end"></div>
             )}
           </div>
         </div>
       </section>
 
       {/* ================= CONTACT FORM SECTION ================= */}
-      <section className="py-24 bg-editorial-black relative overflow-hidden">
+      <section className="py-24 bg-white relative overflow-hidden">
         {/* Decorative geometric accent */}
         <div className="absolute right-0 top-0 w-1/2 h-full opacity-5 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 80% 50%, #2563eb 0%, transparent 70%)' }} />
         <div className="max-w-[1440px] mx-auto px-6 lg:px-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Left — copy */}
-            <div>
-              <span className="text-brand-blue-400 font-bold tracking-widest uppercase text-xs mb-4 block">{t('home.contact.tag')}</span>
-              <h2 className="text-4xl md:text-5xl font-black text-white mb-6 leading-tight">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <span className="text-brand-blue-600 font-bold tracking-widest uppercase text-xs mb-4 block">{t('home.contact.tag')}</span>
+              <h2 className="text-4xl md:text-5xl font-black text-editorial-black mb-6 leading-tight">
                 {t('home.contact.title').split('\n').map((line, i, arr) =>
                   i < arr.length - 1
                     ? <span key={i}>{line}<br /></span>
-                    : <span key={i} className="text-brand-blue-400">{line}</span>
+                    : <span key={i} className="text-brand-blue-600">{line}</span>
                 )}
               </h2>
-              <p className="text-gray-400 text-lg leading-relaxed mb-10">
+              <p className="text-gray-500 text-lg leading-relaxed mb-10">
                 {t('home.contact.subtitle')}
               </p>
               <div className="space-y-5">
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-brand-blue-500/20 flex items-center justify-center shrink-0">
-                    <span className="material-symbols-outlined text-brand-blue-400 text-base">call</span>
+                  <div className="w-10 h-10 rounded-full bg-brand-blue-50 flex items-center justify-center shrink-0">
+                    <span className="material-symbols-outlined text-brand-blue-600 text-base">call</span>
                   </div>
                   <div>
                     <p className="text-xs uppercase tracking-widest text-gray-500 mb-0.5">{t('common.phone')}</p>
-                    <a href="tel:+34618063000" className="text-white font-semibold hover:text-brand-blue-400 transition-colors">+34 618 063 000</a>
+                    <a href="tel:+34618063000" className="text-editorial-black font-semibold hover:text-brand-blue-600 transition-colors">+34 618 063 000</a>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-brand-blue-500/20 flex items-center justify-center shrink-0">
-                    <span className="material-symbols-outlined text-brand-blue-400 text-base">mail</span>
+                  <div className="w-10 h-10 rounded-full bg-brand-blue-50 flex items-center justify-center shrink-0">
+                    <span className="material-symbols-outlined text-brand-blue-600 text-base">mail</span>
                   </div>
                   <div>
                     <p className="text-xs uppercase tracking-widest text-gray-500 mb-0.5">{t('common.email')}</p>
-                    <a href="mailto:hola@essenciainmobiliaria.com" className="text-white font-semibold hover:text-brand-blue-400 transition-colors">hola@essenciainmobiliaria.com</a>
+                    <a href="mailto:hola@essenciainmobiliaria.com" className="text-editorial-black font-semibold hover:text-brand-blue-600 transition-colors">hola@essenciainmobiliaria.com</a>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-brand-blue-500/20 flex items-center justify-center shrink-0">
-                    <span className="material-symbols-outlined text-brand-blue-400 text-base">location_on</span>
+                  <div className="w-10 h-10 rounded-full bg-brand-blue-50 flex items-center justify-center shrink-0">
+                    <span className="material-symbols-outlined text-brand-blue-600 text-base">location_on</span>
                   </div>
                   <div>
                     <p className="text-xs uppercase tracking-widest text-gray-500 mb-0.5">{t('footer.office') || 'Oficina'}</p>
-                    <p className="text-white font-semibold">C/ Sant Vicent Ferrer 24, Gandia, Valencia</p>
+                    <p className="text-editorial-black font-semibold">C/ Sant Vicent Ferrer 24, Gandia, Valencia</p>
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Right — form */}
-            <HomeContactForm />
-          </div>
-        </div>
-      </section>
-
-      {/* ================= FREE VALUATION CTA ================= */}
-      <section className="py-24 bg-white relative overflow-hidden">
-        <div className="absolute right-0 top-0 w-1/3 h-full bg-brand-blue-500/5 -skew-x-12 hidden lg:block"></div>
-        <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
-          <span className="text-brand-blue-600 font-bold tracking-widest uppercase text-sm mb-4 block">{t('home.value.tag')}</span>
-          <h2 className="text-4xl md:text-5xl font-black mb-6 text-editorial-black">{t('home.value.title')}</h2>
-          <p className="text-lg text-gray-500 mb-10 max-w-2xl mx-auto">{t('home.value.subtitle')}</p>
-          <div className="bg-white p-2 rounded shadow-xl border border-gray-100 flex flex-col sm:flex-row gap-2 max-w-2xl mx-auto">
-            <div className="relative grow">
-              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 material-symbols-outlined">search</span>
-              <input type="text" placeholder={t('home.value.placeholder')} className="w-full h-12 pl-12 pr-4 bg-transparent border-none focus:ring-0 text-editorial-black placeholder-gray-400 rounded" />
-            </div>
-            <Link to="/valuation" className="h-12 px-8 bg-brand-blue-500 hover:bg-brand-blue-600 text-white font-bold rounded transition-colors whitespace-nowrap flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500">
-              {t('home.value.button')}
-            </Link>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <ContactForm theme="light" />
+            </motion.div>
           </div>
         </div>
       </section>

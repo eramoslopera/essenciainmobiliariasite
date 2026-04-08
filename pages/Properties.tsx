@@ -7,6 +7,7 @@ import PropertySkeleton from '../components/PropertySkeleton';
 import SEOHead from '../components/SEOHead';
 import { MapContainer, TileLayer, Marker, Popup, useMap, LayersControl } from 'react-leaflet';
 import L from 'leaflet';
+import { WhatsappLogo } from '@phosphor-icons/react';
 
 // Fix for default Leaflet marker icons in React
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -77,6 +78,15 @@ const Properties: React.FC = () => {
   const [filterType, setFilterType] = useState('All Types');
   const [filterPrice, setFilterPrice] = useState('Any Price');
   const [sortOption, setSortOption] = useState('newest');
+
+  // Pagination State
+  const [currentPage, setCurrentPage] = useState(1);
+  const ITEMS_PER_PAGE = 10;
+
+  const handleFilterChange = (setter: React.Dispatch<React.SetStateAction<string>>, value: string) => {
+    setter(value);
+    setCurrentPage(1);
+  };
 
   // State for properties
   const [properties, setProperties] = useState<Property[]>([]);
@@ -194,6 +204,27 @@ const Properties: React.FC = () => {
   };
 
   const sortedProperties = getFilteredAndSortedProperties();
+  const totalPages = Math.ceil(sortedProperties.length / ITEMS_PER_PAGE);
+  const paginatedProperties = sortedProperties.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
+
+  const getPageNumbers = () => {
+    const pages = [];
+    if (totalPages <= 7) {
+      for (let i = 1; i <= totalPages; i++) pages.push(i);
+    } else {
+      if (currentPage <= 4) {
+        pages.push(1, 2, 3, 4, 5, '...', totalPages);
+      } else if (currentPage >= totalPages - 3) {
+        pages.push(1, '...', totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
+      } else {
+        pages.push(1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages);
+      }
+    }
+    return pages;
+  };
 
   // Handle marker click: scroll list to item
   const handleMarkerClick = (id: number) => {
@@ -226,11 +257,12 @@ const Properties: React.FC = () => {
             </div>
             <div className="w-full lg:w-auto flex flex-wrap gap-4 lg:gap-8 items-center">
               <div className="group relative">
-                <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">{t('properties.filters.zone')}</label>
+                <label htmlFor="filter-zone" className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">{t('properties.filters.zone')}</label>
                 <select
+                  id="filter-zone"
                   value={filterZone}
-                  onChange={(e) => setFilterZone(e.target.value)}
-                  className="bg-transparent border-b border-gray-200 py-2 pr-8 pl-0 text-sm font-bold text-editorial-black focus:ring-0 focus:border-brand-blue-500 cursor-pointer min-w-[140px]"
+                  onChange={(e) => handleFilterChange(setFilterZone, e.target.value)}
+                  className="bg-transparent appearance-none border-b border-gray-200 rounded-none py-2 pr-8 pl-0 text-sm font-bold text-editorial-black focus:outline-none focus:border-editorial-black focus-visible:ring-2 focus-visible:ring-brand-blue-500 cursor-pointer min-w-[140px]"
                 >
                   <option>{t('prop.filters.all_zones')}</option>
                   <option>{t('properties.location.gandia')}</option>
@@ -239,11 +271,12 @@ const Properties: React.FC = () => {
                 </select>
               </div>
               <div className="group relative">
-                <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">{t('properties.filters.type')}</label>
+                <label htmlFor="filter-type" className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">{t('properties.filters.type')}</label>
                 <select
+                  id="filter-type"
                   value={filterType}
-                  onChange={(e) => setFilterType(e.target.value)}
-                  className="bg-transparent border-b border-gray-200 py-2 pr-8 pl-0 text-sm font-bold text-editorial-black focus:ring-0 focus:border-brand-blue-500 cursor-pointer min-w-[140px]"
+                  onChange={(e) => handleFilterChange(setFilterType, e.target.value)}
+                  className="bg-transparent appearance-none border-b border-gray-200 rounded-none py-2 pr-8 pl-0 text-sm font-bold text-editorial-black focus:outline-none focus:border-editorial-black focus-visible:ring-2 focus-visible:ring-brand-blue-500 cursor-pointer min-w-[140px]"
                 >
                   <option>{t('prop.filters.all_types')}</option>
                   <option>{t('prop.filters.villas')}</option>
@@ -252,11 +285,12 @@ const Properties: React.FC = () => {
                 </select>
               </div>
               <div className="group relative">
-                <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">{t('properties.filters.price')}</label>
+                <label htmlFor="filter-price" className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">{t('properties.filters.price')}</label>
                 <select
+                  id="filter-price"
                   value={filterPrice}
-                  onChange={(e) => setFilterPrice(e.target.value)}
-                  className="bg-transparent border-b border-gray-200 py-2 pr-8 pl-0 text-sm font-bold text-editorial-black focus:ring-0 focus:border-brand-blue-500 cursor-pointer min-w-[140px]"
+                  onChange={(e) => handleFilterChange(setFilterPrice, e.target.value)}
+                  className="bg-transparent appearance-none border-b border-gray-200 rounded-none py-2 pr-8 pl-0 text-sm font-bold text-editorial-black focus:outline-none focus:border-editorial-black focus-visible:ring-2 focus-visible:ring-brand-blue-500 cursor-pointer min-w-[140px]"
                 >
                   <option>{t('prop.filters.any_price')}</option>
                   <option>{t('properties.price.range1')}</option>
@@ -265,11 +299,12 @@ const Properties: React.FC = () => {
                 </select>
               </div>
               <div className="group relative">
-                <label className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">{t('properties.sort.label')}</label>
+                <label htmlFor="filter-sort" className="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">{t('properties.sort.label')}</label>
                 <select
+                  id="filter-sort"
                   value={sortOption}
-                  onChange={(e) => setSortOption(e.target.value)}
-                  className="bg-transparent border-b border-gray-200 py-2 pr-8 pl-0 text-sm font-bold text-editorial-black focus:ring-0 focus:border-brand-blue-500 cursor-pointer min-w-[140px]"
+                  onChange={(e) => handleFilterChange(setSortOption, e.target.value)}
+                  className="bg-transparent appearance-none border-b border-gray-200 rounded-none py-2 pr-8 pl-0 text-sm font-bold text-editorial-black focus:outline-none focus:border-editorial-black focus-visible:ring-2 focus-visible:ring-brand-blue-500 cursor-pointer min-w-[140px]"
                 >
                   <option value="newest">{t('properties.sort.newest')}</option>
                   <option value="price_asc">{t('properties.sort.price_low')}</option>
@@ -277,7 +312,7 @@ const Properties: React.FC = () => {
                   <option value="beds">{t('properties.sort.beds')}</option>
                 </select>
               </div>
-              <button className="ml-auto lg:ml-4 h-10 px-6 bg-editorial-black hover:bg-brand-blue-600 text-white font-bold text-sm tracking-wide rounded transition-colors flex items-center gap-2">
+              <button type="button" className="ml-auto lg:ml-4 h-10 px-6 bg-editorial-black hover:bg-gray-800 text-white font-bold text-xs tracking-[0.15em] uppercase rounded-sm transition-colors flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-blue-500">
                 {t('common.search')}
               </button>
             </div>
@@ -295,14 +330,14 @@ const Properties: React.FC = () => {
                 <PropertySkeleton count={6} />
               </div>
             ) : sortedProperties.length === 0 ? (
-              <div className="flex flex-col items-center justify-center h-64 text-gray-400">
-                <span className="material-symbols-outlined text-4xl mb-2">filter_alt_off</span>
+              <div className="flex flex-col items-center justify-center h-64 text-gray-400" role="status">
+                <span className="material-symbols-outlined text-4xl mb-2" aria-hidden="true">filter_alt_off</span>
                 <p className="font-bold">{t('properties.no_results')}</p>
               </div>
             ) : (
               <div className="grid grid-cols-1 gap-y-8">
 
-                {sortedProperties.map((property, index) => {
+                {paginatedProperties.map((property, index) => {
                   const badges: Badge[] = [...(property.badges || [])];
                   if (isRecentlySold(property.dateSold)) {
                     badges.unshift({ text: t('properties.badges.sold'), type: 'standard', variant: 'black' });
@@ -314,10 +349,10 @@ const Properties: React.FC = () => {
                         ref={(el) => { if (el) propertyRefs.current.set(property.id, el); }}
                         onMouseEnter={() => setActivePropertyId(property.id)}
                         onMouseLeave={() => setActivePropertyId(null)}
-                        className={`rounded-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-xl ${activePropertyId === property.id ? 'ring-2 ring-brand-blue-500 ring-offset-4 scale-[1.02] shadow-xl' : ''}`}
+                        className={`rounded-sm transition-all duration-300 ${activePropertyId === property.id ? 'ring-2 ring-editorial-black ring-offset-4 shadow-md' : 'hover:shadow-md'}`}
                       >
                         <Link to={`/property/${property.id}`} className="group cursor-pointer block">
-                          <div className="relative aspect-[3/2] overflow-hidden rounded bg-gray-100 mb-3">
+                          <div className="relative aspect-[3/2] overflow-hidden rounded-sm bg-gray-100 mb-3">
                             {/* Image */}
                             <div
                               className={`absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105 ${property.isComingSoon ? 'grayscale hover:grayscale-0' : ''}`}
@@ -327,11 +362,12 @@ const Properties: React.FC = () => {
                             {/* Save Button */}
                             <button
                               onClick={(e) => toggleSave(e, property.id)}
-                              className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center hover:bg-white transition-colors shadow-sm"
+                              className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-white backdrop-blur-sm flex items-center justify-center hover:bg-gray-100 transition-colors shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500"
                               aria-label={savedProperties.has(property.id) ? "Unsave property" : "Save property"}
                             >
                               <span
                                 className={`material-symbols-outlined text-xl transition-colors ${savedProperties.has(property.id) ? 'text-red-500' : 'text-gray-600'}`}
+                                aria-hidden="true"
                                 style={savedProperties.has(property.id) ? { fontVariationSettings: "'FILL' 1" } : {}}
                               >
                                 favorite
@@ -392,23 +428,24 @@ const Properties: React.FC = () => {
                             </span>
                           </div>
 
-                          {/* Contact Agent Button */}
-                          <a
-                            href={`https://wa.me/34647803355?text=${encodeURIComponent(`Hola, me interesa la propiedad ${property.title} en ${property.location}. ¿Podéis darme más información?`)}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={(e) => e.stopPropagation()}
-                            className="w-full mt-3 py-2 border border-gray-200 hover:border-[#25D366] text-editorial-black hover:text-[#25D366] text-xs font-bold uppercase tracking-widest hover:bg-[#25D366]/5 transition-colors rounded flex items-center justify-center gap-2"
-                          >
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="" className="w-3.5 h-3.5" />
-                            {t('detail.contact_agent')}
-                          </a>
                         </Link>
+
+                        {/* Contact Agent Button */}
+                        <a
+                          href={`https://wa.me/34647803355?text=${encodeURIComponent(`Hola, me interesa la propiedad ${property.title} en ${property.location}. ¿Podéis darme más información?`)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="w-full mt-3 py-2 border border-gray-200 hover:border-[#25D366] text-editorial-black hover:text-[#25D366] text-xs font-bold uppercase tracking-widest hover:bg-[#25D366]/5 transition-colors rounded-sm flex items-center justify-center gap-2"
+                        >
+                          <WhatsappLogo weight="fill" className="w-4 h-4" aria-hidden="true" />
+                          {t('detail.contact_agent')}
+                        </a>
                       </div>
 
-                      {/* Inject Market Banner after second item */}
-                      {index === 1 && (
-                        <div className="md:col-span-2 bg-editorial-gray rounded p-8 flex flex-col md:flex-row items-center justify-between gap-6 border border-gray-100 relative overflow-hidden">
+                      {/* Inject Market Banner after second item on first page */}
+                      {index === 1 && currentPage === 1 && (
+                        <div className="bg-editorial-gray rounded p-8 flex flex-col md:flex-row items-center justify-between gap-6 border border-gray-100 relative overflow-hidden">
                           <div className="absolute -right-10 -top-10 text-gray-200 opacity-20 rotate-12">
                             <span className="material-symbols-outlined text-[150px]">trending_up</span>
                           </div>
@@ -429,20 +466,55 @@ const Properties: React.FC = () => {
               </div>
             )}
 
-            <div className="mt-20 flex justify-center gap-2 pb-10">
-              <button onClick={handleScrollTop} className="w-10 h-10 flex items-center justify-center border border-editorial-black bg-editorial-black text-white rounded font-bold">1</button>
-              <button onClick={handleScrollTop} className="w-10 h-10 flex items-center justify-center border border-gray-200 hover:border-editorial-black rounded font-bold transition-colors">2</button>
-              <button onClick={handleScrollTop} className="w-10 h-10 flex items-center justify-center border border-gray-200 hover:border-editorial-black rounded font-bold transition-colors">3</button>
-              <span className="w-10 h-10 flex items-center justify-center text-gray-400">...</span>
-              <button onClick={handleScrollTop} className="w-10 h-10 flex items-center justify-center border border-gray-200 hover:border-editorial-black rounded font-bold transition-colors">
-                <span className="material-symbols-outlined">arrow_forward</span>
-              </button>
-            </div>
+            {totalPages > 1 && (
+              <div className="mt-20 flex justify-center items-center gap-1.5 pb-16 text-xs font-bold tracking-[0.1em]">
+                {/* Previous Button */}
+                <button 
+                  onClick={() => { setCurrentPage(p => Math.max(1, p - 1)); handleScrollTop(); }}
+                  disabled={currentPage === 1}
+                  className="w-10 h-10 flex items-center justify-center rounded-sm text-editorial-black hover:bg-gray-100 transition-all active:scale-[0.98] disabled:opacity-30 disabled:hover:bg-transparent disabled:active:scale-100 border border-transparent hover:border-gray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500"
+                  aria-label="Previous page"
+                >
+                  <span className="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_back</span>
+                </button>
+                
+                {/* Pages */}
+                {getPageNumbers().map((page, i) => (
+                  typeof page === 'number' ? (
+                    <button 
+                      key={i}
+                      onClick={() => { setCurrentPage(page); handleScrollTop(); }} 
+                      className={`w-10 h-10 flex items-center justify-center rounded-sm transition-all active:scale-[0.98] ${
+                        currentPage === page 
+                          ? 'bg-editorial-black text-white shadow-[0_4px_12px_rgba(0,0,0,0.15)] ring-1 ring-editorial-black ring-offset-2' 
+                          : 'text-gray-500 hover:text-editorial-black hover:bg-gray-100 hover:border hover:border-gray-200 border border-transparent'
+                      }`}
+                    >
+                      {page}
+                    </button>
+                  ) : (
+                    <span key={i} className="w-8 h-10 flex items-center justify-center text-gray-300 pointer-events-none">
+                      {page}
+                    </span>
+                  )
+                ))}
+                
+                {/* Next Button */}
+                <button 
+                  onClick={() => { setCurrentPage(p => Math.min(totalPages, p + 1)); handleScrollTop(); }}
+                  disabled={currentPage === totalPages}
+                  className="w-10 h-10 flex items-center justify-center rounded-sm text-editorial-black hover:bg-gray-100 transition-all active:scale-[0.98] disabled:opacity-30 disabled:hover:bg-transparent disabled:active:scale-100 border border-transparent hover:border-gray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500"
+                  aria-label="Next page"
+                >
+                  <span className="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
+                </button>
+              </div>
+            )}
           </div>
 
           {/* Map Column (Sticky) */}
           <div className="hidden lg:block lg:col-span-8 h-[calc(100vh-10rem)] sticky top-[10.5rem]">
-            <div className="w-full h-full rounded-xl overflow-hidden shadow-2xl border border-gray-200 relative">
+            <div className="w-full h-full rounded-sm overflow-hidden shadow-md border border-gray-200 relative">
               <MapContainer
                 center={[39.1, -0.3]}
                 zoom={9}

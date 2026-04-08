@@ -1,6 +1,7 @@
-import React, { useRef } from 'react';
-import { useScroll, motion } from 'framer-motion';
+import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import {
   ChatCircleText,
   TrendUp,
@@ -12,6 +13,7 @@ import {
   ShareNetwork,
   Briefcase,
   CheckCircle,
+  ArrowRight
 } from '@phosphor-icons/react';
 
 const steps = [
@@ -28,99 +30,107 @@ const steps = [
 ];
 
 export const InteractiveMarketingSection: React.FC = () => {
-  const { t } = useLanguage();
-  const containerRef = useRef<HTMLDivElement>(null);
-  
-  // Optional: We can use scroll tracking if we want to add parallax to backgrounds or indicators
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end end'],
-  });
+  const { t, language } = useLanguage();
 
   return (
-    <section ref={containerRef} className="relative bg-editorial-gray py-24 px-6 lg:px-24">
-      <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 relative">
-        
-        {/* Left Side: Sticky Content */}
-        <div className="lg:col-span-5 relative">
-          <div className="lg:sticky lg:top-32 h-fit flex flex-col justify-center">
-            <div>
-              <span className="inline-block py-1 px-4 mb-6 text-xs font-bold tracking-[0.2em] uppercase bg-white/90 backdrop-blur-sm text-brand-blue-600 border border-brand-blue-100 rounded-full shadow-sm">
-                {t('landing.mia.exclusive')}
-              </span>
-              <h2 className="text-4xl lg:text-5xl xl:text-6xl font-black text-editorial-black tracking-tight leading-[1.1] mb-6">
-                {t('landing.mia.id')}
-              </h2>
-              <p className="text-xl text-gray-500 font-medium leading-relaxed max-w-lg">
-                {t('landing.marketing.desc') || t('home.marketing.subtitle')}
-              </p>
-            </div>
+    <section className="py-24 lg:py-32 bg-editorial-gray/30 overflow-hidden relative">
+      <div className="absolute top-0 right-0 w-1/3 h-[800px] bg-brand-blue-50/50 blur-[120px] rounded-full pointer-events-none -z-10" />
 
-            <div className="mt-12 hidden lg:block">
-              {/* Media element with premium styling */}
-              <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-gray-200/50">
-                <img 
-                  src="https://fotos15.apinmo.com/1909/27341402/1-1.jpg" 
-                  alt="Marketing Process" 
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-editorial-black/60 to-transparent mix-blend-multiply"></div>
-                <div className="absolute bottom-6 left-6 text-white font-bold tracking-widest uppercase text-sm">
-                  Essencia <span className="text-brand-blue-400">Marketing</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Right Side: Scrollable Listing */}
-        <div className="lg:col-span-7 flex flex-col gap-8 pb-[10vh]">
-          {steps.map((step, i) => {
-            const Icon = step.icon;
-            return (
-              <motion.div 
-                key={step.id}
-                initial={{ opacity: 0, y: 50 }}
+      <div className="max-w-[1440px] mx-auto px-6 lg:px-24">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-24">
+          
+          {/* Left Column — Sticky Header & Large CTA */}
+          <div className="col-span-1 md:col-span-5 lg:col-span-4 relative">
+            <div className="md:sticky md:top-32 h-fit mb-12 md:mb-0">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
-                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-                className="relative bg-white p-8 md:p-10 rounded-2xl shadow-editorial border border-gray-100 overflow-hidden group"
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               >
-                {/* Background Decor */}
-                <div className="absolute -right-4 -top-8 text-[10rem] font-bold text-gray-50/50 pointer-events-none transition-transform group-hover:scale-110 duration-500">
-                  {step.id.toString().padStart(2, '0')}
+                <div className="inline-flex items-center gap-2 mb-6">
+                  <div className="w-8 h-[1px] bg-brand-blue-600" />
+                  <span className="text-[10px] font-black tracking-[0.25em] uppercase text-brand-blue-600">
+                    {t('landing.mia.exclusive')}
+                  </span>
                 </div>
                 
-                {/* Number Badge (Visible on mobile/tablet) */}
-                <div className="absolute top-8 right-8 lg:hidden opacity-20">
-                  <span className="font-display text-5xl font-extrabold">{step.id.toString().padStart(2, '0')}</span>
-                </div>
-
-                <div className="relative z-10">
-                  <div className="h-16 w-16 rounded-xl bg-brand-blue-50/50 border border-brand-blue-100/50 flex items-center justify-center mb-6 group-hover:bg-brand-blue-500 transition-colors duration-500">
-                    <Icon size={32} weight="duotone" className="text-brand-blue-500 group-hover:text-white transition-colors duration-500" />
+                <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-editorial-black tracking-tighter leading-[1.05] mb-8">
+                  {t('landing.mia.id')}
+                </h2>
+                
+                <p className="text-gray-500 text-lg leading-relaxed mb-12 font-medium max-w-sm">
+                  {t('landing.marketing.desc') || t('home.marketing.subtitle')}
+                </p>
+                
+                <Link 
+                  to="/sell" 
+                  className="group relative inline-flex items-center gap-6 bg-editorial-black text-white hover:bg-brand-blue-600 h-16 pl-8 pr-2 rounded-full transition-all duration-500 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] hover:shadow-[0_20px_40px_-10px_rgba(37,99,235,0.4)] active:scale-[0.98] overflow-hidden"
+                >
+                  <span className="text-xs font-bold tracking-[0.2em] relative z-10 whitespace-nowrap uppercase">
+                    {language === 'es' ? 'Vende con Essencia' : 'Sell with Essencia'}
+                  </span>
+                  <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center group-hover:scale-105 group-hover:bg-white transition-all duration-300 relative z-10">
+                     <ArrowRight size={20} weight="bold" className="text-white group-hover:text-brand-blue-600" />
                   </div>
-                  
-                  <h3 className="text-2xl font-bold text-editorial-black tracking-tight mb-2">
-                    {t(`landing.mia.step${step.id}.title`)}
-                  </h3>
-                  
-                  <p className="inline-block py-1 pr-4 text-xs font-bold tracking-widest uppercase text-brand-blue-600 mb-4 border-b border-brand-blue-100">
-                    {t(`landing.mia.step${step.id}.subtitle`)}
-                  </p>
-                  
-                  <p className="text-gray-500 leading-relaxed text-base font-medium">
-                    {t(`landing.mia.step${step.id}.long_desc`)}
-                  </p>
-                </div>
+                </Link>
               </motion.div>
-            );
-          })}
+            </div>
+          </div>
+
+          {/* Right Column — Scrolling Steps Grid */}
+          <div className="col-span-1 md:col-span-7 lg:col-span-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8 relative pb-12">
+               {steps.map((step, index) => {
+                 const Icon = step.icon;
+                 // Asymmetric layout logic for masonry feel on desktop
+                 const isEvenColumn = index % 2 === 1;
+                 const marginTopClass = isEvenColumn ? "sm:mt-24" : "sm:mt-0";
+
+                 return (
+                    <motion.div 
+                      key={step.id} 
+                      initial={{ opacity: 0, y: 40 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-100px" }}
+                      transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                      className={`bg-white rounded-[2rem] p-8 lg:p-10 border border-gray-100 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.08)] transition-all group flex flex-col relative overflow-hidden ${marginTopClass}`}
+                    >
+                       <div className="absolute -right-16 -top-16 w-48 h-48 bg-gray-50/50 rounded-full blur-3xl group-hover:bg-brand-blue-50/80 transition-colors duration-700 pointer-events-none" />
+                       
+                       {/* Subtle step number watermark */}
+                       <div className="absolute right-6 top-6 text-6xl font-black text-gray-50 group-hover:-translate-y-2 group-hover:text-brand-blue-50/50 transition-all duration-500 pointer-events-none z-0">
+                         {step.id.toString().padStart(2, '0')}
+                       </div>
+
+                       <div className="relative z-10 flex flex-col h-full">
+                          <div className="h-14 w-14 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-brand-blue-50 group-hover:border-brand-blue-100 transition-all duration-500 shadow-sm">
+                            <Icon size={24} weight="fill" className="text-editorial-black group-hover:text-brand-blue-600 transition-colors duration-500" />
+                          </div>
+                          
+                          <div className="mt-auto pt-6 border-t border-gray-100">
+                            <p className="text-[10px] font-black tracking-widest uppercase text-brand-blue-600 mb-2 opacity-80">
+                              {t(`landing.mia.step${step.id}.subtitle`)}
+                            </p>
+                            <h3 className="text-xl lg:text-2xl font-black text-editorial-black tracking-tight mb-4">
+                              {t(`landing.mia.step${step.id}.title`)}
+                            </h3>
+                              
+                            <p className="text-sm text-gray-500 leading-relaxed font-medium">
+                              {t(`landing.mia.step${step.id}.long_desc`)}
+                            </p>
+                          </div>
+                       </div>
+                    </motion.div>
+                 )
+               })}
+            </div>
+          </div>
+
         </div>
-        
       </div>
     </section>
   );
 }
 
-export default InteractiveMarketingSection;
+export default InteractiveMarketingSection; 

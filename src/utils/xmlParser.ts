@@ -47,7 +47,22 @@ export const fetchProperties = async (): Promise<Property[]> => {
 
                 const beds = parseInt(getTag("beds")) || 0;
                 const baths = parseInt(getTag("baths")) || 0;
-                const size = getTag("built") + " m²";
+                const built = getTag("built");
+                const size = built && built !== '0' ? built + " m²" : "";
+
+                // Parcela exterior (plot)
+                const plotRaw = getTag("plot");
+                const plot = plotRaw && plotRaw !== '0' ? plotRaw + " m²" : undefined;
+
+                // Piscina
+                const pool = getTag("pool") === "1";
+
+                // Tour virtual y vídeo
+                const virtualTourUrl = getTag("virtual_tour_url") || undefined;
+                const videoUrl = getTag("video_url") || undefined;
+
+                // Referencia CRM
+                const ref = getTag("ref") || undefined;
 
                 // Images extraction
                 const imagesNode = node.getElementsByTagName("images")[0];
@@ -112,20 +127,18 @@ export const fetchProperties = async (): Promise<Property[]> => {
 
                 const lng = parseFloat(getTag("longitude"));
 
-                // Status parsing
-                const stateRaw = getTag("state");
-                const state = stateRaw ? stateRaw.toLowerCase() : 'free';
-                const isReserved = getTag("reserved") === "1";
+                const priceFreq = getTag("price_freq") === 'rent' ? 'rent' : 'sale';
 
+                // Status: check state field + reservado (Apinmo uses numeric estado codes too)
+                // estado_propiedad: 0=new, 5=refurbished, 10=good, 20=very_good, 70=excellent
+                // state field: Free/Reserved/Reserved-Sold/Sold
+                const stateRaw2 = getTag("state").toLowerCase();
                 let status: 'available' | 'reserved' | 'sold' = 'available';
-
-                if (state === 'sold' || state === 'sold subject to contract') {
+                if (stateRaw2 === 'sold' || stateRaw2 === 'stc' || stateRaw2 === 'sold stc') {
                     status = 'sold';
-                } else if (state === 'reserved' || state === 'under offer' || isReserved) {
+                } else if (stateRaw2 === 'reserved' || stateRaw2 === 'under offer' || stateRaw2 === 'reserved-sold') {
                     status = 'reserved';
                 }
-
-                const priceFreq = getTag("price_freq") === 'rent' ? 'rent' : 'sale';
 
                 properties.push({
                     id,
@@ -135,6 +148,8 @@ export const fetchProperties = async (): Promise<Property[]> => {
                     beds,
                     baths,
                     size,
+                    plot,
+                    pool,
                     image,
                     images,
                     description,
@@ -142,11 +157,12 @@ export const fetchProperties = async (): Promise<Property[]> => {
                     type,
                     dateListed: getTag("date").split(" ")[0],
                     lat,
-
                     lng,
                     status,
-                    priceFreq
-                    // badges: [] // Could add logic for badges
+                    priceFreq,
+                    virtualTourUrl,
+                    videoUrl,
+                    ref,
                 });
 
             } catch (err) {

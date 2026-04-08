@@ -37,7 +37,7 @@ const LandingHeader: React.FC = () => {
                             <button
                                 key={link.id}
                                 onClick={() => scrollToSection(link.id)}
-                                className="text-[10px] font-black uppercase tracking-[0.2em] hover:text-gray-500 transition-colors"
+                                className="text-xs font-bold uppercase tracking-[0.15em] hover:text-gray-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm px-2 py-1"
                             >
                                 {link.label}
                             </button>
@@ -45,20 +45,20 @@ const LandingHeader: React.FC = () => {
                     </nav>
 
                     {/* Language Switcher */}
-                    <div className="hidden lg:flex items-center gap-3 text-[10px] font-bold tracking-widest text-gray-400">
-                        <button onClick={() => setLanguage('es')} className={`cursor-pointer transition-colors ${language === 'es' ? 'text-editorial-black dark:text-white border-b border-editorial-black dark:border-white' : 'hover:text-editorial-black dark:hover:text-white'}`}>ES</button>
-                        <button onClick={() => setLanguage('en')} className={`cursor-pointer transition-colors ${language === 'en' ? 'text-editorial-black dark:text-white border-b border-editorial-black dark:border-white' : 'hover:text-editorial-black dark:hover:text-white'}`}>EN</button>
-                        <button onClick={() => setLanguage('fr')} className={`cursor-pointer transition-colors ${language === 'fr' ? 'text-editorial-black dark:text-white border-b border-editorial-black dark:border-white' : 'hover:text-editorial-black dark:hover:text-white'}`}>FR</button>
-                        <button onClick={() => setLanguage('de')} className={`cursor-pointer transition-colors ${language === 'de' ? 'text-editorial-black dark:text-white border-b border-editorial-black dark:border-white' : 'hover:text-editorial-black dark:hover:text-white'}`}>DE</button>
-                        <button onClick={() => setLanguage('va')} className={`cursor-pointer transition-colors ${language === 'va' ? 'text-editorial-black dark:text-white border-b border-editorial-black dark:border-white' : 'hover:text-editorial-black dark:hover:text-white'}`}>VA</button>
+                    <div className="hidden lg:flex items-center gap-3 text-xs font-bold tracking-[0.1em] text-gray-400">
+                        <button onClick={() => setLanguage('es')} aria-label="Español" className={`cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm px-1 ${language === 'es' ? 'text-editorial-black dark:text-white border-b border-editorial-black dark:border-white' : 'hover:text-editorial-black dark:hover:text-white'}`}>ES</button>
+                        <button onClick={() => setLanguage('en')} aria-label="English" className={`cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm px-1 ${language === 'en' ? 'text-editorial-black dark:text-white border-b border-editorial-black dark:border-white' : 'hover:text-editorial-black dark:hover:text-white'}`}>EN</button>
+                        <button onClick={() => setLanguage('fr')} aria-label="Français" className={`cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm px-1 ${language === 'fr' ? 'text-editorial-black dark:text-white border-b border-editorial-black dark:border-white' : 'hover:text-editorial-black dark:hover:text-white'}`}>FR</button>
+                        <button onClick={() => setLanguage('de')} aria-label="Deutsch" className={`cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm px-1 ${language === 'de' ? 'text-editorial-black dark:text-white border-b border-editorial-black dark:border-white' : 'hover:text-editorial-black dark:hover:text-white'}`}>DE</button>
+                        <button onClick={() => setLanguage('va')} aria-label="Valenciano" className={`cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm px-1 ${language === 'va' ? 'text-editorial-black dark:text-white border-b border-editorial-black dark:border-white' : 'hover:text-editorial-black dark:hover:text-white'}`}>VA</button>
                     </div>
 
-                    <a href="tel:+34647803355" className="hidden sm:flex h-10 px-6 items-center justify-center bg-editorial-black text-white text-[10px] font-black uppercase tracking-[0.2em] hover:bg-gray-800 transition-colors">
+                    <a href="tel:+34647803355" className="hidden sm:flex h-10 px-6 items-center justify-center bg-brand-blue-700 text-white text-xs font-bold uppercase tracking-[0.15em] hover:bg-brand-blue-500 hover:shadow-[0_6px_16px_rgba(34,211,238,0.35)] transition-all duration-300 active:scale-[0.98]">
                         +34 647 803 355
                     </a>
 
-                    <button className="lg:hidden p-2 text-editorial-black dark:text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                        <span className="material-symbols-outlined">menu</span>
+                    <button className="lg:hidden p-2 text-editorial-black dark:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} aria-expanded={isMenuOpen}>
+                        <span className="material-symbols-outlined" aria-hidden="true">{isMenuOpen ? 'close' : 'menu'}</span>
                     </button>
                 </div>
             </div>
@@ -71,20 +71,20 @@ const LandingHeader: React.FC = () => {
                             <button
                                 key={link.id}
                                 onClick={() => scrollToSection(link.id)}
-                                className="text-xs font-black uppercase tracking-[0.2em] py-2 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors"
+                                className="text-sm font-bold uppercase tracking-[0.15em] py-2 hover:bg-gray-100 dark:hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm"
                             >
                                 {link.label}
                             </button>
                         ))}
                     </nav>
                     <div className="flex gap-4 justify-center border-t border-gray-100 dark:border-gray-800 pt-6">
-                        <button onClick={() => setLanguage('es')} className={`text-sm font-bold ${language === 'es' ? 'text-brand-blue-500' : 'text-gray-400'}`}>ES</button>
-                        <button onClick={() => setLanguage('en')} className={`text-sm font-bold ${language === 'en' ? 'text-brand-blue-500' : 'text-gray-400'}`}>EN</button>
-                        <button onClick={() => setLanguage('fr')} className={`text-sm font-bold ${language === 'fr' ? 'text-brand-blue-500' : 'text-gray-400'}`}>FR</button>
-                        <button onClick={() => setLanguage('de')} className={`text-sm font-bold ${language === 'de' ? 'text-brand-blue-500' : 'text-gray-400'}`}>DE</button>
-                        <button onClick={() => setLanguage('va')} className={`text-sm font-bold ${language === 'va' ? 'text-brand-blue-500' : 'text-gray-400'}`}>VA</button>
+                        <button onClick={() => setLanguage('es')} aria-label="Español" className={`text-sm font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm px-1 ${language === 'es' ? 'text-brand-blue-500' : 'text-gray-400'}`}>ES</button>
+                        <button onClick={() => setLanguage('en')} aria-label="English" className={`text-sm font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm px-1 ${language === 'en' ? 'text-brand-blue-500' : 'text-gray-400'}`}>EN</button>
+                        <button onClick={() => setLanguage('fr')} aria-label="Français" className={`text-sm font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm px-1 ${language === 'fr' ? 'text-brand-blue-500' : 'text-gray-400'}`}>FR</button>
+                        <button onClick={() => setLanguage('de')} aria-label="Deutsch" className={`text-sm font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm px-1 ${language === 'de' ? 'text-brand-blue-500' : 'text-gray-400'}`}>DE</button>
+                        <button onClick={() => setLanguage('va')} aria-label="Valenciano" className={`text-sm font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm px-1 ${language === 'va' ? 'text-brand-blue-500' : 'text-gray-400'}`}>VA</button>
                     </div>
-                    <a href="tel:+34647803355" className="w-full h-12 flex items-center justify-center bg-editorial-black text-white font-bold uppercase tracking-widest">
+                    <a href="tel:+34647803355" className="w-full h-12 flex items-center justify-center bg-editorial-black text-white font-bold uppercase tracking-[0.15em]">
                         +34 647 803 355
                     </a>
                 </div>

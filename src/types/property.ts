@@ -12,7 +12,9 @@ export interface Property {
     price: string;
     beds?: number;
     baths?: number;
-    size: string;
+    size: string;           // built m²
+    plot?: string;          // parcela exterior m² (from XML <plot>)
+    pool?: boolean;         // piscina (from XML <pool>)
     image: string;
     images?: string[];
     description?: {
@@ -20,7 +22,7 @@ export interface Property {
         es: string;
     };
     features?: string[];
-    type: 'Villa' | 'Apartment' | 'Project' | 'Estate' | 'Townhouse' | 'House';
+    type: 'Villa' | 'Apartment' | 'Project' | 'Estate' | 'Townhouse' | 'House' | 'Commercial';
     badges?: Badge[];
     isComingSoon?: boolean;
     dateListed: string;
@@ -29,4 +31,7 @@ export interface Property {
     lng: number;
     status: 'available' | 'reserved' | 'sold';
     priceFreq: 'sale' | 'rent';
+    virtualTourUrl?: string; // Floorfy / 360 tour URL
+    videoUrl?: string;       // YouTube URL
+    ref?: string;            // CRM internal reference
 }

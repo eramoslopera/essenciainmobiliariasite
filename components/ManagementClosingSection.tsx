@@ -73,7 +73,7 @@ const ManagementClosingSection: React.FC = () => {
                                 <div
                                     key={step.key}
                                     onClick={() => setActiveManagementStep(index)}
-                                    className={`group cursor-pointer rounded-xl transition-all duration-300 border ${activeManagementStep === index ? 'border-editorial-black/20 bg-gray-50 shadow-lg' : 'border-transparent hover:bg-gray-50'}`}
+                                    className={`group cursor-pointer rounded-xl transition-all duration-300 border ${activeManagementStep === index ? 'border-editorial-black/20 bg-gray-50 shadow-lg' : 'border-transparent hover:bg-gray-100'}`}
                                 >
                                     <div className="p-6 flex items-center justify-between">
                                         <div className="flex items-center gap-4">

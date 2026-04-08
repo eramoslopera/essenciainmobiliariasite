@@ -72,14 +72,14 @@ const Header: React.FC = () => {
                 <Link
                   to="/properties"
                   role="menuitem"
-                  className={`block px-4 py-3 text-sm font-bold hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 ${isActive('/properties') ? 'text-brand-blue-600' : 'text-editorial-black'}`}
+                  className={`block px-4 py-3 text-sm font-bold hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 ${isActive('/properties') ? 'text-brand-blue-600' : 'text-editorial-black'}`}
                 >
                   {t('nav.properties')}
                 </Link>
                 <Link
                   to="/developments"
                   role="menuitem"
-                  className={`block px-4 py-3 text-sm font-bold hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 ${isActive('/developments') ? 'text-brand-blue-600' : 'text-editorial-black'}`}
+                  className={`block px-4 py-3 text-sm font-bold hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 ${isActive('/developments') ? 'text-brand-blue-600' : 'text-editorial-black'}`}
                 >
                   {t('nav.developments')}
                 </Link>
@@ -124,7 +124,7 @@ const Header: React.FC = () => {
                   key={lang}
                   onClick={() => { setLanguage(lang); setIsLangOpen(false); }}
                   role="menuitem"
-                  className={`block w-full text-left px-4 py-2 text-xs font-bold hover:bg-gray-50 uppercase focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 ${language === lang ? 'text-brand-blue-600' : 'text-gray-500'}`}
+                  className={`block w-full text-left px-4 py-2 text-xs font-bold hover:bg-gray-100 uppercase focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 ${language === lang ? 'text-brand-blue-600' : 'text-gray-500'}`}
                 >
                   {lang}
                 </button>
@@ -187,7 +187,7 @@ const Header: React.FC = () => {
         </div>
 
         <div className="mt-auto pt-8">
-          <Link to="/contact" className="flex items-center justify-center w-full h-14 bg-editorial-black text-white font-bold uppercase tracking-widest hover:bg-brand-blue-600 transition-colors">
+          <Link to="/contact" className="flex items-center justify-center w-full h-14 bg-brand-blue-700 text-white font-bold uppercase tracking-widest hover:bg-brand-blue-500 hover:shadow-[0_8px_24px_rgba(34,211,238,0.35)] transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.98]">
             {t('nav.contact')}
           </Link>
         </div>

@@ -154,7 +154,7 @@ const MiaMethodSection: React.FC = () => {
 
                         <button
                             onClick={() => setSelectedStep(null)}
-                            className="mt-6 w-full py-3 bg-editorial-black text-white uppercase text-xs font-black tracking-widest hover:bg-gray-800 transition-colors"
+                            className="mt-6 w-full py-3 bg-editorial-black text-white uppercase text-xs font-black tracking-widest hover:bg-brand-blue-500 transition-colors"
                         >
                             {t('common.understood')}
                         </button>
