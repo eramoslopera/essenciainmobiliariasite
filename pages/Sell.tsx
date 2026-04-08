@@ -74,10 +74,10 @@ const Sell: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35, duration: 0.7 }}
-            className="text-6xl md:text-8xl font-black leading-[0.9] tracking-tighter mb-8 text-editorial-black"
+            className="text-6xl md:text-8xl font-light leading-[0.95] tracking-tighter mb-8 text-editorial-black"
           >
             {t('sell.hero.title')} <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue-700 to-brand-blue-500">
+            <span className="text-transparent font-medium bg-clip-text bg-gradient-to-r from-brand-blue-700 to-brand-blue-500">
               {t('sell.hero.subtitle')}
             </span>
           </motion.h1>
@@ -99,13 +99,13 @@ const Sell: React.FC = () => {
           >
             <Link
               to="/valuation"
-              className="h-14 px-10 bg-brand-blue-700 hover:bg-brand-blue-500 text-white text-xs font-bold tracking-[0.15em] uppercase rounded-sm transition-all duration-300 shadow-[0_10px_40px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_40px_-5px_rgba(34,211,238,0.4)] hover:-translate-y-1 active:scale-[0.98] flex items-center justify-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500"
+              className="h-14 px-10 bg-brand-blue-700 hover:bg-brand-blue-500 text-white text-xs font-bold tracking-[0.15em] uppercase rounded-full transition-all duration-300 shadow-[0_10px_40px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_40px_-5px_rgba(34,211,238,0.4)] hover:-translate-y-1 active:scale-[0.98] flex items-center justify-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500"
             >
               {t('sell.cta.valuation')}
             </Link>
             <Link
               to="/properties"
-              className="h-14 px-10 bg-transparent border border-editorial-black hover:bg-editorial-black hover:text-white text-editorial-black text-xs font-bold tracking-[0.15em] uppercase rounded-sm transition-all active:scale-[0.98] flex items-center justify-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500"
+              className="h-14 px-10 bg-transparent border border-editorial-black hover:bg-editorial-black hover:text-white text-editorial-black text-xs font-bold tracking-[0.15em] uppercase rounded-full transition-all active:scale-[0.98] flex items-center justify-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500"
             >
               {t('nav.properties')}
             </Link>
@@ -152,12 +152,12 @@ const Sell: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="group relative overflow-hidden rounded-2xl border border-white/10 p-10 hover:border-brand-blue-500/50 transition-all duration-500 hover:bg-white/5"
+              className="group relative overflow-hidden rounded-3xl border border-white/10 p-10 hover:border-brand-blue-500/50 transition-all duration-500 hover:bg-white/5"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-brand-blue-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative z-10">
                 <span className="material-symbols-outlined text-4xl mb-6 block text-brand-blue-400">photo_camera</span>
-                <h3 className="text-2xl font-black tracking-tight mb-6">{t('sell.card1.title')}</h3>
+                <h3 className="text-2xl font-light tracking-tight mb-6">{t('sell.card1.title')}</h3>
                 <ul className="space-y-3">
                   {['sell.card1.list1', 'sell.card1.list2', 'sell.card1.list3'].map(key => (
                     <li key={key} className="flex items-center gap-2 text-gray-400 text-sm">
@@ -175,12 +175,12 @@ const Sell: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="group relative overflow-hidden rounded-2xl border border-white/10 p-10 hover:border-brand-blue-500/50 transition-all duration-500 hover:bg-white/5"
+              className="group relative overflow-hidden rounded-3xl border border-white/10 p-10 hover:border-brand-blue-500/50 transition-all duration-500 hover:bg-white/5"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-brand-blue-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative z-10">
                 <span className="material-symbols-outlined text-4xl mb-6 block text-brand-blue-400">gavel</span>
-                <h3 className="text-2xl font-black tracking-tight mb-6">{t('sell.card2.title')}</h3>
+                <h3 className="text-2xl font-light tracking-tight mb-6">{t('sell.card2.title')}</h3>
                 <ul className="space-y-3">
                   {['sell.card2.list1', 'sell.card2.list2', 'sell.card2.list3'].map(key => (
                     <li key={key} className="flex items-center gap-2 text-gray-400 text-sm">
@@ -198,12 +198,12 @@ const Sell: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="group relative overflow-hidden rounded-2xl border border-white/10 p-10 hover:border-brand-blue-500/50 transition-all duration-500 hover:bg-white/5"
+              className="group relative overflow-hidden rounded-3xl border border-white/10 p-10 hover:border-brand-blue-500/50 transition-all duration-500 hover:bg-white/5"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-brand-blue-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative z-10">
                 <span className="material-symbols-outlined text-4xl mb-6 block text-brand-blue-400">account_balance</span>
-                <h3 className="text-2xl font-black tracking-tight mb-6">{t('sell.card3.title')}</h3>
+                <h3 className="text-2xl font-light tracking-tight mb-6">{t('sell.card3.title')}</h3>
                 <ul className="space-y-3">
                   {['sell.card3.list1', 'sell.card3.list2', 'sell.card3.list3'].map(key => (
                     <li key={key} className="flex items-center gap-2 text-gray-400 text-sm">
@@ -224,7 +224,7 @@ const Sell: React.FC = () => {
           >
             <Link
               to="/valuation"
-              className="h-14 px-10 bg-white shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-5px_rgba(0,0,0,0.1)] text-editorial-black hover:bg-gray-100 font-bold tracking-[0.15em] uppercase rounded-sm transition-all active:scale-[0.98] flex items-center gap-3 text-xs"
+              className="h-14 px-10 bg-white shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-5px_rgba(0,0,0,0.1)] text-editorial-black hover:bg-gray-100 font-bold tracking-[0.15em] uppercase rounded-full transition-all active:scale-[0.98] flex items-center gap-3 text-xs"
             >
               {t('sell.cta.valuation')}
               <span className="material-symbols-outlined text-sm">arrow_forward</span>
@@ -277,7 +277,7 @@ const Sell: React.FC = () => {
                 <Link
                   key={property.id}
                   to={`/property/${property.id}`}
-                  className="snap-center shrink-0 w-[85vw] md:w-[400px] bg-white rounded-sm overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 block group border border-gray-100"
+                  className="snap-center shrink-0 w-[85vw] md:w-[400px] bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 block group border border-gray-100"
                 >
                   <div
                     className="w-full h-64 bg-cover bg-center group-hover:scale-105 transition-transform duration-700 relative"
@@ -285,7 +285,7 @@ const Sell: React.FC = () => {
                   >
                     <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors" />
                     <div className="absolute top-4 right-4">
-                      <span className="bg-editorial-black text-white text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-sm">
+                      <span className="bg-editorial-black text-white text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-full">
                         {t('home.recent.sold')}
                       </span>
                     </div>
