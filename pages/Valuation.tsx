@@ -66,8 +66,8 @@ const Valuation: React.FC = () => {
               <div className="h-full bg-brand-blue-500 w-1/4 rounded-full"></div>
             </div>
           </div>
-          <div className="bg-white rounded-sm p-8 md:p-12 border border-gray-100">
-            <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-4 text-editorial-black leading-[1.1]">
+          <div className="bg-white rounded-3xl p-8 md:p-12 border border-gray-100">
+            <h2 className="text-4xl md:text-5xl font-light tracking-tighter mb-4 text-editorial-black leading-[1.1]">
               1. {t('valuation.step1')}
             </h2>
             <p className="text-gray-500 mb-10 text-lg">
@@ -93,7 +93,7 @@ const Valuation: React.FC = () => {
                 </div>
 
                 {/* Interactive Map Section */}
-                <div className="rounded-sm overflow-hidden border border-gray-200 relative h-64 md:h-96 w-full z-0 shadow-inner">
+                <div className="rounded-2xl overflow-hidden border border-gray-200 relative h-64 md:h-96 w-full z-0 shadow-inner">
                   <MapContainer center={[38.967, -0.181]} zoom={13} scrollWheelZoom={false} className="h-full w-full">
                     <TileLayer
                       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -101,7 +101,7 @@ const Valuation: React.FC = () => {
                     />
                     <LocationMarker />
                   </MapContainer>
-                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-sm shadow-md z-[1000] pointer-events-none">
+                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full shadow-md z-[1000] pointer-events-none">
                     {t('valuation.map.pin')}
                   </div>
                 </div>
@@ -120,11 +120,11 @@ const Valuation: React.FC = () => {
                   </div>
                 </div>
                 <div className="pt-6 border-t border-gray-100 flex items-center justify-between">
-                  <Link to="/" className="text-sm font-bold text-gray-500 hover:text-editorial-black transition-colors flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm">
+                  <Link to="/" className="text-sm font-bold text-gray-500 hover:text-editorial-black transition-colors flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-full">
                     <span className="material-symbols-outlined text-lg" aria-hidden="true">arrow_back</span>
                     {t('valuation.back')}
                   </Link>
-                  <button className="px-8 py-4 bg-brand-blue-700 hover:bg-brand-blue-500 text-white text-xs font-bold uppercase tracking-[0.15em] rounded-sm shadow-[0_10px_40px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_40px_-5px_rgba(34,211,238,0.4)] hover:-translate-y-1 transition-all duration-300 active:scale-[0.98] flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-blue-500" type="submit">
+                  <button className="px-8 py-4 bg-brand-blue-700 hover:bg-brand-blue-500 text-white text-xs font-bold uppercase tracking-[0.15em] rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_40px_-5px_rgba(34,211,238,0.4)] hover:-translate-y-1 transition-all duration-300 active:scale-[0.98] flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-blue-500" type="submit">
                     {t('valuation.continue')}
                     <span className="material-symbols-outlined text-sm" aria-hidden="true">arrow_forward</span>
                   </button>
@@ -144,7 +144,7 @@ const Valuation: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }} 
           className="lg:col-span-5 xl:col-span-4 flex flex-col gap-8 lg:pt-16"
         >
-          <div className="bg-white p-6 rounded-sm border border-gray-100 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] relative overflow-hidden group">
+          <div className="bg-white p-6 rounded-3xl border border-gray-100 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] relative overflow-hidden group">
             <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
               <span className="material-symbols-outlined text-6xl text-brand-blue-500">timer</span>
             </div>
@@ -177,20 +177,20 @@ const Valuation: React.FC = () => {
           </div>
           <div className="grid grid-cols-2 gap-4 border-t border-gray-200 pt-8">
             <div>
-              <p className="text-3xl font-black text-editorial-black">98%</p>
+              <p className="text-3xl font-light tabular-nums text-editorial-black">98%</p>
               <p className="text-xs text-gray-500 uppercase tracking-widest font-bold mt-1">{t('valuation.accuracy')}</p>
             </div>
             <div>
-              <p className="text-3xl font-black text-editorial-black">€250M+</p>
+              <p className="text-3xl font-light tabular-nums text-editorial-black">€250M+</p>
               <p className="text-xs text-gray-500 uppercase tracking-widest font-bold mt-1">{t('valuation.valued_ytd')}</p>
             </div>
           </div>
-          <div className="bg-gray-translate-y-50 rounded-sm p-5 border border-gray-100 flex items-center justify-between">
+          <div className="bg-gray-translate-y-50 rounded-2xl p-5 border border-gray-100 flex items-center justify-between">
             <div>
               <p className="text-sm font-bold text-editorial-black">{t('valuation.help.title')}</p>
               <p className="text-xs text-gray-500">{t('valuation.help.subtitle')}</p>
             </div>
-            <Link to="/contact" aria-label="Contact Support" className="w-10 h-10 bg-white border border-gray-200 rounded-sm flex items-center justify-center hover:bg-editorial-black hover:text-white transition-all active:scale-[0.98] shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500">
+            <Link to="/contact" aria-label="Contact Support" className="w-10 h-10 bg-white border border-gray-200 rounded-full flex items-center justify-center hover:bg-editorial-black hover:text-white transition-all active:scale-[0.98] shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500">
               <span className="material-symbols-outlined" aria-hidden="true">call</span>
             </Link>
           </div>
