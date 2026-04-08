@@ -36,7 +36,7 @@ const Stories: React.FC = () => {
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
                 style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuBeO_psb5EsZUge1Q9z9Z0VTEVDOkjmZqJ0_iWuqs1ZjDjturTC925sUpjY4SLbxjQNJNqlgkcv568Kjd5zvvCEIqbffK35jIWjZbAI_u5r_d_Sj57l_m9A8bJN7LcCmSlWATG8dzcBzvdTPFArI7AAtc--NaEpg0seD4lB3ek7ceC2iRhSFh-4fCJ4WP6rjzsj8Ow9cQB3NTjhprnKxcP9IcaFNAN9hsEGC0TUGR1IfZGlIpMPtAeaP1480Wg3sxZR8HyGCiot")' }}
               ></div>
-              <div className="absolute top-6 left-6 bg-white px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-sm">{t('stories.label.market_report')}</div>
+              <div className="absolute top-6 left-6 bg-white px-3 py-1 font-black uppercase tracking-widest text-[10px] rounded-full">{t('stories.label.market_report')}</div>
             </Link>
             <div className="lg:col-span-4 flex flex-col justify-center">
               <span className="text-gray-400 font-bold text-xs uppercase tracking-widest mb-4">{t('stories.feat.date')}</span>

@@ -144,14 +144,14 @@ const PropertyDetail: React.FC = () => {
               <div className="flex flex-wrap items-center gap-2 mb-4">
                 {/* Status badge */}
                 {property.status === 'sold' && (
-                  <span className="px-2 py-1 bg-red-600 text-white text-[10px] uppercase font-bold tracking-widest rounded-sm">Vendida</span>
+                  <span className="px-2 py-1 bg-red-600 text-white font-black uppercase tracking-widest text-[10px] rounded-full">Vendida</span>
                 )}
                 {property.status === 'reserved' && (
-                  <span className="px-2 py-1 bg-amber-500 text-white text-[10px] uppercase font-bold tracking-widest rounded-sm">Reservada</span>
+                  <span className="px-2 py-1 bg-amber-500 text-white font-black uppercase tracking-widest text-[10px] rounded-full">Reservada</span>
                 )}
                 {/* priceFreq badge */}
                 {property.priceFreq === 'rent' && (
-                  <span className="px-2 py-1 bg-brand-blue-700 text-white text-[10px] uppercase font-bold tracking-widest rounded-sm">Alquiler</span>
+                  <span className="px-2 py-1 bg-brand-blue-700 text-white font-black uppercase tracking-widest text-[10px] rounded-full">Alquiler</span>
                 )}
                 <span className="text-xs font-bold uppercase tracking-widest text-gray-500">{property.location}</span>
               </div>

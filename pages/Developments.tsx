@@ -31,7 +31,7 @@ const Developments: React.FC = () => {
               className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
               style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuBTz0ljfPf17SA1GJ6uA8AFFp69r4QCIx9qAKheWPLsqb3SR9EiRThZW2pQrqT8Xq0ZMQkBXl7TkM-iW4Lv75dvy8PdbK9O30nJ35aX4fCg0S2feJ6JRYQQUGVRE_VdRjOjItcvyPHOCtbhJGoZS93wph_XgdsTjs-JRfjRxvz_Higm4ZVlH2KwIft4FCcypZ5tuZEmBATyNa2qENR5ZQOIjoGYF2i9mkiBN3wOiCJV8sOAVou3Y3J1JWjUk8qVNOGMTPeMEmtA")' }}
             ></div>
-            <div className="absolute top-6 left-6 bg-editorial-black text-white px-4 py-2 text-xs font-bold uppercase tracking-widest rounded-sm">
+            <div className="absolute top-6 left-6 bg-editorial-black text-white px-4 py-2 font-black uppercase tracking-widest text-[10px] rounded-full">
               {t('dev.status.construction')}
             </div>
           </div>
@@ -64,7 +64,7 @@ const Developments: React.FC = () => {
               className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
               style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuBeO_psb5EsZUge1Q9z9Z0VTEVDOkjmZqJ0_iWuqs1ZjDjturTC925sUpjY4SLbxjQNJNqlgkcv568Kjd5zvvCEIqbffK35jIWjZbAI_u5r_d_Sj57l_m9A8bJN7LcCmSlWATG8dzcBzvdTPFArI7AAtc--NaEpg0seD4lB3ek7ceC2iRhSFh-4fCJ4WP6rjzsj8Ow9cQB3NTjhprnKxcP9IcaFNAN9hsEGC0TUGR1IfZGlIpMPtAeaP1480Wg3sxZR8HyGCiot")' }}
             ></div>
-            <div className="absolute top-6 right-6 bg-brand-blue-600 text-white px-4 py-2 text-xs font-bold uppercase tracking-widest rounded-sm">
+            <div className="absolute top-6 right-6 bg-brand-blue-600 text-white px-4 py-2 font-black uppercase tracking-widest text-[10px] rounded-full">
               {t('dev.status.launching')}
             </div>
           </div>
@@ -97,7 +97,7 @@ const Developments: React.FC = () => {
               className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
               style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuAjzENM8T9Tfr_TKw_FUCGQblUaSNsWttDPWKmig4d9rqpW7zv9dAOGGDCnnsJIEl5MQvTRQ8cIK2_CGc6dAoRcSDwZ4WpcxPFRn_X334-Qd4g3dWHkVhkRlNZtmaniVcP37BOvuGRyDPLcSDaNFsiizx1qPuvcaAHqTS6PCBb5gLGMGoEyq36HuJdYbiAPcNa8a3cfuAKD48IhYvVkAjJFz5ktXpnbJbc4THNxE0FAqxFU8pw2iZOCwUfrMIV3t9BqPlufMZvj")' }}
             ></div>
-            <div className="absolute top-6 left-6 bg-gray-500 text-white px-4 py-2 text-xs font-bold uppercase tracking-widest rounded-sm">
+            <div className="absolute top-6 left-6 bg-gray-500 text-white px-4 py-2 font-black uppercase tracking-widest text-[10px] rounded-full">
               {t('dev.status.last_units')}
             </div>
           </div>

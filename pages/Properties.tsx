@@ -379,13 +379,13 @@ const Properties: React.FC = () => {
                               if (badge.type === 'coming-soon') {
                                 return (
                                   <div key={i} className="absolute inset-0 bg-black/20 flex items-center justify-center">
-                                    <span className="bg-white/90 backdrop-blur-sm text-black px-4 py-2 font-bold uppercase tracking-widest text-xs rounded-sm shadow-lg">{badge.text}</span>
+                                    <span className="bg-white/90 backdrop-blur-sm text-black px-4 py-2 font-black uppercase tracking-widest text-[10px] rounded-full shadow-lg">{badge.text}</span>
                                   </div>
                                 );
                               }
                               if (badge.type === 'photo') {
                                 return (
-                                  <div key={i} className="absolute bottom-4 right-4 bg-black/50 backdrop-blur-md px-3 py-1 text-white text-xs font-bold rounded-sm">
+                                  <div key={i} className="absolute bottom-4 right-4 bg-black/50 backdrop-blur-md px-3 py-1 text-white text-[10px] font-black uppercase tracking-widest rounded-full">
                                     <span className="material-symbols-outlined text-sm align-middle mr-1">photo_camera</span> {badge.text}
                                   </div>
                                 );
@@ -448,7 +448,7 @@ const Properties: React.FC = () => {
                           </div>
                           <div className="flex-1 relative z-10">
                             <div className="flex items-center gap-2 mb-3 text-brand-blue-600">
-                              <span className="text-xs font-bold uppercase tracking-widest bg-white px-2 py-1 rounded">{t('properties.market_insight')}</span>
+                              <span className="text-[10px] font-black uppercase tracking-widest bg-white px-3 py-1 rounded-full">{t('properties.market_insight')}</span>
                             </div>
                             <h3 className="text-2xl font-black mb-2 leading-tight">{t('properties.market_insight_title')}</h3>
                             <p className="text-sm text-gray-500">{t('properties.market_insight_desc')}</p>
@@ -575,7 +575,7 @@ const Properties: React.FC = () => {
               </MapContainer>
 
               {/* Map overlay controls could go here */}
-              <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1.5 rounded-sm shadow-md z-[1000] text-xs font-bold uppercase tracking-wider pointer-events-none">
+              <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1.5 rounded-full shadow-md z-[1000] text-[10px] font-black uppercase tracking-widest pointer-events-none">
                 {t('properties.map.interactive')}
               </div>
             </div>

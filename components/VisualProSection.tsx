@@ -243,7 +243,7 @@ const BeforeAfterSlider = () => {
                             alt="Propiedad Renderizada con IA"
                         />
 
-                        <div className="absolute top-4 right-4 bg-brand-blue-500 backdrop-blur px-3 py-1 text-[10px] font-black uppercase tracking-widest text-editorial-black shadow-lg z-30">
+                        <div className="absolute top-4 right-4 bg-brand-blue-500 backdrop-blur px-3 py-1 text-[10px] font-black uppercase tracking-widest text-editorial-black shadow-lg z-30 rounded-full">
                             {t('common.after')}
                         </div>
 
@@ -257,7 +257,7 @@ const BeforeAfterSlider = () => {
                                 className="absolute inset-0 w-full h-full object-cover"
                                 alt="Estado Actual"
                             />
-                            <div className="absolute top-4 left-4 bg-brand-blue-500 backdrop-blur px-3 py-1 text-[10px] font-black uppercase tracking-widest text-editorial-black z-30">
+                            <div className="absolute top-4 left-4 bg-brand-blue-500 backdrop-blur px-3 py-1 text-[10px] font-black uppercase tracking-widest text-editorial-black z-30 rounded-full">
                                 {t('common.before')}
                             </div>
                         </div>
@@ -372,8 +372,8 @@ const VideoGallery = () => {
 
                 {/* Overlay Title */}
                 <div className="absolute bottom-8 left-8 z-20 pointer-events-none">
-                    <div className="bg-brand-blue-500 text-editorial-black px-4 py-2 rounded-sm inline-block mb-2">
-                        <span className="text-xs font-bold uppercase tracking-widest">Essencia Cinema</span>
+                    <div className="bg-brand-blue-500 text-editorial-black px-4 py-2 rounded-full inline-block mb-2">
+                        <span className="text-[10px] font-black uppercase tracking-widest">Essencia Cinema</span>
                     </div>
                     <h3 className="text-white text-2xl md:text-4xl font-black tracking-tight drop-shadow-lg">
                         Exhibición Inmobiliaria

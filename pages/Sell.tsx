@@ -285,7 +285,7 @@ const Sell: React.FC = () => {
                   >
                     <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors" />
                     <div className="absolute top-4 right-4">
-                      <span className="bg-editorial-black text-white text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-full">
+                      <span className="bg-editorial-black text-white font-black uppercase tracking-widest text-[10px] px-3 py-1 rounded-full">
                         {t('home.recent.sold')}
                       </span>
                     </div>

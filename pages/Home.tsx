@@ -265,7 +265,7 @@ const Home: React.FC = () => {
               <Link to={`/property/${property.id}`} className="bg-white rounded-lg overflow-hidden shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-5px_rgba(0,0,0,0.1)] transition-shadow duration-300 block group h-full">
                 <div className="w-full h-64 bg-cover bg-center group-hover:scale-105 transition-transform duration-700" style={{ backgroundImage: `url("${displayImage}")` }}>
                   <div className="p-4 flex justify-end">
-                    <span className="bg-editorial-black text-white text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-sm">{statusText}</span>
+                    <span className="bg-editorial-black text-white font-black uppercase tracking-widest text-[10px] px-3 py-1 rounded-full">{statusText}</span>
                   </div>
                 </div>
                 <div className="p-6 relative z-10 bg-white">
