@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
+import { Link } from 'react-router-dom';
+import { ArrowRight } from '@phosphor-icons/react';
 
-const MiaMethodSection: React.FC = () => {
+interface MiaMethodSectionProps {
+    showCTA?: boolean;
+}
+
+const MiaMethodSection: React.FC<MiaMethodSectionProps> = ({ showCTA = false }) => {
     const { t } = useLanguage();
     const [activeId, setActiveId] = useState(1);
 
@@ -46,6 +52,20 @@ const MiaMethodSection: React.FC = () => {
                             <p className="mt-6 text-gray-600 dark:text-gray-400 max-w-xl text-sm lg:text-base leading-relaxed">
                                 {t('landing.mia.fundamental')}
                             </p>
+                            
+                            {showCTA && (
+                                <Link 
+                                  to="/sell" 
+                                  className="group relative inline-flex items-center gap-6 bg-editorial-black text-white hover:bg-brand-blue-600 h-16 w-max pl-8 pr-2 rounded-full transition-all duration-500 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] hover:shadow-[0_20px_40px_-10px_rgba(37,99,235,0.4)] active:scale-[0.98] overflow-hidden mt-6"
+                                >
+                                  <span className="text-xs font-bold tracking-[0.2em] relative z-10 whitespace-nowrap uppercase">
+                                    {t('home.link.sell') || 'Vende con Essencia'}
+                                  </span>
+                                  <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center group-hover:scale-105 group-hover:bg-white transition-all duration-300 relative z-10">
+                                     <ArrowRight size={20} weight="bold" className="text-white group-hover:text-brand-blue-600" />
+                                  </div>
+                                </Link>
+                            )}
                         </div>
 
                         {/* Interactive Grid Setup (10 Steps -> 2 rows of 5) */}

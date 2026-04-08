@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import StatsSection from '../components/StatsSection';
 import SEOHead from '../components/SEOHead';
-import InteractiveMarketingSection from '../components/InteractiveMarketingSection';
+import MiaMethodSection from '../components/MiaMethodSection';
 import ContactForm from '../components/ContactForm';
 import { motion } from 'framer-motion';
 import { Property } from '../src/types/property';
@@ -228,8 +228,8 @@ const Home: React.FC = () => {
       {/* Stats Section — animated counters */}
       <StatsSection />
 
-      {/* Sticky Scroll Interactive Marketing Section */}
-      <InteractiveMarketingSection />
+      {/* Interactive Marketing Section -> Replaced with new unified Mia Method */}
+      <MiaMethodSection showCTA />
 
       <section className="py-24 bg-editorial-gray overflow-hidden">
         <div className="max-w-[1440px] mx-auto">
