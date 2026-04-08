@@ -1,17 +1,19 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { Link } from 'react-router-dom';
-import { ArrowRight, TrendUp } from '@phosphor-icons/react';
+import { ArrowRight, CheckCircle } from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
+
+const steps = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const MiaMethodTeaser: React.FC = () => {
     const { t } = useLanguage();
 
     return (
-        <section className="py-24 lg:py-32 bg-editorial-black relative overflow-hidden">
+        <section className="py-24 lg:py-32 bg-[#F3F4F6] relative overflow-hidden">
             {/* Background elements */}
-            <div className="absolute inset-0 opacity-20 pointer-events-none">
-                <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-brand-blue-600/30 blur-[120px] rounded-full mix-blend-screen" />
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+                <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-brand-blue-600 blur-[120px] rounded-full" />
             </div>
 
             <div className="max-w-[1440px] mx-auto px-6 lg:px-24 relative z-10">
@@ -27,7 +29,7 @@ const MiaMethodTeaser: React.FC = () => {
                             className="inline-flex items-center gap-3 mb-6"
                         >
                             <div className="w-8 h-[1px] bg-brand-blue-400" />
-                            <span className="text-[10px] font-black tracking-[0.25em] uppercase text-brand-blue-400">
+                            <span className="text-[10px] font-black tracking-[0.25em] uppercase text-brand-blue-600">
                                 {t('landing.mia.exclusive') || 'NUESTRO MÉTODO EXCLUSIVO'}
                             </span>
                         </motion.div>
@@ -37,7 +39,7 @@ const MiaMethodTeaser: React.FC = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ duration: 0.6, delay: 0.1 }}
-                            className="text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter leading-[1.05] mb-6"
+                            className="text-5xl md:text-6xl lg:text-7xl font-black text-editorial-black tracking-tighter leading-[1.05] mb-6"
                         >
                             {t('landing.mia.id') || 'Método MÍA'}
                         </motion.h2>
@@ -47,7 +49,7 @@ const MiaMethodTeaser: React.FC = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ duration: 0.6, delay: 0.2 }}
-                            className="text-lg text-gray-400 leading-relaxed font-medium max-w-xl mb-12"
+                            className="text-lg text-gray-600 leading-relaxed font-medium max-w-xl mb-12"
                         >
                             {t('home.marketing.subtitle') || 'Nuestro enfoque combina arte con algoritmos. Preparamos, fotografiamos y distribuimos su propiedad como un evento mediático global.'}
                         </motion.p>
@@ -60,50 +62,44 @@ const MiaMethodTeaser: React.FC = () => {
                         >
                             <Link 
                               to="/sell" 
-                              className="group relative inline-flex items-center gap-6 bg-white text-editorial-black hover:bg-brand-blue-600 hover:text-white h-16 pl-8 pr-2 rounded-full transition-all duration-500 shadow-[0_20px_40px_-15px_rgba(255,255,255,0.1)] hover:shadow-[0_20px_40px_-10px_rgba(37,99,235,0.4)] overflow-hidden"
+                              className="group relative inline-flex items-center gap-6 bg-editorial-black text-white hover:bg-brand-blue-600 h-16 pl-8 pr-2 rounded-full transition-all duration-500 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] hover:shadow-[0_20px_40px_-10px_rgba(37,99,235,0.4)] overflow-hidden"
                             >
                               <span className="text-xs font-bold tracking-[0.2em] relative z-10 whitespace-nowrap uppercase">
                                 {t('home.link.sell') || 'Descubre el Método'}
                               </span>
-                              <div className="w-12 h-12 rounded-full bg-editorial-black/5 flex items-center justify-center group-hover:scale-105 group-hover:bg-white/20 transition-all duration-300 relative z-10">
-                                 <ArrowRight size={20} weight="bold" className="text-current" />
+                              <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center group-hover:scale-105 group-hover:bg-white transition-all duration-300 relative z-10">
+                                 <ArrowRight size={20} weight="bold" className="text-white group-hover:text-brand-blue-600" />
                               </div>
                             </Link>
                         </motion.div>
                     </div>
 
-                    {/* Right: Abstract Graphic / Teaser Visual */}
+                    {/* Right: Steps List */}
                     <div className="w-full lg:w-1/2">
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8 }}
-                            className="relative aspect-[4/3] w-full max-w-md mx-auto lg:max-w-none flex items-center justify-center rounded-[2rem] overflow-hidden bg-editorial-gray/5 border border-white/10"
-                        >
-                            <div className="absolute inset-0 bg-gradient-to-tr from-brand-blue-900/20 to-transparent pointer-events-none" />
-                            
-                            {/* "10 Steps" Badge focus */}
-                            <div className="relative z-10 flex flex-col items-center justify-center">
-                                <motion.div 
-                                    animate={{ y: [0, -10, 0] }}
-                                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                                    className="w-24 h-24 rounded-full bg-brand-blue-600/20 backdrop-blur-xl border border-brand-blue-400/30 flex items-center justify-center mb-6 shadow-[0_0_40px_rgba(37,99,235,0.2)]"
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            {steps.map((step, index) => (
+                                <motion.div
+                                    key={step}
+                                    initial={{ opacity: 0, y: 15 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true, margin: "-50px" }}
+                                    transition={{ duration: 0.4, delay: 0.1 + index * 0.05 }}
+                                    className="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-sm border border-gray-100 hover:border-brand-blue-200 transition-colors"
                                 >
-                                    <TrendUp size={48} weight="fill" className="text-brand-blue-400" />
+                                    <div className="w-10 h-10 rounded-full bg-editorial-gray/30 flex items-center justify-center text-editorial-black font-black text-sm shrink-0">
+                                        {step.toString().padStart(2, '0')}
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <span className="text-[9px] uppercase tracking-widest text-brand-blue-600 font-bold mb-0.5">
+                                            {t(`landing.mia.step${step}.subtitle`) || `Paso ${step}`}
+                                        </span>
+                                        <span className="text-sm font-bold text-editorial-black leading-tight">
+                                            {t(`landing.mia.step${step}.title`) || 'Descripción del Paso'}
+                                        </span>
+                                    </div>
                                 </motion.div>
-                                
-                                <div className="text-center">
-                                    <span className="block text-4xl font-black text-white tracking-tighter mb-2">10</span>
-                                    <span className="block text-[10px] font-bold tracking-[0.2em] uppercase text-brand-blue-400">
-                                        Pasos probados
-                                    </span>
-                                </div>
-                            </div>
-                            
-                            {/* Decorative Grid Lines */}
-                            <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-                        </motion.div>
+                            ))}
+                        </div>
                     </div>
 
                 </div>
