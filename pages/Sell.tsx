@@ -125,7 +125,7 @@ const Sell: React.FC = () => {
 
       {/* ─── 2. SERVICE CHOICE CARDS (Servicio Completo) ────────────────────── */}
 
-      <section className="bg-editorial-black text-white py-24 px-6 md:px-12">
+      <section className="bg-editorial-black text-white py-16 md:py-24 px-4 sm:px-6 md:px-12">
         <div className="max-w-[1440px] mx-auto">
           <motion.p
             initial={{ opacity: 0 }}
@@ -247,7 +247,7 @@ const Sell: React.FC = () => {
 
       {/* ─── 8. SOLD PROPERTIES ─────────────────────────────────────────────── */}
       {soldProperties.length > 0 && (
-        <section className="py-24 bg-white border-b border-gray-100 overflow-hidden">
+        <section className="py-16 md:py-24 bg-white border-b border-gray-100 overflow-hidden">
           <div className="max-w-[1440px] mx-auto px-6 lg:px-24">
             <div className="flex items-center justify-between mb-12">
               <h2 className="text-3xl font-bold">{t('home.recent.title')}</h2>
@@ -324,10 +324,10 @@ const Sell: React.FC = () => {
       )}
 
       {/* ─── 9. PORTALS VISIBILITY BANNER ───────────────────────────────────── */}
-      <section className="py-20 bg-editorial-black text-white border-t border-white/10">
+      <section className="py-14 md:py-20 bg-editorial-black text-white border-t border-white/10">
         <div className="max-w-[1440px] mx-auto px-6 text-center">
           <p className="text-sm font-bold tracking-widest uppercase text-gray-400 mb-12">{t('sell.portals.title')}</p>
-          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-80 grayscale hover:grayscale-0 transition-all duration-500">
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-24 opacity-80 grayscale hover:grayscale-0 transition-all duration-500">
             <span className="text-3xl font-serif font-bold tracking-tighter">idealista</span>
             <span className="text-3xl font-sans font-black tracking-tight text-[#ff5a00] grayscale-0">fotocasa</span>
             <span className="text-3xl font-serif italic font-medium">Kyero</span>
@@ -346,13 +346,13 @@ const Sell: React.FC = () => {
       </section>
 
       {/* ─── 10. FINAL CTA ──────────────────────────────────────────────────── */}
-      <section className="py-32 bg-white relative">
-        <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
-          <h2 className="text-5xl md:text-6xl font-black mb-8 text-editorial-black tracking-tighter">{t('sell.ready.title')}</h2>
-          <p className="text-xl text-gray-500 mb-16 font-light max-w-2xl mx-auto">{t('sell.ready.subtitle')}</p>
+      <section className="py-16 md:py-32 bg-white relative">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 text-center">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-5 md:mb-8 text-editorial-black tracking-tighter">{t('sell.ready.title')}</h2>
+          <p className="text-lg md:text-xl text-gray-500 mb-10 md:mb-16 font-light max-w-2xl mx-auto">{t('sell.ready.subtitle')}</p>
 
-          <ContactForm theme="light" defaultReason="sell" className="max-w-2xl mx-auto text-left" />
-          <p className="mt-12 text-xs text-gray-400 uppercase tracking-widest">{t('sell.disclaimer')}</p>
+          <ContactForm theme="light" defaultReason="sell" source="sell_page" className="max-w-2xl mx-auto text-left" />
+          <p className="mt-8 md:mt-12 text-xs text-gray-400 uppercase tracking-widest">{t('sell.disclaimer')}</p>
         </div>
       </section>
     </>

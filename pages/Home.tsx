@@ -231,7 +231,7 @@ const Home: React.FC = () => {
       {/* MÍA Method Teaser */}
       <MiaMethodTeaser />
 
-      <section className="py-24 bg-editorial-gray overflow-hidden">
+      <section className="py-16 md:py-24 bg-editorial-gray overflow-hidden">
         <div className="max-w-[1440px] mx-auto">
           <div className="flex items-center justify-between mb-12 px-6 lg:px-24">
             <h2 className="text-3xl font-bold">{t('home.recent.title')}</h2>
@@ -304,7 +304,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* ================= CONTACT FORM SECTION ================= */}
-      <section className="py-24 bg-white relative overflow-hidden">
+      <section className="py-16 md:py-24 bg-white relative overflow-hidden">
         {/* Decorative geometric accent */}
         <div className="absolute right-0 top-0 w-1/2 h-full opacity-5 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 80% 50%, #2563eb 0%, transparent 70%)' }} />
         <div className="max-w-[1440px] mx-auto px-6 lg:px-24">
