@@ -6,6 +6,7 @@ import SEOHead from '../components/SEOHead';
 import MiaMethodTeaser from '../components/MiaMethodTeaser';
 import ContactForm from '../components/ContactForm';
 import { motion } from 'framer-motion';
+import { WhatsappLogo } from '@phosphor-icons/react';
 import { Property } from '../src/types/property';
 import { fetchProperties } from '../src/utils/xmlParser';
 
@@ -197,9 +198,15 @@ const Home: React.FC = () => {
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-col sm:flex-row items-center gap-6"
           >
-            <Link to="/valuation" className="h-14 px-10 bg-editorial-black text-white text-[11px] font-black tracking-[0.2em] uppercase rounded-full shadow-diffusion hover:shadow-diffusion-hover hover:-translate-y-1 active:scale-[0.98] active:translate-y-0 transition-all duration-300 flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-editorial-black focus-visible:ring-offset-2">
-              {t('home.hero.cta.valuation')}
-            </Link>
+            <a
+              href="https://wa.me/34647803355?text=Hola%2C%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20vuestros%20servicios%20inmobiliarios"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="h-14 px-10 bg-editorial-black text-white text-[11px] font-black tracking-[0.2em] uppercase rounded-full shadow-diffusion hover:shadow-diffusion-hover hover:-translate-y-1 active:scale-[0.98] active:translate-y-0 transition-all duration-300 flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-editorial-black focus-visible:ring-offset-2"
+            >
+              <WhatsappLogo weight="fill" className="w-5 h-5" aria-hidden="true" />
+              Consulta gratuita
+            </a>
             <Link to="/properties" className="h-14 px-10 group text-editorial-black font-black text-[11px] uppercase tracking-[0.2em] bg-white/70 backdrop-blur-md border border-white/50 rounded-full hover:bg-white hover:border-white hover:shadow-diffusion-hover active:scale-[0.98] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-editorial-black">
               {t('home.hero.cta.sold')}
               <span className="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
