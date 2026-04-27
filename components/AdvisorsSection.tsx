@@ -87,7 +87,7 @@ const cardVariants = {
   },
 };
 
-function AdvisorCard({ advisor, index }: { advisor: Advisor; index: number }) {
+const AdvisorCard: React.FC<{ advisor: Advisor; index: number }> = ({ advisor, index: _index }) => {
   const waHref = `https://wa.me/${advisor.whatsapp}?text=${encodeURIComponent(advisor.message)}`;
 
   return (
