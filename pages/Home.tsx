@@ -5,6 +5,7 @@ import StatsSection from '../components/StatsSection';
 import SEOHead from '../components/SEOHead';
 import MiaMethodTeaser from '../components/MiaMethodTeaser';
 import ContactForm from '../components/ContactForm';
+import AdvisorsSection from '../components/AdvisorsSection';
 import { motion } from 'framer-motion';
 import { WhatsappLogo } from '@phosphor-icons/react';
 import { Property } from '../src/types/property';
@@ -207,10 +208,15 @@ const Home: React.FC = () => {
               <WhatsappLogo weight="fill" className="w-5 h-5" aria-hidden="true" />
               Consulta gratuita
             </a>
-            <Link to="/properties" className="h-14 px-10 group text-editorial-black font-black text-[11px] uppercase tracking-[0.2em] bg-white/70 backdrop-blur-md border border-white/50 rounded-full hover:bg-white hover:border-white hover:shadow-diffusion-hover active:scale-[0.98] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-editorial-black">
+            <a
+              href="https://essenciainmobiliarialandingpage.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="h-14 px-10 group text-editorial-black font-black text-[11px] uppercase tracking-[0.2em] bg-white/70 backdrop-blur-md border border-white/50 rounded-full hover:bg-white hover:border-white hover:shadow-diffusion-hover active:scale-[0.98] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-editorial-black"
+            >
               {t('home.hero.cta.sold')}
               <span className="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
-            </Link>
+            </a>
           </motion.div>
 
           {/* Dot indicators */}
@@ -309,6 +315,9 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* ================= ADVISORS SECTION ================= */}
+      <AdvisorsSection />
 
       {/* ================= CONTACT FORM SECTION ================= */}
       <section className="py-16 md:py-24 bg-white relative overflow-hidden">
