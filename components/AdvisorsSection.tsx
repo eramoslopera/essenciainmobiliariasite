@@ -172,7 +172,7 @@ export default function AdvisorsSection() {
   return (
     <section
       ref={ref}
-      className="relative bg-primary-dark py-24 md:py-32 overflow-hidden"
+      className="relative bg-primary py-24 md:py-32 overflow-hidden"
       aria-labelledby="advisors-title"
     >
       <style>{`
