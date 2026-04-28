@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { WhatsappLogo } from '@phosphor-icons/react';
+import { WhatsappLogo, CaretLeft, CaretRight } from '@phosphor-icons/react';
 
 interface Advisor {
   id: string;
@@ -12,6 +12,7 @@ interface Advisor {
   message: string;
   avatarColor: string;
   featured?: boolean;
+  photo?: string;
 }
 
 const ADVISORS: Advisor[] = [
@@ -25,6 +26,7 @@ const ADVISORS: Advisor[] = [
     message: 'Hola Santi, me gustaría hablar sobre una inversión inmobiliaria',
     avatarColor: 'from-blue-600 to-blue-800',
     featured: true,
+    photo: '/1.jpeg',
   },
   {
     id: 'carolina',
@@ -35,6 +37,7 @@ const ADVISORS: Advisor[] = [
     whatsapp: '34647803355',
     message: 'Hola Carolina, me gustaría recibir asesoramiento inmobiliario',
     avatarColor: 'from-indigo-500 to-indigo-700',
+    photo: '/2.jpeg',
   },
   {
     id: 'juanma',
@@ -93,28 +96,32 @@ const AdvisorCard: React.FC<{ advisor: Advisor; index: number }> = ({ advisor })
   return (
     <motion.div
       variants={cardVariants}
-      className="group relative flex-shrink-0 w-[280px] sm:w-[320px] flex flex-col bg-[#141414]/80 backdrop-blur-md border border-white/[0.06] rounded-[2rem] p-8 overflow-hidden transition-all duration-500 snap-center sm:snap-start hover:bg-[#1a1a1a] hover:border-white/[0.12] hover:-translate-y-1 hover:shadow-[0_20px_40px_-15px_rgba(37,99,235,0.15)] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]"
+      className="group relative flex-shrink-0 w-[280px] sm:w-[320px] flex flex-col bg-editorial-black/80 backdrop-blur-md border border-white/[0.06] rounded-[2rem] p-8 overflow-hidden transition-all duration-500 snap-center sm:snap-start hover:bg-editorial-black hover:border-white/[0.12] hover:-translate-y-1 hover:shadow-[0_20px_40px_-15px_rgba(34,211,238,0.15)] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]"
     >
       {/* Avatar & Role Badge Row */}
       <div className="flex items-start justify-between mb-8">
         <div
-          className={`relative flex items-center justify-center rounded-full font-black tracking-tight text-white bg-gradient-to-br ${advisor.avatarColor} w-16 h-16 text-xl flex-shrink-0`}
+          className={`relative flex items-center justify-center rounded-full font-black tracking-tight text-white bg-gradient-to-br ${advisor.avatarColor} w-16 h-16 text-xl flex-shrink-0 overflow-hidden`}
           aria-hidden="true"
         >
-          {advisor.initials}
-          {advisor.featured && (
-            <span className="absolute inset-[-4px] rounded-full border border-blue-500/30 animate-[ping_3s_ease-in-out_infinite]" />
+          {advisor.photo ? (
+            <img src={advisor.photo} alt={advisor.name} className="w-full h-full object-cover" />
+          ) : (
+            advisor.initials
+          )}
+          {advisor.featured && !advisor.photo && (
+            <span className="absolute inset-[-4px] rounded-full border border-brand-blue-500/30 animate-[ping_3s_ease-in-out_infinite]" />
           )}
         </div>
         
         <span
           className={`inline-flex items-center gap-1.5 text-[9px] font-black uppercase tracking-[0.2em] px-3 py-1.5 rounded-full
             ${advisor.featured
-              ? 'text-blue-400 bg-blue-500/10 border border-blue-500/20'
+              ? 'text-brand-blue-400 bg-brand-blue-500/10 border border-brand-blue-500/20'
               : 'text-white/40 bg-white/[0.03] border border-white/[0.05]'}`}
         >
           {advisor.featured && (
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-brand-blue-400 animate-pulse" />
           )}
           {advisor.role}
         </span>
@@ -135,7 +142,7 @@ const AdvisorCard: React.FC<{ advisor: Advisor; index: number }> = ({ advisor })
         href={waHref}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-full inline-flex items-center justify-center gap-2 font-black uppercase tracking-[0.15em] text-[10px] h-12 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 active:scale-[0.98] bg-white/[0.04] text-white hover:bg-blue-600 hover:text-white border border-white/[0.08] hover:border-blue-500 hover:shadow-[0_0_20px_rgba(37,99,235,0.3)]"
+        className="w-full inline-flex items-center justify-center gap-2 font-black uppercase tracking-[0.15em] text-[10px] h-12 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 active:scale-[0.98] bg-white/[0.04] text-white hover:bg-brand-blue-600 hover:text-white border border-white/[0.08] hover:border-brand-blue-500 hover:shadow-[0_0_20px_rgba(34,211,238,0.3)]"
         aria-label={`Chatear con ${advisor.name}`}
       >
         <WhatsappLogo weight="fill" className="w-4 h-4" aria-hidden="true" />
@@ -147,12 +154,25 @@ const AdvisorCard: React.FC<{ advisor: Advisor; index: number }> = ({ advisor })
 
 export default function AdvisorsSection() {
   const ref = useRef<HTMLElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
+
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: -320, behavior: 'smooth' });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: 320, behavior: 'smooth' });
+    }
+  };
 
   return (
     <section
       ref={ref}
-      className="relative bg-[#0a0a0a] py-24 md:py-32 overflow-hidden"
+      className="relative bg-primary-dark py-24 md:py-32 overflow-hidden"
       aria-labelledby="advisors-title"
     >
       <style>{`
@@ -164,7 +184,7 @@ export default function AdvisorsSection() {
       {/* Glow de fondo */}
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] pointer-events-none opacity-50"
-        style={{ background: 'radial-gradient(ellipse at center, rgba(37,99,235,0.08) 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(ellipse at center, rgba(34,211,238,0.08) 0%, transparent 70%)' }}
         aria-hidden="true"
       />
       {/* Grid pattern */}
@@ -187,8 +207,8 @@ export default function AdvisorsSection() {
         >
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <div>
-              <span className="inline-flex items-center gap-2 text-[10px] font-black tracking-[0.25em] uppercase text-blue-400 mb-4">
-                <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" aria-hidden="true" />
+              <span className="inline-flex items-center gap-2 text-[10px] font-black tracking-[0.25em] uppercase text-brand-blue-400 mb-4">
+                <span className="w-1.5 h-1.5 rounded-full bg-brand-blue-400 animate-pulse" aria-hidden="true" />
                 Los Expertos
               </span>
               <h2
@@ -200,12 +220,25 @@ export default function AdvisorsSection() {
               </h2>
             </div>
             
-            {/* Indicador de scroll para Desktop */}
-            <div className="hidden md:flex items-center gap-3 text-[11px] font-bold text-white/30 uppercase tracking-widest">
-              <span>Desliza para ver más</span>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="opacity-50">
-                <path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+            {/* Controles del Carrusel (Flechas) */}
+            <div className="hidden md:flex items-center gap-4">
+              <div className="flex items-center gap-2 mr-4 text-[11px] font-bold text-white/30 uppercase tracking-widest">
+                <span>Desliza para ver más</span>
+              </div>
+              <button 
+                onClick={scrollLeft}
+                className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:bg-white/5 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500"
+                aria-label="Desplazar a la izquierda"
+              >
+                <CaretLeft weight="bold" className="w-5 h-5" />
+              </button>
+              <button 
+                onClick={scrollRight}
+                className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:bg-white/5 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500"
+                aria-label="Desplazar a la derecha"
+              >
+                <CaretRight weight="bold" className="w-5 h-5" />
+              </button>
             </div>
           </div>
         </motion.div>
@@ -216,6 +249,7 @@ export default function AdvisorsSection() {
             variants={containerVariants}
             initial="hidden"
             animate={inView ? 'visible' : 'hidden'}
+            ref={scrollContainerRef}
             className="flex gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory px-6 lg:px-8 pb-12 pt-4 hide-scrollbar"
             style={{
               scrollbarWidth: 'none',
