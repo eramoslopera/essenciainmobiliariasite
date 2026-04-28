@@ -73,91 +73,73 @@ const containerVariants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.08,
+      staggerChildren: 0.1,
     },
   },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] },
+    transition: { type: 'spring', stiffness: 100, damping: 20 },
   },
 };
 
-const AdvisorCard: React.FC<{ advisor: Advisor; index: number }> = ({ advisor, index: _index }) => {
+const AdvisorCard: React.FC<{ advisor: Advisor; index: number }> = ({ advisor }) => {
   const waHref = `https://wa.me/${advisor.whatsapp}?text=${encodeURIComponent(advisor.message)}`;
 
   return (
     <motion.div
       variants={cardVariants}
-      className={`group relative flex flex-col bg-white/[0.03] border border-white/[0.07] rounded-2xl
-        overflow-hidden transition-all duration-500 cursor-default
-        hover:bg-blue-600/[0.06] hover:border-blue-500/25
-        hover:-translate-y-1.5 hover:shadow-[0_40px_80px_-20px_rgba(37,99,235,0.16)]
-        ${advisor.featured ? 'md:row-span-2 p-9 md:p-11' : 'p-7'}`}
+      className="group relative flex-shrink-0 w-[280px] sm:w-[320px] flex flex-col bg-[#141414]/80 backdrop-blur-md border border-white/[0.06] rounded-[2rem] p-8 overflow-hidden transition-all duration-500 snap-center sm:snap-start hover:bg-[#1a1a1a] hover:border-white/[0.12] hover:-translate-y-1 hover:shadow-[0_20px_40px_-15px_rgba(37,99,235,0.15)] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]"
     >
-      {/* Top accent line */}
-      <span className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-      {/* Avatar */}
-      <div
-        className={`relative flex items-center justify-center rounded-full font-black tracking-tight text-white bg-gradient-to-br ${advisor.avatarColor} flex-shrink-0
-          ${advisor.featured ? 'w-[72px] h-[72px] text-2xl mb-8' : 'w-14 h-14 text-lg mb-6'}`}
-        aria-hidden="true"
-      >
-        {advisor.initials}
-        {advisor.featured && (
-          <span className="absolute inset-[-5px] rounded-full border border-blue-500/40 animate-[ping_3s_ease-in-out_infinite]" style={{ animationDuration: '3s' }} />
-        )}
+      {/* Avatar & Role Badge Row */}
+      <div className="flex items-start justify-between mb-8">
+        <div
+          className={`relative flex items-center justify-center rounded-full font-black tracking-tight text-white bg-gradient-to-br ${advisor.avatarColor} w-16 h-16 text-xl flex-shrink-0`}
+          aria-hidden="true"
+        >
+          {advisor.initials}
+          {advisor.featured && (
+            <span className="absolute inset-[-4px] rounded-full border border-blue-500/30 animate-[ping_3s_ease-in-out_infinite]" />
+          )}
+        </div>
+        
+        <span
+          className={`inline-flex items-center gap-1.5 text-[9px] font-black uppercase tracking-[0.2em] px-3 py-1.5 rounded-full
+            ${advisor.featured
+              ? 'text-blue-400 bg-blue-500/10 border border-blue-500/20'
+              : 'text-white/40 bg-white/[0.03] border border-white/[0.05]'}`}
+        >
+          {advisor.featured && (
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+          )}
+          {advisor.role}
+        </span>
       </div>
 
-      {/* Role badge */}
-      <span
-        className={`inline-flex items-center gap-1.5 text-[9px] font-black uppercase tracking-[0.22em] mb-2
-          ${advisor.featured
-            ? 'text-blue-400 bg-blue-600/10 border border-blue-500/20 px-2.5 py-1 rounded-full self-start'
-            : 'text-white/40'}`}
-      >
-        {advisor.featured && (
-          <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
-        )}
-        {advisor.role}
-      </span>
+      {/* Info */}
+      <div className="flex-1 flex flex-col">
+        <h3 className="font-black text-white text-2xl tracking-tight mb-2">
+          {advisor.name}
+        </h3>
+        <p className="text-[13px] text-white/50 leading-relaxed mb-8 flex-1">
+          {advisor.specialty}
+        </p>
+      </div>
 
-      {/* Name */}
-      <h3
-        className={`font-black text-white tracking-tight leading-none mb-3
-          ${advisor.featured ? 'text-[28px] md:text-[32px]' : 'text-[18px]'}`}
-      >
-        {advisor.name}
-      </h3>
-
-      {/* Specialty */}
-      <p
-        className={`font-medium leading-relaxed flex-1 mb-7
-          ${advisor.featured ? 'text-[15px] text-white/50 max-w-xs' : 'text-[12px] text-white/35'}`}
-      >
-        {advisor.specialty}
-      </p>
-
-      {/* WhatsApp CTA */}
+      {/* CTA */}
       <a
         href={waHref}
         target="_blank"
         rel="noopener noreferrer"
-        className={`inline-flex items-center gap-2 font-black uppercase tracking-[0.18em] rounded-full
-          transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500
-          active:scale-[0.97]
-          ${advisor.featured
-            ? 'text-[11px] h-12 px-8 bg-blue-600 text-white hover:bg-blue-500 shadow-[0_8px_30px_rgba(37,99,235,0.35)] hover:shadow-[0_12px_40px_rgba(37,99,235,0.50)] self-start'
-            : 'text-[10px] h-10 px-6 bg-white/[0.07] text-white/80 border border-white/[0.09] hover:bg-blue-600 hover:text-white hover:border-blue-600'}`}
-        aria-label={`Chatear con ${advisor.name} por WhatsApp`}
+        className="w-full inline-flex items-center justify-center gap-2 font-black uppercase tracking-[0.15em] text-[10px] h-12 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 active:scale-[0.98] bg-white/[0.04] text-white hover:bg-blue-600 hover:text-white border border-white/[0.08] hover:border-blue-500 hover:shadow-[0_0_20px_rgba(37,99,235,0.3)]"
+        aria-label={`Chatear con ${advisor.name}`}
       >
-        <WhatsappLogo weight="fill" className={advisor.featured ? 'w-4 h-4' : 'w-3.5 h-3.5'} aria-hidden="true" />
-        Hablar ahora
+        <WhatsappLogo weight="fill" className="w-4 h-4" aria-hidden="true" />
+        Hablar por WhatsApp
       </a>
     </motion.div>
   );
@@ -167,97 +149,102 @@ export default function AdvisorsSection() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
-  const featured = ADVISORS[0];
-  const rest = ADVISORS.slice(1);
-
   return (
     <section
       ref={ref}
-      className="relative bg-[#0f0f0f] py-24 md:py-32 overflow-hidden"
+      className="relative bg-[#0a0a0a] py-24 md:py-32 overflow-hidden"
       aria-labelledby="advisors-title"
     >
+      <style>{`
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
+      
       {/* Glow de fondo */}
       <div
-        className="absolute top-[-180px] left-1/2 -translate-x-1/2 w-[900px] h-[500px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse at center, rgba(37,99,235,0.10) 0%, transparent 70%)' }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] pointer-events-none opacity-50"
+        style={{ background: 'radial-gradient(ellipse at center, rgba(37,99,235,0.08) 0%, transparent 70%)' }}
         aria-hidden="true"
       />
-      {/* Grid pattern decorativo */}
+      {/* Grid pattern */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.025]"
+        className="absolute inset-0 pointer-events-none opacity-[0.02]"
         style={{
           backgroundImage: 'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
+          backgroundSize: '40px 40px',
         }}
         aria-hidden="true"
       />
 
-      <div className="relative z-10 max-w-[1100px] mx-auto px-6 lg:px-8">
-
+      <div className="relative z-10 w-full">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-14 md:mb-16"
+          transition={{ type: 'spring', stiffness: 100, damping: 20 }}
+          className="max-w-[1100px] mx-auto px-6 lg:px-8 mb-12"
         >
-          <span className="inline-flex items-center gap-2 text-[10px] font-black tracking-[0.28em] uppercase text-blue-400 mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" aria-hidden="true" />
-            Nuestro Equipo
-          </span>
-
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-            <h2
-              id="advisors-title"
-              className="text-4xl md:text-5xl lg:text-[52px] font-black text-white tracking-[-0.03em] leading-[1.0] max-w-lg"
-            >
-              Habla con uno de<br />
-              <span className="text-blue-500">nuestros asesores</span>
-            </h2>
-            <p className="text-[15px] font-medium text-white/40 max-w-xs leading-relaxed md:text-right">
-              Equipo local con más de 15 años de experiencia en el mercado inmobiliario de Gandía y Valencia.
-            </p>
+            <div>
+              <span className="inline-flex items-center gap-2 text-[10px] font-black tracking-[0.25em] uppercase text-blue-400 mb-4">
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" aria-hidden="true" />
+                Los Expertos
+              </span>
+              <h2
+                id="advisors-title"
+                className="text-4xl md:text-5xl font-black text-white tracking-tight leading-[1.1]"
+              >
+                Habla directamente<br />
+                <span className="text-white/40">con tu asesor</span>
+              </h2>
+            </div>
+            
+            {/* Indicador de scroll para Desktop */}
+            <div className="hidden md:flex items-center gap-3 text-[11px] font-bold text-white/30 uppercase tracking-widest">
+              <span>Desliza para ver más</span>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="opacity-50">
+                <path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
           </div>
         </motion.div>
 
-        {/* Grid asimétrico */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={inView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr] gap-4"
-        >
-          {/* Columna izquierda — asesor destacado */}
-          <AdvisorCard advisor={featured} index={0} />
-
-          {/* Columna derecha — los otros 5 en sub-grid */}
-          <div className="grid grid-cols-1 gap-4">
-            {rest.map((advisor, i) => (
-              <AdvisorCard key={advisor.id} advisor={advisor} index={i + 1} />
+        {/* Carrusel Horizontal (Wide Data Stream) */}
+        <div className="w-full overflow-hidden">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate={inView ? 'visible' : 'hidden'}
+            className="flex gap-4 sm:gap-6 overflow-x-auto snap-x snap-mandatory px-6 lg:px-8 pb-12 pt-4 hide-scrollbar"
+            style={{
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+              WebkitOverflowScrolling: 'touch',
+            }}
+          >
+            {/* Espaciador inicial para mantener el offset del container en pantallas grandes */}
+            <div className="hidden lg:block flex-shrink-0 w-[calc((100vw-1100px)/2-24px)]" aria-hidden="true" />
+            
+            {ADVISORS.map((advisor, i) => (
+              <AdvisorCard key={advisor.id} advisor={advisor} index={i} />
             ))}
-          </div>
-        </motion.div>
+            
+            {/* Espaciador final para permitir que la última tarjeta no quede pegada al borde derecho */}
+            <div className="flex-shrink-0 w-6 lg:w-[calc((100vw-1100px)/2)]" aria-hidden="true" />
+          </motion.div>
+        </div>
 
-        {/* Footer bar */}
+        {/* Footer info */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 1, delay: 0.6, ease: 'easeOut' }}
-          className="mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-8 border-t border-white/[0.06]"
+          transition={{ duration: 1, delay: 0.4 }}
+          className="max-w-[1100px] mx-auto px-6 lg:px-8 flex justify-center md:justify-end"
         >
-          <p className="text-[12px] font-semibold text-white/30 tracking-wide uppercase">
+           <p className="text-[11px] font-semibold text-white/20 tracking-widest uppercase">
             Disponibles de lunes a sábado · 9:00 – 19:00h
           </p>
-          <a
-            href="https://wa.me/34647803355?text=Hola%2C%20me%20gustar%C3%ADa%20hablar%20con%20un%20asesor%20de%20Essencia%20Inmobiliaria"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.18em] h-10 px-6 rounded-full bg-white/[0.05] text-white/60 border border-white/[0.08] hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all duration-300 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
-            aria-label="Contactar con la oficina de Essencia Inmobiliaria por WhatsApp"
-          >
-            <WhatsappLogo weight="fill" className="w-4 h-4" aria-hidden="true" />
-            Contactar oficina
-          </a>
         </motion.div>
       </div>
     </section>
