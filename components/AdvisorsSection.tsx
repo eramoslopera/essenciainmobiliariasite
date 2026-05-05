@@ -26,7 +26,7 @@ const ADVISORS: Advisor[] = [
     message: 'Hola Santi, me gustaría hablar sobre una inversión inmobiliaria',
     avatarColor: 'from-blue-600 to-blue-800',
     featured: true,
-    photo: '/1.jpeg',
+    photo: '/santi.jpg',
   },
   {
     id: 'carolina',
@@ -37,7 +37,7 @@ const ADVISORS: Advisor[] = [
     whatsapp: '34647803355',
     message: 'Hola Carolina, me gustaría recibir asesoramiento inmobiliario',
     avatarColor: 'from-indigo-500 to-indigo-700',
-    photo: '/2.jpeg',
+    photo: '/carolina.jpg',
   },
   {
     id: 'juanma',
@@ -48,6 +48,7 @@ const ADVISORS: Advisor[] = [
     whatsapp: '34603628158',
     message: 'Hola Juanma, me gustaría obtener información sobre vuestros servicios',
     avatarColor: 'from-sky-500 to-sky-700',
+    photo: '/juanma.jpg',
   },
   {
     id: 'joseluis',
@@ -58,6 +59,7 @@ const ADVISORS: Advisor[] = [
     whatsapp: '34637403052',
     message: 'Hola José Luis, me gustaría hablar sobre una propiedad',
     avatarColor: 'from-blue-500 to-blue-700',
+    photo: '/joseluis.jpg',
   },
   {
     id: 'oscar',
@@ -68,8 +70,8 @@ const ADVISORS: Advisor[] = [
     whatsapp: '34637403050',
     message: 'Hola Óscar, me gustaría hablar sobre una propiedad',
     avatarColor: 'from-slate-500 to-slate-700',
+    photo: '/oscar.jpg',
   },
-
 ];
 
 const containerVariants = {
