@@ -1,0 +1,166 @@
+<!-- ASESORES — Essencia Inmobiliaria — Pegar en bloque HTML personalizado de WordPress -->
+<!-- IMPORTANTE: Sube las fotos (santi.jpg, carolina.jpg, juanma.jpg, joseluis.jpg, oscar.jpg)
+     a tu WordPress Media Library y reemplaza las URLs de img src con las URLs reales de WP -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+#ess-adv*{box-sizing:border-box;margin:0;padding:0}
+#ess-adv{font-family:'Manrope',sans-serif;background:#222222;padding:88px 0;position:relative;overflow:hidden}
+#ess-adv .bg-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:400px;pointer-events:none;opacity:.5;background:radial-gradient(ellipse at center,rgba(34,211,238,.08) 0%,transparent 70%)}
+#ess-adv .bg-grid{position:absolute;inset:0;pointer-events:none;opacity:.02;background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);background-size:40px 40px}
+#ess-adv .inner{position:relative;z-index:1;width:100%}
+#ess-adv .head{max-width:1100px;margin:0 auto 40px;padding:0 24px}
+#ess-adv .head-row{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px}
+#ess-adv .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:10px;font-weight:900;letter-spacing:.25em;text-transform:uppercase;color:#22d3ee;margin-bottom:12px}
+#ess-adv .eyebrow-dot{width:6px;height:6px;border-radius:50%;background:#22d3ee;animation:pulse-dot 2s ease-in-out infinite}
+@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.4}}
+#ess-adv h2{font-size:clamp(32px,5vw,48px);font-weight:900;color:#fff;letter-spacing:-.03em;line-height:1.1}
+#ess-adv h2 span{color:rgba(255,255,255,.3)}
+#ess-adv .controls{display:flex;align-items:center;gap:12px}
+#ess-adv .ctrl-hint{font-size:10px;font-weight:700;color:rgba(255,255,255,.25);text-transform:uppercase;letter-spacing:.15em;margin-right:8px}
+#ess-adv .arr{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.1);background:transparent;color:rgba(255,255,255,.45);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;font-size:18px;font-family:sans-serif;line-height:1}
+#ess-adv .arr:hover{background:rgba(255,255,255,.06);color:#fff}
+#ess-adv .track-wrap{width:100%;overflow:hidden}
+#ess-adv .track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:12px 24px 40px;-ms-overflow-style:none;scrollbar-width:none}
+#ess-adv .track::-webkit-scrollbar{display:none}
+#ess-adv .spacer-l{flex-shrink:0;width:max(0px,(100vw - 1100px)/2 - 24px)}
+#ess-adv .spacer-r{flex-shrink:0;width:24px}
+#ess-adv .acard{flex-shrink:0;width:290px;display:flex;flex-direction:column;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:28px;padding:28px;overflow:hidden;scroll-snap-align:start;transition:all .4s;position:relative}
+#ess-adv .acard:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.12);transform:translateY(-3px);box-shadow:0 20px 40px -15px rgba(34,211,238,.12)}
+#ess-adv .card-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:24px}
+#ess-adv .avatar{width:60px;height:60px;border-radius:50%;overflow:hidden;flex-shrink:0;background:linear-gradient(135deg,#1fc0d9,#1d4ed8)}
+#ess-adv .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+#ess-adv .role-badge{display:inline-flex;align-items:center;gap:5px;font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.18em;padding:5px 11px;border-radius:999px;border:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.35);background:rgba(255,255,255,.02)}
+#ess-adv .role-badge.feat{color:#67e8f9;background:rgba(34,211,238,.08);border-color:rgba(34,211,238,.2)}
+#ess-adv .feat-pulse{width:6px;height:6px;border-radius:50%;background:#67e8f9;animation:pulse-dot 2s ease-in-out infinite;flex-shrink:0}
+#ess-adv .aname{font-size:22px;font-weight:900;color:#fff;letter-spacing:-.02em;margin-bottom:6px}
+#ess-adv .aspec{font-size:13px;color:rgba(255,255,255,.45);line-height:1.6;margin-bottom:24px;flex:1}
+#ess-adv .wa-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:46px;border-radius:999px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.04);color:#fff;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.15em;text-decoration:none;transition:all .3s}
+#ess-adv .wa-btn:hover{background:#1fc0d9;border-color:#1fc0d9;box-shadow:0 0 20px rgba(34,211,238,.25)}
+#ess-adv .wa-icon{width:16px;height:16px;fill:#fff;flex-shrink:0}
+#ess-adv .foot{max-width:1100px;margin:0 auto;padding:0 24px;text-align:right}
+#ess-adv .foot p{font-size:10px;font-weight:600;color:rgba(255,255,255,.18);text-transform:uppercase;letter-spacing:.18em}
+@media(max-width:600px){#ess-adv{padding:56px 0}#ess-adv .controls{display:none}#ess-adv .acard{width:270px;padding:22px}}
+</style>
+
+<section id="ess-adv" aria-labelledby="adv-h2">
+  <div class="bg-glow" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <div class="inner">
+    <div class="head">
+      <div class="head-row">
+        <div>
+          <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Los Expertos</p>
+          <h2 id="adv-h2">Habla directamente<br><span>con tu asesor</span></h2>
+        </div>
+        <div class="controls">
+          <span class="ctrl-hint">Desliza para ver más</span>
+          <button class="arr" id="adv-prev" aria-label="Anterior">&#8249;</button>
+          <button class="arr" id="adv-next" aria-label="Siguiente">&#8250;</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="track-wrap">
+      <div class="track" id="adv-track">
+        <div class="spacer-l" aria-hidden="true"></div>
+
+        <!-- SANTI TORRES -->
+        <article class="acard">
+          <div class="card-top">
+            <div class="avatar">
+              <!-- Reemplaza con la URL de tu WordPress Media Library -->
+              <img src="https://essenciainmobiliaria.com/wp-content/uploads/2021/03/Captura-de-pantalla-2025-11-29-a-las-23.05.21-150x150.jpg" alt="Santi Torres" loading="lazy">
+            </div>
+            <span class="role-badge feat"><span class="feat-pulse" aria-hidden="true"></span>CEO</span>
+          </div>
+          <h3 class="aname">Santi Torres</h3>
+          <p class="aspec">Especialista en inversiones inmobiliarias y estrategia de venta</p>
+          <a class="wa-btn" href="https://wa.me/34600403136?text=Hola%20Santi%2C%20me%20gustar%C3%ADa%20hablar%20sobre%20una%20inversi%C3%B3n%20inmobiliaria" target="_blank" rel="noopener noreferrer" aria-label="Chatear con Santi Torres">
+            <svg class="wa-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Hablar por WhatsApp
+          </a>
+        </article>
+
+        <!-- CAROLINA GONZÁLEZ -->
+        <article class="acard">
+          <div class="card-top">
+            <div class="avatar" style="background:linear-gradient(135deg,#6366f1,#4338ca)">
+              <img src="https://essenciainmobiliaria.com/wp-content/uploads/2021/04/Captura-de-pantalla-2021-04-23-a-las-23.43.04-e1619469684318-150x150.jpg" alt="Carolina González" loading="lazy">
+            </div>
+            <span class="role-badge">Asesora Inmobiliaria</span>
+          </div>
+          <h3 class="aname">Carolina González</h3>
+          <p class="aspec">Compraventa residencial en Gandía y la costa de Valencia</p>
+          <a class="wa-btn" href="https://wa.me/34647803355?text=Hola%20Carolina%2C%20me%20gustar%C3%ADa%20recibir%20asesoramiento%20inmobiliario" target="_blank" rel="noopener noreferrer" aria-label="Chatear con Carolina González">
+            <svg class="wa-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Hablar por WhatsApp
+          </a>
+        </article>
+
+        <!-- JUANMA MENACHO -->
+        <article class="acard">
+          <div class="card-top">
+            <div class="avatar" style="background:linear-gradient(135deg,#0ea5e9,#0369a1)">
+              <img src="https://essenciainmobiliaria.com/wp-content/uploads/2021/03/admin-ajax-6-150x150-1-150x150.jpg" alt="Juanma Menacho" loading="lazy">
+            </div>
+            <span class="role-badge">Coordinador de Oficina</span>
+          </div>
+          <h3 class="aname">Juanma Menacho</h3>
+          <p class="aspec">Gestión de operaciones y atención al cliente</p>
+          <a class="wa-btn" href="https://wa.me/34603628158?text=Hola%20Juanma%2C%20me%20gustar%C3%ADa%20obtener%20informaci%C3%B3n%20sobre%20vuestros%20servicios" target="_blank" rel="noopener noreferrer" aria-label="Chatear con Juanma Menacho">
+            <svg class="wa-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Hablar por WhatsApp
+          </a>
+        </article>
+
+        <!-- JOSÉ LUIS PUENTE -->
+        <article class="acard">
+          <div class="card-top">
+            <div class="avatar" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8)">
+              <img src="https://essenciainmobiliaria.com/wp-content/uploads/2021/03/admin-ajax-3-150x150-1-150x150.jpg" alt="José Luis Puente" loading="lazy">
+            </div>
+            <span class="role-badge">Asesor Inmobiliario</span>
+          </div>
+          <h3 class="aname">José Luis Puente</h3>
+          <p class="aspec">Propiedades residenciales y de lujo en la Safor</p>
+          <a class="wa-btn" href="https://wa.me/34637403052?text=Hola%20Jos%C3%A9%20Luis%2C%20me%20gustar%C3%ADa%20hablar%20sobre%20una%20propiedad" target="_blank" rel="noopener noreferrer" aria-label="Chatear con José Luis Puente">
+            <svg class="wa-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Hablar por WhatsApp
+          </a>
+        </article>
+
+        <!-- ÓSCAR PUENTE -->
+        <article class="acard">
+          <div class="card-top">
+            <div class="avatar" style="background:linear-gradient(135deg,#64748b,#334155)">
+              <img src="https://essenciainmobiliaria.com/wp-content/uploads/2021/03/admin-ajax-4-150x150-1-150x150.jpg" alt="Óscar Puente" loading="lazy">
+            </div>
+            <span class="role-badge">Asesor Inmobiliario</span>
+          </div>
+          <h3 class="aname">Óscar Puente</h3>
+          <p class="aspec">Especialista en primera vivienda y asesoramiento hipotecario</p>
+          <a class="wa-btn" href="https://wa.me/34637403050?text=Hola%20%C3%93scar%2C%20me%20gustar%C3%ADa%20hablar%20sobre%20una%20propiedad" target="_blank" rel="noopener noreferrer" aria-label="Chatear con Óscar Puente">
+            <svg class="wa-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Hablar por WhatsApp
+          </a>
+        </article>
+
+        <div class="spacer-r" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <div class="foot">
+      <p>Disponibles de lunes a sábado &middot; 9:00 &ndash; 19:00h</p>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var t=document.getElementById('adv-track');
+  document.getElementById('adv-prev').addEventListener('click',function(){t.scrollBy({left:-310,behavior:'smooth'});});
+  document.getElementById('adv-next').addEventListener('click',function(){t.scrollBy({left:310,behavior:'smooth'});});
+})();
+</script>
