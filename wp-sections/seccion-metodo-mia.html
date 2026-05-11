@@ -259,7 +259,10 @@
 /* ── Mobile ──────────────────────────────────────── */
 @media (max-width: 639px) {
   #ess-mia-teaser {
-    padding: 56px 16px;
+    padding: 56px 0;
+  }
+  #ess-mia-teaser .col-left {
+    padding: 0 16px;
   }
   #ess-mia-teaser h2 {
     font-size: clamp(38px, 10vw, 52px);
@@ -268,7 +271,21 @@
     font-size: 15px;
   }
   #ess-mia-teaser .steps-grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 16px;
+    gap: 16px;
+    padding: 8px 16px 24px 16px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  #ess-mia-teaser .steps-grid::-webkit-scrollbar {
+    display: none;
+  }
+  #ess-mia-teaser .step-card {
+    flex: 0 0 260px;
+    scroll-snap-align: start;
   }
 }
 </style>

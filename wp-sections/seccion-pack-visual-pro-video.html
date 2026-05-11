@@ -1,0 +1,184 @@
+<!-- ============================================================
+     PACK VISUAL PRO (Video Vertical) — Essencia Inmobiliaria
+     Pegar en: WordPress > Elementor > HTML Widget (o bloque HTML)
+     Fuentes necesarias (añadir en Customizer > Additional CSS o <head>):
+       https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800;900&display=swap
+     Vídeos: rutas relativas a la raíz del servidor WP
+     ============================================================ -->
+
+<style>
+/* ── Reset & tokens ── */
+.pvp-wrap * { box-sizing: border-box; margin: 0; padding: 0; }
+.pvp-wrap {
+  --black:   #222222;  /* editorial-black */
+  --white:   #ffffff;
+  --blue:    #22d3ee;  /* brand-blue-500 */
+  --gray400: #9ca3af;
+  --gray500: #6b7280;
+  --gray100: #f3f4f6;
+  font-family: 'Manrope', sans-serif;
+  color: var(--black);
+  background: #fff;
+  width: 100%;
+  overflow: clip;
+}
+
+/* ── Section base ── */
+.pvp-section { padding: 6rem 1.5rem; background: #fff; }
+@media(min-width:768px){ .pvp-section { padding: 6rem 3rem; } }
+
+/* ── Max widths ── */
+.pvp-inner { max-width: 1280px; margin: 0 auto; }
+
+/* ════════════════════════════════════════
+   1. CINE VIDEO — teaser con Phone Mockup
+   ════════════════════════════════════════ */
+.pvp-cine-grid {
+  display: flex; flex-direction: column; align-items: center; gap: 4rem;
+}
+@media(min-width:768px){
+  .pvp-cine-grid { flex-direction: row; }
+  .pvp-cine-copy, .pvp-cine-phone { flex: 1; }
+}
+
+.pvp-badge-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; }
+.pvp-badge {
+  background: var(--blue); color: var(--black);
+  font-size: 10px; font-weight: 900; text-transform: uppercase;
+  letter-spacing: .12em; padding: 4px 12px; border-radius: 999px;
+}
+.pvp-badge-label {
+  font-size: 11px; font-weight: 700; color: var(--gray400);
+  text-transform: uppercase; letter-spacing: .12em;
+}
+
+.pvp-h1 {
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-weight: 900; line-height: .9; letter-spacing: -.04em;
+  margin-bottom: 1.5rem;
+}
+.pvp-h1 span { color: var(--blue); }
+.pvp-cine-desc { font-size: 1.1rem; color: var(--gray500); font-weight: 500; max-width: 28rem; margin-bottom: 2rem; }
+
+.pvp-feature-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+.pvp-feature-list li {
+  display: flex; align-items: center; gap: .75rem;
+  font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em;
+}
+.pvp-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--black); flex-shrink: 0; }
+
+.pvp-phone-wrap { display: flex; justify-content: center; position: relative; width: 100%; }
+.pvp-phone {
+  position: relative;
+  width: 100%; max-width: 300px; height: 620px; aspect-ratio: 300/620;
+  background: #1f2937;
+  border: 14px solid #111827;
+  border-radius: 2.5rem;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0,0,0,.35);
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+}
+@media (max-width: 380px) {
+  .pvp-phone { height: 500px; }
+}
+.pvp-phone-notch {
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 32px; background: #111827; z-index: 20;
+  display: flex; justify-content: center; border-radius: 2rem 2rem 0 0;
+}
+.pvp-phone-notch::after {
+  content: ''; display: block;
+  width: 120px; height: 18px;
+  background: #000; border-radius: 0 0 1rem 1rem;
+}
+.pvp-phone-screen {
+  position: absolute; inset: 0;
+  border-radius: 2rem; overflow: hidden;
+  background: #000;
+}
+.pvp-phone-screen video { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* Side buttons */
+.pvp-phone::before, .pvp-phone::after { content: ''; position: absolute; background: #374151; width: 3px; border-radius: 2px; }
+.pvp-phone::before { height: 46px; left: -17px; top: 124px; }
+.pvp-phone::after  { height: 64px; right: -17px; top: 142px; }
+
+/* Rotating rings */
+.pvp-ring-wrap { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; z-index: -1; }
+.pvp-ring {
+  position: absolute; border-radius: 50%; border: 1px solid #e5e7eb; opacity: .4;
+  animation: pvp-spin linear infinite;
+}
+.pvp-ring-1 { width: 480px; height: 480px; animation-duration: 20s; }
+.pvp-ring-2 { width: 680px; height: 680px; border-style: dashed; opacity: .2; animation-duration: 30s; animation-direction: reverse; }
+@keyframes pvp-spin { to { transform: rotate(360deg); } }
+</style>
+
+<div class="pvp-wrap">
+  <section class="pvp-section">
+    <div class="pvp-inner pvp-cine-grid">
+
+      <!-- Copy -->
+      <div class="pvp-cine-copy">
+        <div class="pvp-badge-row">
+          <span class="pvp-badge">Nuevo</span>
+          <span class="pvp-badge-label">Pack Visual Pro</span>
+        </div>
+
+        <h2 class="pvp-h1">Pack<br><span>Visual Pro</span></h2>
+
+        <p class="pvp-cine-desc">
+          No son solo fotos. Es una experiencia inmersiva. Creamos un «Portal» digital a tu vivienda con vídeos verticales estilo cine.
+        </p>
+
+        <ul class="pvp-feature-list">
+          <li><span class="pvp-dot"></span>Fotos y videos con DRON</li>
+          <li><span class="pvp-dot"></span>Render con IA</li>
+          <li><span class="pvp-dot"></span>Fotografía editorial</li>
+          <li><span class="pvp-dot"></span>Video profesional</li>
+          <li><span class="pvp-dot"></span>Planos en 3D</li>
+          <li><span class="pvp-dot"></span>Tour Virtual</li>
+        </ul>
+      </div>
+
+      <!-- Phone mockup -->
+      <div class="pvp-cine-phone">
+        <div class="pvp-phone-wrap">
+          <div class="pvp-phone">
+            <div class="pvp-phone-notch"></div>
+            <div class="pvp-phone-screen">
+              <video
+                id="pvp-cine-video"
+                src="https://essenciainmobiliaria.com/wp-content/uploads/2026/03/Packpro_Essencia.mp4"
+                autoplay="autoplay" muted="muted" loop="loop" playsinline="playsinline" preload="auto"
+                style="width:100%;height:100%;object-fit:cover;"
+              ></video>
+            </div>
+          </div>
+          <div class="pvp-ring-wrap">
+            <div class="pvp-ring pvp-ring-1"></div>
+            <div class="pvp-ring pvp-ring-2"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<script>
+(function () {
+  /* ── Autoplay vídeos al hacer scroll ── */
+  function observeVideo(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        e.isIntersecting ? el.play().catch(function(){}) : el.pause();
+      });
+    }, { threshold: 0.1 });
+    io.observe(el);
+  }
+  observeVideo('pvp-cine-video');
+})();
+</script>

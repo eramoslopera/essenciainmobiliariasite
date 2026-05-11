@@ -6,6 +6,7 @@ import SEOHead from '../components/SEOHead';
 import MiaMethodTeaser from '../components/MiaMethodTeaser';
 import ContactForm from '../components/ContactForm';
 import AdvisorsSection from '../components/AdvisorsSection';
+import FAQSection from '../components/FAQSection';
 import { motion } from 'framer-motion';
 import { WhatsappLogo } from '@phosphor-icons/react';
 import { Property } from '../src/types/property';
@@ -318,6 +319,9 @@ const Home: React.FC = () => {
 
       {/* ================= ADVISORS SECTION ================= */}
       <AdvisorsSection />
+
+      {/* ================= FAQ SECTION ================= */}
+      <FAQSection />
 
       {/* ================= CONTACT FORM SECTION ================= */}
       <section className="py-16 md:py-24 bg-white relative overflow-hidden">
