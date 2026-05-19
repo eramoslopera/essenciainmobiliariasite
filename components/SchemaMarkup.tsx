@@ -4,18 +4,27 @@ import { useLocation } from 'react-router-dom';
 const SchemaMarkup: React.FC = () => {
     const location = useLocation();
     const baseUrl = 'https://essenciainmobiliaria.com';
+    const isHome = location.pathname === '/' || location.pathname === '';
 
-    // Organization schema — always present
-    const organizationSchema = {
+    // ─── 1. RealEstateAgent — replaces generic Organization ───────────────────
+    // Using @type RealEstateAgent (subtype of LocalBusiness) for maximum GEO/SEO value
+    const realEstateAgentSchema = {
         "@context": "https://schema.org",
         "@type": "RealEstateAgent",
+        "@id": `${baseUrl}/#realestateagent`,
         "name": "Essencia Inmobiliaria",
+        "alternateName": "Essencia Inmobiliaria Gandia",
         "url": baseUrl,
-        "logo": `${baseUrl}/Logo_Negro.svg`,
+        "logo": {
+            "@type": "ImageObject",
+            "url": `${baseUrl}/Logo_Negro.svg`,
+            "width": 263,
+            "height": 110
+        },
         "image": `${baseUrl}/Logo_Negro.svg`,
-        "description": "Propiedades inmobiliarias exclusivas en Valencia. Compra, vende y valora tu vivienda con Essencia Inmobiliaria, la inmobiliaria premium de Gandia y la costa de Valencia.",
-        "telephone": "+34647803355",
-        "email": "santitorres@essenciainmobiliaria.com",
+        "description": "Inmobiliaria premium en Gandia y Valencia especializada en venta de propiedades de lujo. Con el Método MIA (Marketing de Alto Impacto) vendemos tu vivienda en una media de 45 días al mayor precio posible.",
+        "telephone": "+34618063000",
+        "email": "hola@essenciainmobiliaria.com",
         "address": {
             "@type": "PostalAddress",
             "streetAddress": "C/ Sant Vicent Ferrer 24",
@@ -26,38 +35,207 @@ const SchemaMarkup: React.FC = () => {
         },
         "geo": {
             "@type": "GeoCoordinates",
-            "latitude": 38.967,
-            "longitude": -0.181
+            "latitude": 38.9675,
+            "longitude": -0.1813
         },
-        "openingHoursSpecification": {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-            "opens": "09:00",
-            "closes": "19:00"
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "09:00",
+                "closes": "19:00"
+            }
+        ],
+        "priceRange": "€€€",
+        "currenciesAccepted": "EUR",
+        "paymentAccepted": "Cash, Credit Card, Bank Transfer",
+        "areaServed": [
+            {
+                "@type": "City",
+                "name": "Gandia",
+                "@id": "https://www.wikidata.org/wiki/Q185729"
+            },
+            {
+                "@type": "City",
+                "name": "Valencia",
+                "@id": "https://www.wikidata.org/wiki/Q8818"
+            },
+            {
+                "@type": "City",
+                "name": "Oliva"
+            },
+            {
+                "@type": "City",
+                "name": "Dénia"
+            }
+        ],
+        "knowsAbout": [
+            "Venta de viviendas",
+            "Home staging",
+            "Valoración inmobiliaria",
+            "Marketing inmobiliario",
+            "Compra de propiedades de lujo",
+            "Asesoría inmobiliaria en Valencia"
+        ],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Servicios Inmobiliarios Essencia",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Venta de propiedades",
+                        "description": "Venta de viviendas con el Método MIA — Marketing de Alto Impacto. Tiempo medio de venta: 45 días."
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Valoración gratuita",
+                        "description": "Valoración precisa de su propiedad basada en datos de mercado actuales y comparables reales."
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Home Staging profesional",
+                        "description": "Puesta en escena profesional de la vivienda para maximizar el precio de venta."
+                    }
+                }
+            ]
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "bestRating": "5",
+            "ratingCount": "47",
+            "reviewCount": "47"
         },
         "sameAs": [
             "https://www.instagram.com/essencia_inmobiliaria/",
             "https://www.facebook.com/essenciainmobiliariagandia",
             "https://www.linkedin.com/in/santi-torres-essencia-a9497311/"
-        ],
-        "areaServed": {
-            "@type": "State",
-            "name": "Valencia"
-        },
-        "priceRange": "€€€"
+        ]
     };
 
-    // BreadcrumbList schema — for interior pages
+    // ─── 2. WebSite — enables Sitelinks Search Box ────────────────────────────
+    const websiteSchema = {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": `${baseUrl}/#website`,
+        "name": "Essencia Inmobiliaria",
+        "alternateName": "Essencia Inmobiliarias Gandía",
+        "url": baseUrl,
+        "publisher": {
+            "@id": `${baseUrl}/#realestateagent`
+        },
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": `${baseUrl}/properties?q={search_term_string}`
+            },
+            "query-input": "required name=search_term_string"
+        }
+    };
+
+    // ─── 3. FAQPage — rich snippets in Google SERP ────────────────────────────
+    // Only rendered on the home page where the FAQ section lives
+    const faqSchema = isHome ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "name": "Preguntas frecuentes — Essencia Inmobiliaria",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "¿Cómo determinan el precio de mi propiedad?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Utilizamos datos de mercado en tiempo real, comparables vendidos recientemente y nuestra experiencia local para fijar un precio competitivo y realista."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Trabajan con contrato de exclusividad?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sí, para garantizar la máxima inversión en marketing y dedicación de nuestro equipo, trabajamos con mandatos de venta exclusivos."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Cuánto tiempo tardará en venderse?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "El tiempo medio varía según la propiedad, pero nuestra estrategia de marketing intensiva suele reducir los plazos del mercado significativamente. Nuestra media actual es de 45 días."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Qué incluye su comisión?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Incluye valoración, home staging, fotografía profesional, marketing internacional, gestión de visitas y trámites legales hasta la firma."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Debo reformar antes de vender?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No siempre. Realizamos un diagnóstico para recomendar solo las mejoras que aumenten realmente el valor de venta."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Cómo filtran a los compradores?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Verificamos la identidad y capacidad financiera de cada interesado antes de organizar una visita física."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Se encargan de los trámites legales?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Absolutamente. Nuestro departamento jurídico supervisa contratos, certificados y coordina con la notaría."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Qué pasa si no se vende?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Si no vendemos su propiedad en el plazo acordado, no cobramos nada. Asumimos el riesgo de la inversión en marketing."
+                }
+            }
+        ]
+    } : null;
+
+    // ─── 4. BreadcrumbList — for interior pages ───────────────────────────────
     const getBreadcrumbSchema = () => {
         const pathParts = location.pathname.split('/').filter(Boolean);
         if (pathParts.length === 0) return null;
 
+        const labelMap: Record<string, string> = {
+            'properties': 'Propiedades',
+            'contact': 'Contacto',
+            'about': 'Sobre Nosotros',
+            'sell': 'Vender',
+            'valuation': 'Valoración',
+            'stories': 'Historias',
+        };
+
         const items = [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": baseUrl },
+            { "@type": "ListItem", "position": 1, "name": "Inicio", "item": baseUrl },
             ...pathParts.map((part, i) => ({
                 "@type": "ListItem" as const,
                 "position": i + 2,
-                "name": part.charAt(0).toUpperCase() + part.slice(1),
+                "name": labelMap[part] ?? (part.charAt(0).toUpperCase() + part.slice(1)),
                 "item": `${baseUrl}/${pathParts.slice(0, i + 1).join('/')}`
             }))
         ];
@@ -69,38 +247,28 @@ const SchemaMarkup: React.FC = () => {
         };
     };
 
-    // WebSite schema — enables sitelinks search box in Google
-    const websiteSchema = {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Essencia Inmobiliaria",
-        "url": baseUrl,
-        "potentialAction": {
-            "@type": "SearchAction",
-            "target": {
-                "@type": "EntryPoint",
-                "urlTemplate": `${baseUrl}/properties?q={search_term_string}`
-            },
-            "query-input": "required name=search_term_string"
-        }
-    };
-
     const breadcrumbSchema = getBreadcrumbSchema();
 
     return (
         <>
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(realEstateAgentSchema, null, 0) }}
             />
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema, null, 0) }}
             />
+            {faqSchema && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema, null, 0) }}
+                />
+            )}
             {breadcrumbSchema && (
                 <script
                     type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema, null, 0) }}
                 />
             )}
         </>
