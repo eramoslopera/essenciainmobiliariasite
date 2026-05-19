@@ -11,6 +11,7 @@ import { fetchProperties } from '../src/utils/xmlParser';
 import { Property } from '../src/types/property';
 import SEOHead from '../components/SEOHead';
 import StickyBuyBanner from '../components/StickyBuyBanner';
+import StatsSection from '../components/StatsSection';
 
 
 const Landing: React.FC = () => {
@@ -292,6 +293,9 @@ const Landing: React.FC = () => {
                         </div>
                     </div>
                 </section>
+
+                {/* Stats Section — KPIs de Essencia */}
+                <StatsSection />
 
                 {/* MIA Method Section */}
                 <section id="mia-method" className="py-24 px-6 lg:px-12 bg-[#f6f7f8] dark:bg-white/5 relative overflow-hidden">

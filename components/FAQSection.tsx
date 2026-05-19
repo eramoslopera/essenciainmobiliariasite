@@ -1,143 +1,111 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-
-const FAQ_DATA = [
-  {
-    id: '01',
-    question: '¿Cuánto tardáis en vender una propiedad?',
-    answer: 'Gracias a nuestro Método MIA y el alcance de las campañas de marketing avanzadas, el promedio de venta es de menos de 45 días. Preparamos tu casa para que brille en el mercado desde el minuto cero.'
-  },
-  {
-    id: '02',
-    question: '¿Qué diferencia al Método MIA de lo tradicional?',
-    answer: 'No subimos un anuncio y esperamos a que llamen. Invertimos activamente en publicidad digital, inteligencia artificial y producción audiovisual (drones, 3D, vídeo cine) para convertir tu casa en un evento mediático.'
-  },
-  {
-    id: '03',
-    question: '¿Tengo que pagar algo por adelantado?',
-    answer: 'En absoluto. Nosotros asumimos toda la inversión inicial del marketing, reportajes y posicionamiento. Solo ganamos si tú vendes. Alineamos nuestros objetivos al 100% con los tuyos.'
-  },
-  {
-    id: '04',
-    question: '¿Qué abarca la Gestión Integral del Pack Essencia?',
-    answer: 'Desde la primera tasación hasta la firma en notaría. Nos encargamos del papeleo legal, certificados energéticos, filtrado financiero de compradores y asesoramiento fiscal para que no tengas que preocuparte de nada.'
-  },
-  {
-    id: '05',
-    question: '¿Trabajáis con compradores internacionales?',
-    answer: 'Sí. Colaboramos con una red de más de 400 inmobiliarias nacionales e internacionales y lanzamos campañas segmentadas en portales extranjeros, atrayendo a compradores de toda Europa que buscan invertir en Gandía.'
-  }
-];
+import { useLanguage } from '../context/LanguageContext';
 
 const FAQSection: React.FC = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
+  const { t } = useLanguage();
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 1024);
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  // Generamos las 8 preguntas de forma dinámica usando las traducciones del context
+  const faqData = Array.from({ length: 8 }, (_, i) => ({
+    id: `0${i + 1}`,
+    question: t(`landing.faq.${i + 1}.q`),
+    answer: t(`landing.faq.${i + 1}.a`),
+  }));
 
   return (
-    <section className="py-24 px-6 bg-white overflow-hidden selection:bg-brand-blue-500 selection:text-white">
-      <div className="max-w-[1280px] mx-auto">
-        <div className="mb-16">
-          <span className="inline-block text-[11px] font-black uppercase tracking-[0.2em] text-brand-blue-600 mb-4">
-            Transparencia Total
+    <section id="faq" className="py-24 md:py-32 px-6 bg-editorial-black relative overflow-hidden selection:bg-brand-blue-500 selection:text-editorial-black">
+      {/* Background Glows */}
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-brand-blue-500/10 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-brand-blue-500/5 rounded-full blur-[150px] translate-x-1/3 translate-y-1/3 pointer-events-none" />
+
+      <div className="max-w-[1280px] mx-auto relative z-10">
+        <div className="mb-16 md:mb-24 flex flex-col items-center text-center">
+          <span className="inline-block text-[11px] font-black uppercase tracking-[0.2em] text-brand-blue-500 mb-6 border border-brand-blue-500/30 px-4 py-2 rounded-full">
+            {t('home.contact.tag') || 'Transparencia Total'}
           </span>
-          <h2 className="text-[clamp(3rem,7vw,5.5rem)] font-black text-editorial-black leading-[0.95] tracking-[-0.04em]">
-            Dudas<br />Resueltas.
+          <h2 className="text-[clamp(2.5rem,5vw,4.5rem)] font-black text-white leading-[1.1] tracking-[-0.04em]">
+            {t('landing.faq.title')}
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-24 items-start">
-          {/* Columna Izquierda: Lista de Preguntas */}
-          <div className="flex flex-col">
-            {FAQ_DATA.map((item, index) => {
-              const isActive = activeIndex === index;
-              return (
-                <div 
-                  key={item.id} 
-                  className={`border-b border-gray-100 relative ${index === 0 ? 'border-t' : ''}`}
-                >
-                  <button
-                    onClick={() => setActiveIndex(isActive && isMobile ? -1 : index)}
-                    className="w-full text-left py-10 flex gap-6 items-start group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-lg -ml-4 pl-4 pr-4 transition-colors"
-                  >
-                    <span className={`text-sm font-black tabular-nums mt-1.5 transition-colors duration-300 ${isActive && !isMobile ? 'text-brand-blue-600' : 'text-gray-400'}`}>
-                      {item.id}
-                    </span>
-                    <div className="flex-1">
-                      <h3 className={`text-[clamp(1.25rem,3vw,1.75rem)] font-black leading-[1.2] tracking-[-0.02em] transition-colors duration-300 ${isActive && !isMobile ? 'text-brand-blue-600' : 'text-editorial-black group-hover:opacity-70'}`}>
-                        {item.question}
-                      </h3>
-                      
-                      {/* Acordeón Móvil (Solo visible en pantallas < 1024px) */}
-                      <AnimatePresence>
-                        {isMobile && isActive && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: 'auto', opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                            className="overflow-hidden"
-                          >
-                            <p className="pt-6 text-gray-600 text-lg leading-relaxed">
-                              {item.answer}
-                            </p>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
+        {/* Carousel on Mobile, Grid on Desktop */}
+        <div className="flex md:grid md:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-6 lg:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory hide-scrollbar -mx-6 px-6 md:mx-0 md:px-0 pb-12 md:pb-0 items-start">
+          {faqData.map((item, index) => {
+            const isActive = activeIndex === index;
+            const isOtherActive = activeIndex !== null && activeIndex !== index;
 
-                    {/* Icono animado para móvil */}
-                    <div className="lg:hidden mt-2 relative w-5 h-5 flex-shrink-0">
-                      <motion.div 
-                        animate={{ rotate: isActive ? 180 : 0 }}
-                        className="absolute inset-0 flex items-center justify-center"
+            return (
+              <motion.div
+                layout
+                key={item.id}
+                onClick={() => setActiveIndex(isActive ? null : index)}
+                className={`group relative min-w-[85vw] md:min-w-0 snap-center shrink-0 cursor-pointer overflow-hidden rounded-[2rem] border transition-all duration-500 ${
+                  isActive 
+                    ? 'bg-white border-white text-editorial-black shadow-[0_20px_50px_-10px_rgba(255,255,255,0.1)]' 
+                    : 'bg-white/5 border-white/10 text-white hover:bg-white/10 hover:border-white/20'
+                } ${isOtherActive && !isActive ? 'md:opacity-40 md:scale-[0.98]' : 'opacity-100 scale-100'}`}
+              >
+                <div className="p-8 md:p-10 relative z-10">
+                  <motion.div layout className="flex justify-between items-start gap-4 md:gap-6">
+                    <h3 className={`text-[clamp(1.15rem,2vw,1.5rem)] font-bold leading-[1.3] tracking-[-0.02em] ${isActive ? 'text-editorial-black' : 'text-white'}`}>
+                      {item.question}
+                    </h3>
+                    <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-500 ${
+                      isActive 
+                        ? 'bg-brand-blue-500 text-editorial-black' 
+                        : 'bg-white/10 text-white group-hover:bg-brand-blue-500 group-hover:text-editorial-black'
+                    }`}>
+                      <motion.svg 
+                        animate={{ rotate: isActive ? 45 : 0 }} 
+                        className="w-5 h-5" 
+                        fill="none" 
+                        viewBox="0 0 24 24" 
+                        stroke="currentColor"
                       >
-                        <div className={`w-full h-[2px] rounded-full transition-colors ${isActive ? 'bg-brand-blue-600' : 'bg-editorial-black'}`} />
-                        <div className={`absolute h-full w-[2px] rounded-full transition-transform duration-300 ${isActive ? 'bg-brand-blue-600 rotate-90 scale-0' : 'bg-editorial-black'}`} />
-                      </motion.div>
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4" />
+                      </motion.svg>
                     </div>
-                  </button>
+                  </motion.div>
+
+                  <AnimatePresence>
+                    {isActive && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                        animate={{ opacity: 1, height: 'auto', marginTop: 24 }}
+                        exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                      >
+                        <p className="text-[clamp(1rem,1.5vw,1.125rem)] leading-[1.7] text-gray-600 font-medium">
+                          {item.answer}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
-              );
-            })}
-          </div>
 
-          {/* Columna Derecha: Panel Sticky (Solo visible en Desktop) */}
-          <div className="hidden lg:block sticky top-32">
-            <div className="bg-gray-50 rounded-[2.5rem] p-16 border border-gray-100 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-brand-blue-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-              
-              <div className="w-14 h-14 rounded-full bg-brand-blue-50 flex items-center justify-center mb-8">
-                <svg className="w-6 h-6 text-brand-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeIndex}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -15 }}
-                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <p className="text-xl text-gray-600 leading-[1.7] font-medium">
-                    {FAQ_DATA[activeIndex]?.answer}
-                  </p>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-          </div>
+                {/* Giant Background Number */}
+                <div className={`absolute -bottom-6 -right-2 text-[8rem] font-black leading-none pointer-events-none transition-colors duration-500 select-none ${
+                  isActive ? 'text-gray-100' : 'text-white/5 group-hover:text-white/10'
+                }`}>
+                  {item.id}
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
+      
+      {/* Scrollbar hidden styles */}
+      <style dangerouslySetInnerHTML={{__html: `
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}} />
     </section>
   );
 };

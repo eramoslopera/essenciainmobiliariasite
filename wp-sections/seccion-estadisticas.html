@@ -1,0 +1,303 @@
+<!-- ============================================================
+     SECCIÓN ESTADÍSTICAS — Essencia Inmobiliaria
+     Pegar en: WordPress > Elementor > HTML Widget
+
+     CLAVE GEO: Los valores están en el HTML estático.
+     Los bots de IA (GPTBot, ClaudeBot, Perplexity) leen los
+     números directamente. El JS solo añade la animación visual.
+     ============================================================ -->
+
+<style>
+/* ── Reset & variables ── */
+.ess-stats-wrap * { box-sizing: border-box; margin: 0; padding: 0; }
+.ess-stats-wrap {
+  --black: #111827;
+  --blue: #1fc0d9;
+  --gray-text: #6b7280;
+  --gray-border: rgba(17, 24, 39, 0.08);
+  --gray-light: #f9fafb;
+  font-family: 'Manrope', sans-serif;
+  background-color: #ffffff;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* ── Layout ── */
+.ess-stats-section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 7rem 1.5rem;
+}
+
+/* ── Encabezado ── */
+.ess-stats-header {
+  margin-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.ess-stats-badge {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--blue);
+}
+.ess-stats-title {
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--black);
+}
+.ess-stats-subtitle {
+  font-size: 1.1rem;
+  color: var(--gray-text);
+  font-weight: 500;
+  line-height: 1.6;
+  max-width: 480px;
+  margin-top: 0.5rem;
+}
+
+/* ── Grid de KPIs ── */
+.ess-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background-color: var(--gray-border);
+  border: 1px solid var(--gray-border);
+  border-radius: 2rem;
+  overflow: hidden;
+}
+@media (min-width: 768px) {
+  .ess-stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .ess-stats-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* ── Tarjeta KPI ── */
+.ess-stat-card {
+  background: #ffffff;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: background 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.ess-stat-card:hover {
+  background: var(--gray-light);
+}
+.ess-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--blue);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ess-stat-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* ── Valor ── */
+.ess-stat-value {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--black);
+  font-variant-numeric: tabular-nums;
+  display: flex;
+  align-items: baseline;
+  gap: 0.15em;
+  flex-wrap: wrap;
+}
+.ess-stat-prefix {
+  font-size: 0.55em;
+  font-weight: 800;
+  color: var(--blue);
+}
+.ess-stat-suffix {
+  font-size: 0.45em;
+  font-weight: 700;
+  color: var(--gray-text);
+}
+
+/* ── Label ── */
+.ess-stat-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--gray-text);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  line-height: 1.3;
+}
+
+/* ── Nota ── */
+.ess-stat-note {
+  font-size: 0.7rem;
+  color: #9ca3af;
+  font-weight: 500;
+  margin-top: 0.25rem;
+}
+
+/* ── Animación de entrada ── */
+.ess-stat-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease, background 0.3s ease;
+}
+.ess-stat-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+
+<div class="ess-stats-wrap">
+  <section class="ess-stats-section">
+
+    <div class="ess-stats-header">
+      <span class="ess-stats-badge">Resultados reales · 15 años en el mercado</span>
+      <h2 class="ess-stats-title">Números<br>que hablan.</h2>
+      <p class="ess-stats-subtitle">
+        Más de 15 años vendiendo propiedades en Gandía y La Safor. 
+        Estos son los datos reales de Essencia Inmobiliaria.
+      </p>
+    </div>
+
+    <!--
+      NOTA TÉCNICA GEO:
+      Los valores de data-target son los que anima el JS.
+      El texto dentro de .ess-stat-num es el valor estático que
+      leen los bots de IA aunque el JS no se ejecute.
+    -->
+    <div class="ess-stats-grid" id="ess-stats-grid">
+
+      <!-- KPI 1: +2.000 ventas -->
+      <div class="ess-stat-card" style="transition-delay: 0s">
+        <div class="ess-stat-value">
+          <span class="ess-stat-prefix">+</span>
+          <span class="ess-stat-num" data-target="2000" data-suffix="">2.000</span>
+        </div>
+        <div class="ess-stat-label">Ventas cerradas</div>
+        <div class="ess-stat-note">En 15 años de actividad en Gandía</div>
+      </div>
+
+      <!-- KPI 2: 45 días -->
+      <div class="ess-stat-card" style="transition-delay: 0.1s">
+        <div class="ess-stat-value">
+          <span class="ess-stat-num" data-target="45" data-suffix="">45</span>
+          <span class="ess-stat-suffix">días</span>
+        </div>
+        <div class="ess-stat-label">Media de venta</div>
+        <div class="ess-stat-note">Promedio hasta escrituras firmadas</div>
+      </div>
+
+      <!-- KPI 3: +400 inmobiliarias -->
+      <div class="ess-stat-card" style="transition-delay: 0.2s">
+        <div class="ess-stat-value">
+          <span class="ess-stat-prefix">+</span>
+          <span class="ess-stat-num" data-target="400" data-suffix="">400</span>
+        </div>
+        <div class="ess-stat-label">Inmobiliarias colaboradoras</div>
+        <div class="ess-stat-note">Red ASICVAL · toda la Comunitat</div>
+      </div>
+
+      <!-- KPI 4: 95% satisfacción -->
+      <div class="ess-stat-card" style="transition-delay: 0.3s">
+        <div class="ess-stat-value">
+          <span class="ess-stat-num" data-target="95" data-suffix="">95</span>
+          <span class="ess-stat-suffix">%</span>
+        </div>
+        <div class="ess-stat-label">Clientes satisfechos</div>
+        <div class="ess-stat-note">Según encuesta post-venta</div>
+      </div>
+
+      <!-- KPI 5: 13M€ -->
+      <div class="ess-stat-card" style="transition-delay: 0.4s">
+        <div class="ess-stat-value">
+          <span class="ess-stat-num" data-target="13" data-suffix="">13</span>
+          <span class="ess-stat-suffix">M€</span>
+        </div>
+        <div class="ess-stat-label">En ventas este año</div>
+        <div class="ess-stat-note">Volumen de operaciones 2025</div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  // ── Animación de contador numérico ──────────────────────────
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target, 10);
+    const duration = 1800;
+    const start = performance.now();
+    const startVal = 0;
+
+    function easeOut(t) {
+      return 1 - Math.pow(1 - t, 3);
+    }
+
+    function tick(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const current = Math.round(easeOut(progress) * target);
+
+      // Formato español: separador de miles con punto
+      el.textContent = current.toLocaleString('es-ES');
+
+      if (progress < 1) {
+        requestAnimationFrame(tick);
+      } else {
+        el.textContent = target.toLocaleString('es-ES');
+      }
+    }
+
+    requestAnimationFrame(tick);
+  }
+
+  // ── IntersectionObserver: anima cuando entra en viewport ────
+  const grid = document.getElementById('ess-stats-grid');
+  if (!grid) return;
+
+  const cards = grid.querySelectorAll('.ess-stat-card');
+  const counters = grid.querySelectorAll('.ess-stat-num');
+
+  let animated = false;
+
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting && !animated) {
+        animated = true;
+
+        // Animar entrada de tarjetas
+        cards.forEach(function(card) {
+          card.classList.add('visible');
+        });
+
+        // Animar contadores
+        counters.forEach(function(counter) {
+          animateCounter(counter);
+        });
+
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.2 });
+
+  observer.observe(grid);
+})();
+</script>
