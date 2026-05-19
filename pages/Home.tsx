@@ -179,7 +179,7 @@ const Home: React.FC = () => {
         <div className="relative max-w-5xl mx-auto px-6 text-center flex flex-col items-center" style={{ zIndex: 2 }}>
           <motion.span 
             initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="inline-block py-1 px-5 mb-8 text-[10px] font-black tracking-[0.25em] uppercase bg-white/80 backdrop-blur-md text-editorial-black border border-white/40 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.04)] ring-1 ring-black/5"
+            className="inline-block py-1 px-5 mb-8 text-xs font-black tracking-[0.25em] uppercase bg-white/80 backdrop-blur-md text-editorial-black border border-white/40 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.04)] ring-1 ring-black/5"
           >
             {t('home.hero.tag')}
           </motion.span>
@@ -192,7 +192,7 @@ const Home: React.FC = () => {
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-lg md:text-xl text-gray-800/90 max-w-2xl mb-12 font-medium leading-[1.6] tracking-tight"
+            className="text-lg md:text-xl text-gray-900 max-w-2xl mb-12 font-medium leading-[1.6] tracking-tight"
           >
             {t('home.hero.subtitle')}
           </motion.p>
@@ -245,10 +245,14 @@ const Home: React.FC = () => {
       {/* MÍA Method Teaser */}
       <MiaMethodTeaser />
 
-      <section className="py-16 md:py-24 bg-editorial-gray overflow-hidden">
+      <section className="py-16 md:py-24 bg-editorial-gray overflow-hidden" aria-label="Propiedades vendidas recientemente">
         <div className="max-w-[1440px] mx-auto">
           <div className="flex items-center justify-between mb-12 px-6 lg:px-24">
-            <h2 className="text-3xl font-bold">{t('home.recent.title')}</h2>
+            <h2 className="text-3xl font-bold text-editorial-black">
+              {t('home.recent.title').split(' ').map((word, i) =>
+                i === 0 ? <span key={i} className="text-brand-blue-600">{word} </span> : <span key={i}>{word} </span>
+              )}
+            </h2>
             <div className="flex gap-2">
               <button onClick={() => scroll('left')} aria-label={language === 'es' ? 'Propiedad anterior' : 'Previous property'} className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500">
                 <span className="material-symbols-outlined" aria-hidden="true">arrow_back</span>
@@ -279,22 +283,22 @@ const Home: React.FC = () => {
               <Link to={`/property/${property.id}`} className="bg-white rounded-lg overflow-hidden shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-5px_rgba(0,0,0,0.1)] transition-shadow duration-300 block group h-full">
                 <div className="w-full h-64 bg-cover bg-center group-hover:scale-105 transition-transform duration-700" style={{ backgroundImage: `url("${displayImage}")` }}>
                   <div className="p-4 flex justify-end">
-                    <span className="bg-editorial-black text-white font-black uppercase tracking-widest text-[10px] px-3 py-1 rounded-full">{statusText}</span>
+                    <span className="bg-editorial-black text-white font-black uppercase tracking-widest text-xs px-3 py-1 rounded-full">{statusText}</span>
                   </div>
                 </div>
                 <div className="p-6 relative z-10 bg-white">
                   <div className="mb-6">
                     <h3 className="text-xl font-bold leading-tight mb-1 group-hover:text-brand-blue-600 transition-colors line-clamp-1 truncate">{property.title}</h3>
-                    <p className="text-sm text-gray-500 truncate">{property.location}</p>
+                    <p className="text-sm text-gray-700 truncate">{property.location}</p>
                   </div>
                   <div className="space-y-3 bg-gray-50 p-4 rounded-md">
                     <div className="flex justify-between items-center pb-2 border-b border-gray-200 border-dashed">
-                      <span className="text-xs font-bold uppercase text-gray-400 tracking-wide">{t('home.recent.sold_price')}</span>
-                      <span className="text-sm font-bold text-green-600">{property.price}</span>
+                      <span className="text-xs font-bold uppercase text-gray-600 tracking-wide">{t('home.recent.sold_price')}</span>
+                      <span className="text-sm font-bold text-green-700">{property.price}</span>
                     </div>
                     {property.dateListed && (
                     <div className="flex justify-between items-center">
-                      <span className="text-xs font-bold uppercase text-gray-400 tracking-wide">{language === 'es' ? 'Publicado' : 'Listed'}</span>
+                      <span className="text-xs font-bold uppercase text-gray-600 tracking-wide">{language === 'es' ? 'Publicado' : 'Listed'}</span>
                       <span className="text-sm font-bold text-editorial-black">{property.dateListed}</span>
                     </div>
                     )}
@@ -304,7 +308,7 @@ const Home: React.FC = () => {
               </motion.div>
             )})}
             {recentProperties.length === 0 && (
-              <div className="w-full text-center py-12 text-gray-500 font-medium tracking-wide lg:col-span-3">
+              <div className="w-full text-center py-12 text-gray-700 font-medium tracking-wide lg:col-span-3">
                 {language === 'es' ? 'No hay transacciones recientes disponibles en el CRM.' : 'No recent transactions available in the CRM.'}
               </div>
             )}
@@ -344,7 +348,7 @@ const Home: React.FC = () => {
                     : <span key={i} className="text-brand-blue-600">{line}</span>
                 )}
               </h2>
-              <p className="text-gray-500 text-lg leading-relaxed mb-10">
+              <p className="text-gray-700 text-lg leading-relaxed mb-10">
                 {t('home.contact.subtitle')}
               </p>
               <div className="space-y-5">
@@ -353,7 +357,7 @@ const Home: React.FC = () => {
                     <span className="material-symbols-outlined text-brand-blue-600 text-base">call</span>
                   </div>
                   <div>
-                    <p className="text-xs uppercase tracking-widest text-gray-500 mb-0.5">{t('common.phone')}</p>
+                    <p className="text-xs uppercase tracking-widest text-gray-600 mb-0.5">{t('common.phone')}</p>
                     <a href="tel:+34618063000" className="text-editorial-black font-semibold hover:text-brand-blue-600 transition-colors">+34 618 063 000</a>
                   </div>
                 </div>
@@ -362,7 +366,7 @@ const Home: React.FC = () => {
                     <span className="material-symbols-outlined text-brand-blue-600 text-base">mail</span>
                   </div>
                   <div>
-                    <p className="text-xs uppercase tracking-widest text-gray-500 mb-0.5">{t('common.email')}</p>
+                    <p className="text-xs uppercase tracking-widest text-gray-600 mb-0.5">{t('common.email')}</p>
                     <a href="mailto:hola@essenciainmobiliaria.com" className="text-editorial-black font-semibold hover:text-brand-blue-600 transition-colors">hola@essenciainmobiliaria.com</a>
                   </div>
                 </div>
@@ -371,7 +375,7 @@ const Home: React.FC = () => {
                     <span className="material-symbols-outlined text-brand-blue-600 text-base">location_on</span>
                   </div>
                   <div>
-                    <p className="text-xs uppercase tracking-widest text-gray-500 mb-0.5">{t('footer.office') || 'Oficina'}</p>
+                    <p className="text-xs uppercase tracking-widest text-gray-600 mb-0.5">{t('footer.office') || 'Oficina'}</p>
                     <p className="text-editorial-black font-semibold">C/ Sant Vicent Ferrer 24, Gandia, Valencia</p>
                   </div>
                 </div>

@@ -148,20 +148,20 @@ const FeaturedCard: React.FC<{ advisor: Advisor }> = ({ advisor }) => (
           <h3 className="font-black text-[#222222] text-2xl tracking-tight leading-tight mb-2">
             {advisor.name}
           </h3>
-          <p className="text-[13.5px] text-gray-500 leading-relaxed">{advisor.specialty}</p>
+          <p className="text-[13.5px] text-gray-700 leading-relaxed">{advisor.specialty}</p>
         </div>
 
         {/* Stats */}
         <div className="flex gap-5 border-t border-gray-100 pt-5">
           <div>
-            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-0.5">
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-gray-600 mb-0.5">
               Experiencia
             </p>
             <p className="text-sm font-black text-[#222222]">{advisor.stats.experiencia}</p>
           </div>
           <div className="w-px bg-gray-100" aria-hidden="true" />
           <div>
-            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-0.5">
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-gray-600 mb-0.5">
               Zona
             </p>
             <p className="text-sm font-black text-[#222222]">{advisor.stats.zona}</p>
@@ -238,13 +238,13 @@ const SecondaryCard: React.FC<{
     {/* Body */}
     <div className="flex flex-col flex-1 p-5 gap-3">
       <div className="flex-1">
-        <span className="block text-[8.5px] font-black uppercase tracking-[0.22em] text-[#1fc0d9] mb-1.5">
+        <span className="block text-xs font-black uppercase tracking-[0.18em] text-[#1fc0d9] mb-1.5">
           {advisor.role}
         </span>
         <h3 className="font-black text-[#222222] text-base tracking-tight leading-tight mb-1">
           {advisor.name}
         </h3>
-        <p className="text-[11.5px] text-gray-400 leading-relaxed">{advisor.specialty}</p>
+        <p className="text-[11.5px] text-gray-600 leading-relaxed">{advisor.specialty}</p>
       </div>
 
       <div className="w-full h-px bg-gray-100" aria-hidden="true" />
@@ -293,14 +293,14 @@ const CarouselCard: React.FC<{ advisor: Advisor; index: number }> = ({ advisor, 
       )}
     </div>
     <div className="flex flex-col flex-1 p-5 gap-3">
-      <span className="text-[8.5px] font-black uppercase tracking-[0.22em] text-[#1fc0d9]">
+      <span className="text-xs font-black uppercase tracking-[0.18em] text-[#1fc0d9]">
         {advisor.role}
       </span>
       <div className="flex-1">
         <h3 className="font-black text-[#222222] text-lg tracking-tight leading-tight mb-1">
           {advisor.name}
         </h3>
-        <p className="text-[12px] text-gray-400 leading-relaxed">{advisor.specialty}</p>
+        <p className="text-[12px] text-gray-600 leading-relaxed">{advisor.specialty}</p>
       </div>
       <div className="w-full h-px bg-gray-100" aria-hidden="true" />
       <a
@@ -357,7 +357,7 @@ export default function AdvisorsSection() {
           transition={SPRING}
           className="mb-10 md:mb-14"
         >
-          <span className="inline-flex items-center gap-2 text-[10px] font-black tracking-[0.28em]
+          <span className="inline-flex items-center gap-2 text-xs font-black tracking-[0.28em]
                            uppercase text-[#1fc0d9] mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-[#1fc0d9] animate-pulse" aria-hidden="true" />
             Nuestro Equipo
@@ -369,9 +369,9 @@ export default function AdvisorsSection() {
             >
               Habla directamente
               <br />
-              <span className="text-gray-300 font-black">con tu asesor</span>
+              <span className="text-brand-blue-500 font-black">con tu asesor</span>
             </h2>
-            <p className="text-[11px] font-semibold text-gray-400 tracking-widest uppercase sm:text-right">
+            <p className="text-xs font-semibold text-gray-600 tracking-widest uppercase sm:text-right">
               Disponibles lun–sáb
               <br />
               09:00 – 19:00h

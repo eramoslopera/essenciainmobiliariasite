@@ -29,7 +29,7 @@ const MiaMethodTeaser: React.FC = () => {
                             className="inline-flex items-center gap-3 mb-6"
                         >
                             <div className="w-8 h-[1px] bg-brand-blue-400" />
-                            <span className="text-[10px] font-black tracking-[0.25em] uppercase text-brand-blue-600">
+                            <span className="text-xs font-black tracking-[0.25em] uppercase text-brand-blue-600">
                                 {t('landing.mia.exclusive') || 'NUESTRO MÉTODO EXCLUSIVO'}
                             </span>
                         </motion.div>
@@ -49,7 +49,7 @@ const MiaMethodTeaser: React.FC = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ duration: 0.6, delay: 0.2 }}
-                            className="text-lg text-gray-600 leading-relaxed font-medium max-w-xl mb-12"
+                            className="text-lg text-gray-800 leading-relaxed font-medium max-w-xl mb-12"
                         >
                             {t('home.marketing.subtitle') || 'Nuestro enfoque combina arte con algoritmos. Preparamos, fotografiamos y distribuimos su propiedad como un evento mediático global.'}
                         </motion.p>
@@ -90,7 +90,7 @@ const MiaMethodTeaser: React.FC = () => {
                                         {step.toString().padStart(2, '0')}
                                     </div>
                                     <div className="flex flex-col">
-                                        <span className="text-[9px] uppercase tracking-widest text-brand-blue-600 font-bold mb-0.5">
+                                        <span className="text-[10px] uppercase tracking-[0.15em] text-brand-blue-600 font-black mb-0.5">
                                             {t(`landing.mia.step${step}.subtitle`) || `Paso ${step}`}
                                         </span>
                                         <span className="text-sm font-bold text-editorial-black leading-tight">

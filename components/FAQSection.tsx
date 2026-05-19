@@ -21,7 +21,7 @@ const FAQSection: React.FC = () => {
 
       <div className="max-w-[1280px] mx-auto relative z-10">
         <div className="mb-16 md:mb-24 flex flex-col items-center text-center">
-          <span className="inline-block text-[11px] font-black uppercase tracking-[0.2em] text-brand-blue-500 mb-6 border border-brand-blue-500/30 px-4 py-2 rounded-full">
+          <span className="inline-block text-xs font-black uppercase tracking-[0.2em] text-brand-blue-500 mb-6 border border-brand-blue-500/30 px-4 py-2 rounded-full">
             {t('home.contact.tag') || 'Transparencia Total'}
           </span>
           <h2 className="text-[clamp(2.5rem,5vw,4.5rem)] font-black text-white leading-[1.1] tracking-[-0.04em]">
@@ -45,6 +45,8 @@ const FAQSection: React.FC = () => {
                     ? 'bg-white border-white text-editorial-black shadow-[0_20px_50px_-10px_rgba(255,255,255,0.1)]' 
                     : 'bg-white/5 border-white/10 text-white hover:bg-white/10 hover:border-white/20'
                 } ${isOtherActive && !isActive ? 'md:opacity-40 md:scale-[0.98]' : 'opacity-100 scale-100'}`}
+              role="button"
+              aria-expanded={isActive}
               >
                 <div className="p-8 md:p-10 relative z-10">
                   <motion.div layout className="flex justify-between items-start gap-4 md:gap-6">
@@ -76,7 +78,7 @@ const FAQSection: React.FC = () => {
                         exit={{ opacity: 0, height: 0, marginTop: 0 }}
                         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                       >
-                        <p className="text-[clamp(1rem,1.5vw,1.125rem)] leading-[1.7] text-gray-600 font-medium">
+                        <p className="text-[clamp(1rem,1.5vw,1.125rem)] leading-[1.7] text-gray-700 font-medium">
                           {item.answer}
                         </p>
                       </motion.div>

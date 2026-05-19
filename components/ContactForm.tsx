@@ -70,13 +70,13 @@ const ContactForm: React.FC<ContactFormProps> = ({
     : 'bg-white border border-gray-100 shadow-diffusion rounded-3xl p-8';
 
   const labelClasses = `block text-xs font-bold uppercase tracking-widest mb-1 ${
-    isDark ? 'text-gray-400' : 'text-gray-500'
+    isDark ? 'text-gray-400' : 'text-gray-700'
   }`;
 
   const inputClasses = `w-full bg-transparent border-b rounded-none px-0 py-3 text-sm focus:outline-none transition-colors ${
     isDark
       ? 'border-white/20 text-white placeholder-gray-600 focus:border-white'
-      : 'border-gray-200 text-editorial-black placeholder-gray-400 focus:border-editorial-black'
+      : 'border-gray-200 text-editorial-black placeholder-gray-500 focus:border-editorial-black'
   }`;
 
   return (
@@ -217,7 +217,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
 
           <p
             className={`text-xs text-center mt-2 ${
-              isDark ? 'text-gray-500' : 'text-gray-400'
+              isDark ? 'text-gray-500' : 'text-gray-600'
             }`}
           >
             {t('detail.form.privacy') ||
