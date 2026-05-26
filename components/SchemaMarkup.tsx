@@ -23,8 +23,8 @@ const SchemaMarkup: React.FC = () => {
         },
         "image": `${baseUrl}/Logo_Negro.svg`,
         "description": "Inmobiliaria premium en Gandia y Valencia especializada en venta de propiedades de lujo. Con el Método MIA (Marketing de Alto Impacto) vendemos tu vivienda en una media de 45 días al mayor precio posible.",
-        "telephone": "+34618063000",
-        "email": "hola@essenciainmobiliaria.com",
+        "telephone": "+34647803355",
+        "email": "santitorres@essenciainmobiliaria.com",
         "address": {
             "@type": "PostalAddress",
             "streetAddress": "C/ Sant Vicent Ferrer 24",

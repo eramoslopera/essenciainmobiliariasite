@@ -362,7 +362,7 @@ const Home: React.FC = () => {
                   </div>
                   <div>
                     <p className="text-xs uppercase tracking-widest text-gray-600 mb-0.5">{t('common.phone')}</p>
-                    <a href="tel:+34618063000" className="text-editorial-black font-semibold hover:text-brand-blue-600 transition-colors">+34 618 063 000</a>
+                    <a href="tel:+34647803355" className="text-editorial-black font-semibold hover:text-brand-blue-600 transition-colors">+34 647 803 355</a>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
@@ -371,7 +371,7 @@ const Home: React.FC = () => {
                   </div>
                   <div>
                     <p className="text-xs uppercase tracking-widest text-gray-600 mb-0.5">{t('common.email')}</p>
-                    <a href="mailto:hola@essenciainmobiliaria.com" className="text-editorial-black font-semibold hover:text-brand-blue-600 transition-colors">hola@essenciainmobiliaria.com</a>
+                    <a href="mailto:santitorres@essenciainmobiliaria.com" className="text-editorial-black font-semibold hover:text-brand-blue-600 transition-colors">santitorres@essenciainmobiliaria.com</a>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">

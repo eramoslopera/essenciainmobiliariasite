@@ -359,14 +359,14 @@ def generate_contact():
           <div class="ei-ct-icon">☎</div>
           <div>
             <div class="ei-ct-item-label">Teléfono</div>
-            <a href="tel:+34618063000" class="ei-ct-item-val">+34 618 063 000</a>
+            <a href="tel:+34647803355" class="ei-ct-item-val">+34 647 803 355</a>
           </div>
         </div>
         <div class="ei-ct-item">
           <div class="ei-ct-icon">✉</div>
           <div>
             <div class="ei-ct-item-label">Email</div>
-            <a href="mailto:hola@essenciainmobiliaria.com" class="ei-ct-item-val">hola@essenciainmobiliaria.com</a>
+            <a href="mailto:santitorres@essenciainmobiliaria.com" class="ei-ct-item-val">santitorres@essenciainmobiliaria.com</a>
           </div>
         </div>
         <div class="ei-ct-item">
@@ -380,7 +380,7 @@ def generate_contact():
     </div>
     
     <div class="ei-form-box">
-      <form action="https://formsubmit.co/hola@essenciainmobiliaria.com" method="POST">
+      <form action="https://formsubmit.co/santitorres@essenciainmobiliaria.com" method="POST">
         <!-- Opcional: configuraciones de formsubmit -->
         <input type="hidden" name="_next" value="https://essenciainmobiliaria.com">
         <input type="hidden" name="_subject" value="Nuevo Lead desde Landing Page">
