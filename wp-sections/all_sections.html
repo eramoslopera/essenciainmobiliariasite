@@ -1,0 +1,1487 @@
+<!-- ============================================================
+     SECCIÓN HERO — Essencia Inmobiliaria
+     Pegar en: WordPress > Elementor > HTML Widget
+     ============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800;900&display=swap">
+<style>
+.ei-hero * { box-sizing: border-box; margin: 0; padding: 0; }
+.ei-hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5rem;
+  overflow: hidden;
+  font-family: 'Manrope', sans-serif;
+}
+.ei-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD6CVDb-uj3cAC0Ob6Xoldojbr8fXAlqgRkajY38_fEYtheLsJfhvgNqCXQoidNSph5pxxTIA4A-xhr-pY90ZuV6kh2DC_7KoE4yBIYtDccfKzP1CcdpXDsNXLOROI7cvlTEDUDGK7e7POqLad-y3lLKyfffcbEcwqN9yGejMHM5xKcKUdYutySJ4gKxwHil_TPn5cms3boBRB4bDas5vt7CzfzSedfRnX3LOZiliuJrw2B0gk4vAdiAgkIfndu1DmSEjAfvSQw');
+  animation: hero-kenburns 15s ease-in-out infinite alternate;
+}
+@keyframes hero-kenburns { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
+.ei-hero-overlay1 { position: absolute; inset: 0; z-index: 1; background: rgba(255,255,255,0.4); }
+.ei-hero-overlay2 { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(255,255,255,0.6), rgba(255,255,255,0.4), transparent); }
+.ei-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ei-hero-badge {
+  display: inline-block;
+  padding: 0.25rem 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(12px);
+  color: #111827;
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 9999px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.05);
+}
+.ei-hero-title {
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 900;
+  color: #111827;
+  margin-bottom: 1.5rem;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+.ei-hero-title span { color: #1fc0d9; font-weight: 900; }
+.ei-hero-subtitle {
+  font-size: clamp(1.125rem, 2vw, 1.25rem);
+  color: #111827; /* Updated contrast ratio */
+  max-width: 42rem;
+  margin-bottom: 3rem;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+}
+.ei-hero-buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+.ei-hero-btn {
+  height: 3.5rem;
+  padding: 0 2.5rem;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.ei-btn-dark {
+  background: #111827;
+  color: #fff;
+  box-shadow: 0 10px 25px rgba(31,192,217,0.3);
+}
+.ei-btn-dark:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(31,192,217,0.4); }
+.ei-btn-light {
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(12px);
+  color: #111827;
+  border: 1px solid rgba(255,255,255,0.5);
+}
+.ei-btn-light:hover { background: #fff; border-color: #fff; transform: translateY(-4px); box-shadow: 0 20px 40px rgba(31,192,217,0.2); }
+</style>
+
+<div class="ei-hero">
+  <div class="ei-hero-bg"></div>
+  <div class="ei-hero-overlay1"></div>
+  <div class="ei-hero-overlay2"></div>
+  <div class="ei-hero-content">
+    <span class="ei-hero-badge">Tu inmobiliaria de lujo</span>
+    <h1 class="ei-hero-title">El arte de<br><span>vender propiedades</span></h1>
+    <p class="ei-hero-subtitle">Essencia Inmobiliaria — Compra, vende y valora tu vivienda con la inmobiliaria premium de Gandia y la costa de Valencia. Marketing editorial, valoración gratuita y alcance internacional.</p>
+    <div class="ei-hero-buttons">
+      <a href="https://wa.me/34647803355" class="ei-hero-btn ei-btn-dark" target="_blank">Consulta gratuita</a>
+      <a href="#contacto" class="ei-hero-btn ei-btn-light">Vende con nosotros →</a>
+    </div>
+  </div>
+</div>
+<!-- =====================================================
+     ESSENCIA INMOBILIARIA — Sección Método MIA
+     Basado en: MiaMethodTeaser.tsx
+     Fuente: Manrope (Google Fonts)
+     Colores: editorial-black #222222 | brand-blue-600 #1fc0d9
+     Pegar como bloque "HTML Personalizado" en WordPress
+====================================================== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+/* Reset dentro del scope */
+#ess-mia-teaser *, #ess-mia-teaser *::before, #ess-mia-teaser *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Contenedor principal — full width, anula restricciones de WordPress */
+#ess-mia-teaser {
+  font-family: 'Manrope', sans-serif;
+  background: #F3F4F6;
+  padding: 80px 24px;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100% !important;
+  box-sizing: border-box;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Glow decorativo de fondo */
+#ess-mia-teaser .bg-glow {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 600px;
+  height: 600px;
+  background: #1fc0d9;
+  opacity: 0.03;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+}
+
+/* Inner wrapper — centrado pero no recorta en ningún ancho */
+#ess-mia-teaser .inner {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+/* Left column */
+#ess-mia-teaser .col-left {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* Label line */
+#ess-mia-teaser .label-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+#ess-mia-teaser .label-line {
+  width: 32px;
+  height: 1px;
+  background: #22d3ee;
+  display: block;
+}
+#ess-mia-teaser .label-text {
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #1fc0d9;
+}
+
+/* Heading */
+#ess-mia-teaser h2 {
+  font-size: clamp(44px, 7vw, 72px);
+  font-weight: 900;
+  color: #222222;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin-bottom: 24px;
+}
+
+/* Description */
+#ess-mia-teaser .description {
+  font-size: 17px;
+  color: #1f2937;
+  line-height: 1.7;
+  font-weight: 500;
+  max-width: 480px;
+  margin-bottom: 48px;
+}
+
+/* CTA Button */
+#ess-mia-teaser .cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+  background: #222222;
+  color: #fff;
+  height: 64px;
+  padding-left: 32px;
+  padding-right: 8px;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 20px 40px -15px rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+#ess-mia-teaser .cta-btn:hover {
+  background: #1fc0d9;
+  box-shadow: 0 20px 40px -10px rgba(31,192,217,0.4);
+}
+#ess-mia-teaser .cta-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+  white-space: nowrap;
+}
+#ess-mia-teaser .cta-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s, transform 0.3s;
+  flex-shrink: 0;
+}
+#ess-mia-teaser .cta-btn:hover .cta-icon {
+  background: #fff;
+}
+#ess-mia-teaser .cta-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: #fff;
+  stroke-width: 2.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke 0.3s;
+}
+#ess-mia-teaser .cta-btn:hover .cta-icon svg {
+  stroke: #1fc0d9;
+}
+
+/* Right column — steps grid */
+#ess-mia-teaser .col-right {
+  width: 100%;
+}
+#ess-mia-teaser .steps-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+/* Step card */
+#ess-mia-teaser .step-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #fff;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid #F3F4F6;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  transition: border-color 0.25s;
+}
+#ess-mia-teaser .step-card:hover {
+  border-color: #22d3ee;
+}
+
+/* Step number bubble */
+#ess-mia-teaser .step-num {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(34,34,34,0.07);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 900;
+  color: #222222;
+  flex-shrink: 0;
+}
+
+/* Step text */
+#ess-mia-teaser .step-subtitle {
+  font-size: 12px;
+  font-weight: 900;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #1fc0d9;
+  display: block;
+  margin-bottom: 2px;
+}
+#ess-mia-teaser .step-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: #222222;
+  line-height: 1.25;
+}
+
+/* ── Tablet & up: 2-column layout ─────────────────── */
+@media (min-width: 640px) {
+  #ess-mia-teaser .steps-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ── Desktop: side-by-side ────────────────────────── */
+@media (min-width: 1024px) {
+  #ess-mia-teaser {
+    padding: 96px 48px;
+  }
+  #ess-mia-teaser .inner {
+    flex-direction: row;
+    gap: 80px;
+    align-items: center;
+  }
+  #ess-mia-teaser .col-left {
+    width: 45%;
+    flex-shrink: 0;
+  }
+  #ess-mia-teaser .col-right {
+    flex: 1;
+  }
+}
+
+/* ── Tablet intermedio ────────────────────────────── */
+@media (min-width: 768px) and (max-width: 1023px) {
+  #ess-mia-teaser {
+    padding: 80px 32px;
+  }
+}
+
+/* ── Mobile ──────────────────────────────────────── */
+@media (max-width: 639px) {
+  #ess-mia-teaser {
+    padding: 56px 0;
+  }
+  #ess-mia-teaser .col-left {
+    padding: 0 16px;
+  }
+  #ess-mia-teaser h2 {
+    font-size: clamp(38px, 10vw, 52px);
+  }
+  #ess-mia-teaser .description {
+    font-size: 15px;
+  }
+  #ess-mia-teaser .steps-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 16px;
+    gap: 16px;
+    padding: 8px 16px 24px 16px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  #ess-mia-teaser .steps-grid::-webkit-scrollbar {
+    display: none;
+  }
+  #ess-mia-teaser .step-card {
+    flex: 0 0 260px;
+    scroll-snap-align: start;
+  }
+}
+</style>
+
+<section id="ess-mia-teaser">
+  <div class="bg-glow"></div>
+  <div class="inner">
+
+    <!-- LEFT: Texto y CTA -->
+    <div class="col-left">
+      <div class="label-row">
+        <span class="label-line"></span>
+        <span class="label-text">Nuestro Método Exclusivo</span>
+      </div>
+
+      <h2>Método MIA</h2>
+
+      <p class="description">
+        Nuestro enfoque combina arte con algoritmos. Preparamos, fotografiamos y distribuimos su propiedad como un evento mediático global.
+      </p>
+
+      <a class="cta-btn" href="https://essenciainmobiliarialandingpage.vercel.app/" target="_blank" rel="noopener">
+        <span class="cta-label">Vende con Essencia</span>
+        <span class="cta-icon">
+          <!-- Arrow Right icon (Phosphor style) -->
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </span>
+      </a>
+    </div>
+
+    <!-- RIGHT: Grid de pasos -->
+    <div class="col-right">
+      <div class="steps-grid">
+
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div>
+            <span class="step-subtitle">Con Vendedor</span>
+            <span class="step-title">Plan de Comunicación</span>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div>
+            <span class="step-subtitle">De Alto Impacto</span>
+            <span class="step-title">Plan de Marketing</span>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div>
+            <span class="step-subtitle">Artificial</span>
+            <span class="step-title">Uso Inteligencia</span>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">04</div>
+          <div>
+            <span class="step-subtitle">+400 Inmobiliarias</span>
+            <span class="step-title">Colaboración</span>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">05</div>
+          <div>
+            <span class="step-subtitle">Proceso Compra</span>
+            <span class="step-title">Gestión Integral</span>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">06</div>
+          <div>
+            <span class="step-subtitle">Con Dron</span>
+            <span class="step-title">Videos Profesionales</span>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">07</div>
+          <div>
+            <span class="step-subtitle">Renders, Tour 360°</span>
+            <span class="step-title">Fotografía, Planos</span>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">08</div>
+          <div>
+            <span class="step-subtitle">Nacionales e Int.</span>
+            <span class="step-title">RRSS, Portales</span>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">09</div>
+          <div>
+            <span class="step-subtitle">Legal | Fiscal | Tasación</span>
+            <span class="step-title">Pack Essencia</span>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">10</div>
+          <div>
+            <span class="step-subtitle">Firma y Post Venta</span>
+            <span class="step-title">Acompañamiento</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- ═══════════════════════════════════════════════════════════════════
+  SECCIÓN ASESORES — Essencia Inmobiliaria
+  Pegar en WordPress > Bloque HTML personalizado
+═══════════════════════════════════════════════════════════════════ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800;900&display=swap">
+
+<style>
+/* Solo box-sizing — sin margin/padding reset global (conflicto de especificidad con WP) */
+#ei-advisors *,#ei-advisors *::before,#ei-advisors *::after{box-sizing:border-box!important}
+
+/* Resets para tags que WP sobreescribe */
+#ei-advisors h2,#ei-advisors h3,#ei-advisors p,#ei-advisors span,#ei-advisors div{margin:0!important;padding:0!important}
+#ei-advisors img{max-width:none!important;height:auto!important}
+
+/* Sección */
+#ei-advisors{font-family:'Manrope',sans-serif!important;background:#F6F8FA!important;padding:80px 0 100px!important;position:relative!important;width:100%!important}
+#ei-advisors::before{content:'';position:absolute;top:0;right:0;width:600px;height:400px;pointer-events:none;background:radial-gradient(ellipse at top right,rgba(31,192,217,.07) 0%,transparent 65%)}
+#ei-advisors::after{content:'';position:absolute;inset:0;z-index:0;background:#F6F8FA;pointer-events:none}
+
+/* Inner */
+#ei-advisors .ei-adv-inner{max-width:1140px!important;width:100%!important;margin-left:auto!important;margin-right:auto!important;padding:0 clamp(20px,4vw,48px)!important;position:relative!important;z-index:1!important}
+
+/* Header */
+#ei-advisors .ei-adv-pill{display:inline-flex!important;align-items:center!important;gap:8px!important;font-size:12px!important;font-weight:900!important;letter-spacing:.28em!important;text-transform:uppercase!important;color:#1fc0d9!important;margin-bottom:16px!important;padding:0!important;background:none!important;border:none!important}
+#ei-advisors .ei-adv-pulse{display:inline-block!important;width:6px!important;height:6px!important;border-radius:50%!important;background:#1fc0d9!important;flex-shrink:0!important;animation:ei-pulse 2s infinite!important;margin:0!important;padding:0!important}
+@keyframes ei-pulse{0%,100%{opacity:1}50%{opacity:.4}}
+#ei-advisors .ei-adv-heading{font-size:clamp(32px,4.5vw,52px)!important;font-weight:900!important;color:#222!important;letter-spacing:-.025em!important;line-height:1.08!important;margin:0!important;padding:0!important}
+#ei-advisors .ei-adv-heading span{color:#1fc0d9!important;font-weight:900!important}
+#ei-advisors .ei-adv-header{display:flex!important;flex-wrap:wrap!important;align-items:flex-end!important;justify-content:space-between!important;gap:16px!important;margin-bottom:48px!important;padding:0!important}
+#ei-advisors .ei-adv-avail{font-size:11px!important;font-weight:700!important;letter-spacing:.15em!important;text-transform:uppercase!important;color:#4b5563!important;text-align:right!important;line-height:1.6!important;margin:0!important;padding:0!important}
+
+/* Bento grid */
+#ei-advisors .ei-adv-bento{display:grid!important;grid-template-columns:2fr 3fr!important;gap:20px!important;align-items:start!important}
+
+/* Tablet */
+@media(min-width:640px) and (max-width:1023px){
+  #ei-advisors .ei-adv-bento{grid-template-columns:1fr!important}
+  #ei-advisors .ei-grid{grid-template-columns:repeat(2,1fr)!important}
+  #ei-advisors .ei-featured-photo-wrap{aspect-ratio:16/9!important}
+  #ei-advisors .ei-carousel{display:none!important}
+}
+
+/* Featured card */
+#ei-advisors .ei-featured-wrap{position:relative!important;padding:0!important}
+#ei-advisors .ei-featured{background:#fff!important;border:1px solid rgba(31,192,217,.2)!important;border-radius:32px!important;overflow:hidden!important;box-shadow:0 20px 48px -12px rgba(31,192,217,.1)!important;opacity:1!important;transition:opacity .22s ease,transform .22s ease!important;transform:scale(1)!important;padding:0!important}
+#ei-advisors .ei-featured.ei-fade-out{opacity:0!important;transform:scale(.98)!important}
+#ei-advisors .ei-featured-photo-wrap{position:relative!important;aspect-ratio:3/4!important;overflow:hidden!important;display:block!important;padding:0!important;margin:0!important}
+#ei-advisors .ei-featured-photo-wrap img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:top!important;display:block!important;margin:0!important;padding:0!important;border-radius:0!important}
+#ei-advisors .ei-featured-photo-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.18) 0%,transparent 40%)}
+#ei-advisors .ei-featured-badge{position:absolute!important;top:20px!important;left:20px!important;z-index:2!important;display:inline-flex!important;align-items:center!important;gap:6px!important;font-size:9px!important;font-weight:900!important;letter-spacing:.22em!important;text-transform:uppercase!important;padding:6px 12px!important;border-radius:999px!important;background:rgba(255,255,255,.92)!important;color:#1fc0d9!important;border:1px solid rgba(31,192,217,.3)!important;backdrop-filter:blur(6px)!important;margin:0!important}
+#ei-advisors .ei-featured-body{padding:28px!important;display:block!important}
+#ei-advisors .ei-featured-name{font-size:24px!important;font-weight:900!important;color:#222!important;letter-spacing:-.02em!important;margin-bottom:8px!important;margin-top:0!important;padding:0!important;line-height:1.2!important}
+#ei-advisors .ei-featured-spec{font-size:13.5px!important;color:#374151!important;line-height:1.6!important;margin-bottom:20px!important;margin-top:0!important;padding:0!important}
+#ei-advisors .ei-featured-stats{display:flex!important;gap:20px!important;border-top:1px solid #f3f4f6!important;padding-top:20px!important;margin-bottom:20px!important;margin-top:0!important}
+#ei-advisors .ei-stat-label{font-size:12px!important;font-weight:900!important;letter-spacing:.2em!important;text-transform:uppercase!important;color:#4b5563!important;margin-bottom:2px!important;margin-top:0!important;padding:0!important;display:block!important}
+#ei-advisors .ei-stat-val{font-size:14px!important;font-weight:900!important;color:#222!important;margin:0!important;padding:0!important;display:block!important}
+#ei-advisors .ei-stat-div{width:1px!important;background:#f3f4f6!important;flex-shrink:0!important;margin:0!important;padding:0!important}
+
+/* CTA botón principal */
+#ei-advisors .ei-cta{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:10px!important;width:100%!important;height:48px!important;border-radius:999px!important;background:#1fc0d9!important;color:#fff!important;text-decoration:none!important;font-size:12px!important;font-weight:900!important;letter-spacing:.12em!important;text-transform:uppercase!important;border:none!important;cursor:pointer!important;transition:background .2s,transform .1s!important;padding:0!important;margin:0!important;line-height:1!important}
+#ei-advisors .ei-cta:hover{background:#18adc4!important;color:#fff!important;text-decoration:none!important}
+#ei-advisors .ei-cta:active{transform:scale(.98)!important}
+
+/* WA icons */
+#ei-advisors .ei-wa-icon{width:18px!important;height:18px!important;flex-shrink:0!important;fill:#fff!important}
+#ei-advisors .ei-wa-icon-sm{width:14px!important;height:14px!important;flex-shrink:0!important;fill:#fff!important}
+
+/* Grid secundario */
+#ei-advisors .ei-grid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:20px!important}
+#ei-advisors .ei-card{background:#fff!important;border:1px solid #f3f4f6!important;border-radius:24px!important;overflow:hidden!important;cursor:pointer!important;transition:border-color .3s,box-shadow .3s!important;display:flex!important;flex-direction:column!important;padding:0!important;margin:0!important}
+#ei-advisors .ei-card:hover{border-color:rgba(31,192,217,.3)!important;box-shadow:0 12px 32px -8px rgba(31,192,217,.13)!important}
+#ei-advisors .ei-card.ei-stagger-in{animation:ei-stagIn .28s ease both!important}
+@keyframes ei-stagIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+#ei-advisors .ei-card-photo-wrap{position:relative!important;aspect-ratio:4/3!important;overflow:hidden!important;display:block!important;margin:0!important;padding:0!important}
+#ei-advisors .ei-card-photo-wrap img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:top!important;display:block!important;transition:transform .5s ease!important;margin:0!important;padding:0!important;border-radius:0!important}
+#ei-advisors .ei-card:hover .ei-card-photo-wrap img{transform:scale(1.04)!important}
+#ei-advisors .ei-card-overlay{position:absolute!important;inset:0!important;background:rgba(31,192,217,0)!important;display:flex!important;align-items:flex-end!important;justify-content:center!important;padding-bottom:12px!important;transition:background .3s!important}
+#ei-advisors .ei-card:hover .ei-card-overlay{background:rgba(31,192,217,.08)!important}
+#ei-advisors .ei-card-hint{font-size:8px!important;font-weight:900!important;letter-spacing:.2em!important;text-transform:uppercase!important;color:#fff!important;background:rgba(0,0,0,.65)!important;padding:4px 10px!important;border-radius:999px!important;opacity:0!important;transform:translateY(4px)!important;transition:opacity .25s,transform .25s!important;white-space:nowrap!important;margin:0!important}
+#ei-advisors .ei-card:hover .ei-card-hint{opacity:1!important;transform:translateY(0)!important}
+#ei-advisors .ei-card-body{padding:20px!important;display:flex!important;flex-direction:column!important;gap:12px!important;flex:1!important}
+#ei-advisors .ei-card-role{font-size:12px!important;font-weight:900!important;letter-spacing:.22em!important;text-transform:uppercase!important;color:#1fc0d9!important;margin:0!important;padding:0!important;display:block!important}
+#ei-advisors .ei-card-name{font-size:16px!important;font-weight:900!important;color:#222!important;letter-spacing:-.015em!important;line-height:1.2!important;margin-top:2px!important;margin-bottom:0!important;padding:0!important}
+#ei-advisors .ei-card-spec{font-size:11.5px!important;color:#4b5563!important;line-height:1.5!important;margin:0!important;padding:0!important}
+#ei-advisors .ei-card-div{height:1px!important;background:#f3f4f6!important;margin:0!important;padding:0!important}
+
+/* CTA botón pequeño */
+#ei-advisors .ei-cta-sm{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;width:100%!important;height:36px!important;border-radius:999px!important;background:#1fc0d9!important;color:#fff!important;text-decoration:none!important;font-size:9px!important;font-weight:900!important;letter-spacing:.1em!important;text-transform:uppercase!important;border:none!important;cursor:pointer!important;transition:background .2s,transform .1s!important;padding:0!important;margin:0!important;line-height:1!important}
+#ei-advisors .ei-cta-sm:hover{background:#18adc4!important;color:#fff!important;text-decoration:none!important}
+#ei-advisors .ei-cta-sm:active{transform:scale(.98)!important}
+
+/* Carrusel móvil */
+#ei-advisors .ei-carousel{display:none;overflow-x:auto!important;scroll-snap-type:x mandatory!important;gap:16px!important;padding:4px 24px 24px!important;-webkit-overflow-scrolling:touch!important}
+#ei-advisors .ei-carousel::-webkit-scrollbar{display:none}
+#ei-advisors .ei-mob-card{flex-shrink:0!important;width:260px!important;scroll-snap-align:start!important;background:#fff!important;border:1px solid #f3f4f6!important;border-radius:28px!important;overflow:hidden!important;display:flex!important;flex-direction:column!important;padding:0!important;margin:0!important}
+#ei-advisors .ei-mob-card-photo{width:100%!important;aspect-ratio:4/3!important;object-fit:cover!important;object-position:top!important;display:block!important;border-radius:0!important;margin:0!important;padding:0!important}
+
+/* Mobile */
+@media(max-width:639px){
+  #ei-advisors .ei-adv-bento{display:none!important}
+  #ei-advisors .ei-carousel{display:flex!important}
+  #ei-advisors{padding:56px 0 72px!important}
+  #ei-advisors .ei-adv-header{margin-bottom:28px!important}
+  #ei-advisors .ei-adv-avail{display:none!important}
+  #ei-advisors .ei-adv-inner{padding-left:0!important;padding-right:0!important}
+  #ei-advisors .ei-adv-header,#ei-advisors .ei-adv-pill{padding-left:20px!important;padding-right:20px!important}
+  #ei-adv-title{padding-left:20px!important;padding-right:20px!important}
+}
+</style>
+
+<section id="ei-advisors" aria-labelledby="ei-adv-title">
+  <div class="ei-adv-inner">
+
+    <!-- Header -->
+    <div class="ei-adv-pill">
+      <span class="ei-adv-pulse" aria-hidden="true"></span>
+      Nuestro Equipo
+    </div>
+    <div class="ei-adv-header">
+      <h2 id="ei-adv-title" class="ei-adv-heading">
+        Habla directamente<br><span>con tu asesor</span>
+      </h2>
+      <p class="ei-adv-avail">Disponibles lun–sáb<br>09:00 – 19:00h</p>
+    </div>
+
+    <!-- Desktop Bento -->
+    <div class="ei-adv-bento">
+      <div class="ei-featured-wrap">
+        <div class="ei-featured" id="ei-featured"></div>
+      </div>
+      <div class="ei-grid" id="ei-grid"></div>
+    </div>
+
+    <!-- Mobile Carousel -->
+    <div class="ei-carousel" id="ei-carousel" role="list"></div>
+
+  </div>
+</section>
+
+<script>
+(function(){
+  function eiRun() {
+  try {
+
+    var ADVISORS = [
+      { id:'santi', firstName:'Santi', name:'Santi Torres', role:'CEO & Fundador', specialty:'Especialista en inversiones inmobiliarias y estrategia de venta', wa:'34600403136', msg:'Hola Santi, me gustaría hablar sobre una inversión inmobiliaria', photo:'https://essenciainmobiliariasite.vercel.app/santi.jpg', exp:'+12 años', zona:'Valencia & Safor' },
+      { id:'carolina', firstName:'Carolina', name:'Carolina González', role:'Asesora Inmobiliaria', specialty:'Compraventa residencial en Gandía y la costa de Valencia', wa:'34647803355', msg:'Hola Carolina, me gustaría recibir asesoramiento inmobiliario', photo:'https://essenciainmobiliariasite.vercel.app/carolina.jpg', exp:'+6 años', zona:'Gandía & Costa' },
+      { id:'juanma', firstName:'Juanma', name:'Juanma Menacho', role:'Coordinador de Oficina', specialty:'Gestión de operaciones y atención al cliente', wa:'34603628158', msg:'Hola Juanma, me gustaría obtener información sobre vuestros servicios', photo:'https://essenciainmobiliariasite.vercel.app/juanma.jpg', exp:'+4 años', zona:'Gandía' },
+      { id:'joseluis', firstName:'José Luis', name:'José Luis Puente', role:'Asesor Inmobiliario', specialty:'Propiedades residenciales y de lujo en la Safor', wa:'34637403052', msg:'Hola José Luis, me gustaría hablar sobre una propiedad', photo:'https://essenciainmobiliariasite.vercel.app/joseluis.jpg', exp:'+8 años', zona:'La Safor' },
+      { id:'oscar', firstName:'Óscar', name:'Óscar Puente', role:'Asesor Inmobiliario', specialty:'Primera vivienda y asesoramiento hipotecario', wa:'34637403050', msg:'Hola Óscar, me gustaría hablar sobre una propiedad', photo:'https://essenciainmobiliariasite.vercel.app/oscar.jpg', exp:'+5 años', zona:'Gandía & Safor' }
+    ];
+
+    var WA_SVG = '<svg class="ei-wa-icon" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a88.11,88.11,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"/></svg>';
+    var WA_SM  = '<svg class="ei-wa-icon-sm" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a88.11,88.11,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"/></svg>';
+
+    function waUrl(a) { return 'https://wa.me/' + a.wa + '?text=' + encodeURIComponent(a.msg); }
+    function img(a, cls) { return '<' + 'img src="' + a.photo + '" alt="Foto de ' + a.name + '" class="' + cls + '" loading="lazy">'; }
+
+    function featured(a) {
+      return '<div class="ei-featured-photo-wrap">'
+        + '<div class="ei-featured-badge"><span class="ei-adv-pulse" aria-hidden="true"></span>' + a.role + '</div>'
+        + img(a, 'ei-featured-photo')
+        + '</div>'
+        + '<div class="ei-featured-body">'
+        + '<h3 class="ei-featured-name">' + a.name + '</h3>'
+        + '<p class="ei-featured-spec">' + a.specialty + '</p>'
+        + '<div class="ei-featured-stats">'
+        + '<div><p class="ei-stat-label">Experiencia</p><p class="ei-stat-val">' + a.exp + '</p></div>'
+        + '<div class="ei-stat-div"></div>'
+        + '<div><p class="ei-stat-label">Zona</p><p class="ei-stat-val">' + a.zona + '</p></div>'
+        + '</div>'
+        + '<a href="' + waUrl(a) + '" target="_blank" rel="noopener noreferrer" class="ei-cta">' + WA_SVG + 'Hablar con ' + a.firstName + '</a>'
+        + '</div>';
+    }
+
+    function card(a, i) {
+      return '<div class="ei-card ei-stagger-in" style="animation-delay:' + (i * 55) + 'ms" data-id="' + a.id + '" role="button" tabindex="0" aria-label="Ver a ' + a.name + ' como asesor principal">'
+        + '<div class="ei-card-photo-wrap">' + img(a, '') + '<div class="ei-card-overlay"><span class="ei-card-hint">Ver como principal</span></div></div>'
+        + '<div class="ei-card-body">'
+        + '<span class="ei-card-role">' + a.role + '</span>'
+        + '<div><h3 class="ei-card-name">' + a.name + '</h3><p class="ei-card-spec">' + a.specialty + '</p></div>'
+        + '<div class="ei-card-div"></div>'
+        + '<a href="' + waUrl(a) + '" target="_blank" rel="noopener noreferrer" class="ei-cta-sm" onclick="event.stopPropagation()">' + WA_SM + 'Hablar con ' + a.firstName + '</a>'
+        + '</div></div>';
+    }
+
+    var current = 'santi';
+
+    function setFeatured(id) {
+      if (id === current) return;
+      current = id;
+      var fEl = document.getElementById('ei-featured');
+      var gEl = document.getElementById('ei-grid');
+      var adv = ADVISORS.filter(function(a){ return a.id === id; })[0];
+      var rest = ADVISORS.filter(function(a){ return a.id !== id; });
+      fEl.classList.add('ei-fade-out');
+      setTimeout(function() {
+        fEl.innerHTML = featured(adv);
+        fEl.classList.remove('ei-fade-out');
+        var h = ''; rest.forEach(function(a, i){ h += card(a, i); });
+        gEl.innerHTML = h;
+        bindCards();
+      }, 220);
+    }
+
+    function bindCards() {
+      var cards = document.querySelectorAll('#ei-grid .ei-card');
+      for (var i = 0; i < cards.length; i++) {
+        (function(el) {
+          el.addEventListener('click', function(){ setFeatured(el.getAttribute('data-id')); });
+          el.addEventListener('keydown', function(e){ if (e.key==='Enter'||e.key===' '){ e.preventDefault(); setFeatured(el.getAttribute('data-id')); }});
+        })(cards[i]);
+      }
+    }
+
+    /* Render inicial */
+    var initAdv  = ADVISORS.filter(function(a){ return a.id === current; })[0];
+    var initRest = ADVISORS.filter(function(a){ return a.id !== current; });
+    var fEl = document.getElementById('ei-featured');
+    var gEl = document.getElementById('ei-grid');
+    var cEl = document.getElementById('ei-carousel');
+    if (!fEl || !gEl) { console.warn('[EI Advisors] Elementos no encontrados'); return; }
+    fEl.innerHTML = featured(initAdv);
+    var gh = ''; initRest.forEach(function(a, i){ gh += card(a, i); });
+    gEl.innerHTML = gh;
+    bindCards();
+
+    /* Carrusel móvil */
+    if (cEl) {
+      var ch = '';
+      ADVISORS.forEach(function(a) {
+        ch += '<div class="ei-mob-card" role="listitem">'
+          + '<' + 'img src="' + a.photo + '" alt="Foto de ' + a.name + '" class="ei-mob-card-photo" loading="lazy">'
+          + '<div class="ei-card-body">'
+          + '<span class="ei-card-role">' + a.role + '</span>'
+          + '<div><h3 class="ei-card-name">' + a.name + '</h3><p class="ei-card-spec">' + a.specialty + '</p></div>'
+          + '<div class="ei-card-div"></div>'
+          + '<a href="' + waUrl(a) + '" target="_blank" rel="noopener noreferrer" class="ei-cta-sm">' + WA_SM + 'Hablar con ' + a.firstName + '</a>'
+          + '</div></div>';
+      });
+      cEl.innerHTML = ch;
+    }
+
+  } catch(err) {
+    console.error('[EI Advisors] Error al inicializar:', err);
+  }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', eiRun);
+  } else {
+    setTimeout(eiRun, 0);
+  }
+})();
+</script>
+<!-- ============================================================
+     FAQ INTERACTIVA (Diseño Premium) — Essencia Inmobiliaria
+     Pegar en: WordPress > Elementor > HTML Widget
+     ============================================================ -->
+
+<style>
+/* ── Reset & variables ── */
+.ess-faq-wrap * { box-sizing: border-box; margin: 0; padding: 0; }
+.ess-faq-wrap {
+  --black: #111827;
+  --gray-light: #f9fafb;
+  --gray-border: rgba(17, 24, 39, 0.08);
+  --gray-mid: #9ca3af;
+  --gray-text: #4b5563;
+  --blue: #1fc0d9;
+  font-family: 'Manrope', sans-serif;
+  background-color: #ffffff;
+  color: var(--black);
+  width: 100%;
+  overflow: hidden;
+}
+
+.ess-faq-section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 8rem 1.5rem;
+}
+
+/* ── Encabezado ── */
+.ess-faq-header {
+  margin-bottom: 4rem;
+}
+.ess-faq-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--blue);
+  margin-bottom: 1rem;
+}
+.ess-faq-title {
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--black);
+}
+
+/* ── Grid Layout (Desktop Asymmetric) ── */
+.ess-faq-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+@media (min-width: 1024px) {
+  .ess-faq-grid {
+    grid-template-columns: 1.2fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+}
+
+/* ── Lista de Preguntas (Izquierda) ── */
+.ess-faq-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.ess-faq-item {
+  position: relative;
+  border-bottom: 1px solid var(--gray-border);
+}
+.ess-faq-item:first-child {
+  border-top: 1px solid var(--gray-border);
+}
+
+.ess-faq-question {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 2.5rem 0;
+  cursor: pointer;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ess-faq-item:not(.active) .ess-faq-question:hover {
+  opacity: 0.6;
+}
+
+.ess-faq-num {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--gray-mid);
+  margin-top: 0.4rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.ess-faq-q-text {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--black);
+  transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Estado activo en Desktop */
+@media (min-width: 1024px) {
+  .ess-faq-item.active .ess-faq-q-text {
+    color: var(--blue);
+  }
+  .ess-faq-item.active .ess-faq-num {
+    color: var(--blue);
+  }
+}
+
+/* ── Panel de Respuestas (Derecha Desktop) ── */
+.ess-faq-answer-panel {
+  display: none;
+  position: sticky;
+  top: 140px; /* Separación del menú fijo si lo hay */
+  background: var(--gray-light);
+  border-radius: 2.5rem;
+  padding: 4rem 3rem;
+  border: 1px solid rgba(17, 24, 39, 0.03);
+}
+@media (min-width: 1024px) {
+  .ess-faq-answer-panel {
+    display: block;
+  }
+}
+
+.ess-faq-panel-content {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ess-faq-panel-content.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ess-faq-panel-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(31,192,217,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.ess-faq-panel-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--blue);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ess-faq-panel-text {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--gray-text);
+  font-weight: 500;
+}
+
+/* ── Accordion Mobile (Oculto en Desktop) ── */
+.ess-faq-mobile-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (min-width: 1024px) {
+  .ess-faq-mobile-answer {
+    display: none !important;
+  }
+}
+.ess-faq-item.active .ess-faq-mobile-answer {
+  grid-template-rows: 1fr;
+}
+.ess-faq-mobile-inner {
+  overflow: hidden;
+}
+.ess-faq-mobile-text {
+  padding-bottom: 2.5rem;
+  padding-left: 2.85rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--gray-text);
+}
+
+/* Icono móvil (+ / -) animado con físicas */
+.ess-faq-toggle-icon {
+  margin-left: auto;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  flex-shrink: 0;
+  margin-top: 0.3rem;
+}
+@media (min-width: 1024px) {
+  .ess-faq-toggle-icon {
+    display: none;
+  }
+}
+.ess-faq-toggle-icon::before,
+.ess-faq-toggle-icon::after {
+  content: '';
+  position: absolute;
+  background: var(--black);
+  border-radius: 2px;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s;
+}
+.ess-faq-toggle-icon::before {
+  top: 9px; left: 0; right: 0; height: 2px;
+}
+.ess-faq-toggle-icon::after {
+  left: 9px; top: 0; bottom: 0; width: 2px;
+}
+.ess-faq-item.active .ess-faq-toggle-icon::after {
+  transform: rotate(90deg);
+}
+.ess-faq-item.active .ess-faq-toggle-icon::before,
+.ess-faq-item.active .ess-faq-toggle-icon::after {
+  background: var(--blue);
+}
+</style>
+
+<div class="ess-faq-wrap">
+  <section class="ess-faq-section">
+    <div class="ess-faq-header">
+      <span class="ess-faq-badge">Transparencia Total</span>
+      <h2 class="ess-faq-title">Dudas<br>Resueltas.</h2>
+    </div>
+
+    <div class="ess-faq-grid">
+      <!-- Izquierda: Lista de Preguntas -->
+      <div class="ess-faq-list" id="ess-faq-list">
+
+        <!-- Item 1 -->
+        <div class="ess-faq-item active" data-index="0">
+          <button class="ess-faq-question" type="button" aria-expanded="true">
+            <span class="ess-faq-num">01</span>
+            <span class="ess-faq-q-text">¿Cómo valoran o tasan el precio de mi vivienda en Gandía o Valencia?</span>
+            <div class="ess-faq-toggle-icon"></div>
+          </button>
+          <div class="ess-faq-mobile-answer">
+            <div class="ess-faq-mobile-inner">
+              <p class="ess-faq-mobile-text">
+                Utilizamos datos de mercado en tiempo real, propiedades comparables vendidas recientemente y nuestra experiencia local para fijar un precio competitivo y realista, asegurando que vendas rápido sin perder dinero.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Item 2 -->
+        <div class="ess-faq-item" data-index="1">
+          <button class="ess-faq-question" type="button" aria-expanded="false">
+            <span class="ess-faq-num">02</span>
+            <span class="ess-faq-q-text">¿Cuáles son los honorarios de la inmobiliaria y qué incluyen?</span>
+            <div class="ess-faq-toggle-icon"></div>
+          </button>
+          <div class="ess-faq-mobile-answer">
+            <div class="ess-faq-mobile-inner">
+              <p class="ess-faq-mobile-text">
+                Incluyen la valoración técnica, home staging, reportaje fotográfico profesional, posicionamiento internacional, gestión de visitas y todos los trámites legales hasta la firma ante notario.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Item 3 -->
+        <div class="ess-faq-item" data-index="2">
+          <button class="ess-faq-question" type="button" aria-expanded="false">
+            <span class="ess-faq-num">03</span>
+            <span class="ess-faq-q-text">¿Cuánto tiempo se tarda en vender un piso o casa en Gandía?</span>
+            <div class="ess-faq-toggle-icon"></div>
+          </button>
+          <div class="ess-faq-mobile-answer">
+            <div class="ess-faq-mobile-inner">
+              <p class="ess-faq-mobile-text">
+                El tiempo medio varía según la propiedad, pero gracias a nuestra estrategia de marketing intensiva (Método MIA), solemos reducir los plazos del mercado a un promedio de 45 días.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Item 4 -->
+        <div class="ess-faq-item" data-index="3">
+          <button class="ess-faq-question" type="button" aria-expanded="false">
+            <span class="ess-faq-num">04</span>
+            <span class="ess-faq-q-text">¿Qué gastos e impuestos debo pagar al vender mi casa?</span>
+            <div class="ess-faq-toggle-icon"></div>
+          </button>
+          <div class="ess-faq-mobile-answer">
+            <div class="ess-faq-mobile-inner">
+              <p class="ess-faq-mobile-text">
+                Principalmente la Plusvalía Municipal (depende del ayuntamiento) y el IRPF sobre la ganancia patrimonial (19%-28%). Nuestro departamento fiscal le hará un cálculo exacto y le asesorará sobre exenciones (como reinversión en vivienda habitual o mayores de 65 años).
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Item 5 -->
+        <div class="ess-faq-item" data-index="4">
+          <button class="ess-faq-question" type="button" aria-expanded="false">
+            <span class="ess-faq-num">05</span>
+            <span class="ess-faq-q-text">¿Qué documentos obligatorios necesito para vender mi propiedad?</span>
+            <div class="ess-faq-toggle-icon"></div>
+          </button>
+          <div class="ess-faq-mobile-answer">
+            <div class="ess-faq-mobile-inner">
+              <p class="ess-faq-mobile-text">
+                Necesitará la escritura de propiedad, DNI, el último recibo del IBI, el certificado de eficiencia energética (CEE) y la cédula de habitabilidad. Nosotros nos encargamos de tramitar y gestionar toda esta documentación por usted.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Item 6 -->
+        <div class="ess-faq-item" data-index="5">
+          <button class="ess-faq-question" type="button" aria-expanded="false">
+            <span class="ess-faq-num">06</span>
+            <span class="ess-faq-q-text">¿Debo reformar mi piso antes de ponerlo a la venta?</span>
+            <div class="ess-faq-toggle-icon"></div>
+          </button>
+          <div class="ess-faq-mobile-answer">
+            <div class="ess-faq-mobile-inner">
+              <p class="ess-faq-mobile-text">
+                No siempre. Realizamos una auditoría inicial para recomendar solo aquellas mejoras estéticas, apoyadas por nuestro servicio de Home Staging, que aumentan realmente el valor de venta sin suponer gastos innecesarios.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Item 7 -->
+        <div class="ess-faq-item" data-index="6">
+          <button class="ess-faq-question" type="button" aria-expanded="false">
+            <span class="ess-faq-num">07</span>
+            <span class="ess-faq-q-text">¿Qué ventajas tiene firmar un contrato de exclusividad inmobiliaria?</span>
+            <div class="ess-faq-toggle-icon"></div>
+          </button>
+          <div class="ess-faq-mobile-answer">
+            <div class="ess-faq-mobile-inner">
+              <p class="ess-faq-mobile-text">
+                La exclusividad nos permite invertir el 100% en el marketing de su vivienda, destacarla en portales premium y evitar que el inmueble se devalúe por estar duplicado con precios diferentes en el mercado.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Item 8 -->
+        <div class="ess-faq-item" data-index="7">
+          <button class="ess-faq-question" type="button" aria-expanded="false">
+            <span class="ess-faq-num">08</span>
+            <span class="ess-faq-q-text">¿Cómo consiguen compradores internacionales para propiedades de lujo?</span>
+            <div class="ess-faq-toggle-icon"></div>
+          </button>
+          <div class="ess-faq-mobile-answer">
+            <div class="ess-faq-mobile-inner">
+              <p class="ess-faq-mobile-text">
+                Posicionamos las propiedades en portales europeos premium, realizamos campañas publicitarias segmentadas y trabajamos con una extensa red de inversores internacionales que buscan vivienda en Valencia y la Costa Blanca.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Item 9 -->
+        <div class="ess-faq-item" data-index="8">
+          <button class="ess-faq-question" type="button" aria-expanded="false">
+            <span class="ess-faq-num">09</span>
+            <span class="ess-faq-q-text">¿Se encargan ustedes de todos los trámites legales y la notaría?</span>
+            <div class="ess-faq-toggle-icon"></div>
+          </button>
+          <div class="ess-faq-mobile-answer">
+            <div class="ess-faq-mobile-inner">
+              <p class="ess-faq-mobile-text">
+                Absolutamente. Nuestro departamento jurídico redacta los contratos de arras, gestiona los certificados pendientes, liquida posibles cargas y coordina todo directamente con la notaría hasta la entrega de llaves.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Item 10 -->
+        <div class="ess-faq-item" data-index="9">
+          <button class="ess-faq-question" type="button" aria-expanded="false">
+            <span class="ess-faq-num">10</span>
+            <span class="ess-faq-q-text">¿Qué pasa si firmo y mi casa no se vende en el plazo acordado?</span>
+            <div class="ess-faq-toggle-icon"></div>
+          </button>
+          <div class="ess-faq-mobile-answer">
+            <div class="ess-faq-mobile-inner">
+              <p class="ess-faq-mobile-text">
+                Trabajamos a éxito. Si no logramos vender su propiedad en el plazo acordado, no le cobramos ningún tipo de honorario. Nosotros asumimos totalmente el riesgo de la inversión en marketing.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Derecha: Panel Sticky (Solo Desktop) -->
+      <div class="ess-faq-answer-panel">
+        <div class="ess-faq-panel-content show" id="ess-faq-desktop-content">
+          <div class="ess-faq-panel-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+          </div>
+          <p class="ess-faq-panel-text" id="ess-faq-desktop-text">
+            Utilizamos datos de mercado en tiempo real, propiedades comparables vendidas recientemente y nuestra experiencia local para fijar un precio competitivo y realista, asegurando que vendas rápido sin perder dinero.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const items = document.querySelectorAll('.ess-faq-item');
+  const desktopText = document.getElementById('ess-faq-desktop-text');
+  const desktopContent = document.getElementById('ess-faq-desktop-content');
+
+  // Textos para desktop correspondientes a cada índice
+  const answers = [
+    "Utilizamos datos de mercado en tiempo real, propiedades comparables vendidas recientemente y nuestra experiencia local para fijar un precio competitivo y realista, asegurando que vendas rápido sin perder dinero.",
+    "Incluyen la valoración técnica, home staging, reportaje fotográfico profesional, posicionamiento internacional, gestión de visitas y todos los trámites legales hasta la firma ante notario.",
+    "El tiempo medio varía según la propiedad, pero gracias a nuestra estrategia de marketing intensiva (Método MIA), solemos reducir los plazos del mercado a un promedio de 45 días.",
+    "Principalmente la Plusvalía Municipal (depende del ayuntamiento) y el IRPF sobre la ganancia patrimonial (19%-28%). Nuestro departamento fiscal le hará un cálculo exacto y le asesorará sobre exenciones (como reinversión en vivienda habitual o mayores de 65 años).",
+    "Necesitará la escritura de propiedad, DNI, el último recibo del IBI, el certificado de eficiencia energética (CEE) y la cédula de habitabilidad. Nosotros nos encargamos de tramitar y gestionar toda esta documentación por usted.",
+    "No siempre. Realizamos una auditoría inicial para recomendar solo aquellas mejoras estéticas, apoyadas por nuestro servicio de Home Staging, que aumentan realmente el valor de venta sin suponer gastos innecesarios.",
+    "La exclusividad nos permite invertir el 100% en el marketing de su vivienda, destacarla en portales premium y evitar que el inmueble se devalúe por estar duplicado con precios diferentes en el mercado.",
+    "Posicionamos las propiedades en portales europeos premium, realizamos campañas publicitarias segmentadas y trabajamos con una extensa red de inversores internacionales que buscan vivienda en Valencia y la Costa Blanca.",
+    "Absolutamente. Nuestro departamento jurídico redacta los contratos de arras, gestiona los certificados pendientes, liquida posibles cargas y coordina todo directamente con la notaría hasta la entrega de llaves.",
+    "Trabajamos a éxito. Si no logramos vender su propiedad en el plazo acordado, no le cobramos ningún tipo de honorario. Nosotros asumimos totalmente el riesgo de la inversión en marketing."
+  ];
+
+  items.forEach((item, index) => {
+    const btn = item.querySelector('.ess-faq-question');
+    
+    btn.addEventListener('click', () => {
+      const isMobile = window.innerWidth < 1024;
+      const isActive = item.classList.contains('active');
+
+      if (isMobile) {
+        // Modo Acordeón (Móvil)
+        if (isActive) {
+          item.classList.remove('active');
+          btn.setAttribute('aria-expanded', 'false');
+        } else {
+          // Cerrar todos y abrir el clicado
+          items.forEach(i => {
+            i.classList.remove('active');
+            i.querySelector('.ess-faq-question').setAttribute('aria-expanded', 'false');
+          });
+          item.classList.add('active');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      } else {
+        // Modo Sticky Panel (Desktop)
+        if (!isActive) {
+          // Cambiar estado activo en la lista
+          items.forEach(i => {
+            i.classList.remove('active');
+            i.querySelector('.ess-faq-question').setAttribute('aria-expanded', 'false');
+          });
+          item.classList.add('active');
+          btn.setAttribute('aria-expanded', 'true');
+
+          // Animar salida del texto actual
+          desktopContent.classList.remove('show');
+          
+          // Esperar y animar entrada del nuevo texto
+          setTimeout(() => {
+            desktopText.textContent = answers[index];
+            desktopContent.classList.add('show');
+          }, 300); // 300ms sincronizado con la transición CSS
+        }
+      }
+    });
+  });
+});
+</script>
+
+<!-- ============================================================
+     SCHEMA FAQPage — Para bots de IA y Google
+     ============================================================ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cómo valoran o tasan el precio de mi vivienda en Gandía o Valencia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Utilizamos datos de mercado en tiempo real, propiedades comparables vendidas recientemente y nuestra experiencia local para fijar un precio competitivo y realista, asegurando que vendas rápido sin perder dinero."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuáles son los honorarios de la inmobiliaria y qué incluyen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Incluyen la valoración técnica, home staging, reportaje fotográfico profesional, posicionamiento internacional, gestión de visitas y todos los trámites legales hasta la firma ante notario."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto tiempo se tarda en vender un piso o casa en Gandía?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El tiempo medio varía según la propiedad, pero gracias a nuestra estrategia de marketing intensiva (Método MIA), solemos reducir los plazos del mercado a un promedio de 45 días."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué gastos e impuestos debo pagar al vender mi casa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Principalmente la Plusvalía Municipal (depende del ayuntamiento) y el IRPF sobre la ganancia patrimonial (19%-28%). Nuestro departamento fiscal le hará un cálculo exacto y le asesorará sobre exenciones (como reinversión en vivienda habitual o mayores de 65 años)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué documentos obligatorios necesito para vender mi propiedad?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Necesitará la escritura de propiedad, DNI, el último recibo del IBI, el certificado de eficiencia energética (CEE) y la cédula de habitabilidad. Nosotros nos encargamos de tramitar y gestionar toda esta documentación por usted."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Debo reformar mi piso antes de ponerlo a la venta?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No siempre. Realizamos una auditoría inicial para recomendar solo aquellas mejoras estéticas, apoyadas por nuestro servicio de Home Staging, que aumentan realmente el valor de venta sin suponer gastos innecesarios."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué ventajas tiene firmar un contrato de exclusividad inmobiliaria?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La exclusividad nos permite invertir el 100% en el marketing de su vivienda, destacarla en portales premium y evitar que el inmueble se devalúe por estar duplicado con precios diferentes en el mercado."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo consiguen compradores internacionales para propiedades de lujo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Posicionamos las propiedades en portales europeos premium, realizamos campañas publicitarias segmentadas y trabajamos con una extensa red de inversores internacionales que buscan vivienda en Valencia y la Costa Blanca."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Se encargan ustedes de todos los trámites legales y la notaría?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutamente. Nuestro departamento jurídico redacta los contratos de arras, gestiona los certificados pendientes, liquida posibles cargas y coordina todo directamente con la notaría hasta la entrega de llaves."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa si firmo y mi casa no se vende en el plazo acordado?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Trabajamos a éxito. Si no logramos vender su propiedad en el plazo acordado, no le cobramos ningún tipo de honorario. Nosotros asumimos totalmente el riesgo de la inversión en marketing."
+      }
+    }
+  ]
+}
+</script>
+<!-- ============================================================
+     SECCIÓN CONTACTO — Essencia Inmobiliaria
+     Pegar en: WordPress > Elementor > HTML Widget
+     ============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800;900&display=swap">
+<style>
+.ei-contact-wrap * { box-sizing: border-box; margin: 0; padding: 0; }
+.ei-contact-wrap {
+  font-family: 'Manrope', sans-serif;
+  background-color: #fff;
+  position: relative;
+  overflow: hidden;
+  padding: 6rem 1.5rem;
+}
+.ei-contact-bg {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  opacity: 0.05;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 80% 50%, #2563eb 0%, transparent 70%);
+}
+.ei-contact-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+@media(max-width: 1024px) { .ei-contact-inner { grid-template-columns: 1fr; } }
+.ei-ct-badge { color: #2563eb; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.75rem; margin-bottom: 1rem; display: block; }
+.ei-ct-title { font-size: clamp(2.25rem, 4vw, 3rem); font-weight: 900; color: #111827; line-height: 1.1; margin-bottom: 1.5rem; }
+.ei-ct-title span { color: #2563eb; }
+.ei-ct-subtitle { color: #374151; font-size: 1.125rem; line-height: 1.6; margin-bottom: 2.5rem; }
+.ei-ct-info { display: flex; flex-direction: column; gap: 1.25rem; }
+.ei-ct-item { display: flex; align-items: center; gap: 1rem; }
+.ei-ct-icon { width: 2.5rem; height: 2.5rem; border-radius: 50%; background: #eff6ff; display: flex; align-items: center; justify-content: center; color: #2563eb; font-weight: bold; flex-shrink: 0; }
+.ei-ct-item-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: #4b5563; margin-bottom: 0.125rem; font-weight: 700; }
+.ei-ct-item-val { color: #111827; font-weight: 600; text-decoration: none; }
+
+.ei-form-box { background: #fff; border: 1px solid #f3f4f6; box-shadow: 0 20px 40px rgba(31,192,217,0.1); border-radius: 1.5rem; padding: 2rem; position: relative; z-index: 2; }
+.ei-form-group { margin-bottom: 1.25rem; }
+.ei-form-label { display: block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #374151; margin-bottom: 0.25rem; }
+.ei-form-input { width: 100%; border: none; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 0; font-size: 0.875rem; color: #111827; background: transparent; font-family: inherit; }
+.ei-form-input::placeholder { color: #6b7280; } /* updated contrast */
+.ei-form-input:focus { outline: none; border-bottom-color: #111827; }
+.ei-form-submit { width: 100%; padding: 1rem; border-radius: 9999px; background: #111827; color: #fff; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.75rem; border: none; cursor: pointer; margin-top: 1.5rem; transition: 0.3s; box-shadow: 0 10px 25px rgba(31,192,217,0.3); }
+.ei-form-submit:hover { background: #000; transform: translateY(-2px); box-shadow: 0 20px 40px rgba(31,192,217,0.4); }
+.ei-form-privacy { font-size: 0.75rem; color: #4b5563; text-align: center; margin-top: 1rem; } /* updated contrast */
+</style>
+
+<div class="ei-contact-wrap" id="contacto">
+  <div class="ei-contact-bg"></div>
+  <div class="ei-contact-inner">
+    <div>
+      <span class="ei-ct-badge">Atención Personalizada</span>
+      <h2 class="ei-ct-title">Hablemos de tu<br><span>próxima propiedad</span></h2>
+      <p class="ei-ct-subtitle">Déjanos tus datos y un asesor especializado se pondrá en contacto contigo para ofrecerte una valoración o mostrarte las mejores opciones.</p>
+      <div class="ei-ct-info">
+        <div class="ei-ct-item">
+          <div class="ei-ct-icon">☎</div>
+          <div>
+            <div class="ei-ct-item-label">Teléfono</div>
+            <a href="tel:+34618063000" class="ei-ct-item-val">+34 618 063 000</a>
+          </div>
+        </div>
+        <div class="ei-ct-item">
+          <div class="ei-ct-icon">✉</div>
+          <div>
+            <div class="ei-ct-item-label">Email</div>
+            <a href="mailto:hola@essenciainmobiliaria.com" class="ei-ct-item-val">hola@essenciainmobiliaria.com</a>
+          </div>
+        </div>
+        <div class="ei-ct-item">
+          <div class="ei-ct-icon">📍</div>
+          <div>
+            <div class="ei-ct-item-label">Oficina</div>
+            <div class="ei-ct-item-val">C/ Sant Vicent Ferrer 24, Gandia, Valencia</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="ei-form-box">
+      <form action="https://formsubmit.co/hola@essenciainmobiliaria.com" method="POST">
+        <!-- Opcional: configuraciones de formsubmit -->
+        <input type="hidden" name="_next" value="https://essenciainmobiliaria.com">
+        <input type="hidden" name="_subject" value="Nuevo Lead desde Landing Page">
+        
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem;">
+          <div class="ei-form-group">
+            <label class="ei-form-label">Nombre</label>
+            <input type="text" name="name" class="ei-form-input" placeholder="María García" required>
+          </div>
+          <div class="ei-form-group">
+            <label class="ei-form-label">Teléfono</label>
+            <input type="tel" name="phone" class="ei-form-input" placeholder="+34 600 000 000" required>
+          </div>
+        </div>
+        <div class="ei-form-group">
+          <label class="ei-form-label">Email</label>
+          <input type="email" name="email" class="ei-form-input" placeholder="maria@example.com" required>
+        </div>
+        <div class="ei-form-group">
+          <label class="ei-form-label">Motivo</label>
+          <select name="reason" class="ei-form-input" required style="background:transparent; appearance:none;">
+            <option value="Comprar">Comprar propiedad</option>
+            <option value="Vender">Vender propiedad</option>
+            <option value="Valoración">Valoración gratuita</option>
+            <option value="Invertir">Invertir</option>
+          </select>
+        </div>
+        <div class="ei-form-group">
+          <label class="ei-form-label">Mensaje</label>
+          <textarea name="message" class="ei-form-input" placeholder="¿En qué te podemos ayudar?" rows="3"></textarea>
+        </div>
+        <button type="submit" class="ei-form-submit">Enviar mensaje →</button>
+        <p class="ei-form-privacy">Tu información está protegida. Nunca compartimos tus datos.</p>
+      </form>
+    </div>
+  </div>
+</div>

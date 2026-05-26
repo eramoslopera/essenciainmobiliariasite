@@ -5,6 +5,7 @@ import { saveContact } from '../src/lib/saveContact';
 interface ContactFormProps {
   theme?: 'dark' | 'light';
   defaultReason?: string;
+  defaultMessage?: string;
   className?: string;
   source?: string;
 }
@@ -12,6 +13,7 @@ interface ContactFormProps {
 const ContactForm: React.FC<ContactFormProps> = ({
   theme = 'dark',
   defaultReason = 'buy',
+  defaultMessage = '',
   className = '',
   source = 'home_page',
 }) => {
@@ -20,7 +22,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [reason, setReason] = useState(defaultReason);
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState(defaultMessage);
   const [sent, setSent] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 

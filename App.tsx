@@ -10,8 +10,8 @@ import Valuation from './pages/Valuation';
 
 import Contact from './pages/Contact';
 import About from './pages/About';
-import Landing from './pages/Landing';
 import Developments from './pages/Developments';
+import Exitos from './pages/Exitos';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import Cookies from './pages/Cookies';
@@ -35,8 +35,6 @@ import BackToTop from './components/BackToTop';
 
 const Layout: React.FC = () => {
   const location = useLocation();
-  const isLandingPage = location.pathname === '/landing';
-
   return (
     <div className="flex flex-col min-h-screen font-display">
       {/* Skip Navigation for Accessibility */}
@@ -44,8 +42,8 @@ const Layout: React.FC = () => {
         Skip to content
       </a>
       <SchemaMarkup />
-      {!isLandingPage && <Header />}
-      {!isLandingPage && location.pathname !== '/' && <Breadcrumbs />}
+      <Header />
+      {location.pathname !== '/' && <Breadcrumbs />}
       <main id="main-content">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -56,14 +54,14 @@ const Layout: React.FC = () => {
 
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
-          <Route path="/landing" element={<Landing />} />
           <Route path="/developments" element={<Developments />} />
+          <Route path="/exitos" element={<Exitos />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/cookies" element={<Cookies />} />
         </Routes>
       </main>
-      {!isLandingPage && <Footer />}
+      <Footer />
       <FloatingWhatsApp />
       <BackToTop />
 

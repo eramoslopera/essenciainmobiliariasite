@@ -6,9 +6,9 @@ const FAQSection: React.FC = () => {
   const { t } = useLanguage();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-  // Generamos las 8 preguntas de forma dinámica usando las traducciones del context
-  const faqData = Array.from({ length: 8 }, (_, i) => ({
-    id: `0${i + 1}`,
+  // Generamos las 10 preguntas de forma dinámica usando las traducciones del context
+  const faqData = Array.from({ length: 10 }, (_, i) => ({
+    id: i < 9 ? `0${i + 1}` : `${i + 1}`,
     question: t(`landing.faq.${i + 1}.q`),
     answer: t(`landing.faq.${i + 1}.a`),
   }));
@@ -37,7 +37,6 @@ const FAQSection: React.FC = () => {
 
             return (
               <motion.div
-                layout
                 key={item.id}
                 onClick={() => setActiveIndex(isActive ? null : index)}
                 className={`group relative min-w-[85vw] md:min-w-0 snap-center shrink-0 cursor-pointer overflow-hidden rounded-[2rem] border transition-all duration-500 ${
@@ -49,8 +48,8 @@ const FAQSection: React.FC = () => {
               aria-expanded={isActive}
               >
                 <div className="p-8 md:p-10 relative z-10">
-                  <motion.div layout className="flex justify-between items-start gap-4 md:gap-6">
-                    <h3 className={`text-[clamp(1.15rem,2vw,1.5rem)] font-bold leading-[1.3] tracking-[-0.02em] ${isActive ? 'text-editorial-black' : 'text-white'}`}>
+                  <div className="flex justify-between items-start gap-4 md:gap-6">
+                    <h3 className={`text-[clamp(1.15rem,2vw,1.5rem)] font-bold leading-[1.3] tracking-[-0.02em] transition-colors duration-300 ${isActive ? 'text-editorial-black' : 'text-white'}`}>
                       {item.question}
                     </h3>
                     <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-500 ${
@@ -68,7 +67,7 @@ const FAQSection: React.FC = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4" />
                       </motion.svg>
                     </div>
-                  </motion.div>
+                  </div>
 
                   <AnimatePresence>
                     {isActive && (
@@ -77,6 +76,7 @@ const FAQSection: React.FC = () => {
                         animate={{ opacity: 1, height: 'auto', marginTop: 24 }}
                         exit={{ opacity: 0, height: 0, marginTop: 0 }}
                         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                        className="overflow-hidden"
                       >
                         <p className="text-[clamp(1rem,1.5vw,1.125rem)] leading-[1.7] text-gray-700 font-medium">
                           {item.answer}

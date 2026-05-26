@@ -4,6 +4,7 @@ import { useLanguage } from '../context/LanguageContext';
 import StatsSection from '../components/StatsSection';
 import SEOHead from '../components/SEOHead';
 import MiaMethodTeaser from '../components/MiaMethodTeaser';
+import CasosExitoSection from '../components/CasosExitoSection';
 import ContactForm from '../components/ContactForm';
 import AdvisorsSection from '../components/AdvisorsSection';
 import FAQSection from '../components/FAQSection';
@@ -244,6 +245,9 @@ const Home: React.FC = () => {
 
       {/* MÍA Method Teaser */}
       <MiaMethodTeaser />
+
+      {/* Casos de Éxito — prueba social después del método */}
+      <CasosExitoSection />
 
       <section className="py-16 md:py-24 bg-editorial-gray overflow-hidden" aria-label="Propiedades vendidas recientemente">
         <div className="max-w-[1440px] mx-auto">

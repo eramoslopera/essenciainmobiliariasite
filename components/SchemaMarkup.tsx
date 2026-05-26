@@ -212,6 +212,22 @@ const SchemaMarkup: React.FC = () => {
                     "@type": "Answer",
                     "text": "Si no vendemos su propiedad en el plazo acordado, no cobramos nada. Asumimos el riesgo de la inversión en marketing."
                 }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Qué impuestos debo pagar al vender mi casa?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Principalmente dos: la Plusvalía Municipal (que depende del ayuntamiento) y el IRPF sobre la ganancia patrimonial obtenida (entre el 19% y el 28%). Si reinvierte en vivienda habitual o es mayor de 65 años, podría estar exento del IRPF. Nuestro departamento fiscal le hará un cálculo exacto antes de poner la propiedad a la venta."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Qué documentos necesito para vender mi propiedad?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Necesitará la escritura de propiedad, el DNI de los titulares, el recibo del IBI, el certificado de eficiencia energética (CEE) y la cédula de habitabilidad. Si es un piso, también el certificado de estar al corriente con la comunidad. Nosotros nos encargamos de recopilar y gestionar toda esta documentación técnica y legal."
+                }
             }
         ]
     } : null;

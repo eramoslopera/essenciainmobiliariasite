@@ -4,7 +4,7 @@ import React, { useState, useRef } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { WhatsappLogo } from '@phosphor-icons/react';
 
-interface Advisor {
+export interface Advisor {
   id: string;
   name: string;
   firstName: string;
@@ -17,7 +17,7 @@ interface Advisor {
   stats: { experiencia: string; zona: string };
 }
 
-const ADVISORS: Advisor[] = [
+export const ADVISORS: Advisor[] = [
   {
     id: 'santi',
     name: 'Santi Torres',

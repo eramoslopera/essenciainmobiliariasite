@@ -1,0 +1,166 @@
+<!-- ============================================================
+     SECCIÓN CONTACTO — Essencia Inmobiliaria
+     Pegar en: WordPress > Elementor > HTML Widget
+     ============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800;900&display=swap">
+<style>
+.ei-contact-wrap * { box-sizing: border-box; margin: 0; padding: 0; }
+.ei-contact-wrap {
+  font-family: 'Manrope', sans-serif;
+  background-color: #fff;
+  position: relative;
+  overflow: hidden;
+  padding: 6rem 1.5rem;
+}
+.ei-contact-bg {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  opacity: 0.05;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 80% 50%, #2563eb 0%, transparent 70%);
+}
+.ei-contact-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+@media(max-width: 1024px) { .ei-contact-inner { grid-template-columns: 1fr; } }
+.ei-ct-badge { color: #2563eb; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.75rem; margin-bottom: 1rem; display: block; }
+.ei-ct-title { font-size: clamp(2.25rem, 4vw, 3rem); font-weight: 900; color: #111827; line-height: 1.1; margin-bottom: 1.5rem; }
+.ei-ct-title span { color: #2563eb; }
+.ei-ct-subtitle { color: #374151; font-size: 1.125rem; line-height: 1.6; margin-bottom: 2.5rem; }
+.ei-ct-info { display: flex; flex-direction: column; gap: 1.25rem; }
+.ei-ct-item { display: flex; align-items: center; gap: 1rem; }
+.ei-ct-icon { width: 2.5rem; height: 2.5rem; border-radius: 50%; background: #eff6ff; display: flex; align-items: center; justify-content: center; color: #2563eb; font-weight: bold; flex-shrink: 0; }
+.ei-ct-item-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: #4b5563; margin-bottom: 0.125rem; font-weight: 700; }
+.ei-ct-item-val { color: #111827; font-weight: 600; text-decoration: none; }
+
+.ei-form-box { background: #fff; border: 1px solid #f3f4f6; box-shadow: 0 20px 40px rgba(31,192,217,0.1); border-radius: 1.5rem; padding: 2rem; position: relative; z-index: 2; }
+.ei-form-group { margin-bottom: 1.25rem; }
+.ei-form-label { display: block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #374151; margin-bottom: 0.25rem; }
+.ei-form-input { width: 100%; border: none; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 0; font-size: 0.875rem; color: #111827; background: transparent; font-family: inherit; }
+.ei-form-input::placeholder { color: #6b7280; } /* updated contrast */
+.ei-form-input:focus { outline: none; border-bottom-color: #111827; }
+.ei-form-submit { width: 100%; padding: 1rem; border-radius: 9999px; background: #111827; color: #fff; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.75rem; border: none; cursor: pointer; margin-top: 1.5rem; transition: 0.3s; box-shadow: 0 10px 25px rgba(31,192,217,0.3); }
+.ei-form-submit:hover { background: #000; transform: translateY(-2px); box-shadow: 0 20px 40px rgba(31,192,217,0.4); }
+.ei-form-privacy { font-size: 0.75rem; color: #4b5563; text-align: center; margin-top: 1rem; } /* updated contrast */
+</style>
+
+<div class="ei-contact-wrap" id="contacto">
+  <div class="ei-contact-bg"></div>
+  <div class="ei-contact-inner">
+    <div>
+      <span class="ei-ct-badge">Atención Personalizada</span>
+      <h2 class="ei-ct-title">Hablemos de tu<br><span>próxima propiedad</span></h2>
+      <p class="ei-ct-subtitle">Déjanos tus datos y un asesor especializado se pondrá en contacto contigo para ofrecerte una valoración o mostrarte las mejores opciones.</p>
+      <div class="ei-ct-info">
+        <div class="ei-ct-item">
+          <div class="ei-ct-icon">☎</div>
+          <div>
+            <div class="ei-ct-item-label">Teléfono</div>
+            <a href="tel:+34618063000" class="ei-ct-item-val">+34 618 063 000</a>
+          </div>
+        </div>
+        <div class="ei-ct-item">
+          <div class="ei-ct-icon">✉</div>
+          <div>
+            <div class="ei-ct-item-label">Email</div>
+            <a href="mailto:hola@essenciainmobiliaria.com" class="ei-ct-item-val">hola@essenciainmobiliaria.com</a>
+          </div>
+        </div>
+        <div class="ei-ct-item">
+          <div class="ei-ct-icon">📍</div>
+          <div>
+            <div class="ei-ct-item-label">Oficina</div>
+            <div class="ei-ct-item-val">C/ Sant Vicent Ferrer 24, Gandia, Valencia</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="ei-form-box">
+      <form action="https://formsubmit.co/hola@essenciainmobiliaria.com" method="POST">
+        <!-- Opcional: configuraciones de formsubmit -->
+        <input type="hidden" name="_next" value="https://essenciainmobiliaria.com">
+        <input type="hidden" name="_subject" value="Nuevo Lead desde Landing Page">
+        
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem;">
+          <div class="ei-form-group">
+            <label class="ei-form-label">Nombre</label>
+            <input type="text" name="name" class="ei-form-input" placeholder="María García" required>
+          </div>
+          <div class="ei-form-group">
+            <label class="ei-form-label">Teléfono</label>
+            <input type="tel" name="phone" class="ei-form-input" placeholder="+34 600 000 000" required>
+          </div>
+        </div>
+        <div class="ei-form-group">
+          <label class="ei-form-label">Email</label>
+          <input type="email" name="email" class="ei-form-input" placeholder="maria@example.com" required>
+        </div>
+        <div class="ei-form-group">
+          <label class="ei-form-label">Motivo</label>
+          <select name="reason" class="ei-form-input" required style="background:transparent; appearance:none;">
+            <option value="Comprar">Comprar propiedad</option>
+            <option value="Vender">Vender propiedad</option>
+            <option value="Valoración">Valoración gratuita</option>
+            <option value="Invertir">Invertir</option>
+          </select>
+        </div>
+        <div class="ei-form-group">
+          <label class="ei-form-label">Mensaje</label>
+          <textarea name="message" class="ei-form-input" placeholder="¿En qué te podemos ayudar?" rows="3"></textarea>
+        </div>
+        <button type="submit" class="ei-form-submit">Enviar mensaje →</button>
+        <p class="ei-form-privacy">Tu información está protegida. Nunca compartimos tus datos.</p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.querySelector('.ei-form-box form');
+  if (form) {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault(); // Pause submission to save to Supabase
+      
+      const btn = form.querySelector('.ei-form-submit');
+      const originalText = btn.textContent;
+      btn.textContent = 'Enviando...';
+      btn.disabled = true;
+
+      const fd = new FormData(form);
+      const payload = {
+        first_name: fd.get('name') || '',
+        email: fd.get('email') || '',
+        phone: fd.get('phone') || null,
+        interest: fd.get('reason') || null,
+        message: fd.get('message') || null,
+        source: 'wp_contact_form'
+      };
+
+      try {
+        const supabaseUrl = 'https://kynhkfrxdzzghaamtyjc.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt5bmhrZnJ4ZHp6Z2hhYW10eWpjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUwNTI2MjcsImV4cCI6MjA5MDYyODYyN30.VKtjUxQS1CqcHs59bKoOX_8gQ0pJgdpHE9xqf6pl49o';
+        const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
+        
+        await supabaseClient.from('contacts').insert([payload]);
+      } catch (err) {
+        console.warn('[Essencia] Error guardando lead en Supabase', err);
+      }
+      
+      // Submit form programmatically bypassing the event listener
+      HTMLFormElement.prototype.submit.call(form);
+    });
+  }
+});
+</script>

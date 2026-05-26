@@ -1,303 +1,256 @@
 <!-- ============================================================
      SECCIÓN ESTADÍSTICAS — Essencia Inmobiliaria
      Pegar en: WordPress > Elementor > HTML Widget
-
-     CLAVE GEO: Los valores están en el HTML estático.
-     Los bots de IA (GPTBot, ClaudeBot, Perplexity) leen los
-     números directamente. El JS solo añade la animación visual.
      ============================================================ -->
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800;900&display=swap">
 <style>
-/* ── Reset & variables ── */
-.ess-stats-wrap * { box-sizing: border-box; margin: 0; padding: 0; }
-.ess-stats-wrap {
-  --black: #111827;
-  --blue: #1fc0d9;
-  --gray-text: #6b7280;
-  --gray-border: rgba(17, 24, 39, 0.08);
-  --gray-light: #f9fafb;
+.ei-stats-wrap * { box-sizing: border-box; margin: 0; padding: 0; }
+.ei-stats-wrap {
   font-family: 'Manrope', sans-serif;
-  background-color: #ffffff;
-  width: 100%;
+  background-color: #222222;
+  color: #ffffff;
+  position: relative;
   overflow: hidden;
+  padding: 6rem 1.5rem;
 }
-
-/* ── Layout ── */
-.ess-stats-section {
-  max-width: 1280px;
+.ei-stats-glow1 {
+  position: absolute;
+  top: 0; right: 0;
+  width: 600px; height: 600px;
+  background: rgba(31,192,217,0.1);
+  filter: blur(140px);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.ei-stats-glow2 {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 400px; height: 400px;
+  background: rgba(31,192,217,0.05);
+  filter: blur(100px);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.ei-stats-inner {
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 7rem 1.5rem;
+  position: relative;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 4rem;
+  align-items: center;
 }
-
-/* ── Encabezado ── */
-.ess-stats-header {
-  margin-bottom: 5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+@media(max-width: 1024px) {
+  .ei-stats-inner { grid-template-columns: 1fr; gap: 3rem; }
 }
-.ess-stats-badge {
-  font-size: 0.7rem;
-  font-weight: 800;
+/* Left Col */
+.ei-stats-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+.ei-stats-badge-line {
+  width: 2rem;
+  height: 1px;
+  background: #4edcf1;
+}
+.ei-stats-badge-text {
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  letter-spacing: 0.25em;
-  color: var(--blue);
+  color: #4edcf1;
 }
-.ess-stats-title {
-  font-size: clamp(2.8rem, 6vw, 4.5rem);
+.ei-stats-title {
+  font-size: clamp(3rem, 5vw, 3.75rem);
   font-weight: 900;
   line-height: 0.95;
-  letter-spacing: -0.04em;
-  color: var(--black);
+  letter-spacing: -0.05em;
+  margin-bottom: 2rem;
+  color: #ffffff;
 }
-.ess-stats-subtitle {
-  font-size: 1.1rem;
-  color: var(--gray-text);
-  font-weight: 500;
+.ei-stats-title span { color: rgba(255,255,255,0.6); }
+.ei-stats-desc {
+  color: #e5e7eb;
+  font-size: 1rem;
   line-height: 1.6;
-  max-width: 480px;
-  margin-top: 0.5rem;
+  font-weight: 500;
+  max-width: 24rem;
 }
-
-/* ── Grid de KPIs ── */
-.ess-stats-grid {
+.ei-stats-divider {
+  margin-top: 3rem;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.ei-stats-divider p {
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #9ca3af;
+}
+/* Right Col Grid */
+.ei-stats-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1px;
-  background-color: var(--gray-border);
-  border: 1px solid var(--gray-border);
-  border-radius: 2rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 1rem;
   overflow: hidden;
 }
-@media (min-width: 768px) {
-  .ess-stats-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+@media(max-width: 640px) {
+  .ei-stats-grid { grid-template-columns: 1fr; }
 }
-@media (min-width: 1024px) {
-  .ess-stats-grid {
-    grid-template-columns: repeat(5, 1fr);
-  }
-}
-
-/* ── Tarjeta KPI ── */
-.ess-stat-card {
-  background: #ffffff;
-  padding: 3rem 2rem;
+.ei-stat-item {
+  background: #222222;
+  padding: 2.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  transition: background 0.3s ease;
+  justify-content: space-between;
   position: relative;
   overflow: hidden;
 }
-.ess-stat-card:hover {
-  background: var(--gray-light);
-}
-.ess-stat-card::before {
-  content: '';
+.ei-stat-hover {
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 3px;
-  background: var(--blue);
+  height: 2px;
+  background: #22d3ee;
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.5s ease;
 }
-.ess-stat-card:hover::before {
-  transform: scaleX(1);
-}
-
-/* ── Valor ── */
-.ess-stat-value {
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
+.ei-stat-item:hover .ei-stat-hover { transform: scaleX(1); }
+.ei-stat-value {
+  font-size: clamp(2.25rem, 4vw, 3.75rem);
   font-weight: 900;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.05em;
+  color: #ffffff;
   line-height: 1;
-  color: var(--black);
+  margin-bottom: 1rem;
   font-variant-numeric: tabular-nums;
-  display: flex;
-  align-items: baseline;
-  gap: 0.15em;
-  flex-wrap: wrap;
 }
-.ess-stat-prefix {
-  font-size: 0.55em;
-  font-weight: 800;
-  color: var(--blue);
+.ei-stat-label {
+  font-size: 0.875rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.25rem;
 }
-.ess-stat-suffix {
-  font-size: 0.45em;
-  font-weight: 700;
-  color: var(--gray-text);
-}
-
-/* ── Label ── */
-.ess-stat-label {
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--gray-text);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  line-height: 1.3;
-}
-
-/* ── Nota ── */
-.ess-stat-note {
-  font-size: 0.7rem;
-  color: #9ca3af;
+.ei-stat-note {
+  font-size: 0.75rem;
+  color: #d1d5db;
   font-weight: 500;
-  margin-top: 0.25rem;
-}
-
-/* ── Animación de entrada ── */
-.ess-stat-card {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease, background 0.3s ease;
-}
-.ess-stat-card.visible {
-  opacity: 1;
-  transform: translateY(0);
+  line-height: 1.4;
 }
 </style>
 
-<div class="ess-stats-wrap">
-  <section class="ess-stats-section">
-
-    <div class="ess-stats-header">
-      <span class="ess-stats-badge">Resultados reales · 15 años en el mercado</span>
-      <h2 class="ess-stats-title">Números<br>que hablan.</h2>
-      <p class="ess-stats-subtitle">
-        Más de 15 años vendiendo propiedades en Gandía y La Safor. 
-        Estos son los datos reales de Essencia Inmobiliaria.
-      </p>
+<div class="ei-stats-wrap">
+  <div class="ei-stats-glow1"></div>
+  <div class="ei-stats-glow2"></div>
+  <div class="ei-stats-inner">
+    
+    <div>
+      <div class="ei-stats-badge">
+        <div class="ei-stats-badge-line"></div>
+        <span class="ei-stats-badge-text">Datos reales · 2025</span>
+      </div>
+      <h2 class="ei-stats-title">Números<br><span>que hablan.</span></h2>
+      <p class="ei-stats-desc">Más de 15 años vendiendo propiedades en Gandía y La Safor. Estos son los resultados de Essencia Inmobiliaria.</p>
+      <div class="ei-stats-divider">
+        <p>Essencia Inmobiliaria · Gandía, La Safor</p>
+      </div>
     </div>
 
-    <!--
-      NOTA TÉCNICA GEO:
-      Los valores de data-target son los que anima el JS.
-      El texto dentro de .ess-stat-num es el valor estático que
-      leen los bots de IA aunque el JS no se ejecute.
-    -->
-    <div class="ess-stats-grid" id="ess-stats-grid">
-
-      <!-- KPI 1: +2.000 ventas -->
-      <div class="ess-stat-card" style="transition-delay: 0s">
-        <div class="ess-stat-value">
-          <span class="ess-stat-prefix">+</span>
-          <span class="ess-stat-num" data-target="2000" data-suffix="">2.000</span>
+    <div class="ei-stats-grid">
+      <div class="ei-stat-item">
+        <div class="ei-stat-hover"></div>
+        <div class="ei-stat-value" data-val="2000" data-prefix="+" data-suffix="">+2000</div>
+        <div>
+          <p class="ei-stat-label">Ventas cerradas</p>
+          <p class="ei-stat-note">15 años en el mercado de Gandía</p>
         </div>
-        <div class="ess-stat-label">Ventas cerradas</div>
-        <div class="ess-stat-note">En 15 años de actividad en Gandía</div>
+      </div>
+      
+      <div class="ei-stat-item">
+        <div class="ei-stat-hover"></div>
+        <div class="ei-stat-value" data-val="45" data-prefix="" data-suffix=" días">45 días</div>
+        <div>
+          <p class="ei-stat-label">Media hasta la venta</p>
+          <p class="ei-stat-note">Desde la captación hasta escrituras</p>
+        </div>
       </div>
 
-      <!-- KPI 2: 45 días -->
-      <div class="ess-stat-card" style="transition-delay: 0.1s">
-        <div class="ess-stat-value">
-          <span class="ess-stat-num" data-target="45" data-suffix="">45</span>
-          <span class="ess-stat-suffix">días</span>
+      <div class="ei-stat-item">
+        <div class="ei-stat-hover"></div>
+        <div class="ei-stat-value" data-val="13" data-prefix="" data-suffix="M€">13M€</div>
+        <div>
+          <p class="ei-stat-label">En ventas este año</p>
+          <p class="ei-stat-note">Volumen de operaciones en 2025</p>
         </div>
-        <div class="ess-stat-label">Media de venta</div>
-        <div class="ess-stat-note">Promedio hasta escrituras firmadas</div>
       </div>
 
-      <!-- KPI 3: +400 inmobiliarias -->
-      <div class="ess-stat-card" style="transition-delay: 0.2s">
-        <div class="ess-stat-value">
-          <span class="ess-stat-prefix">+</span>
-          <span class="ess-stat-num" data-target="400" data-suffix="">400</span>
+      <div class="ei-stat-item">
+        <div class="ei-stat-hover"></div>
+        <div class="ei-stat-value" data-val="95" data-prefix="" data-suffix="%">95%</div>
+        <div>
+          <p class="ei-stat-label">Clientes satisfechos</p>
+          <p class="ei-stat-note">Según encuesta post-venta</p>
         </div>
-        <div class="ess-stat-label">Inmobiliarias colaboradoras</div>
-        <div class="ess-stat-note">Red ASICVAL · toda la Comunitat</div>
       </div>
-
-      <!-- KPI 4: 95% satisfacción -->
-      <div class="ess-stat-card" style="transition-delay: 0.3s">
-        <div class="ess-stat-value">
-          <span class="ess-stat-num" data-target="95" data-suffix="">95</span>
-          <span class="ess-stat-suffix">%</span>
-        </div>
-        <div class="ess-stat-label">Clientes satisfechos</div>
-        <div class="ess-stat-note">Según encuesta post-venta</div>
-      </div>
-
-      <!-- KPI 5: 13M€ -->
-      <div class="ess-stat-card" style="transition-delay: 0.4s">
-        <div class="ess-stat-value">
-          <span class="ess-stat-num" data-target="13" data-suffix="">13</span>
-          <span class="ess-stat-suffix">M€</span>
-        </div>
-        <div class="ess-stat-label">En ventas este año</div>
-        <div class="ess-stat-note">Volumen de operaciones 2025</div>
-      </div>
-
     </div>
-  </section>
+    
+  </div>
 </div>
 
 <script>
-(function() {
-  'use strict';
+  document.addEventListener('DOMContentLoaded', function() {
+    const formatNumber = (num) => Math.floor(num).toLocaleString('es-ES');
+    
+    const elements = document.querySelectorAll('.ei-stat-value');
+    
+    const animateValue = (el) => {
+      if (el.classList.contains('animated')) return;
+      el.classList.add('animated');
+      
+      const target = parseFloat(el.getAttribute('data-val'));
+      const prefix = el.getAttribute('data-prefix') || '';
+      const suffix = el.getAttribute('data-suffix') || '';
+      
+      const duration = 2000;
+      const start = performance.now();
+      
+      const update = (time) => {
+        const elapsed = time - start;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // easeOutQuart
+        const ease = 1 - Math.pow(1 - progress, 4);
+        
+        const current = target * ease;
+        el.textContent = prefix + formatNumber(current) + suffix;
+        
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          el.textContent = prefix + formatNumber(target) + suffix;
+        }
+      };
+      
+      requestAnimationFrame(update);
+    };
 
-  // ── Animación de contador numérico ──────────────────────────
-  function animateCounter(el) {
-    const target = parseInt(el.dataset.target, 10);
-    const duration = 1800;
-    const start = performance.now();
-    const startVal = 0;
-
-    function easeOut(t) {
-      return 1 - Math.pow(1 - t, 3);
-    }
-
-    function tick(now) {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      const current = Math.round(easeOut(progress) * target);
-
-      // Formato español: separador de miles con punto
-      el.textContent = current.toLocaleString('es-ES');
-
-      if (progress < 1) {
-        requestAnimationFrame(tick);
-      } else {
-        el.textContent = target.toLocaleString('es-ES');
-      }
-    }
-
-    requestAnimationFrame(tick);
-  }
-
-  // ── IntersectionObserver: anima cuando entra en viewport ────
-  const grid = document.getElementById('ess-stats-grid');
-  if (!grid) return;
-
-  const cards = grid.querySelectorAll('.ess-stat-card');
-  const counters = grid.querySelectorAll('.ess-stat-num');
-
-  let animated = false;
-
-  const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting && !animated) {
-        animated = true;
-
-        // Animar entrada de tarjetas
-        cards.forEach(function(card) {
-          card.classList.add('visible');
-        });
-
-        // Animar contadores
-        counters.forEach(function(counter) {
-          animateCounter(counter);
-        });
-
-        observer.disconnect();
-      }
-    });
-  }, { threshold: 0.2 });
-
-  observer.observe(grid);
-})();
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateValue(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    elements.forEach(el => observer.observe(el));
+  });
 </script>
