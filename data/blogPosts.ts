@@ -5,18 +5,18 @@ export interface BlogPost {
   id: string;
   slug: string;
   category: string;
-  categoryColor: string;   // Tailwind bg color class
-  date: string;            // ISO-8601
+  categoryColor: string;
+  date: string;
   readMinutes: number;
   title: string;
-  subtitle: string;
+  eyebrow: string;
+  intro: string;
   excerpt: string;
   author: {
     name: string;
     role: string;
-    avatar?: string;
+    license?: string;
   };
-  heroImage?: string;
   stats?: { value: string; label: string }[];
   content: BlogSection[];
   tags: string[];
@@ -28,200 +28,164 @@ export interface BlogPost {
 }
 
 export type BlogSection =
-  | { type: 'lead'; text: string }
-  | { type: 'h2'; text: string }
-  | { type: 'h3'; text: string }
   | { type: 'paragraph'; text: string }
-  | { type: 'grid'; columns: 2 | 3; items: { icon: string; title: string; desc: string }[] }
-  | { type: 'tags'; label: string; items: string[] }
-  | { type: 'quote'; text: string; author: string; role: string }
-  | { type: 'cards'; items: { title: string; desc: string }[] }
-  | { type: 'divider' };
+  | { type: 'seccion'; text: string }                               // section label (uppercase small)
+  | { type: 'mia-grid'; items: { num: string; title: string; desc: string }[] }
+  | { type: 'pack-visual'; title: string; tags: string[] }
+  | { type: 'badge360'; text: string }
+  | { type: 'servicios360'; items: { icon: string; title: string; desc: string }[] }
+  | { type: 'quote'; text: string; author: string }
+  | { type: 'team'; members: { initials: string; name: string; role: string }[] }
+  | { type: 'portales'; items: string[] }
+  | { type: 'cierre'; html: string }
+  | { type: 'tags'; items: string[] };
 
 export const blogPosts: BlogPost[] = [
   {
     id: '001',
-    slug: 'herramientas-ia-inmobiliaria-2025',
-    category: 'Proptech & IA',
+    slug: 'metodo-mia-servicio-360-essencia',
+    category: 'Método MIA',
     categoryColor: 'bg-brand-blue-500',
     date: '2025-06-03',
-    readMinutes: 7,
-    title: 'Herramientas de IA que Todo Asesor Inmobiliario Debería Usar en 2025',
-    subtitle: 'De la valoración a la captación: la IA que ya está cambiando el sector',
+    readMinutes: 6,
+    eyebrow: 'Essencia Inmobiliaria · Gandía — Método MIA · Servicio 360º',
+    title: 'Cuando la inteligencia artificial vende tu casa antes de que nadie la visite',
+    intro:
+      'En Essencia llevamos más de 15 años vendiendo propiedades en Gandía y La Safor. Lo que ha cambiado es la potencia de las herramientas. El Método MIA no es un nombre de marketing: es la forma en que hoy convertimos cada inmueble en un evento de alta visibilidad, con un equipo especializado y un servicio integral 360º que cubre cada fase de la operación.',
     excerpt:
-      'En Essencia llevamos más de 13 años vendiendo en Gandía y La Safor. Hemos captado más de 2.000 propiedades y cerrado el 95% de las ventas al precio pedido en una media de 45 días. Estas son las herramientas de inteligencia artificial que han transformado nuestra forma de trabajar.',
+      'El Método MIA —Marketing, Inteligencia Artificial y Asesoramiento— es el proceso con el que Essencia convierte cada inmueble en un evento de alta visibilidad. Más de 2.000 ventas desde 2010, 13M€ en ventas en 2025 y una media de 45 días hasta el cierre.',
     author: {
       name: 'Santi Torres',
       role: 'CEO · Essencia Inmobiliaria',
+      license: 'RAICV 0773',
     },
     stats: [
-      { value: '+2.000', label: 'Propiedades Captadas' },
-      { value: '13M€', label: 'en Ventas 2024' },
-      { value: '45 días', label: 'Media de Venta' },
-      { value: '95%', label: 'Ratio de Éxito' },
+      { value: '+2.000', label: 'ventas cerradas desde 2010' },
+      { value: '13M€', label: 'en ventas en 2025' },
+      { value: '45 días', label: 'media hasta la venta' },
+      { value: '95%', label: 'clientes satisfechos' },
     ],
     content: [
       {
-        type: 'lead',
-        text: 'En Essencia llevamos más de 13 años vendiendo en Gandía y La Safor. Hemos captado más de 2.000 propiedades y cerrado el 95% de las ventas al precio pedido en una media de 45 días. Y en los últimos dos años, la inteligencia artificial ha sido parte activa de ese proceso.',
+        type: 'paragraph',
+        text: 'El mercado inmobiliario de la costa de Gandía ha cambiado más en los últimos tres años que en la década anterior. El comprador de hoy —nacional o internacional— toma decisiones desde la pantalla. Decide si una propiedad le interesa antes de pisarla, y muchas veces antes de hablar con nadie. Lo que ve en esos primeros segundos —la calidad de las imágenes, la fluidez del tour virtual, la precisión del precio— lo es casi todo.',
       },
       {
         type: 'paragraph',
-        text: 'No lo digo para impresionar. Lo digo porque muchos compañeros del sector aún ven la IA como algo lejano, técnico, para "los de Silicon Valley". Pero la realidad es que ya hay herramientas accesibles, prácticas y rentables que cualquier asesor inmobiliario puede usar hoy mismo.',
+        text: 'Adaptarse a esa realidad no es opcional. En Essencia lo sistematizamos en el Método MIA: Marketing, Inteligencia Artificial y Asesoramiento. Tres pilares que operan de forma coordinada desde el momento en que un propietario nos encarga su venta.',
+      },
+      {
+        type: 'seccion',
+        text: 'El Método MIA: diez pasos, ninguno prescindible',
       },
       {
         type: 'paragraph',
-        text: 'Aquí te cuento las que usamos nosotros, para qué sirven y por qué deberías al menos probarlas.',
+        text: 'No listamos casas. Diseñamos ventas. El Método MIA es un proceso secuencial en el que la tecnología no sustituye al asesor sino que multiplica su impacto.',
       },
       {
-        type: 'h2',
-        text: '🧠 Herramientas de IA por categoría',
-      },
-      {
-        type: 'grid',
-        columns: 2,
+        type: 'mia-grid',
         items: [
-          {
-            icon: '📸',
-            title: 'Fotografía con IA — Styldod / BoxBrownie',
-            desc:
-              'Transforman fotos normales en imágenes de alto impacto. El buyer hace scroll rápido: si la primera foto no para el dedo, el inmueble no existe. Con estas herramientas, editas una foto en minutos: eliminas cables, mejoras la iluminación, añades cielo azul o muebles digitales. El resultado parece de fotógrafo profesional sin necesidad de serlo.',
-          },
-          {
-            icon: '🏠',
-            title: 'Home Staging Virtual — VirtualStager.com / Homestyler',
-            desc:
-              'Para pisos vacíos, el home staging virtual es un cambio de juego. Subes la foto del salón vacío y en segundos tienes una versión amueblada y decorada. Hay opciones de estilo (moderno, nórdico, mediterráneo) y puedes generar varias versiones para enseñar al comprador el potencial real del espacio. En Essencia lo usamos en prácticamente todos los inmuebles vacíos. El tiempo en mercado se reduce visiblemente.',
-          },
-          {
-            icon: '📊',
-            title: 'Análisis de mercado con Big Data — BRAINSRE / Geovista',
-            desc:
-              'Antes tardábamos horas en construir un estudio de mercado. Ahora estas plataformas nos dan en segundos: precio medio por zona y tipología, evolución de precios en los últimos 3 años, demanda real de compradores activos, comparables ajustados por m² y estado. Esto nos permite hacer valoraciones más precisas, más rápido y con datos que el vendedor puede ver y entender.',
-          },
-          {
-            icon: '✍️',
-            title: 'Marketing Inmobiliario de Alto Impacto — ChatGPT / Claude',
-            desc:
-              'Los LLMs (large language models) como ChatGPT o Claude son los más conocidos. En inmobiliaria los usamos para redactar descripciones del inmueble con gancho, crear copys para anuncios en portales y redes, preparar emails de captación, generar respuestas rápidas a leads, traducir descripciones al inglés, francés o alemán. No reemplazan el juicio del asesor, pero multiplican la velocidad a la que se producen textos de calidad.',
-          },
-          {
-            icon: '🎬',
-            title: 'Vídeo IA — Sora (OpenAI) / Luma AI / Runway',
-            desc:
-              'Sora (de OpenAI) y Luma AI permiten generar o animar vídeos a partir de imágenes estáticas. Esto está evolucionando muy rápido. Hoy ya podemos crear clips de un inmueble sin necesidad de grabar con dron o cámara. Runway, por ejemplo, permite añadir movimiento a imágenes fijas y crear transiciones cinematográficas. Aún no sustituyen a la producción profesional, pero para redes sociales y contenido rápido, son brutales.',
-          },
-          {
-            icon: '🏗️',
-            title: 'Reformas y renders — Planner5D / RoomGPT / AI Render',
-            desc:
-              'Muchos compradores quieren saber cómo quedaría el piso reformado. Antes eso implicaba contratar a un arquitecto o interiorista. Ahora, con estas herramientas, el propio asesor puede generar renders básicos de cómo podría verse la cocina con la reforma, el baño renovado o el salón redistribuido. Esto acelera la decisión de compra y da confianza al comprador indeciso.',
-          },
+          { num: '01', title: 'Plan de Comunicación', desc: 'Estrategia personalizada con el vendedor antes de publicar nada' },
+          { num: '02', title: 'Marketing de Alto Impacto', desc: 'Más de 4.000€ mensuales en inversión publicitaria activa' },
+          { num: '03', title: 'Inteligencia Artificial', desc: 'IA aplicada a valoración, renders, descripciones y segmentación de compradores' },
+          { num: '04', title: 'Red de +450 Inmobiliarias', desc: 'MLS Gandía (25 agencias) y MLS ASICVAL (450 agencias en la C. Valenciana)' },
+          { num: '05', title: 'Gestión Integral de Compra', desc: 'Coordinación de todo el proceso: visitas, ofertas, negociación y firma' },
+          { num: '06', title: 'Videos Profesionales con Dron', desc: 'Grabación aérea 4K que contextualiza el inmueble en su entorno y costa' },
+          { num: '07', title: 'Pack Visual Pro', desc: 'Fotografía editorial, planos 3D, tour virtual 360º y renders con IA' },
+          { num: '08', title: 'Portales Nacionales e Internacionales', desc: 'Idealista, Fotocasa, Habitaclia, Kyero, Pisos.com y portales internacionales' },
+          { num: '09', title: 'Pack Essencia Legal · Fiscal · Tasación', desc: 'Servicio jurídico, fiscal y de tasación integrado en cada operación' },
+          { num: '10', title: 'Acompañamiento Firma y Post-Venta', desc: 'Presencia hasta escrituras y soporte posterior al cierre' },
         ],
       },
       {
-        type: 'h2',
-        text: '🏷️ Categorizadas también por función',
+        type: 'seccion',
+        text: 'Pack Visual Pro: tu propiedad como un evento mediático',
       },
       {
-        type: 'tags',
-        label: 'Fotos y visuales',
-        items: ['Styldod', 'BoxBrownie', 'Canva IA', 'Adobe Firefly'],
+        type: 'paragraph',
+        text: 'La primera visita ya no ocurre en el inmueble. Ocurre en el móvil, a las once de la noche, mientras el comprador compara opciones en Idealista. El Pack Visual Pro de Essencia convierte cada inmueble en un «portal digital»: una experiencia inmersiva que el comprador recorre y explora antes de decidir si merece una visita presencial, reduciendo drásticamente el tiempo hasta la primera oferta seria.',
       },
       {
-        type: 'tags',
-        label: 'Textos y copys',
-        items: ['ChatGPT', 'Claude', 'Gemini', 'Copy.ai'],
+        type: 'pack-visual',
+        title: 'Pack Visual Pro — contenidos incluidos',
+        tags: [
+          'Fotos y vídeo con dron',
+          'Render con IA',
+          'Fotografía editorial',
+          'Vídeo profesional 4K',
+          'Planos en 3D',
+          'Tour Virtual 360º',
+          'Vídeo vertical estilo cine',
+        ],
       },
       {
-        type: 'tags',
-        label: 'Home Staging Virtual',
-        items: ['VirtualStager.com', 'Homestyler', 'RoomGPT'],
+        type: 'seccion',
+        text: 'Servicio integral 360º: fácil, rápido y seguro',
       },
       {
-        type: 'tags',
-        label: 'Análisis de mercado',
-        items: ['BrainSRE', 'GeoVista', 'Residelia', 'Idealista Data'],
+        type: 'paragraph',
+        text: 'Vender o comprar una propiedad implica decisiones legales, fiscales y financieras que van mucho más allá de encontrar comprador o vendedor. Essencia ha construido un ecosistema de servicios especializados para que el cliente nunca tenga que salir a buscar lo que necesita: todo está bajo el mismo techo, coordinado por el mismo equipo.',
       },
       {
-        type: 'tags',
-        label: 'Vídeo IA',
-        items: ['Sora', 'Luma AI', 'Runway', 'Synthesia'],
+        type: 'badge360',
+        text: 'Servicio 360º — todo incluido',
       },
       {
-        type: 'h2',
-        text: '🛎️ Servicios que ofrecemos en Essencia',
-      },
-      {
-        type: 'cards',
+        type: 'servicios360',
         items: [
-          {
-            title: 'Servicio Zinc',
-            desc: 'Valoración online en 24h basada en datos de mercado real de la zona.',
-          },
-          {
-            title: 'Servicio Plata',
-            desc: 'Plan de captación + fotografía profesional + publicación en portales.',
-          },
-          {
-            title: 'Ser su Staging',
-            desc: 'Home staging virtual y físico con renders incluidos para el anuncio.',
-          },
-          {
-            title: 'Observación',
-            desc: 'Análisis de mercado y posicionamiento competitivo de tu propiedad.',
-          },
-          {
-            title: 'Visuales PRO',
-            desc: 'Pack completo: fotografía editorial, vídeo 4K, dron y tour virtual 360°.',
-          },
-          {
-            title: 'Lanzamiento mágico',
-            desc: 'Estrategia de lanzamiento en simultáneo en 120+ portales nacionales e internacionales.',
-          },
+          { icon: '⚖️', title: 'Servicio Jurídico', desc: 'Asesoramiento legal en cada fase: contratos, arras, escrituras y resolución de incidencias' },
+          { icon: '🧾', title: 'Servicio Fiscal', desc: 'Optimización tributaria de la operación: plusvalías, IRPF, IBI y costes asociados a la transmisión' },
+          { icon: '🏠', title: 'Home Staging', desc: 'Preparación profesional del inmueble para maximizar el impacto visual y acortar el tiempo de venta' },
+          { icon: '💰', title: 'Financiación', desc: 'Gestión hipotecaria propia con acceso a las mejores condiciones del mercado para el comprador' },
+          { icon: '📋', title: 'Tasaciones', desc: 'Valoraciones oficiales y de mercado para fijar el precio correcto desde el primer día' },
+          { icon: '🏗️', title: 'Gestión Integral', desc: 'Coordinación de todos los servicios bajo un único interlocutor, de principio a fin' },
         ],
       },
       {
         type: 'quote',
-        text: '"Que una empresa tenga MAL equipo, es responsabilidad del propietario. El fondo en los últimos 5 años de la empresa es que el cliente siempre sale beneficiado desde que lo conocemos hasta los 12 meses."',
-        author: 'SANTI TORRES',
-        role: 'CEO · ESSENCIA INMOBILIARIA · +34 647 803 355',
+        text: '"Que una operación sea fácil, rápida y segura no es casualidad. Es el resultado de tener bajo el mismo techo todo lo que el cliente necesita, con un equipo que conoce este mercado desde hace más de 15 años."',
+        author: 'Santi Torres — CEO, Essencia Inmobiliaria · RAICV 0773',
       },
       {
-        type: 'h2',
-        text: '👥 El equipo detrás de los resultados',
-      },
-      {
-        type: 'paragraph',
-        text: 'Detrás de cada venta hay un equipo de profesionales especializados que combina tecnología con trato humano. Nuestros asesores no son comerciales genéricos: son expertos en zonas concretas, conocen el mercado local y hablan el idioma de sus compradores, a veces literalmente.',
-      },
-      {
-        type: 'h2',
-        text: '📍 ¿Para qué zonas trabajamos?',
+        type: 'seccion',
+        text: 'El equipo: cinco especialistas, un solo objetivo',
       },
       {
         type: 'paragraph',
-        text: 'Estamos especializados en Gandía, Oliva, Dénia, Xeraco, Bellreguard y toda la comarca de La Safor. Si tienes una propiedad en esta zona y quieres saber cuánto vale realmente —con datos de mercado actualizados, no estimaciones— contacta con nosotros.',
+        text: 'Detrás del Método MIA y del servicio 360º hay personas. Cinco profesionales con conocimiento profundo del mercado de Gandía y La Safor, que saben qué se ha vendido, a qué precio real y a qué tipo de comprador. Ese conocimiento acumulado —junto con las herramientas tecnológicas más avanzadas del sector— es lo que explica los 13 millones de euros en ventas en 2025 y una media de cierre de 45 días.',
       },
       {
-        type: 'h2',
-        text: '¿Quieres saber cómo aplicamos estas herramientas a tu propiedad?',
+        type: 'team',
+        members: [
+          { initials: 'ST', name: 'Santi Torres', role: 'CEO · Asesor de inversiones' },
+          { initials: 'CG', name: 'Carolina González', role: 'Asesora · Marketing y comunicación' },
+          { initials: 'JM', name: 'Juanma Menacho', role: 'Asesor inmobiliario' },
+          { initials: 'JLP', name: 'Jose Luis Puente', role: 'Asesor inmobiliario' },
+          { initials: 'OP', name: 'Oscar Puente', role: 'Asesor inmobiliario' },
+        ],
+      },
+      {
+        type: 'seccion',
+        text: 'Distribución: presencia donde está el comprador',
       },
       {
         type: 'paragraph',
-        text: 'En Essencia hacemos una valoración gratuita y sin compromiso usando todas estas herramientas. Te mostramos en tiempo real los datos de mercado, te explicamos el plan de marketing que aplicaríamos y te damos una estimación de precio y tiempo de venta realista.',
+        text: 'El Método MIA contempla distribución simultánea en los principales portales nacionales e internacionales, activación en redes sociales y acceso a la red de compradores activos de más de 450 agencias colaboradoras. El comprador internacional —cada vez más relevante en la costa de Gandía— accede a través de portales especializados como Kyero, con audiencias directas de Reino Unido, Alemania y los países nórdicos.',
+      },
+      {
+        type: 'portales',
+        items: ['Idealista', 'Fotocasa', 'Habitaclia', 'Kyero', 'Pisos.com', 'Facilitea', 'RRSS', 'MLS Gandía', 'MLS ASICVAL'],
+      },
+      {
+        type: 'cierre',
+        html: '¿Quieres saber a qué precio real se vende tu propiedad hoy en Gandía o La Safor? Solicita tu <a href="/valuation">valoración gratuita online</a> o habla directamente con el equipo: <strong>647 803 355</strong> · Sant Vicent Ferrer 24, Gandía.',
+      },
+      {
+        type: 'tags',
+        items: ['Método MIA', 'Inteligencia Artificial', 'Servicio 360º', 'Pack Visual Pro', 'Home Staging', 'Gandía', 'La Safor', 'Desde 2010'],
       },
     ],
-    tags: [
-      'Inteligencia Artificial',
-      'Proptech',
-      'Herramientas IA',
-      'Marketing Inmobiliario',
-      'Home Staging Virtual',
-      'Big Data',
-      'Asesores Inmobiliarios',
-      'Gandía',
-    ],
+    tags: ['Método MIA', 'Inteligencia Artificial', 'Servicio 360º', 'Pack Visual Pro', 'Home Staging', 'Gandía', 'La Safor'],
     cta: {
       text: 'Solicita tu valoración gratuita',
       href: '/valuation',

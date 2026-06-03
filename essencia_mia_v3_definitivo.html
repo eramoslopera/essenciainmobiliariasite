@@ -1,0 +1,207 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+.w{max-width:680px;font-family:'Source Serif 4',serif;color:var(--color-text-primary)}
+.eyebrow{font-family:'Syne',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-text-secondary);margin-bottom:18px}
+h1{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:700;line-height:1.1;margin-bottom:22px;letter-spacing:-0.02em}
+.intro{font-size:18px;font-style:italic;line-height:1.75;color:var(--color-text-secondary);margin-bottom:30px;padding-bottom:26px;border-bottom:0.5px solid var(--color-border-tertiary)}
+p{font-size:15.5px;line-height:1.85;margin-bottom:18px;font-weight:300}
+strong{font-weight:600}
+.seccion{font-family:'Syne',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-text-secondary);margin:38px 0 16px;padding-top:26px;border-top:0.5px solid var(--color-border-tertiary)}
+.cita{margin:32px 0;padding:22px 26px;background:var(--color-background-secondary);border-left:3px solid var(--color-border-primary);border-radius:0 var(--border-radius-md) var(--border-radius-md) 0}
+.cita p{font-family:'Source Serif 4',serif;font-size:19px;font-style:italic;line-height:1.65;margin-bottom:10px;font-weight:300}
+.cita-autor{font-family:'Syne',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.09em;text-transform:uppercase;color:var(--color-text-secondary)}
+.metricas{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:28px 0}
+.m{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:16px 10px;text-align:center}
+.m-num{font-family:'Syne',sans-serif;font-size:26px;font-weight:700;display:block;line-height:1;letter-spacing:-0.02em}
+.m-sub{font-family:'Syne',sans-serif;font-size:10px;font-weight:400;color:var(--color-text-secondary);display:block;margin-top:6px;line-height:1.4}
+.mia-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--color-border-tertiary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden;margin:24px 0}
+.mia-item{background:var(--color-background-primary);padding:14px 16px;display:flex;align-items:flex-start;gap:12px}
+.mia-num{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:var(--color-text-secondary);min-width:20px;padding-top:1px}
+.mia-content p{font-family:'Syne',sans-serif;font-size:13px;font-weight:600;margin-bottom:2px}
+.mia-content span{font-size:12.5px;color:var(--color-text-secondary);font-weight:300;line-height:1.4;display:block}
+.pack-visual{border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-lg);padding:20px 22px;margin:24px 0}
+.pack-titulo{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.pack-titulo i{font-size:18px;color:var(--color-text-secondary)}
+.pack-items{display:flex;flex-wrap:wrap;gap:8px}
+.pack-tag{font-family:'Syne',sans-serif;font-size:11px;font-weight:600;padding:5px 12px;border-radius:99px;background:var(--color-background-secondary);color:var(--color-text-primary);letter-spacing:0.03em}
+.servicios360{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:24px 0}
+.sv{background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:16px;display:flex;flex-direction:column;gap:8px}
+.sv i{font-size:22px;color:var(--color-text-secondary)}
+.sv-titulo{font-family:'Syne',sans-serif;font-size:13px;font-weight:700}
+.sv-desc{font-family:'Source Serif 4',serif;font-size:12.5px;color:var(--color-text-secondary);line-height:1.5;font-weight:300}
+.equipo{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:24px 0}
+.miembro{background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:14px 10px;text-align:center}
+.avatar{width:44px;height:44px;border-radius:50%;background:var(--color-background-primary);border:0.5px solid var(--color-border-secondary);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--color-text-secondary)}
+.miembro-nombre{font-family:'Syne',sans-serif;font-size:11.5px;font-weight:700;line-height:1.3;margin-bottom:3px}
+.miembro-rol{font-family:'Syne',sans-serif;font-size:10px;color:var(--color-text-secondary);line-height:1.3}
+.portales{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+.portal{font-family:'Syne',sans-serif;font-size:11px;font-weight:600;padding:5px 12px;border-radius:99px;border:0.5px solid var(--color-border-secondary);color:var(--color-text-secondary)}
+.badge360{display:inline-flex;align-items:center;gap:6px;font-family:'Syne',sans-serif;font-size:12px;font-weight:700;padding:8px 16px;border-radius:99px;border:0.5px solid var(--color-border-primary);margin-bottom:20px;letter-spacing:0.04em}
+.cierre{margin-top:36px;padding:20px 22px;background:var(--color-background-secondary);border-radius:var(--border-radius-lg);font-size:14px;color:var(--color-text-secondary);line-height:1.75;font-family:'Syne',sans-serif}
+.cierre a{color:var(--color-text-primary);font-weight:600}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.tag{font-family:'Syne',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;padding:5px 12px;border-radius:99px;border:0.5px solid var(--color-border-secondary);color:var(--color-text-secondary)}
+</style>
+
+<div class="w" style="padding:2rem 0">
+<h2 class="sr-only">Artículo sobre el Método MIA y el servicio 360º de Essencia Inmobiliaria en Gandía</h2>
+
+<p class="eyebrow">Essencia Inmobiliaria · Gandía — Método MIA · Servicio 360º</p>
+
+<h1>Cuando la inteligencia artificial vende tu casa antes de que nadie la visite</h1>
+
+<p class="intro">En Essencia llevamos más de 15 años vendiendo propiedades en Gandía y La Safor. Lo que ha cambiado es la potencia de las herramientas. El Método MIA no es un nombre de marketing: es la forma en que hoy convertimos cada inmueble en un evento de alta visibilidad, con un equipo especializado y un servicio integral 360º que cubre cada fase de la operación.</p>
+
+<div class="metricas">
+  <div class="m"><span class="m-num">+2.000</span><span class="m-sub">ventas cerradas desde 2010</span></div>
+  <div class="m"><span class="m-num">13M€</span><span class="m-sub">en ventas en 2025</span></div>
+  <div class="m"><span class="m-num">45 días</span><span class="m-sub">media hasta la venta</span></div>
+  <div class="m"><span class="m-num">95%</span><span class="m-sub">clientes satisfechos</span></div>
+</div>
+
+<p>El mercado inmobiliario de la costa de Gandía ha cambiado más en los últimos tres años que en la década anterior. El comprador de hoy —nacional o internacional— toma decisiones desde la pantalla. Decide si una propiedad le interesa antes de pisarla, y muchas veces antes de hablar con nadie. Lo que ve en esos primeros segundos —la calidad de las imágenes, la fluidez del tour virtual, la precisión del precio— lo es casi todo.</p>
+
+<p>Adaptarse a esa realidad no es opcional. En Essencia lo sistematizamos en el <strong>Método MIA</strong>: Marketing, Inteligencia Artificial y Asesoramiento. Tres pilares que operan de forma coordinada desde el momento en que un propietario nos encarga su venta.</p>
+
+<p class="seccion">El Método MIA: diez pasos, ninguno prescindible</p>
+
+<p>No listamos casas. Diseñamos ventas. El Método MIA es un proceso secuencial en el que la tecnología no sustituye al asesor sino que multiplica su impacto.</p>
+
+<div class="mia-grid">
+  <div class="mia-item"><span class="mia-num">01</span><div class="mia-content"><p>Plan de Comunicación</p><span>Estrategia personalizada con el vendedor antes de publicar nada</span></div></div>
+  <div class="mia-item"><span class="mia-num">02</span><div class="mia-content"><p>Marketing de Alto Impacto</p><span>Más de 4.000€ mensuales en inversión publicitaria activa</span></div></div>
+  <div class="mia-item"><span class="mia-num">03</span><div class="mia-content"><p>Inteligencia Artificial</p><span>IA aplicada a valoración, renders, descripciones y segmentación de compradores</span></div></div>
+  <div class="mia-item"><span class="mia-num">04</span><div class="mia-content"><p>Red de +450 Inmobiliarias</p><span>MLS Gandía (25 agencias) y MLS ASICVAL (450 agencias en la C. Valenciana)</span></div></div>
+  <div class="mia-item"><span class="mia-num">05</span><div class="mia-content"><p>Gestión Integral de Compra</p><span>Coordinación de todo el proceso: visitas, ofertas, negociación y firma</span></div></div>
+  <div class="mia-item"><span class="mia-num">06</span><div class="mia-content"><p>Videos Profesionales con Dron</p><span>Grabación aérea 4K que contextualiza el inmueble en su entorno y costa</span></div></div>
+  <div class="mia-item"><span class="mia-num">07</span><div class="mia-content"><p>Pack Visual Pro</p><span>Fotografía editorial, planos 3D, tour virtual 360º y renders con IA</span></div></div>
+  <div class="mia-item"><span class="mia-num">08</span><div class="mia-content"><p>Portales Nacionales e Internacionales</p><span>Idealista, Fotocasa, Habitaclia, Kyero, Pisos.com y portales internacionales</span></div></div>
+  <div class="mia-item"><span class="mia-num">09</span><div class="mia-content"><p>Pack Essencia Legal · Fiscal · Tasación</p><span>Servicio jurídico, fiscal y de tasación integrado en cada operación</span></div></div>
+  <div class="mia-item"><span class="mia-num">10</span><div class="mia-content"><p>Acompañamiento Firma y Post-Venta</p><span>Presencia hasta escrituras y soporte posterior al cierre</span></div></div>
+</div>
+
+<p class="seccion">Pack Visual Pro: tu propiedad como un evento mediático</p>
+
+<p>La primera visita ya no ocurre en el inmueble. Ocurre en el móvil, a las once de la noche, mientras el comprador compara opciones en Idealista. El <strong>Pack Visual Pro</strong> de Essencia convierte cada inmueble en un «portal digital»: una experiencia inmersiva que el comprador recorre y explora antes de decidir si merece una visita presencial, reduciendo drásticamente el tiempo hasta la primera oferta seria.</p>
+
+<div class="pack-visual">
+  <p class="pack-titulo"><i class="ti ti-video" aria-hidden="true"></i> Pack Visual Pro — contenidos incluidos</p>
+  <div class="pack-items">
+    <span class="pack-tag">Fotos y vídeo con dron</span>
+    <span class="pack-tag">Render con IA</span>
+    <span class="pack-tag">Fotografía editorial</span>
+    <span class="pack-tag">Vídeo profesional 4K</span>
+    <span class="pack-tag">Planos en 3D</span>
+    <span class="pack-tag">Tour Virtual 360º</span>
+    <span class="pack-tag">Vídeo vertical estilo cine</span>
+  </div>
+</div>
+
+<p class="seccion">Servicio integral 360º: fácil, rápido y seguro</p>
+
+<p>Vender o comprar una propiedad implica decisiones legales, fiscales y financieras que van mucho más allá de encontrar comprador o vendedor. Essencia ha construido un ecosistema de servicios especializados para que el cliente nunca tenga que salir a buscar lo que necesita: todo está bajo el mismo techo, coordinado por el mismo equipo.</p>
+
+<div class="badge360"><i class="ti ti-rotate-360" aria-hidden="true"></i> Servicio 360º — todo incluido</div>
+
+<div class="servicios360">
+  <div class="sv">
+    <i class="ti ti-scale" aria-hidden="true"></i>
+    <span class="sv-titulo">Servicio Jurídico</span>
+    <span class="sv-desc">Asesoramiento legal en cada fase: contratos, arras, escrituras y resolución de incidencias</span>
+  </div>
+  <div class="sv">
+    <i class="ti ti-receipt-tax" aria-hidden="true"></i>
+    <span class="sv-titulo">Servicio Fiscal</span>
+    <span class="sv-desc">Optimización tributaria de la operación: plusvalías, IRPF, IBI y costes asociados a la transmisión</span>
+  </div>
+  <div class="sv">
+    <i class="ti ti-home-heart" aria-hidden="true"></i>
+    <span class="sv-titulo">Home Staging</span>
+    <span class="sv-desc">Preparación profesional del inmueble para maximizar el impacto visual y acortar el tiempo de venta</span>
+  </div>
+  <div class="sv">
+    <i class="ti ti-cash" aria-hidden="true"></i>
+    <span class="sv-titulo">Financiación</span>
+    <span class="sv-desc">Gestión hipotecaria propia con acceso a las mejores condiciones del mercado para el comprador</span>
+  </div>
+  <div class="sv">
+    <i class="ti ti-file-certificate" aria-hidden="true"></i>
+    <span class="sv-titulo">Tasaciones</span>
+    <span class="sv-desc">Valoraciones oficiales y de mercado para fijar el precio correcto desde el primer día</span>
+  </div>
+  <div class="sv">
+    <i class="ti ti-building-store" aria-hidden="true"></i>
+    <span class="sv-titulo">Gestión Integral</span>
+    <span class="sv-desc">Coordinación de todos los servicios bajo un único interlocutor, de principio a fin</span>
+  </div>
+</div>
+
+<div class="cita">
+  <p>"Que una operación sea fácil, rápida y segura no es casualidad. Es el resultado de tener bajo el mismo techo todo lo que el cliente necesita, con un equipo que conoce este mercado desde hace más de 15 años."</p>
+  <span class="cita-autor">Santi Torres — CEO, Essencia Inmobiliaria · RAICV 0773</span>
+</div>
+
+<p class="seccion">El equipo: cinco especialistas, un solo objetivo</p>
+
+<p>Detrás del Método MIA y del servicio 360º hay personas. Cinco profesionales con conocimiento profundo del mercado de Gandía y La Safor, que saben qué se ha vendido, a qué precio real y a qué tipo de comprador. Ese conocimiento acumulado —junto con las herramientas tecnológicas más avanzadas del sector— es lo que explica los <strong>13 millones de euros en ventas en 2025</strong> y una media de cierre de <strong>45 días</strong>.</p>
+
+<div class="equipo">
+  <div class="miembro">
+    <div class="avatar">ST</div>
+    <p class="miembro-nombre">Santi Torres</p>
+    <p class="miembro-rol">CEO · Asesor de inversiones</p>
+  </div>
+  <div class="miembro">
+    <div class="avatar">CG</div>
+    <p class="miembro-nombre">Carolina González</p>
+    <p class="miembro-rol">Asesora · Marketing y comunicación</p>
+  </div>
+  <div class="miembro">
+    <div class="avatar">JM</div>
+    <p class="miembro-nombre">Juanma Menacho</p>
+    <p class="miembro-rol">Asesor inmobiliario</p>
+  </div>
+  <div class="miembro">
+    <div class="avatar">JLP</div>
+    <p class="miembro-nombre">Jose Luis Puente</p>
+    <p class="miembro-rol">Asesor inmobiliario</p>
+  </div>
+  <div class="miembro">
+    <div class="avatar">OP</div>
+    <p class="miembro-nombre">Oscar Puente</p>
+    <p class="miembro-rol">Asesor inmobiliario</p>
+  </div>
+</div>
+
+<p class="seccion">Distribución: presencia donde está el comprador</p>
+
+<p>El Método MIA contempla distribución simultánea en los principales portales nacionales e internacionales, activación en redes sociales y acceso a la red de compradores activos de más de 450 agencias colaboradoras. El comprador internacional —cada vez más relevante en la costa de Gandía— accede a través de portales especializados como Kyero, con audiencias directas de Reino Unido, Alemania y los países nórdicos.</p>
+
+<div class="portales">
+  <span class="portal">Idealista</span>
+  <span class="portal">Fotocasa</span>
+  <span class="portal">Habitaclia</span>
+  <span class="portal">Kyero</span>
+  <span class="portal">Pisos.com</span>
+  <span class="portal">Facilitea</span>
+  <span class="portal">RRSS</span>
+  <span class="portal">MLS Gandía</span>
+  <span class="portal">MLS ASICVAL</span>
+</div>
+
+<div class="cierre">
+  ¿Quieres saber a qué precio real se vende tu propiedad hoy en Gandía o La Safor? Solicita tu <a href="https://essenciainmobiliaria.com/valoracion-online">valoración gratuita online</a> o habla directamente con el equipo: <strong>647 803 355</strong> · Sant Vicent Ferrer 24, Gandía.
+</div>
+
+<div class="tags">
+  <span class="tag">Método MIA</span>
+  <span class="tag">Inteligencia Artificial</span>
+  <span class="tag">Servicio 360º</span>
+  <span class="tag">Pack Visual Pro</span>
+  <span class="tag">Home Staging</span>
+  <span class="tag">Gandía</span>
+  <span class="tag">La Safor</span>
+  <span class="tag">Desde 2010</span>
+</div>
+</div>

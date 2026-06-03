@@ -5,134 +5,217 @@ import { Helmet } from 'react-helmet-async';
 import SEOHead from '../components/SEOHead';
 import { blogPosts, BlogSection } from '../data/blogPosts';
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
-};
+/* ── Animation helper ───────────────────────────────────────── */
+const FadeIn: React.FC<{ children: React.ReactNode; delay?: number }> = ({ children, delay = 0 }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 16 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: '-50px' }}
+    transition={{ duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] }}
+  >
+    {children}
+  </motion.div>
+);
 
-/* ── Section renderer ───────────────────────────────────────── */
-const RenderSection: React.FC<{ section: BlogSection; index: number }> = ({ section, index }) => {
-  const delay = Math.min(index * 0.05, 0.4);
-  const wrap = (children: React.ReactNode) => (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] }}
-    >
-      {children}
-    </motion.div>
-  );
+/* ── Section Renderer ───────────────────────────────────────── */
+const RenderSection: React.FC<{ section: BlogSection; idx: number }> = ({ section, idx }) => {
+  const delay = Math.min(idx * 0.04, 0.3);
 
-  if (section.type === 'lead') {
-    return wrap(
-      <p className="text-xl font-semibold leading-relaxed text-editorial-black border-l-4 border-brand-blue-500 pl-5 py-1">
-        {section.text}
-      </p>
-    );
-  }
-
-  if (section.type === 'h2') {
-    return wrap(
-      <h2 className="text-2xl md:text-3xl font-black text-editorial-black tracking-tight mt-4">
-        {section.text}
-      </h2>
-    );
-  }
-
-  if (section.type === 'h3') {
-    return wrap(
-      <h3 className="text-xl font-black text-editorial-black tracking-tight">{section.text}</h3>
-    );
-  }
-
+  /* PARAGRAPH */
   if (section.type === 'paragraph') {
-    return wrap(
-      <p className="text-gray-600 leading-relaxed text-[17px]">{section.text}</p>
-    );
-  }
-
-  if (section.type === 'divider') {
-    return <hr className="border-gray-100 my-2" />;
-  }
-
-  if (section.type === 'grid') {
-    const cols =
-      section.columns === 3
-        ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
-        : 'grid-cols-1 md:grid-cols-2';
-    return wrap(
-      <div className={`grid ${cols} gap-5`}>
-        {section.items.map((item, i) => (
-          <div
-            key={i}
-            className="bg-gray-50 border border-gray-100 rounded-2xl p-6 flex flex-col gap-3 hover:border-brand-blue-200 hover:shadow-sm transition-all duration-200"
-          >
-            <span className="text-2xl" role="img" aria-hidden="true">
-              {item.icon}
-            </span>
-            <h4 className="text-sm font-black text-editorial-black leading-tight">{item.title}</h4>
-            <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
-          </div>
-        ))}
-      </div>
-    );
-  }
-
-  if (section.type === 'tags') {
-    return wrap(
-      <div className="flex flex-wrap items-center gap-2">
-        <span className="text-xs font-black uppercase tracking-widest text-gray-400 mr-2">
-          {section.label}:
-        </span>
-        {section.items.map((tag) => (
-          <span
-            key={tag}
-            className="text-[10px] font-bold uppercase tracking-wider rounded-full px-3 py-1 bg-brand-blue-50 text-brand-blue-700 border border-brand-blue-100"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-    );
-  }
-
-  if (section.type === 'quote') {
-    return wrap(
-      <blockquote className="relative bg-editorial-black rounded-2xl p-8 md:p-10 overflow-hidden">
-        <div
-          className="absolute top-0 left-0 w-1 h-full bg-brand-blue-500 rounded-l-2xl"
-          aria-hidden="true"
-        />
-        <p className="text-white/90 text-lg md:text-xl font-medium leading-relaxed italic mb-6">
+    return (
+      <FadeIn delay={delay}>
+        <p className="text-[15.5px] leading-[1.85] text-gray-600 font-light">
           {section.text}
         </p>
-        <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-full bg-brand-blue-500 flex items-center justify-center flex-shrink-0">
-            <span className="text-white text-sm font-black">{section.author.charAt(0)}</span>
-          </div>
-          <div>
-            <p className="text-white text-sm font-black leading-none mb-0.5">{section.author}</p>
-            <p className="text-gray-500 text-xs">{section.role}</p>
-          </div>
-        </div>
-      </blockquote>
+      </FadeIn>
     );
   }
 
-  if (section.type === 'cards') {
-    return wrap(
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {section.items.map((card, i) => (
-          <div
-            key={i}
-            className="border border-gray-100 rounded-xl p-5 flex flex-col gap-2 hover:border-brand-blue-200 hover:shadow-sm transition-all duration-200"
-          >
-            <h4 className="text-sm font-black text-editorial-black">{card.title}</h4>
-            <p className="text-gray-500 text-xs leading-relaxed">{card.desc}</p>
+  /* SECTION LABEL */
+  if (section.type === 'seccion') {
+    return (
+      <FadeIn delay={delay}>
+        <p className="text-[10.5px] font-semibold tracking-[0.14em] uppercase text-gray-400 mt-10 mb-4 pt-7 border-t border-gray-100">
+          {section.text}
+        </p>
+      </FadeIn>
+    );
+  }
+
+  /* MIA GRID — 2-col numbered steps */
+  if (section.type === 'mia-grid') {
+    return (
+      <FadeIn delay={delay}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-gray-100 border border-gray-100 rounded-2xl overflow-hidden my-6">
+          {section.items.map((item) => (
+            <div
+              key={item.num}
+              className="bg-white px-4 py-4 flex items-start gap-3 hover:bg-gray-50 transition-colors"
+            >
+              <span className="text-[11px] font-bold text-gray-400 min-w-[22px] pt-0.5 font-mono">
+                {item.num}
+              </span>
+              <div>
+                <p className="text-[13px] font-semibold text-editorial-black leading-snug mb-1">
+                  {item.title}
+                </p>
+                <span className="text-[12.5px] text-gray-500 font-light leading-[1.5]">
+                  {item.desc}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </FadeIn>
+    );
+  }
+
+  /* PACK VISUAL — bordered box with pill tags */
+  if (section.type === 'pack-visual') {
+    return (
+      <FadeIn delay={delay}>
+        <div className="border border-gray-200 rounded-2xl p-5 my-6">
+          <p className="text-[14px] font-bold text-editorial-black mb-4 flex items-center gap-2">
+            <span className="text-lg" aria-hidden="true">🎬</span>
+            {section.title}
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {section.tags.map((tag) => (
+              <span
+                key={tag}
+                className="text-[11px] font-semibold px-3 py-1.5 rounded-full bg-gray-100 text-editorial-black tracking-wide"
+              >
+                {tag}
+              </span>
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
+      </FadeIn>
+    );
+  }
+
+  /* BADGE 360 */
+  if (section.type === 'badge360') {
+    return (
+      <FadeIn delay={delay}>
+        <div className="my-5">
+          <span className="inline-flex items-center gap-2 text-[12px] font-bold tracking-[0.04em] px-4 py-2 rounded-full border border-brand-blue-400 text-brand-blue-600">
+            <span aria-hidden="true">🔄</span>
+            {section.text}
+          </span>
+        </div>
+      </FadeIn>
+    );
+  }
+
+  /* SERVICIOS 360 — 3-col cards */
+  if (section.type === 'servicios360') {
+    return (
+      <FadeIn delay={delay}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 my-6">
+          {section.items.map((item) => (
+            <div
+              key={item.title}
+              className="bg-gray-50 rounded-2xl p-4 flex flex-col gap-2 hover:bg-gray-100 transition-colors"
+            >
+              <span className="text-[22px]" role="img" aria-hidden="true">{item.icon}</span>
+              <span className="text-[13px] font-bold text-editorial-black leading-snug">
+                {item.title}
+              </span>
+              <span className="text-[12.5px] text-gray-500 font-light leading-[1.5]">
+                {item.desc}
+              </span>
+            </div>
+          ))}
+        </div>
+      </FadeIn>
+    );
+  }
+
+  /* QUOTE */
+  if (section.type === 'quote') {
+    return (
+      <FadeIn delay={delay}>
+        <blockquote className="my-8 px-6 py-5 bg-gray-50 border-l-[3px] border-brand-blue-500 rounded-r-2xl">
+          <p className="text-[19px] font-light italic leading-[1.65] text-editorial-black mb-3">
+            {section.text}
+          </p>
+          <span className="text-[11px] font-semibold tracking-[0.09em] uppercase text-gray-400">
+            {section.author}
+          </span>
+        </blockquote>
+      </FadeIn>
+    );
+  }
+
+  /* TEAM — 5-col avatars */
+  if (section.type === 'team') {
+    return (
+      <FadeIn delay={delay}>
+        <div className="grid grid-cols-3 sm:grid-cols-5 gap-3 my-6">
+          {section.members.map((m) => (
+            <div
+              key={m.name}
+              className="bg-gray-50 rounded-2xl py-4 px-2 flex flex-col items-center gap-2 text-center"
+            >
+              <div className="w-11 h-11 rounded-full bg-white border border-gray-200 flex items-center justify-center text-[13px] font-bold text-gray-500 shadow-sm">
+                {m.initials}
+              </div>
+              <p className="text-[11.5px] font-bold text-editorial-black leading-tight">{m.name}</p>
+              <p className="text-[10px] text-gray-400 leading-tight">{m.role}</p>
+            </div>
+          ))}
+        </div>
+      </FadeIn>
+    );
+  }
+
+  /* PORTALES */
+  if (section.type === 'portales') {
+    return (
+      <FadeIn delay={delay}>
+        <div className="flex flex-wrap gap-2 my-4">
+          {section.items.map((p) => (
+            <span
+              key={p}
+              className="text-[11px] font-semibold px-3 py-1.5 rounded-full border border-gray-200 text-gray-500"
+            >
+              {p}
+            </span>
+          ))}
+        </div>
+      </FadeIn>
+    );
+  }
+
+  /* CIERRE — closing box */
+  if (section.type === 'cierre') {
+    return (
+      <FadeIn delay={delay}>
+        <div
+          className="mt-10 px-5 py-5 bg-gray-50 rounded-2xl text-[14px] text-gray-500 leading-[1.75] font-sans [&_a]:text-editorial-black [&_a]:font-semibold [&_a]:underline [&_a]:underline-offset-2 [&_a]:hover:text-brand-blue-600 [&_strong]:text-editorial-black [&_strong]:font-semibold"
+          dangerouslySetInnerHTML={{ __html: section.html }}
+        />
+      </FadeIn>
+    );
+  }
+
+  /* TAGS */
+  if (section.type === 'tags') {
+    return (
+      <FadeIn delay={delay}>
+        <div className="flex flex-wrap gap-2 mt-8">
+          {section.items.map((tag) => (
+            <span
+              key={tag}
+              className="text-[10.5px] font-semibold tracking-[0.07em] uppercase px-3 py-1.5 rounded-full border border-gray-200 text-gray-500"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </FadeIn>
     );
   }
 
@@ -147,11 +230,7 @@ const BlogPost: React.FC = () => {
   if (!post) return <Navigate to="/blog" replace />;
 
   const formatDate = (iso: string) =>
-    new Date(iso).toLocaleDateString('es-ES', {
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric',
-    });
+    new Date(iso).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
 
   const schemaData = {
     '@context': 'https://schema.org',
@@ -186,7 +265,7 @@ const BlogPost: React.FC = () => {
       </Helmet>
 
       {/* ── Hero ─────────────────────────────────────────────── */}
-      <section className="relative pt-40 pb-20 bg-editorial-black text-white overflow-hidden">
+      <section className="relative pt-40 pb-16 bg-editorial-black text-white overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/cubes.png")' }}
@@ -200,92 +279,62 @@ const BlogPost: React.FC = () => {
           aria-hidden="true"
         />
 
-        <div className="max-w-[860px] mx-auto px-4 sm:px-6 relative z-10">
-          {/* Back link */}
-          <motion.div
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.4 }}
-            className="mb-10"
-          >
-            <Link
-              to="/blog"
-              className="inline-flex items-center gap-1.5 text-gray-500 hover:text-brand-blue-400 text-xs font-bold uppercase tracking-widest transition-colors"
-            >
-              <span className="material-symbols-outlined text-base" aria-hidden="true">
-                arrow_back
-              </span>
+        <div className="max-w-[720px] mx-auto px-4 sm:px-6 relative z-10">
+          {/* Back */}
+          <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.4 }} className="mb-10">
+            <Link to="/blog" className="inline-flex items-center gap-1.5 text-gray-500 hover:text-brand-blue-400 text-xs font-bold uppercase tracking-widest transition-colors">
+              <span className="material-symbols-outlined text-base" aria-hidden="true">arrow_back</span>
               Blog
             </Link>
           </motion.div>
 
+          {/* Eyebrow */}
+          <motion.p initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
+            className="text-[10.5px] font-semibold tracking-[0.16em] uppercase text-gray-500 mb-5">
+            {post.eyebrow}
+          </motion.p>
+
+          {/* Title */}
+          <motion.h1 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="font-display text-[clamp(28px,4vw,42px)] font-black tracking-tight leading-[1.1] mb-6">
+            {post.title}
+          </motion.h1>
+
           {/* Meta */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex flex-wrap items-center gap-3 mb-8"
-          >
-            <span
-              className={`${post.categoryColor} text-white text-[10px] font-black uppercase tracking-[0.2em] px-3 py-1 rounded-full`}
-            >
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.25 }}
+            className="flex flex-wrap items-center gap-3 mb-8">
+            <span className={`${post.categoryColor} text-white text-[10px] font-black uppercase tracking-[0.2em] px-3 py-1 rounded-full`}>
               {post.category}
             </span>
             <span className="text-gray-500 text-sm">{formatDate(post.date)}</span>
             <span className="text-gray-600 text-sm">· {post.readMinutes} min de lectura</span>
           </motion.div>
 
-          {/* Title */}
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display text-4xl md:text-6xl font-black tracking-tight leading-[1.05] mb-6"
-          >
-            {post.title}
-          </motion.h1>
-
-          {/* Subtitle */}
-          {post.subtitle && (
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-gray-400 text-xl leading-relaxed mb-10"
-            >
-              {post.subtitle}
-            </motion.p>
-          )}
-
           {/* Author */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex items-center gap-4"
-          >
-            <div className="w-12 h-12 rounded-full bg-brand-blue-500 flex items-center justify-center flex-shrink-0">
-              <span className="text-white text-base font-black">{post.author.name.charAt(0)}</span>
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.3 }}
+            className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-brand-blue-500 flex items-center justify-center flex-shrink-0">
+              <span className="text-white text-sm font-black">{post.author.name.charAt(0)}</span>
             </div>
             <div>
-              <p className="text-white font-bold leading-none mb-1">{post.author.name}</p>
-              <p className="text-gray-500 text-sm">{post.author.role}</p>
+              <p className="text-white font-bold text-sm leading-none mb-1">{post.author.name}</p>
+              <p className="text-gray-500 text-xs">{post.author.role}{post.author.license ? ` · ${post.author.license}` : ''}</p>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* ── Stats bar ────────────────────────────────────────── */}
+      {/* ── Stats ────────────────────────────────────────────── */}
       {post.stats && (
         <section className="bg-gray-50 border-b border-gray-100">
-          <div className="max-w-[860px] mx-auto px-4 sm:px-6 py-8">
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+          <div className="max-w-[720px] mx-auto px-4 sm:px-6 py-6">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               {post.stats.map((stat) => (
-                <div key={stat.label} className="flex flex-col gap-1">
-                  <span className="text-3xl font-black text-brand-blue-500 leading-none tracking-tight">
+                <div key={stat.label} className="bg-white rounded-xl p-4 text-center border border-gray-100">
+                  <span className="text-[26px] font-black text-editorial-black leading-none tracking-tight block">
                     {stat.value}
                   </span>
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">
+                  <span className="text-[10px] font-normal text-gray-400 block mt-1.5 leading-snug">
                     {stat.label}
                   </span>
                 </div>
@@ -295,37 +344,29 @@ const BlogPost: React.FC = () => {
         </section>
       )}
 
-      {/* ── Content ──────────────────────────────────────────── */}
-      <article className="py-16 bg-white">
-        <div className="max-w-[860px] mx-auto px-4 sm:px-6">
-          <div className="flex flex-col gap-8">
+      {/* ── Intro ────────────────────────────────────────────── */}
+      <section className="bg-white">
+        <div className="max-w-[680px] mx-auto px-4 sm:px-6 pt-10">
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-[18px] italic font-light leading-[1.75] text-gray-500 pb-7 border-b border-gray-100"
+          >
+            {post.intro}
+          </motion.p>
+        </div>
+      </section>
+
+      {/* ── Body content ─────────────────────────────────────── */}
+      <article className="pb-16 bg-white">
+        <div className="max-w-[680px] mx-auto px-4 sm:px-6 pt-7">
+          <div className="flex flex-col gap-5">
             {post.content.map((section, i) => (
-              <RenderSection key={i} section={section} index={i} />
+              <RenderSection key={i} section={section} idx={i} />
             ))}
           </div>
-
-          {/* Tags */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="mt-16 pt-10 border-t border-gray-100"
-          >
-            <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-4">
-              Temas relacionados
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {post.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="text-xs font-bold uppercase tracking-wider rounded-full px-4 py-1.5 border border-gray-200 text-gray-500 hover:border-brand-blue-300 hover:text-brand-blue-600 transition-colors cursor-default"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </motion.div>
         </div>
       </article>
 
@@ -349,7 +390,7 @@ const BlogPost: React.FC = () => {
                   <em className="font-serif font-normal italic text-brand-blue-400">45 días</em>?
                 </h2>
                 <p className="text-gray-400 text-lg font-medium leading-relaxed">
-                  Valoración gratuita usando Big Data, IA y el Método MIA. Sin compromiso.
+                  Valoración gratuita con Big Data, IA y el Método MIA. Sin compromiso.
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 flex-shrink-0">
@@ -371,31 +412,18 @@ const BlogPost: React.FC = () => {
         </section>
       )}
 
-      {/* ── Related posts ─────────────────────────────────────── */}
+      {/* ── More posts ───────────────────────────────────────── */}
       <section className="py-16 bg-white border-t border-gray-50">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
-          <h2 className="text-xs font-black uppercase tracking-widest text-gray-400 mb-8">
-            Más artículos
-          </h2>
+          <h2 className="text-xs font-black uppercase tracking-widest text-gray-400 mb-8">Más artículos</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {blogPosts
               .filter((p) => p.slug !== post.slug)
               .slice(0, 3)
               .map((related, i) => (
-                <motion.div
-                  key={related.id}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.08 }}
-                >
-                  <Link
-                    to={`/blog/${related.slug}`}
-                    className="group block border border-gray-100 rounded-xl p-6 hover:border-brand-blue-200 hover:shadow-md transition-all duration-300"
-                  >
-                    <span
-                      className={`${related.categoryColor} text-white text-[9px] font-black uppercase tracking-[0.2em] px-2.5 py-1 rounded-full mb-3 inline-block`}
-                    >
+                <motion.div key={related.id} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.08 }}>
+                  <Link to={`/blog/${related.slug}`} className="group block border border-gray-100 rounded-xl p-6 hover:border-brand-blue-200 hover:shadow-md transition-all duration-300">
+                    <span className={`${related.categoryColor} text-white text-[9px] font-black uppercase tracking-[0.2em] px-2.5 py-1 rounded-full mb-3 inline-block`}>
                       {related.category}
                     </span>
                     <h3 className="font-bold text-editorial-black text-sm leading-snug group-hover:text-brand-blue-600 transition-colors">
@@ -405,14 +433,10 @@ const BlogPost: React.FC = () => {
                 </motion.div>
               ))}
           </div>
-
           {blogPosts.filter((p) => p.slug !== post.slug).length === 0 && (
             <div className="text-center py-12">
               <p className="text-gray-400 text-sm mb-4">Más artículos próximamente.</p>
-              <Link
-                to="/blog"
-                className="inline-flex items-center gap-1.5 text-brand-blue-600 text-sm font-bold hover:gap-2 transition-all"
-              >
+              <Link to="/blog" className="inline-flex items-center gap-1.5 text-brand-blue-600 text-sm font-bold hover:gap-2 transition-all">
                 <span className="material-symbols-outlined text-base">arrow_back</span>
                 Volver al blog
               </Link>
