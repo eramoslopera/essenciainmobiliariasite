@@ -31,6 +31,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-4 text-sm text-gray-400">
               <li><Link to="/about" className="hover:text-brand-blue-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm">{t('nav.about')}</Link></li>
               <li><Link to="/about" className="hover:text-brand-blue-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm">{t('about.collective')}</Link></li>
+              <li><Link to="/blog" className="hover:text-brand-blue-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500 rounded-sm">Blog</Link></li>
             </ul>
           </div>
           <div>

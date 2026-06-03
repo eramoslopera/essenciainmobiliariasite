@@ -15,6 +15,8 @@ import Exitos from './pages/Exitos';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import Cookies from './pages/Cookies';
+import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
 import Breadcrumbs from './components/Breadcrumbs';
 import SchemaMarkup from './components/SchemaMarkup';
 import { LanguageProvider, useLanguage } from './context/LanguageContext';
@@ -59,6 +61,8 @@ const Layout: React.FC = () => {
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/cookies" element={<Cookies />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
         </Routes>
       </main>
       <Footer />

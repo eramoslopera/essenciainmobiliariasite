@@ -95,6 +95,10 @@ const Header: React.FC = () => {
             {t('nav.about')}
           </Link>
 
+          <Link to="/blog" className={linkClasses('/blog')}>
+            Blog
+          </Link>
+
 
         </nav>
 
@@ -170,6 +174,8 @@ const Header: React.FC = () => {
         <div className="flex flex-col gap-4 mt-4">
           <span className="text-xs font-bold text-gray-400 uppercase tracking-widest border-b border-gray-100 pb-2">{t('nav.company')}</span>
           <Link to="/about" className="text-xl font-bold text-editorial-black hover:text-brand-blue-600 transition-colors">{t('nav.about')}</Link>
+
+          <Link to="/blog" className="text-xl font-bold text-editorial-black hover:text-brand-blue-600 transition-colors">Blog</Link>
 
           <Link to="/contact" className="text-xl font-bold text-editorial-black hover:text-brand-blue-600 transition-colors">{t('nav.contact')}</Link>
         </div>

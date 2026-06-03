@@ -9,7 +9,8 @@ const routeLabels: Record<string, string> = {
     '/developments': 'nav.developments',
     '/valuation': 'nav.valuation',
     '/about': 'nav.about',
-    '/contact': 'nav.contact'
+    '/contact': 'nav.contact',
+    '/blog': 'nav.blog',
 };
 
 const Breadcrumbs: React.FC = () => {
