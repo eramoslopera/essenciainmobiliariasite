@@ -1,0 +1,601 @@
+<!-- 
+  ════════════════════════════════════════════════════════════════
+  ESSENCIA INMOBILIARIA — Blog Post: Método MIA · Servicio 360º
+  ════════════════════════════════════════════════════════════════
+  INSTRUCCIONES PARA WORDPRESS:
+  1. Crea una nueva entrada (Posts → Add New)
+  2. En el editor Gutenberg, haz clic en el "+" → busca "Custom HTML"
+  3. Pega TODO el contenido de este archivo
+  4. Publica o guarda como borrador
+
+  NOTA: Los estilos están inline para funcionar en cualquier tema.
+  ════════════════════════════════════════════════════════════════
+-->
+
+<style>
+/* ── Reset & fuentes ─────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+
+.ei-blog-post {
+  max-width: 680px;
+  margin: 0 auto;
+  font-family: 'Source Serif 4', Georgia, serif;
+  color: #111111;
+  padding: 2rem 1rem;
+  line-height: 1.6;
+}
+.ei-blog-post * { box-sizing: border-box; }
+
+/* Eyebrow */
+.ei-eyebrow {
+  font-family: 'Syne', sans-serif;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin-bottom: 18px;
+  display: block;
+}
+
+/* Category badge */
+.ei-badge {
+  display: inline-block;
+  background: #1fc0d9;
+  color: #fff;
+  font-family: 'Syne', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+}
+
+/* Título */
+.ei-blog-post h1.ei-titulo {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(26px, 4vw, 40px);
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0 0 22px 0;
+  letter-spacing: -0.02em;
+  color: #111111;
+}
+
+/* Meta línea */
+.ei-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  font-family: 'Syne', sans-serif;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* Autor */
+.ei-autor {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.ei-autor-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #1fc0d9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+.ei-autor-nombre {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #111111;
+  margin: 0 0 2px 0;
+  line-height: 1.2;
+}
+.ei-autor-rol {
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Intro */
+.ei-intro {
+  font-size: 18px;
+  font-style: italic;
+  line-height: 1.75;
+  color: #6b7280;
+  margin-bottom: 30px;
+  padding-bottom: 26px;
+  border-bottom: 0.5px solid #e5e7eb;
+  font-weight: 300;
+}
+
+/* Párrafo */
+.ei-blog-post p.ei-p {
+  font-size: 15.5px;
+  line-height: 1.85;
+  margin-bottom: 18px;
+  font-weight: 300;
+  color: #374151;
+}
+.ei-blog-post strong { font-weight: 600; color: #111111; }
+
+/* Métricas */
+.ei-metricas {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin: 28px 0;
+}
+@media (max-width: 540px) {
+  .ei-metricas { grid-template-columns: repeat(2, 1fr); }
+}
+.ei-m {
+  background: #f9fafb;
+  border: 0.5px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px 10px;
+  text-align: center;
+}
+.ei-m-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  display: block;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #111111;
+}
+.ei-m-sub {
+  font-family: 'Syne', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  color: #6b7280;
+  display: block;
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+/* Sección label */
+.ei-seccion {
+  font-family: 'Syne', sans-serif;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin: 38px 0 16px;
+  padding-top: 26px;
+  border-top: 0.5px solid #e5e7eb;
+  display: block;
+}
+
+/* MIA Grid — 10 pasos */
+.ei-mia-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: #e5e7eb;
+  border: 0.5px solid #e5e7eb;
+  border-radius: 16px;
+  overflow: hidden;
+  margin: 24px 0;
+}
+@media (max-width: 540px) {
+  .ei-mia-grid { grid-template-columns: 1fr; }
+}
+.ei-mia-item {
+  background: #ffffff;
+  padding: 14px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.ei-mia-item:hover { background: #f9fafb; }
+.ei-mia-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #9ca3af;
+  min-width: 22px;
+  padding-top: 1px;
+  flex-shrink: 0;
+}
+.ei-mia-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0 0 3px 0;
+  color: #111111;
+  line-height: 1.3;
+}
+.ei-mia-desc {
+  font-size: 12.5px;
+  color: #6b7280;
+  font-weight: 300;
+  line-height: 1.4;
+  display: block;
+  margin: 0;
+  font-family: 'Source Serif 4', serif;
+}
+
+/* Pack Visual */
+.ei-pack-visual {
+  border: 0.5px solid #d1d5db;
+  border-radius: 16px;
+  padding: 20px 22px;
+  margin: 24px 0;
+}
+.ei-pack-titulo {
+  font-family: 'Syne', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0 0 14px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #111111;
+}
+.ei-pack-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.ei-pack-tag {
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: #f3f4f6;
+  color: #111111;
+  letter-spacing: 0.03em;
+  display: inline-block;
+}
+
+/* Badge 360 */
+.ei-badge360 {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Syne', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 0.5px solid #1fc0d9;
+  color: #0e9eb5;
+  margin-bottom: 20px;
+  letter-spacing: 0.04em;
+  margin-top: 8px;
+}
+
+/* Servicios 360 */
+.ei-servicios360 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 24px 0;
+}
+@media (max-width: 640px) {
+  .ei-servicios360 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 400px) {
+  .ei-servicios360 { grid-template-columns: 1fr; }
+}
+.ei-sv {
+  background: #f9fafb;
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.ei-sv-icon { font-size: 22px; }
+.ei-sv-titulo {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #111111;
+  margin: 0;
+}
+.ei-sv-desc {
+  font-size: 12.5px;
+  color: #6b7280;
+  line-height: 1.5;
+  font-weight: 300;
+  margin: 0;
+}
+
+/* Cita */
+.ei-cita {
+  margin: 32px 0;
+  padding: 22px 26px;
+  background: #f9fafb;
+  border-left: 3px solid #1fc0d9;
+  border-radius: 0 14px 14px 0;
+}
+.ei-cita-texto {
+  font-family: 'Source Serif 4', serif;
+  font-size: 19px;
+  font-style: italic;
+  line-height: 1.65;
+  margin: 0 0 10px 0;
+  font-weight: 300;
+  color: #111111;
+}
+.ei-cita-autor {
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #6b7280;
+}
+
+/* Equipo */
+.ei-equipo {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  margin: 24px 0;
+}
+@media (max-width: 540px) {
+  .ei-equipo { grid-template-columns: repeat(3, 1fr); }
+}
+.ei-miembro {
+  background: #f9fafb;
+  border-radius: 14px;
+  padding: 14px 10px;
+  text-align: center;
+}
+.ei-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 0.5px solid #d1d5db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px;
+  font-family: 'Syne', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #6b7280;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.ei-miembro-nombre {
+  font-family: 'Syne', sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 3px 0;
+  color: #111111;
+}
+.ei-miembro-rol {
+  font-family: 'Syne', sans-serif;
+  font-size: 10px;
+  color: #6b7280;
+  line-height: 1.3;
+  margin: 0;
+}
+
+/* Portales */
+.ei-portales {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0;
+}
+.ei-portal {
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 0.5px solid #d1d5db;
+  color: #6b7280;
+  display: inline-block;
+}
+
+/* Cierre */
+.ei-cierre {
+  margin-top: 36px;
+  padding: 20px 22px;
+  background: #f9fafb;
+  border-radius: 14px;
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.75;
+  font-family: 'Syne', sans-serif;
+}
+.ei-cierre a {
+  color: #111111;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Tags finales */
+.ei-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 28px;
+}
+.ei-tag {
+  font-family: 'Syne', sans-serif;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 0.5px solid #d1d5db;
+  color: #6b7280;
+  display: inline-block;
+}
+</style>
+
+<!-- ══ INICIO DEL ARTÍCULO ═════════════════════════════════ -->
+<div class="ei-blog-post">
+
+  <span class="ei-eyebrow">Essencia Inmobiliaria · Gandía — Método MIA · Servicio 360º</span>
+
+  <span class="ei-badge">Método MIA</span>
+
+  <h1 class="ei-titulo">Cuando la inteligencia artificial vende tu casa antes de que nadie la visite</h1>
+
+  <div class="ei-meta">
+    <span>3 de junio de 2025</span>
+    <span>·</span>
+    <span>6 min de lectura</span>
+  </div>
+
+  <div class="ei-autor">
+    <div class="ei-autor-avatar">S</div>
+    <div>
+      <p class="ei-autor-nombre">Santi Torres</p>
+      <p class="ei-autor-rol">CEO · Essencia Inmobiliaria · RAICV 0773</p>
+    </div>
+  </div>
+
+  <!-- Métricas -->
+  <div class="ei-metricas">
+    <div class="ei-m"><span class="ei-m-num">+2.000</span><span class="ei-m-sub">ventas cerradas desde 2010</span></div>
+    <div class="ei-m"><span class="ei-m-num">13M€</span><span class="ei-m-sub">en ventas en 2025</span></div>
+    <div class="ei-m"><span class="ei-m-num">45 días</span><span class="ei-m-sub">media hasta la venta</span></div>
+    <div class="ei-m"><span class="ei-m-num">95%</span><span class="ei-m-sub">clientes satisfechos</span></div>
+  </div>
+
+  <!-- Intro -->
+  <p class="ei-intro">En Essencia llevamos más de 15 años vendiendo propiedades en Gandía y La Safor. Lo que ha cambiado es la potencia de las herramientas. El Método MIA no es un nombre de marketing: es la forma en que hoy convertimos cada inmueble en un evento de alta visibilidad, con un equipo especializado y un servicio integral 360º que cubre cada fase de la operación.</p>
+
+  <!-- Cuerpo -->
+  <p class="ei-p">El mercado inmobiliario de la costa de Gandía ha cambiado más en los últimos tres años que en la década anterior. El comprador de hoy —nacional o internacional— toma decisiones desde la pantalla. Decide si una propiedad le interesa antes de pisarla, y muchas veces antes de hablar con nadie. Lo que ve en esos primeros segundos —la calidad de las imágenes, la fluidez del tour virtual, la precisión del precio— lo es casi todo.</p>
+
+  <p class="ei-p">Adaptarse a esa realidad no es opcional. En Essencia lo sistematizamos en el <strong>Método MIA</strong>: Marketing, Inteligencia Artificial y Asesoramiento. Tres pilares que operan de forma coordinada desde el momento en que un propietario nos encarga su venta.</p>
+
+  <!-- MIA: 10 pasos -->
+  <span class="ei-seccion">El Método MIA: diez pasos, ninguno prescindible</span>
+
+  <p class="ei-p">No listamos casas. Diseñamos ventas. El Método MIA es un proceso secuencial en el que la tecnología no sustituye al asesor sino que multiplica su impacto.</p>
+
+  <div class="ei-mia-grid">
+    <div class="ei-mia-item"><span class="ei-mia-num">01</span><div><p class="ei-mia-title">Plan de Comunicación</p><span class="ei-mia-desc">Estrategia personalizada con el vendedor antes de publicar nada</span></div></div>
+    <div class="ei-mia-item"><span class="ei-mia-num">02</span><div><p class="ei-mia-title">Marketing de Alto Impacto</p><span class="ei-mia-desc">Más de 4.000€ mensuales en inversión publicitaria activa</span></div></div>
+    <div class="ei-mia-item"><span class="ei-mia-num">03</span><div><p class="ei-mia-title">Inteligencia Artificial</p><span class="ei-mia-desc">IA aplicada a valoración, renders, descripciones y segmentación de compradores</span></div></div>
+    <div class="ei-mia-item"><span class="ei-mia-num">04</span><div><p class="ei-mia-title">Red de +450 Inmobiliarias</p><span class="ei-mia-desc">MLS Gandía (25 agencias) y MLS ASICVAL (450 agencias en la C. Valenciana)</span></div></div>
+    <div class="ei-mia-item"><span class="ei-mia-num">05</span><div><p class="ei-mia-title">Gestión Integral de Compra</p><span class="ei-mia-desc">Coordinación de todo el proceso: visitas, ofertas, negociación y firma</span></div></div>
+    <div class="ei-mia-item"><span class="ei-mia-num">06</span><div><p class="ei-mia-title">Videos Profesionales con Dron</p><span class="ei-mia-desc">Grabación aérea 4K que contextualiza el inmueble en su entorno y costa</span></div></div>
+    <div class="ei-mia-item"><span class="ei-mia-num">07</span><div><p class="ei-mia-title">Pack Visual Pro</p><span class="ei-mia-desc">Fotografía editorial, planos 3D, tour virtual 360º y renders con IA</span></div></div>
+    <div class="ei-mia-item"><span class="ei-mia-num">08</span><div><p class="ei-mia-title">Portales Nacionales e Internacionales</p><span class="ei-mia-desc">Idealista, Fotocasa, Habitaclia, Kyero, Pisos.com y portales internacionales</span></div></div>
+    <div class="ei-mia-item"><span class="ei-mia-num">09</span><div><p class="ei-mia-title">Pack Essencia Legal · Fiscal · Tasación</p><span class="ei-mia-desc">Servicio jurídico, fiscal y de tasación integrado en cada operación</span></div></div>
+    <div class="ei-mia-item"><span class="ei-mia-num">10</span><div><p class="ei-mia-title">Acompañamiento Firma y Post-Venta</p><span class="ei-mia-desc">Presencia hasta escrituras y soporte posterior al cierre</span></div></div>
+  </div>
+
+  <!-- Pack Visual Pro -->
+  <span class="ei-seccion">Pack Visual Pro: tu propiedad como un evento mediático</span>
+
+  <p class="ei-p">La primera visita ya no ocurre en el inmueble. Ocurre en el móvil, a las once de la noche, mientras el comprador compara opciones en Idealista. El <strong>Pack Visual Pro</strong> de Essencia convierte cada inmueble en un «portal digital»: una experiencia inmersiva que el comprador recorre y explora antes de decidir si merece una visita presencial, reduciendo drásticamente el tiempo hasta la primera oferta seria.</p>
+
+  <div class="ei-pack-visual">
+    <p class="ei-pack-titulo">🎬 Pack Visual Pro — contenidos incluidos</p>
+    <div class="ei-pack-items">
+      <span class="ei-pack-tag">Fotos y vídeo con dron</span>
+      <span class="ei-pack-tag">Render con IA</span>
+      <span class="ei-pack-tag">Fotografía editorial</span>
+      <span class="ei-pack-tag">Vídeo profesional 4K</span>
+      <span class="ei-pack-tag">Planos en 3D</span>
+      <span class="ei-pack-tag">Tour Virtual 360º</span>
+      <span class="ei-pack-tag">Vídeo vertical estilo cine</span>
+    </div>
+  </div>
+
+  <!-- Servicio 360 -->
+  <span class="ei-seccion">Servicio integral 360º: fácil, rápido y seguro</span>
+
+  <p class="ei-p">Vender o comprar una propiedad implica decisiones legales, fiscales y financieras que van mucho más allá de encontrar comprador o vendedor. Essencia ha construido un ecosistema de servicios especializados para que el cliente nunca tenga que salir a buscar lo que necesita: todo está bajo el mismo techo, coordinado por el mismo equipo.</p>
+
+  <div class="ei-badge360">🔄 Servicio 360º — todo incluido</div>
+
+  <div class="ei-servicios360">
+    <div class="ei-sv"><span class="ei-sv-icon">⚖️</span><p class="ei-sv-titulo">Servicio Jurídico</p><span class="ei-sv-desc">Asesoramiento legal en cada fase: contratos, arras, escrituras y resolución de incidencias</span></div>
+    <div class="ei-sv"><span class="ei-sv-icon">🧾</span><p class="ei-sv-titulo">Servicio Fiscal</p><span class="ei-sv-desc">Optimización tributaria de la operación: plusvalías, IRPF, IBI y costes asociados a la transmisión</span></div>
+    <div class="ei-sv"><span class="ei-sv-icon">🏠</span><p class="ei-sv-titulo">Home Staging</p><span class="ei-sv-desc">Preparación profesional del inmueble para maximizar el impacto visual y acortar el tiempo de venta</span></div>
+    <div class="ei-sv"><span class="ei-sv-icon">💰</span><p class="ei-sv-titulo">Financiación</p><span class="ei-sv-desc">Gestión hipotecaria propia con acceso a las mejores condiciones del mercado para el comprador</span></div>
+    <div class="ei-sv"><span class="ei-sv-icon">📋</span><p class="ei-sv-titulo">Tasaciones</p><span class="ei-sv-desc">Valoraciones oficiales y de mercado para fijar el precio correcto desde el primer día</span></div>
+    <div class="ei-sv"><span class="ei-sv-icon">🏗️</span><p class="ei-sv-titulo">Gestión Integral</p><span class="ei-sv-desc">Coordinación de todos los servicios bajo un único interlocutor, de principio a fin</span></div>
+  </div>
+
+  <!-- Cita -->
+  <div class="ei-cita">
+    <p class="ei-cita-texto">"Que una operación sea fácil, rápida y segura no es casualidad. Es el resultado de tener bajo el mismo techo todo lo que el cliente necesita, con un equipo que conoce este mercado desde hace más de 15 años."</p>
+    <span class="ei-cita-autor">Santi Torres — CEO, Essencia Inmobiliaria · RAICV 0773</span>
+  </div>
+
+  <!-- Equipo -->
+  <span class="ei-seccion">El equipo: cinco especialistas, un solo objetivo</span>
+
+  <p class="ei-p">Detrás del Método MIA y del servicio 360º hay personas. Cinco profesionales con conocimiento profundo del mercado de Gandía y La Safor, que saben qué se ha vendido, a qué precio real y a qué tipo de comprador. Ese conocimiento acumulado —junto con las herramientas tecnológicas más avanzadas del sector— es lo que explica los <strong>13 millones de euros en ventas en 2025</strong> y una media de cierre de <strong>45 días</strong>.</p>
+
+  <div class="ei-equipo">
+    <div class="ei-miembro"><div class="ei-avatar">ST</div><p class="ei-miembro-nombre">Santi Torres</p><p class="ei-miembro-rol">CEO · Asesor de inversiones</p></div>
+    <div class="ei-miembro"><div class="ei-avatar">CG</div><p class="ei-miembro-nombre">Carolina González</p><p class="ei-miembro-rol">Asesora · Marketing y comunicación</p></div>
+    <div class="ei-miembro"><div class="ei-avatar">JM</div><p class="ei-miembro-nombre">Juanma Menacho</p><p class="ei-miembro-rol">Asesor inmobiliario</p></div>
+    <div class="ei-miembro"><div class="ei-avatar">JLP</div><p class="ei-miembro-nombre">Jose Luis Puente</p><p class="ei-miembro-rol">Asesor inmobiliario</p></div>
+    <div class="ei-miembro"><div class="ei-avatar">OP</div><p class="ei-miembro-nombre">Oscar Puente</p><p class="ei-miembro-rol">Asesor inmobiliario</p></div>
+  </div>
+
+  <!-- Distribución -->
+  <span class="ei-seccion">Distribución: presencia donde está el comprador</span>
+
+  <p class="ei-p">El Método MIA contempla distribución simultánea en los principales portales nacionales e internacionales, activación en redes sociales y acceso a la red de compradores activos de más de 450 agencias colaboradoras. El comprador internacional —cada vez más relevante en la costa de Gandía— accede a través de portales especializados como Kyero, con audiencias directas de Reino Unido, Alemania y los países nórdicos.</p>
+
+  <div class="ei-portales">
+    <span class="ei-portal">Idealista</span>
+    <span class="ei-portal">Fotocasa</span>
+    <span class="ei-portal">Habitaclia</span>
+    <span class="ei-portal">Kyero</span>
+    <span class="ei-portal">Pisos.com</span>
+    <span class="ei-portal">Facilitea</span>
+    <span class="ei-portal">RRSS</span>
+    <span class="ei-portal">MLS Gandía</span>
+    <span class="ei-portal">MLS ASICVAL</span>
+  </div>
+
+  <!-- Cierre -->
+  <div class="ei-cierre">
+    ¿Quieres saber a qué precio real se vende tu propiedad hoy en Gandía o La Safor? Solicita tu <a href="https://essenciainmobiliaria.com/valoracion-online">valoración gratuita online</a> o habla directamente con el equipo: <strong>647 803 355</strong> · Sant Vicent Ferrer 24, Gandía.
+  </div>
+
+  <!-- Tags -->
+  <div class="ei-tags">
+    <span class="ei-tag">Método MIA</span>
+    <span class="ei-tag">Inteligencia Artificial</span>
+    <span class="ei-tag">Servicio 360º</span>
+    <span class="ei-tag">Pack Visual Pro</span>
+    <span class="ei-tag">Home Staging</span>
+    <span class="ei-tag">Gandía</span>
+    <span class="ei-tag">La Safor</span>
+    <span class="ei-tag">Desde 2010</span>
+  </div>
+
+</div>
+<!-- ══ FIN DEL ARTÍCULO ════════════════════════════════════ -->
