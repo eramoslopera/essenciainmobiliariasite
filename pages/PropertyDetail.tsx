@@ -44,7 +44,17 @@ const PropertyDetail: React.FC = () => {
       // For now, fetch all because we don't have a backend to fetch single.
       const props = await fetchProperties();
       const found = props.find(p => p.id === parseInt(id));
-      if (found) setProperty(found);
+      if (found) {
+        setProperty(found);
+        // ── Track "recently viewed" in localStorage ──────────────
+        try {
+          const KEY = 'ei_recently_viewed';
+          const stored: number[] = JSON.parse(localStorage.getItem(KEY) || '[]');
+          const numId = parseInt(id);
+          const updated = [numId, ...stored.filter(x => x !== numId)].slice(0, 20);
+          localStorage.setItem(KEY, JSON.stringify(updated));
+        } catch { /* ignore storage errors */ }
+      }
       setLoading(false);
     };
     load();

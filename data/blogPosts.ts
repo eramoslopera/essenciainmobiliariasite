@@ -46,14 +46,14 @@ export const blogPosts: BlogPost[] = [
     slug: 'metodo-mia-servicio-360-essencia',
     category: 'Método MIA',
     categoryColor: 'bg-brand-blue-500',
-    date: '2025-06-03',
+    date: '2026-06-03',
     readMinutes: 6,
     eyebrow: 'Essencia Inmobiliaria · Gandía — Método MIA · Servicio 360º',
     title: 'Cuando la inteligencia artificial vende tu casa antes de que nadie la visite',
     intro:
       'En Essencia llevamos más de 15 años vendiendo propiedades en Gandía y La Safor. Lo que ha cambiado es la potencia de las herramientas. El Método MIA no es un nombre de marketing: es la forma en que hoy convertimos cada inmueble en un evento de alta visibilidad, con un equipo especializado y un servicio integral 360º que cubre cada fase de la operación.',
     excerpt:
-      'El Método MIA —Marketing, Inteligencia Artificial y Asesoramiento— es el proceso con el que Essencia convierte cada inmueble en un evento de alta visibilidad. Más de 2.000 ventas desde 2010, 13M€ en ventas en 2025 y una media de 45 días hasta el cierre.',
+      'El Método MIA —Marketing, Inteligencia Artificial y Asesoramiento— es el proceso con el que Essencia convierte cada inmueble en un evento de alta visibilidad. Más de 2.000 ventas desde 2010, 13M€ en ventas en 2026 y una media de 45 días hasta el cierre.',
     author: {
       name: 'Santi Torres',
       role: 'CEO · Essencia Inmobiliaria',
@@ -61,7 +61,7 @@ export const blogPosts: BlogPost[] = [
     },
     stats: [
       { value: '+2.000', label: 'ventas cerradas desde 2010' },
-      { value: '13M€', label: 'en ventas en 2025' },
+      { value: '13M€', label: 'en ventas en 2026' },
       { value: '45 días', label: 'media hasta la venta' },
       { value: '95%', label: 'clientes satisfechos' },
     ],
@@ -152,7 +152,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'paragraph',
-        text: 'Detrás del Método MIA y del servicio 360º hay personas. Cinco profesionales con conocimiento profundo del mercado de Gandía y La Safor, que saben qué se ha vendido, a qué precio real y a qué tipo de comprador. Ese conocimiento acumulado —junto con las herramientas tecnológicas más avanzadas del sector— es lo que explica los 13 millones de euros en ventas en 2025 y una media de cierre de 45 días.',
+        text: 'Detrás del Método MIA y del servicio 360º hay personas. Cinco profesionales con conocimiento profundo del mercado de Gandía y La Safor, que saben qué se ha vendido, a qué precio real y a qué tipo de comprador. Ese conocimiento acumulado —junto con las herramientas tecnológicas más avanzadas del sector— es lo que explica los 13 millones de euros en ventas en 2026 y una media de cierre de 45 días.',
       },
       {
         type: 'team',

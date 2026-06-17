@@ -1,0 +1,1001 @@
+<!-- ============================================================
+     ESSENCIA INMOBILIARIA — Casos de Éxito + Reseñas Google
+     WordPress / Elementor — Bloque HTML personalizado
+     ============================================================
+     INSTRUCCIONES:
+     1. En Elementor añade un widget "HTML" (o "Código HTML")
+     2. Pega TODO este bloque dentro del widget
+     3. Para las imágenes de cada caso, busca los 4 comentarios
+        "📸 URL DE TU FOTO" y pega ahí la URL de WordPress Medios
+     ============================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Playfair+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+<style>
+/* ── Reset localizado ───────────────────────────────────────── */
+#ei-root, #ei-root *, #ei-root *::before, #ei-root *::after {
+  box-sizing: border-box;
+}
+#ei-root { all: initial; display: block; }
+
+/* ── Tokens ─────────────────────────────────────────────────── */
+#ei-root {
+  --blue:        #1fc0d9;
+  --blue-dark:   #1791a8;
+  --black:       #0a0a0a;
+  --gray-50:     #f9fafb;
+  --gray-100:    #f3f4f6;
+  --gray-200:    #e5e7eb;
+  --gray-400:    #9ca3af;
+  --gray-500:    #6b7280;
+  --gray-600:    #4b5563;
+  --star:        #FBBC05;
+  font-family: 'Manrope', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  color: var(--black);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Sección principal ──────────────────────────────────────── */
+#ei-root section {
+  background: #fff;
+  padding: 96px 24px;
+  overflow: hidden;
+}
+.ei-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ── Header ─────────────────────────────────────────────────── */
+.ei-header {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 56px;
+}
+@media (min-width: 768px) {
+  .ei-header {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+.ei-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 12px;
+}
+.ei-title {
+  font-size: clamp(36px, 6vw, 56px);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--black);
+  margin: 0;
+}
+.ei-title em {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-weight: 400;
+  font-style: italic;
+}
+.ei-header-right {
+  max-width: 320px;
+}
+.ei-header-desc {
+  font-size: 15px;
+  color: var(--gray-500);
+  font-weight: 500;
+  line-height: 1.6;
+  margin: 0 0 10px 0;
+}
+.ei-ver-todos {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue);
+  text-decoration: none;
+  transition: gap 0.2s;
+}
+.ei-ver-todos:hover { gap: 10px; }
+
+/* ── Grid 2×2 ───────────────────────────────────────────────── */
+.ei-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  background: var(--gray-200);
+  border: 1px solid var(--gray-200);
+  border-radius: 16px;
+  overflow: hidden;
+}
+@media (min-width: 680px) {
+  .ei-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── Card ───────────────────────────────────────────────────── */
+.ei-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.ei-card.ei-dark { background: var(--black); color: #fff; }
+
+/* imagen */
+.ei-card-img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+  flex-shrink: 0;
+}
+.ei-card-placeholder {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: linear-gradient(135deg, var(--gray-100), var(--gray-200));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.ei-dark .ei-card-placeholder {
+  background: rgba(255,255,255,0.05);
+}
+
+/* body */
+.ei-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 32px 40px;
+  flex: 1;
+}
+
+/* id + badge */
+.ei-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.ei-card-id {
+  font-size: 48px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--gray-100);
+  user-select: none;
+}
+.ei-dark .ei-card-id { color: rgba(255,255,255,0.06); }
+.ei-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--gray-50);
+  color: var(--gray-600);
+  border: 1px solid var(--gray-200);
+}
+.ei-dark .ei-card-badge {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.7);
+  border-color: rgba(255,255,255,0.1);
+}
+.ei-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--blue);
+  flex-shrink: 0;
+}
+
+/* stats */
+.ei-stats {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+.ei-stat { display: flex; flex-direction: column; gap: 3px; }
+.ei-stat-val {
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--black);
+}
+.ei-dark .ei-stat-val { color: #fff; }
+.ei-stat-val.ei-blue { color: var(--blue); }
+.ei-stat-lbl {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+}
+.ei-dark .ei-stat-lbl { color: rgba(255,255,255,0.35); }
+
+/* separator */
+.ei-sep {
+  height: 1px;
+  background: var(--gray-200);
+  border: none;
+  margin: 0;
+}
+.ei-dark .ei-sep { background: rgba(255,255,255,0.08); }
+
+/* tags */
+.ei-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.ei-tag {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--gray-200);
+  color: var(--gray-400);
+}
+.ei-dark .ei-tag {
+  border-color: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.45);
+}
+
+/* blockquote */
+.ei-blockquote {
+  border-left: 2px solid var(--blue);
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+}
+.ei-blockquote p {
+  font-size: 14px;
+  line-height: 1.65;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--gray-500);
+  margin: 0;
+}
+.ei-dark .ei-blockquote p { color: rgba(255,255,255,0.55); }
+.ei-blockquote cite {
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-style: normal;
+  color: var(--gray-400);
+}
+.ei-dark .ei-blockquote cite { color: rgba(255,255,255,0.3); }
+
+/* ── Reviews header ─────────────────────────────────────────── */
+.ei-reviews-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 56px 0 24px;
+}
+.ei-reviews-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ei-stars-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.ei-stars-row svg { display: block; }
+.ei-rating-num {
+  font-size: 11px;
+  font-weight: 900;
+  color: var(--black);
+  margin-left: 4px;
+}
+.ei-reviews-sub {
+  font-size: 10px;
+  color: var(--gray-400);
+  font-weight: 500;
+  margin: 2px 0 0;
+}
+.ei-ver-google {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue);
+  text-decoration: none;
+}
+.ei-ver-google:hover { text-decoration: underline; }
+
+/* ── Carousel ───────────────────────────────────────────────── */
+.ei-carousel-outer { overflow: hidden; border-radius: 16px; }
+.ei-carousel-track {
+  display: flex;
+  gap: 16px;
+  will-change: transform;
+  cursor: grab;
+  user-select: none;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.ei-carousel-track.ei-no-transition { transition: none; }
+.ei-carousel-track:active { cursor: grabbing; }
+
+.ei-review-card {
+  flex-shrink: 0;
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.ei-review-card:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+  transform: translateY(-2px);
+}
+
+.ei-review-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ei-avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 900;
+  color: #fff;
+}
+.ei-review-name {
+  font-size: 13px;
+  font-weight: 900;
+  color: var(--black);
+  margin: 0;
+}
+.ei-review-time {
+  font-size: 10px;
+  color: var(--gray-400);
+  font-weight: 500;
+  margin: 0;
+}
+.ei-review-text {
+  font-size: 13px;
+  color: var(--gray-600);
+  line-height: 1.65;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.ei-g-icon { margin-left: auto; flex-shrink: 0; }
+
+/* ── Carousel controls ──────────────────────────────────────── */
+.ei-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+.ei-nav {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--gray-200);
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  flex-shrink: 0;
+}
+.ei-nav:hover:not(:disabled) {
+  background: var(--black);
+  border-color: var(--black);
+  color: #fff;
+  transform: scale(1.05);
+}
+.ei-nav:disabled { opacity: 0.3; cursor: default; }
+.ei-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.ei-dot {
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.25s, width 0.25s;
+  height: 6px;
+  width: 6px;
+  background: var(--gray-200);
+  padding: 0;
+}
+.ei-dot.ei-active {
+  background: var(--black);
+  width: 20px;
+  border-radius: 3px;
+}
+
+/* ── CTA strip ──────────────────────────────────────────────── */
+.ei-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: 12px;
+  padding: 24px 32px;
+  margin-top: 40px;
+}
+@media (min-width: 560px) {
+  .ei-cta {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+.ei-cta-title {
+  font-size: 17px;
+  font-weight: 900;
+  color: var(--black);
+  line-height: 1.3;
+  margin: 0 0 4px;
+}
+.ei-cta-sub {
+  font-size: 13px;
+  color: var(--gray-500);
+  font-weight: 500;
+  margin: 0;
+}
+.ei-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 48px;
+  padding: 0 28px;
+  border-radius: 999px;
+  background: var(--black);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+.ei-btn:hover {
+  background: var(--blue-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(31,192,217,0.3);
+  color: #fff;
+  text-decoration: none;
+}
+.ei-btn svg { flex-shrink: 0; }
+</style>
+
+<div id="ei-root">
+<section>
+<div class="ei-container">
+
+  <!-- ══ HEADER ═══════════════════════════════════════════════ -->
+  <div class="ei-header">
+    <div>
+      <span class="ei-label">Resultados Reales</span>
+      <h2 class="ei-title">Casos de <em>Éxito</em></h2>
+    </div>
+    <div class="ei-header-right">
+      <p class="ei-header-desc">No son promesas — son ventas cerradas en Gandía, Oliva, Dénia y La Safor usando IA, Big Data y Marketing de Alto Impacto.</p>
+      <a href="/exitos" class="ei-ver-todos">
+        Ver todos los casos
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- ══ GRID 2×2 ══════════════════════════════════════════════ -->
+  <div class="ei-grid">
+
+    <!-- CASO 01 — Maria Pascual -->
+    <article class="ei-card">
+      <img class="ei-card-img" src="https://essenciainmobiliaria.com/wp-content/uploads/2026/06/foto1-scaled.jpg" alt="Piso vendido en Gandía Centro" loading="lazy">
+      <div class="ei-card-body">
+        <div class="ei-card-top">
+          <span class="ei-card-id" aria-hidden="true">01</span>
+          <span class="ei-card-badge"><span class="ei-badge-dot"></span>Gandía Centro</span>
+        </div>
+        <div class="ei-stats">
+          <div class="ei-stat">
+            <span class="ei-stat-val ei-blue">15</span>
+            <span class="ei-stat-lbl">Días hasta firma</span>
+          </div>
+          <div class="ei-stat">
+            <span class="ei-stat-val">97%</span>
+            <span class="ei-stat-lbl">Del precio pedido</span>
+          </div>
+          <div class="ei-stat">
+            <span class="ei-stat-val">Piso</span>
+            <span class="ei-stat-lbl">Tipo de propiedad</span>
+          </div>
+        </div>
+        <hr class="ei-sep">
+        <div class="ei-tags">
+          <span class="ei-tag">Big Data</span>
+          <span class="ei-tag">Home Staging Virtual</span>
+          <span class="ei-tag">Método MIA</span>
+        </div>
+        <blockquote class="ei-blockquote">
+          <p>"Estábamos buscando la mejor opción para vender nuestro piso en Gandía y no hemos podido elegir mejor. Han sido rapidísimos en encontrar comprador y gestionar todos los trámites, haciéndolo todo facilísimo y sin estrés."</p>
+          <cite>— Maria Pascual</cite>
+        </blockquote>
+      </div>
+    </article>
+
+    <!-- CASO 02 — Laura Ruiz (dark) -->
+    <article class="ei-card ei-dark">
+      <img class="ei-card-img" src="https://essenciainmobiliaria.com/wp-content/uploads/2026/06/IMG_0774-2-scaled.jpg" alt="Piso vendido en Gandía" loading="lazy">
+      <div class="ei-card-body">
+        <div class="ei-card-top">
+          <span class="ei-card-id" aria-hidden="true">02</span>
+          <span class="ei-card-badge"><span class="ei-badge-dot"></span>Gandía</span>
+        </div>
+        <div class="ei-stats">
+          <div class="ei-stat">
+            <span class="ei-stat-val ei-blue">7</span>
+            <span class="ei-stat-lbl">Días hasta firma</span>
+          </div>
+          <div class="ei-stat">
+            <span class="ei-stat-val">100%</span>
+            <span class="ei-stat-lbl">Del precio pedido</span>
+          </div>
+          <div class="ei-stat">
+            <span class="ei-stat-val">Piso</span>
+            <span class="ei-stat-lbl">Tipo de propiedad</span>
+          </div>
+        </div>
+        <hr class="ei-sep">
+        <div class="ei-tags">
+          <span class="ei-tag">Negociación Experta</span>
+          <span class="ei-tag">Gestión Integral</span>
+          <span class="ei-tag">Método MIA</span>
+        </div>
+        <blockquote class="ei-blockquote">
+          <p>"Tuvimos una negociación bastante difícil pero Juanma la solventó con una profesionalidad, paciencia y eficacia asombrosas, logrando cerrar la venta con éxito. Se encargaron de todo el papeleo."</p>
+          <cite>— Laura Ruiz</cite>
+        </blockquote>
+      </div>
+    </article>
+
+    <!-- CASO 03 — Yorya Fuentes -->
+    <article class="ei-card">
+      <img class="ei-card-img" src="https://essenciainmobiliaria.com/wp-content/uploads/2026/06/IMG_0626-scaled.jpg" alt="Ático vendido en Gandía" loading="lazy">
+      <div class="ei-card-body">
+        <div class="ei-card-top">
+          <span class="ei-card-id" aria-hidden="true">03</span>
+          <span class="ei-card-badge"><span class="ei-badge-dot"></span>Gandía</span>
+        </div>
+        <div class="ei-stats">
+          <div class="ei-stat">
+            <span class="ei-stat-val ei-blue">15</span>
+            <span class="ei-stat-lbl">Días hasta firma</span>
+          </div>
+          <div class="ei-stat">
+            <span class="ei-stat-val">100%</span>
+            <span class="ei-stat-lbl">Del precio pedido</span>
+          </div>
+          <div class="ei-stat">
+            <span class="ei-stat-val">Ático</span>
+            <span class="ei-stat-lbl">Tipo de propiedad</span>
+          </div>
+        </div>
+        <hr class="ei-sep">
+        <div class="ei-tags">
+          <span class="ei-tag">Asesoramiento de Mercado</span>
+          <span class="ei-tag">Gestión Legal</span>
+          <span class="ei-tag">Método MIA</span>
+        </div>
+        <blockquote class="ei-blockquote">
+          <p>"La rapidez en gestionar mi venta ha sido sorprendente, puntualidad en cada cita, información legal detallada junto con asesoramiento de la situación del mercado. ¡Sin duda os recomendaré!"</p>
+          <cite>— Yorya Fuentes</cite>
+        </blockquote>
+      </div>
+    </article>
+
+    <!-- CASO 04 — Genadi Yankov -->
+    <article class="ei-card">
+      <img class="ei-card-img" src="https://essenciainmobiliaria.com/wp-content/uploads/2026/06/foto1-1.jpg" alt="Piso vendido en Gandía" loading="lazy">
+      <div class="ei-card-body">
+        <div class="ei-card-top">
+          <span class="ei-card-id" aria-hidden="true">04</span>
+          <span class="ei-card-badge"><span class="ei-badge-dot"></span>Gandía</span>
+        </div>
+        <div class="ei-stats">
+          <div class="ei-stat">
+            <span class="ei-stat-val ei-blue">90</span>
+            <span class="ei-stat-lbl">Días hasta firma</span>
+          </div>
+          <div class="ei-stat">
+            <span class="ei-stat-val">96%</span>
+            <span class="ei-stat-lbl">Del precio pedido</span>
+          </div>
+          <div class="ei-stat">
+            <span class="ei-stat-val">Piso</span>
+            <span class="ei-stat-lbl">Tipo de propiedad</span>
+          </div>
+        </div>
+        <hr class="ei-sep">
+        <div class="ei-tags">
+          <span class="ei-tag">Equipo Profesional</span>
+          <span class="ei-tag">MLS Gandía</span>
+          <span class="ei-tag">Método MIA</span>
+        </div>
+        <blockquote class="ei-blockquote">
+          <p>"Santi y Oscar son unos profesionales en toda regla, tanto ellos como todo su equipo. Un placer haber trabajado juntos."</p>
+          <cite>— Genadi Yankov</cite>
+        </blockquote>
+      </div>
+    </article>
+
+  </div><!-- /grid -->
+
+  <!-- ══ RESEÑAS GOOGLE ════════════════════════════════════════ -->
+  <div class="ei-reviews-header">
+    <div class="ei-reviews-left">
+      <!-- Google icon -->
+      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+      </svg>
+      <div>
+        <div class="ei-stars-row">
+          <!-- 5 estrellas SVG -->
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <span class="ei-rating-num">5.0</span>
+        </div>
+        <p class="ei-reviews-sub">Reseñas en Google</p>
+      </div>
+    </div>
+    <a href="https://www.google.com/search?q=reseñas+essencia+inmobiliaria" target="_blank" rel="noopener noreferrer" class="ei-ver-google">
+      Ver en Google
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+      </svg>
+    </a>
+  </div>
+
+  <!-- Carousel -->
+  <div class="ei-carousel-outer" id="ei-wrap">
+    <div class="ei-carousel-track" id="ei-track">
+
+      <div class="ei-review-card">
+        <div class="ei-review-head">
+          <div class="ei-avatar">NM</div>
+          <div>
+            <p class="ei-review-name">Noelia Medina</p>
+            <p class="ei-review-time">Hace 15 semanas</p>
+          </div>
+          <svg class="ei-g-icon" width="15" height="15" viewBox="0 0 24 24">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+        </div>
+        <div class="ei-stars-row">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
+        <p class="ei-review-text">"Muy buena experiencia con la inmobiliaria. Óscar nos ha acompañado durante todo el proceso de compra, siempre disponible para resolver dudas y facilitando cada paso. Su trato cercano y profesional ha hecho que todo fuese mucho más sencillo. Sin duda lo recomendaríamos."</p>
+      </div>
+
+      <div class="ei-review-card">
+        <div class="ei-review-head">
+          <div class="ei-avatar">RB</div>
+          <div>
+            <p class="ei-review-name">Ramón Batet</p>
+            <p class="ei-review-time">Hace 18 semanas</p>
+          </div>
+          <svg class="ei-g-icon" width="15" height="15" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        </div>
+        <div class="ei-stars-row">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
+        <p class="ei-review-text">"Excelente profesional. Juanma nos acompañó durante todo el proceso de venta con total transparencia, cercanía y eficacia. Siempre disponible para resolver dudas, muy claro en la información y con una gestión impecable hasta el cierre de la operación. Totalmente recomendable."</p>
+      </div>
+
+      <div class="ei-review-card">
+        <div class="ei-review-head">
+          <div class="ei-avatar">LD</div>
+          <div>
+            <p class="ei-review-name">Luis Alfonso Díez</p>
+            <p class="ei-review-time">Hace 24 semanas</p>
+          </div>
+          <svg class="ei-g-icon" width="15" height="15" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        </div>
+        <div class="ei-stars-row">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
+        <p class="ei-review-text">"Todo ha ido correctamente, no hemos tenido ningún problema. Con Essencia todo han sido facilidades en todos los trámites y el trato ha sido exquisito. Muchas gracias especialmente a José Luis, que es la persona con quien más contacto he tenido."</p>
+      </div>
+
+      <div class="ei-review-card">
+        <div class="ei-review-head">
+          <div class="ei-avatar">AM</div>
+          <div>
+            <p class="ei-review-name">Alex M.</p>
+            <p class="ei-review-time">Hace 32 semanas</p>
+          </div>
+          <svg class="ei-g-icon" width="15" height="15" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        </div>
+        <div class="ei-stars-row">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
+        <p class="ei-review-text">"Compré un piso a través de Essencia y estoy muy contento con la atención recibida. El trabajo de Óscar ha sido de 10, siendo en todo momento muy claro, muy atento y resolutivo. Mi experiencia con esta inmobiliaria ha sido muy buena y no puedo más que recomendarla."</p>
+      </div>
+
+      <div class="ei-review-card">
+        <div class="ei-review-head">
+          <div class="ei-avatar">VZ</div>
+          <div>
+            <p class="ei-review-name">Vasyl Zhabchyk</p>
+            <p class="ei-review-time">Hace 36 semanas</p>
+          </div>
+          <svg class="ei-g-icon" width="15" height="15" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        </div>
+        <div class="ei-stars-row">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
+        <p class="ei-review-text">"Queremos agradecer mucho a Oscar Puente por acompañarnos en la compra de nuestra casa. Es un gran profesional que nos ayudó en todo momento. Estamos muy satisfechos con su trabajo y encantados de conocerle. Es una persona responsable y agradable. ¡Muchas gracias por todo!"</p>
+      </div>
+
+    </div><!-- /track -->
+  </div><!-- /outer -->
+
+  <!-- Controles centrados debajo -->
+  <div class="ei-controls">
+    <button class="ei-nav" id="ei-prev" aria-label="Reseña anterior">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="ei-dots" id="ei-dots"></div>
+    <button class="ei-nav" id="ei-next" aria-label="Reseña siguiente">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+
+  <!-- ══ CTA ══════════════════════════════════════════════════ -->
+  <div class="ei-cta">
+    <div>
+      <p class="ei-cta-title">¿Quieres ser el próximo caso de éxito?</p>
+      <p class="ei-cta-sub">Valoración gratuita con datos reales de mercado en Gandía, Oliva, Dénia y La Safor.</p>
+    </div>
+    <a class="ei-btn"
+       href="https://wa.me/34647803355?text=Hola%2C%20me%20gustar%C3%ADa%20obtener%20una%20valoraci%C3%B3n%20gratuita%20de%20mi%20propiedad."
+       target="_blank" rel="noopener noreferrer">
+      Valoración gratuita
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/><polyline points="15 18 21 12 15 6"/></svg>
+    </a>
+  </div>
+
+</div><!-- /container -->
+</section>
+</div><!-- /ei-root -->
+
+<script>
+(function () {
+  var wrap = document.getElementById('ei-wrap');
+  var track = document.getElementById('ei-track');
+  var dotsEl = document.getElementById('ei-dots');
+  var prevBtn = document.getElementById('ei-prev');
+  var nextBtn = document.getElementById('ei-next');
+  var GAP = 16;
+  var currentIdx = 0;
+  var isPaused = false;
+  var dragStartX = 0, dragDelta = 0, isDragging = false;
+
+  function getCards() { return track.querySelectorAll('.ei-review-card'); }
+  function getPerView() {
+    var w = wrap.offsetWidth;
+    return w <= 560 ? 1 : w <= 900 ? 2 : 3;
+  }
+  function cardWidth() {
+    var vis = getPerView();
+    return (wrap.offsetWidth - GAP * (vis - 1)) / vis;
+  }
+  function getTotal() { return getCards().length; }
+  function getPages() { return Math.ceil(getTotal() / getPerView()); }
+  function currentPage() { return Math.floor(currentIdx / getPerView()); }
+
+  function setWidths() {
+    var cw = cardWidth();
+    getCards().forEach(function (c) {
+      c.style.width = cw + 'px';
+      c.style.minWidth = cw + 'px';
+      c.style.flexShrink = '0';
+    });
+  }
+
+  function applyTransform(instant) {
+    var cw = cardWidth();
+    var offset = currentIdx * (cw + GAP);
+    if (instant) {
+      track.classList.add('ei-no-transition');
+      track.style.transform = 'translateX(-' + offset + 'px)';
+      track.offsetHeight; // force reflow
+      track.classList.remove('ei-no-transition');
+    } else {
+      track.style.transform = 'translateX(-' + offset + 'px)';
+    }
+  }
+
+  function buildDots() {
+    dotsEl.innerHTML = '';
+    var pages = getPages();
+    var cp = currentPage();
+    for (var i = 0; i < pages; i++) {
+      var d = document.createElement('button');
+      d.className = 'ei-dot' + (i === cp ? ' ei-active' : '');
+      d.setAttribute('aria-label', 'Página ' + (i + 1));
+      d.dataset.page = i;
+      d.addEventListener('click', (function (p) {
+        return function () { goTo(p * getPerView()); };
+      })(i));
+      dotsEl.appendChild(d);
+    }
+    prevBtn.disabled = currentIdx === 0;
+    nextBtn.disabled = currentIdx >= getTotal() - getPerView();
+  }
+
+  function updateDots() {
+    var cp = currentPage();
+    dotsEl.querySelectorAll('.ei-dot').forEach(function (d, i) {
+      d.className = 'ei-dot' + (i === cp ? ' ei-active' : '');
+    });
+    prevBtn.disabled = currentIdx === 0;
+    nextBtn.disabled = currentIdx >= getTotal() - getPerView();
+  }
+
+  function goTo(idx) {
+    var vis = getPerView();
+    var max = getTotal() - vis;
+    currentIdx = Math.max(0, Math.min(idx, max));
+    applyTransform(false);
+    updateDots();
+  }
+
+  function init() {
+    setWidths();
+    buildDots();
+    goTo(0);
+  }
+
+  prevBtn.addEventListener('click', function () { goTo(currentIdx - getPerView()); });
+  nextBtn.addEventListener('click', function () {
+    var next = currentIdx + getPerView();
+    goTo(next >= getTotal() ? 0 : next);
+  });
+
+  // Drag
+  track.addEventListener('mousedown', function (e) {
+    isDragging = true; dragStartX = e.clientX; dragDelta = 0;
+    track.classList.add('ei-no-transition');
+  });
+  window.addEventListener('mousemove', function (e) {
+    if (!isDragging) return;
+    dragDelta = e.clientX - dragStartX;
+    var base = currentIdx * (cardWidth() + GAP);
+    track.style.transform = 'translateX(-' + (base - dragDelta) + 'px)';
+  });
+  window.addEventListener('mouseup', function () {
+    if (!isDragging) return;
+    isDragging = false;
+    track.classList.remove('ei-no-transition');
+    if (dragDelta < -60) goTo(currentIdx + getPerView());
+    else if (dragDelta > 60) goTo(currentIdx - getPerView());
+    else applyTransform(false);
+    dragDelta = 0;
+  });
+  track.addEventListener('touchstart', function (e) {
+    dragStartX = e.touches[0].clientX; dragDelta = 0;
+    track.classList.add('ei-no-transition');
+  }, { passive: true });
+  track.addEventListener('touchmove', function (e) {
+    dragDelta = e.touches[0].clientX - dragStartX;
+    var base = currentIdx * (cardWidth() + GAP);
+    track.style.transform = 'translateX(-' + (base - dragDelta) + 'px)';
+  }, { passive: true });
+  track.addEventListener('touchend', function () {
+    track.classList.remove('ei-no-transition');
+    if (dragDelta < -60) goTo(currentIdx + getPerView());
+    else if (dragDelta > 60) goTo(currentIdx - getPerView());
+    else applyTransform(false);
+    dragDelta = 0;
+  });
+
+  // Auto-play
+  var timer;
+  function startAuto() {
+    timer = setInterval(function () {
+      if (isPaused) return;
+      var next = currentIdx + getPerView();
+      goTo(next >= getTotal() ? 0 : next);
+    }, 5000);
+  }
+  wrap.addEventListener('mouseenter', function () { isPaused = true; });
+  wrap.addEventListener('mouseleave', function () { isPaused = false; });
+
+  // Resize
+  var resizeTimer;
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () {
+      setWidths(); buildDots(); goTo(0);
+    }, 150);
+  });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () { init(); startAuto(); });
+  } else {
+    init(); startAuto();
+  }
+})();
+</script>

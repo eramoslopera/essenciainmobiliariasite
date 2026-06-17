@@ -1,17 +1,18 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import StatsSection from '../components/StatsSection';
 import SEOHead from '../components/SEOHead';
 import MiaMethodTeaser from '../components/MiaMethodTeaser';
 import CasosExitoSection from '../components/CasosExitoSection';
+import PropiedadesSection from '../components/PropiedadesSection';
 import ContactForm from '../components/ContactForm';
 import AdvisorsSection from '../components/AdvisorsSection';
 import FAQSection from '../components/FAQSection';
+import BlogTeaser from '../components/BlogTeaser';
 import { motion } from 'framer-motion';
 import { WhatsappLogo } from '@phosphor-icons/react';
-import { Property } from '../src/types/property';
-import { fetchProperties } from '../src/utils/xmlParser';
+
 
 const HERO_IMAGES = [
   {
@@ -30,78 +31,11 @@ const HERO_IMAGES = [
 
 
 
-const FEATURED_SOLD: Property[] = [
-  {
-    id: 'sold-1',
-    title: "Adosado Reformado",
-    location: "Benidoleig, Alicante",
-    price: "€140,000",
-    beds: 3,
-    baths: 2,
-    size: "120 m²",
-    image: "https://fotos15.apinmo.com/1909/27341402/3-1.jpg",
-    type: 'Townhouse',
-    dateListed: '2024-01-01',
-    lat: 38.7917,
-    lng: -0.0278,
-    status: 'sold',
-    priceFreq: 'sale'
-  },
-  {
-    id: 'sold-2',
-    title: "Casa de Pueblo con Encanto",
-    location: "Real de Gandía, Valencia",
-    price: "€164,900",
-    beds: 4,
-    baths: 2,
-    size: "180 m²",
-    image: "https://fotos15.apinmo.com/1909/23491575/15-1.jpg",
-    type: 'House',
-    dateListed: '2024-02-01',
-    lat: 38.949,
-    lng: -0.190,
-    status: 'sold',
-    priceFreq: 'sale'
-  },
-  {
-    id: 'sold-3',
-    title: "Apartamento Costero",
-    location: "Playa de Bellreguard",
-    price: "€170,000",
-    beds: 3,
-    baths: 2,
-    size: "95 m²",
-    image: "https://fotos15.apinmo.com/1909/26037790/9-1.jpg",
-    type: 'Apartment',
-    dateListed: '2024-03-01',
-    lat: 38.950,
-    lng: -0.150,
-    status: 'sold',
-    priceFreq: 'sale'
-  },
-  {
-    id: 'sold-4',
-    title: "Apartamento Familiar",
-    location: "Playa de Gandía",
-    price: "€215,000",
-    beds: 3,
-    baths: 2,
-    size: "105 m²",
-    image: "https://fotos15.apinmo.com/1909/25828355/10-1.jpg",
-    type: 'Apartment',
-    dateListed: '2024-02-15',
-    lat: 39.000,
-    lng: -0.160,
-    status: 'sold',
-    priceFreq: 'sale'
-  }
-];
+
 
 const Home: React.FC = () => {
-  const { t, language } = useLanguage();
-  const carouselRef = useRef<HTMLDivElement>(null);
+  const { t } = useLanguage();
   const [heroIndex, setHeroIndex] = useState(0);
-  const [recentProperties, setRecentProperties] = useState<Property[]>([]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -110,39 +44,6 @@ const Home: React.FC = () => {
     return () => clearInterval(timer);
   }, []);
 
-  useEffect(() => {
-    const loadProperties = async () => {
-      let recent = [...FEATURED_SOLD];
-      try {
-        const fetched = await fetchProperties();
-        const apiRecent = fetched.filter(p => p.status === 'sold' || p.status === 'reserved');
-        if (apiRecent.length > 0) {
-            recent = [...recent, ...apiRecent];
-        }
-      } catch (err) {
-        console.error(err);
-      }
-      const sorted = recent.sort((a,b) => {
-        if (!a.dateListed || !b.dateListed) return 0;
-        return new Date(b.dateListed).getTime() - new Date(a.dateListed).getTime();
-      });
-      setRecentProperties(sorted.slice(0, 8));
-    };
-    loadProperties();
-  }, []);
-
-  const scroll = (direction: 'left' | 'right') => {
-    if (carouselRef.current) {
-      const scrollAmount = 450; // slightly less than card width + gap for context
-      const currentScroll = carouselRef.current.scrollLeft;
-      const targetScroll = direction === 'left' ? currentScroll - scrollAmount : currentScroll + scrollAmount;
-
-      carouselRef.current.scrollTo({
-        left: targetScroll,
-        behavior: 'smooth'
-      });
-    }
-  };
 
   return (
     <>
@@ -249,87 +150,18 @@ const Home: React.FC = () => {
       {/* Casos de Éxito — prueba social después del método */}
       <CasosExitoSection />
 
-      <section className="py-16 md:py-24 bg-editorial-gray overflow-hidden" aria-label="Propiedades vendidas recientemente">
-        <div className="max-w-[1440px] mx-auto">
-          <div className="flex items-center justify-between mb-12 px-6 lg:px-24">
-            <h2 className="text-3xl font-bold text-editorial-black">
-              {t('home.recent.title').split(' ').map((word, i) =>
-                i === 0 ? <span key={i} className="text-brand-blue-600">{word} </span> : <span key={i}>{word} </span>
-              )}
-            </h2>
-            <div className="flex gap-2">
-              <button onClick={() => scroll('left')} aria-label={language === 'es' ? 'Propiedad anterior' : 'Previous property'} className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500">
-                <span className="material-symbols-outlined" aria-hidden="true">arrow_back</span>
-              </button>
-              <button onClick={() => scroll('right')} aria-label={language === 'es' ? 'Siguiente propiedad' : 'Next property'} className="w-10 h-10 rounded-full bg-brand-blue-500 text-white flex items-center justify-center hover:bg-brand-blue-600 active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-500">
-                <span className="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
-              </button>
-            </div>
-          </div>
-          <div
-            ref={carouselRef}
-            className="flex overflow-x-auto gap-6 lg:gap-8 px-6 lg:px-24 pb-12 hide-scrollbar snap-x snap-mandatory scroll-smooth"
-          >
-            {recentProperties.map((property, index) => {
-              const statusText = property.status === 'sold' ? t('home.recent.sold') : (language === 'es' ? 'Reservado' : 'Reserved');
-              const displayImage = property.image || (property.images && property.images.length > 0 ? property.images[0] : '');
-              
-              return (
-              <motion.div 
-                key={property.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ scale: 1.01, y: -4, transition: { type: 'spring', stiffness: 300, damping: 20 } }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className="snap-center shrink-0 w-[85vw] md:w-[500px]"
-              >
-              <Link to={`/property/${property.id}`} className="bg-white rounded-lg overflow-hidden shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-5px_rgba(0,0,0,0.1)] transition-shadow duration-300 block group h-full">
-                <div className="w-full h-64 bg-cover bg-center group-hover:scale-105 transition-transform duration-700" style={{ backgroundImage: `url("${displayImage}")` }}>
-                  <div className="p-4 flex justify-end">
-                    <span className="bg-editorial-black text-white font-black uppercase tracking-widest text-xs px-3 py-1 rounded-full">{statusText}</span>
-                  </div>
-                </div>
-                <div className="p-6 relative z-10 bg-white">
-                  <div className="mb-6">
-                    <h3 className="text-xl font-bold leading-tight mb-1 group-hover:text-brand-blue-600 transition-colors line-clamp-1 truncate">{property.title}</h3>
-                    <p className="text-sm text-gray-700 truncate">{property.location}</p>
-                  </div>
-                  <div className="space-y-3 bg-gray-50 p-4 rounded-md">
-                    <div className="flex justify-between items-center pb-2 border-b border-gray-200 border-dashed">
-                      <span className="text-xs font-bold uppercase text-gray-600 tracking-wide">{t('home.recent.sold_price')}</span>
-                      <span className="text-sm font-bold text-green-700">{property.price}</span>
-                    </div>
-                    {property.dateListed && (
-                    <div className="flex justify-between items-center">
-                      <span className="text-xs font-bold uppercase text-gray-600 tracking-wide">{language === 'es' ? 'Publicado' : 'Listed'}</span>
-                      <span className="text-sm font-bold text-editorial-black">{property.dateListed}</span>
-                    </div>
-                    )}
-                  </div>
-                </div>
-              </Link>
-              </motion.div>
-            )})}
-            {recentProperties.length === 0 && (
-              <div className="w-full text-center py-12 text-gray-700 font-medium tracking-wide lg:col-span-3">
-                {language === 'es' ? 'No hay transacciones recientes disponibles en el CRM.' : 'No recent transactions available in the CRM.'}
-              </div>
-            )}
-            
-            {/* Fake element to allow scrolling to the end with proper padding */}
-            {recentProperties.length > 0 && (
-              <div className="shrink-0 w-[1px] snap-end"></div>
-            )}
-          </div>
-        </div>
-      </section>
+      {/* ── Secciones de propiedades: Tipologías + Rebajados + Recientes ── */}
+      <PropiedadesSection />
+
 
       {/* ================= ADVISORS SECTION ================= */}
       <AdvisorsSection />
 
       {/* ================= FAQ SECTION ================= */}
       <FAQSection />
+
+      {/* ================= BLOG TEASER ================= */}
+      <BlogTeaser />
 
       {/* ================= CONTACT FORM SECTION ================= */}
       <section className="py-16 md:py-24 bg-white relative overflow-hidden">
