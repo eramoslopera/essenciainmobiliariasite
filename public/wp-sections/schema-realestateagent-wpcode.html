@@ -1,0 +1,125 @@
+<!-- ============================================================
+     SCHEMA RealEstateAgent + LocalBusiness — Essencia Inmobiliaria
+     
+     INSTRUCCIONES DE INSTALACIÓN EN WORDPRESS:
+     1. Instala el plugin gratuito "WPCode – Insert Headers and Footers"
+     2. Ve a: WPCode > Header & Footer > Header
+     3. Pega TODO este bloque (solo el <script>, sin estos comentarios)
+     4. Guarda cambios → el schema aparece en TODAS las páginas
+
+     CAMPOS QUE VERIFICAR CON SANTI ANTES DE PUBLICAR:
+     - "telephone": número real de contacto
+     - "streetAddress": dirección exacta de la oficina
+     - "postalCode": código postal de Gandía (46700)
+     - "logo": URL real del logo en WordPress Media
+     - "sameAs": URLs exactas de redes sociales
+     - "foundingDate": año de fundación real (~2010-2011)
+     ============================================================ -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["RealEstateAgent", "LocalBusiness"],
+      "@id": "https://essenciainmobiliaria.com/#organization",
+      "name": "Essencia Inmobiliaria",
+      "url": "https://essenciainmobiliaria.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://essenciainmobiliaria.com/wp-content/uploads/logo-essencia.png",
+        "width": 200,
+        "height": 60
+      },
+      "image": "https://essenciainmobiliaria.com/wp-content/uploads/logo-essencia.png",
+      "description": "Agencia inmobiliaria especializada en la venta de propiedades en Gandía y La Safor. Más de 15 años de experiencia, más de 2.000 ventas cerradas, 45 días de media hasta la venta y colaboración con más de 400 inmobiliarias a través del Método MIA.",
+      "telephone": "+34-XXX-XXX-XXX",
+      "email": "info@essenciainmobiliaria.com",
+      "foundingDate": "2010",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "COMPLETAR CON DIRECCIÓN REAL",
+        "addressLocality": "Gandía",
+        "addressRegion": "Comunitat Valenciana",
+        "postalCode": "46700",
+        "addressCountry": "ES"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 38.9662,
+        "longitude": -0.1773
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Gandía"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "La Safor"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Comunitat Valenciana"
+        }
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:30",
+          "closes": "14:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "16:30",
+          "closes": "19:30"
+        }
+      ],
+      "knowsAbout": [
+        "Venta de propiedades en Gandía",
+        "Mercado inmobiliario de La Safor",
+        "Compradores internacionales en la Costa Valenciana",
+        "Marketing inmobiliario avanzado",
+        "Método MIA de venta inmobiliaria"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servicios de Essencia Inmobiliaria",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Venta de viviendas con Método MIA",
+              "description": "Servicio integral de venta con marketing avanzado, producción audiovisual, IA y red de +400 inmobiliarias. Promedio de venta: 45 días."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Pack Visual PRO",
+              "description": "Producción audiovisual inmobiliaria premium: fotografía profesional, vídeo cinematográfico, drone y tour virtual 360°."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Gestión Integral",
+              "description": "Acompañamiento completo desde tasación hasta firma en notaría, incluyendo papeleo legal, certificado energético y filtrado financiero de compradores."
+            }
+          }
+        ]
+      },
+      "sameAs": [
+        "COMPLETAR: URL Instagram",
+        "COMPLETAR: URL Facebook",
+        "COMPLETAR: URL LinkedIn"
+      ]
+    }
+  ]
+}
+</script>

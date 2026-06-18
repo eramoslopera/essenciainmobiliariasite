@@ -1,0 +1,256 @@
+<!-- ═══════════════════════════════════════════════════════════════════
+  SECCIÓN ASESORES — Essencia Inmobiliaria
+  Pegar en WordPress > Bloque HTML personalizado
+═══════════════════════════════════════════════════════════════════ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800;900&display=swap">
+
+<style>
+/* Solo box-sizing — sin margin/padding reset global (conflicto de especificidad con WP) */
+#ei-advisors *,#ei-advisors *::before,#ei-advisors *::after{box-sizing:border-box!important}
+
+/* Resets para tags que WP sobreescribe */
+#ei-advisors h2,#ei-advisors h3,#ei-advisors p,#ei-advisors span,#ei-advisors div{margin:0!important;padding:0!important}
+#ei-advisors img{max-width:none!important;height:auto!important}
+
+/* Sección */
+#ei-advisors{font-family:'Manrope',sans-serif!important;background:#F6F8FA!important;padding:80px 0 100px!important;position:relative!important;width:100%!important}
+#ei-advisors::before{content:'';position:absolute;top:0;right:0;width:600px;height:400px;pointer-events:none;background:radial-gradient(ellipse at top right,rgba(31,192,217,.07) 0%,transparent 65%)}
+#ei-advisors::after{content:'';position:absolute;inset:0;z-index:0;background:#F6F8FA;pointer-events:none}
+
+/* Inner */
+#ei-advisors .ei-adv-inner{max-width:1140px!important;width:100%!important;margin-left:auto!important;margin-right:auto!important;padding:0 clamp(20px,4vw,48px)!important;position:relative!important;z-index:1!important}
+
+/* Header */
+#ei-advisors .ei-adv-pill{display:inline-flex!important;align-items:center!important;gap:8px!important;font-size:12px!important;font-weight:900!important;letter-spacing:.28em!important;text-transform:uppercase!important;color:#1fc0d9!important;margin-bottom:16px!important;padding:0!important;background:none!important;border:none!important}
+#ei-advisors .ei-adv-pulse{display:inline-block!important;width:6px!important;height:6px!important;border-radius:50%!important;background:#1fc0d9!important;flex-shrink:0!important;animation:ei-pulse 2s infinite!important;margin:0!important;padding:0!important}
+@keyframes ei-pulse{0%,100%{opacity:1}50%{opacity:.4}}
+#ei-advisors .ei-adv-heading{font-size:clamp(32px,4.5vw,52px)!important;font-weight:900!important;color:#222!important;letter-spacing:-.025em!important;line-height:1.08!important;margin:0!important;padding:0!important}
+#ei-advisors .ei-adv-heading span{color:#1fc0d9!important;font-weight:900!important}
+#ei-advisors .ei-adv-header{display:flex!important;flex-wrap:wrap!important;align-items:flex-end!important;justify-content:space-between!important;gap:16px!important;margin-bottom:48px!important;padding:0!important}
+#ei-advisors .ei-adv-avail{font-size:11px!important;font-weight:700!important;letter-spacing:.15em!important;text-transform:uppercase!important;color:#4b5563!important;text-align:right!important;line-height:1.6!important;margin:0!important;padding:0!important}
+
+/* Bento grid */
+#ei-advisors .ei-adv-bento{display:grid!important;grid-template-columns:2fr 3fr!important;gap:20px!important;align-items:start!important}
+
+/* Tablet */
+@media(min-width:640px) and (max-width:1023px){
+  #ei-advisors .ei-adv-bento{grid-template-columns:1fr!important}
+  #ei-advisors .ei-grid{grid-template-columns:repeat(2,1fr)!important}
+  #ei-advisors .ei-featured-photo-wrap{aspect-ratio:16/9!important}
+  #ei-advisors .ei-carousel{display:none!important}
+}
+
+/* Featured card */
+#ei-advisors .ei-featured-wrap{position:relative!important;padding:0!important}
+#ei-advisors .ei-featured{background:#fff!important;border:1px solid rgba(31,192,217,.2)!important;border-radius:32px!important;overflow:hidden!important;box-shadow:0 20px 48px -12px rgba(31,192,217,.1)!important;opacity:1!important;transition:opacity .22s ease,transform .22s ease!important;transform:scale(1)!important;padding:0!important}
+#ei-advisors .ei-featured.ei-fade-out{opacity:0!important;transform:scale(.98)!important}
+#ei-advisors .ei-featured-photo-wrap{position:relative!important;aspect-ratio:3/4!important;overflow:hidden!important;display:block!important;padding:0!important;margin:0!important}
+#ei-advisors .ei-featured-photo-wrap img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:top!important;display:block!important;margin:0!important;padding:0!important;border-radius:0!important}
+#ei-advisors .ei-featured-photo-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.18) 0%,transparent 40%)}
+#ei-advisors .ei-featured-badge{position:absolute!important;top:20px!important;left:20px!important;z-index:2!important;display:inline-flex!important;align-items:center!important;gap:6px!important;font-size:9px!important;font-weight:900!important;letter-spacing:.22em!important;text-transform:uppercase!important;padding:6px 12px!important;border-radius:999px!important;background:rgba(255,255,255,.92)!important;color:#1fc0d9!important;border:1px solid rgba(31,192,217,.3)!important;backdrop-filter:blur(6px)!important;margin:0!important}
+#ei-advisors .ei-featured-body{padding:28px!important;display:block!important}
+#ei-advisors .ei-featured-name{font-size:24px!important;font-weight:900!important;color:#222!important;letter-spacing:-.02em!important;margin-bottom:8px!important;margin-top:0!important;padding:0!important;line-height:1.2!important}
+#ei-advisors .ei-featured-spec{font-size:13.5px!important;color:#374151!important;line-height:1.6!important;margin-bottom:20px!important;margin-top:0!important;padding:0!important}
+#ei-advisors .ei-featured-stats{display:flex!important;gap:20px!important;border-top:1px solid #f3f4f6!important;padding-top:20px!important;margin-bottom:20px!important;margin-top:0!important}
+#ei-advisors .ei-stat-label{font-size:12px!important;font-weight:900!important;letter-spacing:.2em!important;text-transform:uppercase!important;color:#4b5563!important;margin-bottom:2px!important;margin-top:0!important;padding:0!important;display:block!important}
+#ei-advisors .ei-stat-val{font-size:14px!important;font-weight:900!important;color:#222!important;margin:0!important;padding:0!important;display:block!important}
+#ei-advisors .ei-stat-div{width:1px!important;background:#f3f4f6!important;flex-shrink:0!important;margin:0!important;padding:0!important}
+
+/* CTA botón principal */
+#ei-advisors .ei-cta{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:10px!important;width:100%!important;height:48px!important;border-radius:999px!important;background:#1fc0d9!important;color:#fff!important;text-decoration:none!important;font-size:12px!important;font-weight:900!important;letter-spacing:.12em!important;text-transform:uppercase!important;border:none!important;cursor:pointer!important;transition:background .2s,transform .1s!important;padding:0!important;margin:0!important;line-height:1!important}
+#ei-advisors .ei-cta:hover{background:#18adc4!important;color:#fff!important;text-decoration:none!important}
+#ei-advisors .ei-cta:active{transform:scale(.98)!important}
+
+/* WA icons */
+#ei-advisors .ei-wa-icon{width:18px!important;height:18px!important;flex-shrink:0!important;fill:#fff!important}
+#ei-advisors .ei-wa-icon-sm{width:14px!important;height:14px!important;flex-shrink:0!important;fill:#fff!important}
+
+/* Grid secundario */
+#ei-advisors .ei-grid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:20px!important}
+#ei-advisors .ei-card{background:#fff!important;border:1px solid #f3f4f6!important;border-radius:24px!important;overflow:hidden!important;cursor:pointer!important;transition:border-color .3s,box-shadow .3s!important;display:flex!important;flex-direction:column!important;padding:0!important;margin:0!important}
+#ei-advisors .ei-card:hover{border-color:rgba(31,192,217,.3)!important;box-shadow:0 12px 32px -8px rgba(31,192,217,.13)!important}
+#ei-advisors .ei-card.ei-stagger-in{animation:ei-stagIn .28s ease both!important}
+@keyframes ei-stagIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+#ei-advisors .ei-card-photo-wrap{position:relative!important;aspect-ratio:4/3!important;overflow:hidden!important;display:block!important;margin:0!important;padding:0!important}
+#ei-advisors .ei-card-photo-wrap img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:top!important;display:block!important;transition:transform .5s ease!important;margin:0!important;padding:0!important;border-radius:0!important}
+#ei-advisors .ei-card:hover .ei-card-photo-wrap img{transform:scale(1.04)!important}
+#ei-advisors .ei-card-overlay{position:absolute!important;inset:0!important;background:rgba(31,192,217,0)!important;display:flex!important;align-items:flex-end!important;justify-content:center!important;padding-bottom:12px!important;transition:background .3s!important}
+#ei-advisors .ei-card:hover .ei-card-overlay{background:rgba(31,192,217,.08)!important}
+#ei-advisors .ei-card-hint{font-size:8px!important;font-weight:900!important;letter-spacing:.2em!important;text-transform:uppercase!important;color:#fff!important;background:rgba(0,0,0,.65)!important;padding:4px 10px!important;border-radius:999px!important;opacity:0!important;transform:translateY(4px)!important;transition:opacity .25s,transform .25s!important;white-space:nowrap!important;margin:0!important}
+#ei-advisors .ei-card:hover .ei-card-hint{opacity:1!important;transform:translateY(0)!important}
+#ei-advisors .ei-card-body{padding:20px!important;display:flex!important;flex-direction:column!important;gap:12px!important;flex:1!important}
+#ei-advisors .ei-card-role{font-size:12px!important;font-weight:900!important;letter-spacing:.22em!important;text-transform:uppercase!important;color:#1fc0d9!important;margin:0!important;padding:0!important;display:block!important}
+#ei-advisors .ei-card-name{font-size:16px!important;font-weight:900!important;color:#222!important;letter-spacing:-.015em!important;line-height:1.2!important;margin-top:2px!important;margin-bottom:0!important;padding:0!important}
+#ei-advisors .ei-card-spec{font-size:11.5px!important;color:#4b5563!important;line-height:1.5!important;margin:0!important;padding:0!important}
+#ei-advisors .ei-card-div{height:1px!important;background:#f3f4f6!important;margin:0!important;padding:0!important}
+
+/* CTA botón pequeño */
+#ei-advisors .ei-cta-sm{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;width:100%!important;height:36px!important;border-radius:999px!important;background:#1fc0d9!important;color:#fff!important;text-decoration:none!important;font-size:9px!important;font-weight:900!important;letter-spacing:.1em!important;text-transform:uppercase!important;border:none!important;cursor:pointer!important;transition:background .2s,transform .1s!important;padding:0!important;margin:0!important;line-height:1!important}
+#ei-advisors .ei-cta-sm:hover{background:#18adc4!important;color:#fff!important;text-decoration:none!important}
+#ei-advisors .ei-cta-sm:active{transform:scale(.98)!important}
+
+/* Carrusel móvil */
+#ei-advisors .ei-carousel{display:none;overflow-x:auto!important;scroll-snap-type:x mandatory!important;gap:16px!important;padding:4px 24px 24px!important;-webkit-overflow-scrolling:touch!important}
+#ei-advisors .ei-carousel::-webkit-scrollbar{display:none}
+#ei-advisors .ei-mob-card{flex-shrink:0!important;width:260px!important;scroll-snap-align:start!important;background:#fff!important;border:1px solid #f3f4f6!important;border-radius:28px!important;overflow:hidden!important;display:flex!important;flex-direction:column!important;padding:0!important;margin:0!important}
+#ei-advisors .ei-mob-card-photo{width:100%!important;aspect-ratio:4/3!important;object-fit:cover!important;object-position:top!important;display:block!important;border-radius:0!important;margin:0!important;padding:0!important}
+
+/* Mobile */
+@media(max-width:639px){
+  #ei-advisors .ei-adv-bento{display:none!important}
+  #ei-advisors .ei-carousel{display:flex!important}
+  #ei-advisors{padding:56px 0 72px!important}
+  #ei-advisors .ei-adv-header{margin-bottom:28px!important}
+  #ei-advisors .ei-adv-avail{display:none!important}
+  #ei-advisors .ei-adv-inner{padding-left:0!important;padding-right:0!important}
+  #ei-advisors .ei-adv-header,#ei-advisors .ei-adv-pill{padding-left:20px!important;padding-right:20px!important}
+  #ei-adv-title{padding-left:20px!important;padding-right:20px!important}
+}
+</style>
+
+<section id="ei-advisors" aria-labelledby="ei-adv-title">
+  <div class="ei-adv-inner">
+
+    <!-- Header -->
+    <div class="ei-adv-pill">
+      <span class="ei-adv-pulse" aria-hidden="true"></span>
+      Nuestro Equipo
+    </div>
+    <div class="ei-adv-header">
+      <h2 id="ei-adv-title" class="ei-adv-heading">
+        Habla directamente<br><span>con tu asesor</span>
+      </h2>
+      <p class="ei-adv-avail">Disponibles lun–sáb<br>09:00 – 19:00h</p>
+    </div>
+
+    <!-- Desktop Bento -->
+    <div class="ei-adv-bento">
+      <div class="ei-featured-wrap">
+        <div class="ei-featured" id="ei-featured"></div>
+      </div>
+      <div class="ei-grid" id="ei-grid"></div>
+    </div>
+
+    <!-- Mobile Carousel -->
+    <div class="ei-carousel" id="ei-carousel" role="list"></div>
+
+  </div>
+</section>
+
+<script>
+(function(){
+  function eiRun() {
+  try {
+
+    var ADVISORS = [
+      { id:'santi', firstName:'Santi', name:'Santi Torres', role:'CEO & Fundador', specialty:'Especialista en inversiones inmobiliarias y estrategia de venta', wa:'34600403136', msg:'Hola Santi, me gustaría hablar sobre una inversión inmobiliaria', photo:'https://essenciainmobiliariasite.vercel.app/santi.jpg', exp:'+12 años', zona:'Valencia & Safor' },
+      { id:'carolina', firstName:'Carolina', name:'Carolina González', role:'Asesora Inmobiliaria', specialty:'Compraventa residencial en Gandía y la costa de Valencia', wa:'34647803355', msg:'Hola Carolina, me gustaría recibir asesoramiento inmobiliario', photo:'https://essenciainmobiliariasite.vercel.app/carolina.jpg', exp:'+6 años', zona:'Gandía & Costa' },
+      { id:'juanma', firstName:'Juanma', name:'Juanma Menacho', role:'Coordinador de Oficina', specialty:'Gestión de operaciones y atención al cliente', wa:'34603628158', msg:'Hola Juanma, me gustaría obtener información sobre vuestros servicios', photo:'https://essenciainmobiliariasite.vercel.app/juanma.jpg', exp:'+4 años', zona:'Gandía' },
+      { id:'joseluis', firstName:'José Luis', name:'José Luis Puente', role:'Asesor Inmobiliario', specialty:'Propiedades residenciales y de lujo en la Safor', wa:'34637403052', msg:'Hola José Luis, me gustaría hablar sobre una propiedad', photo:'https://essenciainmobiliariasite.vercel.app/joseluis.jpg', exp:'+8 años', zona:'La Safor' },
+      { id:'oscar', firstName:'Óscar', name:'Óscar Puente', role:'Asesor Inmobiliario', specialty:'Primera vivienda y asesoramiento hipotecario', wa:'34637403050', msg:'Hola Óscar, me gustaría hablar sobre una propiedad', photo:'https://essenciainmobiliariasite.vercel.app/oscar.jpg', exp:'+5 años', zona:'Gandía & Safor' }
+    ];
+
+    var WA_SVG = '<svg class="ei-wa-icon" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a88.11,88.11,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"/></svg>';
+    var WA_SM  = '<svg class="ei-wa-icon-sm" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a88.11,88.11,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"/></svg>';
+
+    function waUrl(a) { return 'https://wa.me/' + a.wa + '?text=' + encodeURIComponent(a.msg); }
+    function img(a, cls) { return '<' + 'img src="' + a.photo + '" alt="Foto de ' + a.name + '" class="' + cls + '" loading="lazy">'; }
+
+    function featured(a) {
+      return '<div class="ei-featured-photo-wrap">'
+        + '<div class="ei-featured-badge"><span class="ei-adv-pulse" aria-hidden="true"></span>' + a.role + '</div>'
+        + img(a, 'ei-featured-photo')
+        + '</div>'
+        + '<div class="ei-featured-body">'
+        + '<h3 class="ei-featured-name">' + a.name + '</h3>'
+        + '<p class="ei-featured-spec">' + a.specialty + '</p>'
+        + '<div class="ei-featured-stats">'
+        + '<div><p class="ei-stat-label">Experiencia</p><p class="ei-stat-val">' + a.exp + '</p></div>'
+        + '<div class="ei-stat-div"></div>'
+        + '<div><p class="ei-stat-label">Zona</p><p class="ei-stat-val">' + a.zona + '</p></div>'
+        + '</div>'
+        + '<a href="' + waUrl(a) + '" target="_blank" rel="noopener noreferrer" class="ei-cta">' + WA_SVG + 'Hablar con ' + a.firstName + '</a>'
+        + '</div>';
+    }
+
+    function card(a, i) {
+      return '<div class="ei-card ei-stagger-in" style="animation-delay:' + (i * 55) + 'ms" data-id="' + a.id + '" role="button" tabindex="0" aria-label="Ver a ' + a.name + ' como asesor principal">'
+        + '<div class="ei-card-photo-wrap">' + img(a, '') + '<div class="ei-card-overlay"><span class="ei-card-hint">Ver como principal</span></div></div>'
+        + '<div class="ei-card-body">'
+        + '<span class="ei-card-role">' + a.role + '</span>'
+        + '<div><h3 class="ei-card-name">' + a.name + '</h3><p class="ei-card-spec">' + a.specialty + '</p></div>'
+        + '<div class="ei-card-div"></div>'
+        + '<a href="' + waUrl(a) + '" target="_blank" rel="noopener noreferrer" class="ei-cta-sm" onclick="event.stopPropagation()">' + WA_SM + 'Hablar con ' + a.firstName + '</a>'
+        + '</div></div>';
+    }
+
+    var current = 'santi';
+
+    function setFeatured(id) {
+      if (id === current) return;
+      current = id;
+      var fEl = document.getElementById('ei-featured');
+      var gEl = document.getElementById('ei-grid');
+      var adv = ADVISORS.filter(function(a){ return a.id === id; })[0];
+      var rest = ADVISORS.filter(function(a){ return a.id !== id; });
+      fEl.classList.add('ei-fade-out');
+      setTimeout(function() {
+        fEl.innerHTML = featured(adv);
+        fEl.classList.remove('ei-fade-out');
+        var h = ''; rest.forEach(function(a, i){ h += card(a, i); });
+        gEl.innerHTML = h;
+        bindCards();
+      }, 220);
+    }
+
+    function bindCards() {
+      var cards = document.querySelectorAll('#ei-grid .ei-card');
+      for (var i = 0; i < cards.length; i++) {
+        (function(el) {
+          el.addEventListener('click', function(){ setFeatured(el.getAttribute('data-id')); });
+          el.addEventListener('keydown', function(e){ if (e.key==='Enter'||e.key===' '){ e.preventDefault(); setFeatured(el.getAttribute('data-id')); }});
+        })(cards[i]);
+      }
+    }
+
+    /* Render inicial */
+    var initAdv  = ADVISORS.filter(function(a){ return a.id === current; })[0];
+    var initRest = ADVISORS.filter(function(a){ return a.id !== current; });
+    var fEl = document.getElementById('ei-featured');
+    var gEl = document.getElementById('ei-grid');
+    var cEl = document.getElementById('ei-carousel');
+    if (!fEl || !gEl) { console.warn('[EI Advisors] Elementos no encontrados'); return; }
+    fEl.innerHTML = featured(initAdv);
+    var gh = ''; initRest.forEach(function(a, i){ gh += card(a, i); });
+    gEl.innerHTML = gh;
+    bindCards();
+
+    /* Carrusel móvil */
+    if (cEl) {
+      var ch = '';
+      ADVISORS.forEach(function(a) {
+        ch += '<div class="ei-mob-card" role="listitem">'
+          + '<' + 'img src="' + a.photo + '" alt="Foto de ' + a.name + '" class="ei-mob-card-photo" loading="lazy">'
+          + '<div class="ei-card-body">'
+          + '<span class="ei-card-role">' + a.role + '</span>'
+          + '<div><h3 class="ei-card-name">' + a.name + '</h3><p class="ei-card-spec">' + a.specialty + '</p></div>'
+          + '<div class="ei-card-div"></div>'
+          + '<a href="' + waUrl(a) + '" target="_blank" rel="noopener noreferrer" class="ei-cta-sm">' + WA_SM + 'Hablar con ' + a.firstName + '</a>'
+          + '</div></div>';
+      });
+      cEl.innerHTML = ch;
+    }
+
+  } catch(err) {
+    console.error('[EI Advisors] Error al inicializar:', err);
+  }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', eiRun);
+  } else {
+    setTimeout(eiRun, 0);
+  }
+})();
+</script>

@@ -138,10 +138,10 @@ const PropertyCard: React.FC<{
           {badge && (
             <div className="absolute top-3 left-3">
               <span
-                className={`text-[9px] font-black tracking-[0.16em] uppercase px-3 py-1.5 rounded-full ${
+                className={`text-[9px] font-black tracking-[0.16em] uppercase px-3 py-1.5 rounded-full border ${
                   badgeStyle === 'amber'
-                    ? 'bg-amber-100 text-amber-800'
-                    : 'bg-editorial-black text-white'
+                    ? 'bg-brand-blue-50 text-brand-blue-600 border-brand-blue-200/50'
+                    : 'bg-editorial-black text-white border-transparent'
                 }`}
               >
                 {badge}

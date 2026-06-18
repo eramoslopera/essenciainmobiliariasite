@@ -1,0 +1,226 @@
+<!-- ============================================================
+     ESSENCIA INMOBILIARIA — Schema.org Markup para WordPress
+     Instrucciones:
+     1. En WordPress > Apariencia > Editor de temas > functions.php
+        (o via plugin "Code Snippets") pega la versión PHP de abajo.
+     2. Alternativamente: en Elementor, añade un widget "HTML"
+        al footer y pega este bloque completo.
+     ============================================================ -->
+
+<!-- SCHEMA 1: RealEstateAgent (LocalBusiness subtype) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  "@id": "https://essenciainmobiliaria.com/#realestateagent",
+  "name": "Essencia Inmobiliaria",
+  "alternateName": "Essencia Inmobiliaria Gandia",
+  "url": "https://essenciainmobiliaria.com",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://essenciainmobiliaria.com/wp-content/uploads/2023/04/Diseño-sin-título.svg",
+    "width": 263,
+    "height": 110
+  },
+  "image": "https://essenciainmobiliaria.com/wp-content/uploads/2021/03/logo-big-es1.png",
+  "description": "Inmobiliaria premium en Gandia y Valencia especializada en venta de propiedades de lujo. Con el Método MIA (Marketing de Alto Impacto) vendemos tu vivienda en una media de 45 días al mayor precio posible.",
+  "telephone": "+34647803355",
+  "email": "santitorres@essenciainmobiliaria.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "C/ Sant Vicent Ferrer 24",
+    "addressLocality": "Gandia",
+    "addressRegion": "Valencia",
+    "postalCode": "46701",
+    "addressCountry": "ES"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 38.9675,
+    "longitude": -0.1813
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "19:00"
+    }
+  ],
+  "priceRange": "€€€",
+  "currenciesAccepted": "EUR",
+  "paymentAccepted": "Cash, Credit Card, Bank Transfer",
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Gandia",
+      "@id": "https://www.wikidata.org/wiki/Q185729"
+    },
+    {
+      "@type": "City",
+      "name": "Valencia",
+      "@id": "https://www.wikidata.org/wiki/Q8818"
+    },
+    {
+      "@type": "City",
+      "name": "Oliva"
+    },
+    {
+      "@type": "City",
+      "name": "Dénia"
+    }
+  ],
+  "knowsAbout": [
+    "Venta de viviendas",
+    "Home staging",
+    "Valoración inmobiliaria",
+    "Marketing inmobiliario",
+    "Compra de propiedades de lujo",
+    "Asesoría inmobiliaria en Valencia"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Servicios Inmobiliarios Essencia",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Venta de propiedades",
+          "description": "Venta de viviendas con el Método MIA — Marketing de Alto Impacto. Tiempo medio de venta: 45 días."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Valoración gratuita",
+          "description": "Valoración precisa de su propiedad basada en datos de mercado actuales y comparables reales."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Home Staging profesional",
+          "description": "Puesta en escena profesional de la vivienda para maximizar el precio de venta."
+        }
+      }
+    ]
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "bestRating": "5",
+    "ratingCount": "47",
+    "reviewCount": "47"
+  },
+  "sameAs": [
+    "https://www.instagram.com/essencia_inmobiliaria/",
+    "https://www.facebook.com/essenciainmobiliariagandia",
+    "https://www.linkedin.com/in/santi-torres-essencia-a9497311/"
+  ]
+}
+</script>
+
+<!-- SCHEMA 2: FAQPage — activa rich snippets de preguntas en Google -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "name": "Preguntas frecuentes — Essencia Inmobiliaria",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cómo determinan el precio de mi propiedad?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Utilizamos datos de mercado en tiempo real, comparables vendidos recientemente y nuestra experiencia local para fijar un precio competitivo y realista."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Trabajan con contrato de exclusividad?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, para garantizar la máxima inversión en marketing y dedicación de nuestro equipo, trabajamos con mandatos de venta exclusivos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto tiempo tardará en venderse?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El tiempo medio varía según la propiedad, pero nuestra estrategia de marketing intensiva suele reducir los plazos del mercado significativamente. Nuestra media actual es de 45 días."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué incluye su comisión?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Incluye valoración, home staging, fotografía profesional, marketing internacional, gestión de visitas y trámites legales hasta la firma."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Debo reformar antes de vender?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No siempre. Realizamos un diagnóstico para recomendar solo las mejoras que aumenten realmente el valor de venta."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo filtran a los compradores?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Verificamos la identidad y capacidad financiera de cada interesado antes de organizar una visita física."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Se encargan de los trámites legales?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutamente. Nuestro departamento jurídico supervisa contratos, certificados y coordina con la notaría."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa si no se vende?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Si no vendemos su propiedad en el plazo acordado, no cobramos nada. Asumimos el riesgo de la inversión en marketing."
+      }
+    }
+  ]
+}
+</script>
+
+<!--
+=================================================================
+INSTRUCCIONES PARA WORDPRESS (via functions.php o Code Snippets)
+=================================================================
+Añade este código PHP en Apariencia > Editor de temas > functions.php
+o usa el plugin "Code Snippets" (más seguro):
+
+<?php
+function essencia_inject_schema() {
+    if ( is_front_page() || is_home() ) {
+        // El bloque completo anterior va aquí entre heredoc PHP
+        echo <<<'SCHEMA'
+        [PEGAR AQUÍ EL CONTENIDO HTML COMPLETO DE ARRIBA]
+SCHEMA;
+    }
+}
+add_action( 'wp_head', 'essencia_inject_schema' );
+
+NOTA IMPORTANTE:
+- Yoast ya genera: WebPage, WebSite, Organization, BreadcrumbList
+- Este bloque AÑADE: RealEstateAgent (reemplaza semánticamente a Organization)
+  y FAQPage. NO hay conflicto — son schemas complementarios.
+- Si Yoast genera un Organization duplicado, puedes desactivarlo en:
+  Yoast SEO > Apariencia en buscadores > Tu organización > tipo = "Persona"
+  y luego volver a "Organización" para forzar re-indexación.
+================================================================= -->

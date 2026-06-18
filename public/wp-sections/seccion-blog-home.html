@@ -1,0 +1,399 @@
+<!-- ============================================================
+     ESSENCIA INMOBILIARIA — Sección Blog en el Home (WordPress)
+     Pegar en: Elementor → Widget "HTML"
+     Última actualización: Junio 2025
+     ============================================================ -->
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800;900&display=swap');
+
+  :root {
+    --ei-blue:      #1fc0d9;
+    --ei-blue-dk:   #17a8be;
+    --ei-black:     #222222;
+    --ei-gray-50:   #f9fafb;
+    --ei-gray-100:  #f3f4f6;
+    --ei-gray-400:  #9ca3af;
+    --ei-gray-500:  #6b7280;
+  }
+
+  .eib * { box-sizing: border-box; margin: 0; padding: 0; }
+  .eib { font-family: 'Manrope', sans-serif; }
+  .eib a { text-decoration: none; color: inherit; }
+
+  /* ── Sección ── */
+  .eib-section {
+    background: var(--ei-gray-50);
+    padding: 96px 24px;
+  }
+  .eib-inner { max-width: 1200px; margin: 0 auto; }
+
+  /* ── Cabecera ── */
+  .eib-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 48px;
+  }
+  .eib-eyebrow {
+    display: block;
+    color: var(--ei-blue);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .eib-title {
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 900;
+    color: var(--ei-black);
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+  }
+  .eib-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ei-blue);
+  }
+  .eib-ver-todo {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ei-black);
+    border-bottom: 2px solid var(--ei-blue);
+    padding-bottom: 2px;
+    white-space: nowrap;
+    transition: color 0.2s;
+  }
+  .eib-ver-todo:hover { color: var(--ei-blue); }
+
+  /* ── Grid ── */
+  .eib-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 960px) {
+    .eib-grid { grid-template-columns: 1fr 1fr; }
+    .eib-card-featured { grid-column: span 2; }
+  }
+  @media (max-width: 600px) {
+    .eib-grid { grid-template-columns: 1fr; }
+    .eib-card-featured { grid-column: span 1; }
+    .eib-section { padding: 64px 20px; }
+  }
+
+  /* ── Card base ── */
+  .eib-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    height: 100%;
+  }
+
+  /* ── Card destacada ── */
+  .eib-card-featured {
+    background: var(--ei-black);
+    border: none;
+  }
+  .eib-card-featured:hover { box-shadow: 0 24px 60px rgba(0,0,0,0.2); }
+
+  .eib-card-featured .eib-card-body { padding: 36px 40px 28px; }
+  .eib-card-featured .eib-card-title {
+    font-size: clamp(20px, 2.5vw, 28px);
+    color: #fff;
+    transition: color 0.3s;
+  }
+  .eib-card-featured:hover .eib-card-title { color: var(--ei-blue); }
+  .eib-card-featured .eib-card-excerpt { color: var(--ei-gray-400); }
+  .eib-card-featured .eib-card-footer {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 16px 40px;
+  }
+  .eib-card-featured .eib-card-author-name { color: #fff; }
+  .eib-card-featured .eib-card-read-cta {
+    color: var(--ei-blue);
+    font-size: 12px;
+    font-weight: 900;
+  }
+
+  /* Stats strip */
+  .eib-stats {
+    display: flex;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 0 40px;
+  }
+  .eib-stat {
+    flex: 1;
+    padding: 16px 0;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    text-align: center;
+  }
+  .eib-stat:last-child { border-right: none; }
+  .eib-stat-val {
+    display: block;
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--ei-blue);
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+  .eib-stat-lbl {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ei-gray-500);
+    line-height: 1.3;
+  }
+
+  /* ── Cards secundarias ── */
+  .eib-card-secondary {
+    background: #fff;
+    border: 1px solid #ebebeb;
+  }
+  .eib-card-secondary:hover {
+    box-shadow: 0 12px 36px rgba(0,0,0,0.08);
+    transform: translateY(-3px);
+  }
+  .eib-card-secondary .eib-card-title {
+    font-size: 17px;
+    color: var(--ei-black);
+    transition: color 0.2s;
+  }
+  .eib-card-secondary:hover .eib-card-title { color: var(--ei-blue-dk); }
+  .eib-card-secondary .eib-card-excerpt { color: var(--ei-gray-500); }
+  .eib-card-secondary .eib-card-footer { border-top: 1px solid #f3f4f6; }
+  .eib-card-secondary .eib-card-author-name { color: var(--ei-black); }
+  .eib-card-secondary .eib-card-read-cta { color: var(--ei-gray-400); font-size: 11px; }
+
+  /* ── Card placeholder ── */
+  .eib-card-placeholder {
+    background: #fff;
+    border: 2px dashed #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    border-radius: 20px;
+    flex-direction: column;
+    gap: 8px;
+    padding: 32px;
+    text-align: center;
+  }
+  .eib-card-placeholder span { font-size: 32px; }
+  .eib-card-placeholder p { color: var(--ei-gray-400); font-size: 13px; font-weight: 600; }
+  .eib-card-placeholder small { color: #d1d5db; font-size: 11px; }
+
+  /* ── Card body compartido ── */
+  .eib-card-body {
+    padding: 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .eib-card-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .eib-badge {
+    display: inline-block;
+    background: var(--ei-blue);
+    color: #fff;
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+  .eib-date { color: var(--ei-gray-400); font-size: 11px; font-weight: 500; }
+  .eib-card-title {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 900;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+  .eib-card-excerpt { font-size: 13px; line-height: 1.65; flex: 1; }
+  .eib-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: auto; padding-top: 8px; }
+  .eib-tag {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    border: 1px solid #e5e7eb;
+    color: var(--ei-gray-500);
+    padding: 3px 8px;
+    border-radius: 999px;
+  }
+
+  /* ── Card footer compartido ── */
+  .eib-card-footer {
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .eib-card-author { display: flex; align-items: center; gap: 8px; }
+  .eib-avatar {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--ei-blue);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 10px;
+    font-weight: 900;
+    color: #fff;
+  }
+  .eib-card-author-name { font-size: 11px; font-weight: 700; }
+  .eib-card-read-cta { font-weight: 700; }
+</style>
+
+<section class="eib-section">
+  <div class="eib-inner">
+
+    <!-- ── Cabecera ── -->
+    <div class="eib-header">
+      <div>
+        <span class="eib-eyebrow">Essencia · Blog</span>
+        <h2 class="eib-title">Últimas <em>entradas</em></h2>
+      </div>
+      <a class="eib-ver-todo" href="https://essenciainmobiliaria.com/blog/">
+        Ver todos los artículos →
+      </a>
+    </div>
+
+    <!-- ── Grid de entradas ── -->
+    <!--
+    ════════════════════════════════════════════════════════
+    CÓMO AÑADIR NUEVAS ENTRADAS:
+    1. Cuando publiques un nuevo artículo en WordPress,
+       descomenta una "eib-card-secondary" y rellena los datos.
+    2. La primera card (eib-card-featured) es siempre la más reciente.
+    3. Las siguientes van en orden de más a menos reciente.
+    ════════════════════════════════════════════════════════
+    -->
+    <div class="eib-grid">
+
+      <!-- ══ ENTRADA DESTACADA — La más reciente ══ -->
+      <a class="eib-card eib-card-featured"
+         href="https://essenciainmobiliaria.com/ia-vende-tu-casa-antes-de-que-nadie-la-visite/">
+
+        <div class="eib-card-body">
+          <div class="eib-card-meta">
+            <span class="eib-badge">Método MIA</span>
+            <span class="eib-date">3 de junio de 2025 · 6 min</span>
+          </div>
+          <h3 class="eib-card-title">
+            Cuando la inteligencia artificial vende tu casa antes de que nadie la visite
+          </h3>
+          <p class="eib-card-excerpt">
+            El Método MIA convierte cada inmueble en un evento de alta visibilidad. Más de 2.000 ventas desde 2010 y una media de 45 días hasta el cierre.
+          </p>
+        </div>
+
+        <!-- Stats strip -->
+        <div class="eib-stats">
+          <div class="eib-stat">
+            <span class="eib-stat-val">+2.000</span>
+            <span class="eib-stat-lbl">Ventas cerradas</span>
+          </div>
+          <div class="eib-stat">
+            <span class="eib-stat-val">45 días</span>
+            <span class="eib-stat-lbl">Media de venta</span>
+          </div>
+          <div class="eib-stat">
+            <span class="eib-stat-val">13M€</span>
+            <span class="eib-stat-lbl">Ventas en 2025</span>
+          </div>
+          <div class="eib-stat">
+            <span class="eib-stat-val">95%</span>
+            <span class="eib-stat-lbl">Satisfacción</span>
+          </div>
+        </div>
+
+        <div class="eib-card-footer">
+          <div class="eib-card-author">
+            <div class="eib-avatar">S</div>
+            <span class="eib-card-author-name">Santi Torres</span>
+          </div>
+          <span class="eib-card-read-cta">Leer artículo →</span>
+        </div>
+      </a>
+
+      <!-- ══ ENTRADA 2 — Descomenta cuando tengas el 2º artículo ══
+
+      <a class="eib-card eib-card-secondary" href="URL-DEL-ARTÍCULO-2">
+        <div class="eib-card-body">
+          <div class="eib-card-meta">
+            <span class="eib-badge">Categoría</span>
+            <span class="eib-date">Fecha · X min</span>
+          </div>
+          <h3 class="eib-card-title">Título del artículo 2</h3>
+          <p class="eib-card-excerpt">Extracto breve del artículo...</p>
+          <div class="eib-tags">
+            <span class="eib-tag">Tag 1</span>
+            <span class="eib-tag">Tag 2</span>
+          </div>
+        </div>
+        <div class="eib-card-footer">
+          <div class="eib-card-author">
+            <div class="eib-avatar">S</div>
+            <span class="eib-card-author-name">Santi Torres</span>
+          </div>
+          <span class="eib-card-read-cta">X min</span>
+        </div>
+      </a>
+
+      -->
+
+      <!-- ══ ENTRADA 3 — Descomenta cuando tengas el 3er artículo ══
+
+      <a class="eib-card eib-card-secondary" href="URL-DEL-ARTÍCULO-3">
+        <div class="eib-card-body">
+          <div class="eib-card-meta">
+            <span class="eib-badge">Categoría</span>
+            <span class="eib-date">Fecha · X min</span>
+          </div>
+          <h3 class="eib-card-title">Título del artículo 3</h3>
+          <p class="eib-card-excerpt">Extracto breve del artículo...</p>
+          <div class="eib-tags">
+            <span class="eib-tag">Tag 1</span>
+            <span class="eib-tag">Tag 2</span>
+          </div>
+        </div>
+        <div class="eib-card-footer">
+          <div class="eib-card-author">
+            <div class="eib-avatar">S</div>
+            <span class="eib-card-author-name">Santi Torres</span>
+          </div>
+          <span class="eib-card-read-cta">X min</span>
+        </div>
+      </a>
+
+      -->
+
+      <!-- Placeholders mientras no hay más artículos -->
+      <div class="eib-card-placeholder">
+        <span>✍️</span>
+        <p>Próximo artículo</p>
+        <small>En breve</small>
+      </div>
+
+      <div class="eib-card-placeholder">
+        <span>✍️</span>
+        <p>Próximo artículo</p>
+        <small>En breve</small>
+      </div>
+
+    </div>
+  </div>
+</section>

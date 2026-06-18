@@ -1,0 +1,256 @@
+<!-- ============================================================
+     SECCIÓN ESTADÍSTICAS — Essencia Inmobiliaria
+     Pegar en: WordPress > Elementor > HTML Widget
+     ============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800;900&display=swap">
+<style>
+.ei-stats-wrap * { box-sizing: border-box; margin: 0; padding: 0; }
+.ei-stats-wrap {
+  font-family: 'Manrope', sans-serif;
+  background-color: #222222;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  padding: 6rem 1.5rem;
+}
+.ei-stats-glow1 {
+  position: absolute;
+  top: 0; right: 0;
+  width: 600px; height: 600px;
+  background: rgba(31,192,217,0.1);
+  filter: blur(140px);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.ei-stats-glow2 {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 400px; height: 400px;
+  background: rgba(31,192,217,0.05);
+  filter: blur(100px);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.ei-stats-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 4rem;
+  align-items: center;
+}
+@media(max-width: 1024px) {
+  .ei-stats-inner { grid-template-columns: 1fr; gap: 3rem; }
+}
+/* Left Col */
+.ei-stats-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+.ei-stats-badge-line {
+  width: 2rem;
+  height: 1px;
+  background: #4edcf1;
+}
+.ei-stats-badge-text {
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #4edcf1;
+}
+.ei-stats-title {
+  font-size: clamp(3rem, 5vw, 3.75rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  margin-bottom: 2rem;
+  color: #ffffff;
+}
+.ei-stats-title span { color: rgba(255,255,255,0.6); }
+.ei-stats-desc {
+  color: #e5e7eb;
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 500;
+  max-width: 24rem;
+}
+.ei-stats-divider {
+  margin-top: 3rem;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.ei-stats-divider p {
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #9ca3af;
+}
+/* Right Col Grid */
+.ei-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+@media(max-width: 640px) {
+  .ei-stats-grid { grid-template-columns: 1fr; }
+}
+.ei-stat-item {
+  background: #222222;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+.ei-stat-hover {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: #22d3ee;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+}
+.ei-stat-item:hover .ei-stat-hover { transform: scaleX(1); }
+.ei-stat-value {
+  font-size: clamp(2.25rem, 4vw, 3.75rem);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  color: #ffffff;
+  line-height: 1;
+  margin-bottom: 1rem;
+  font-variant-numeric: tabular-nums;
+}
+.ei-stat-label {
+  font-size: 0.875rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.25rem;
+}
+.ei-stat-note {
+  font-size: 0.75rem;
+  color: #d1d5db;
+  font-weight: 500;
+  line-height: 1.4;
+}
+</style>
+
+<div class="ei-stats-wrap">
+  <div class="ei-stats-glow1"></div>
+  <div class="ei-stats-glow2"></div>
+  <div class="ei-stats-inner">
+    
+    <div>
+      <div class="ei-stats-badge">
+        <div class="ei-stats-badge-line"></div>
+        <span class="ei-stats-badge-text">Datos reales · 2025</span>
+      </div>
+      <h2 class="ei-stats-title">Números<br><span>que hablan.</span></h2>
+      <p class="ei-stats-desc">Más de 15 años vendiendo propiedades en Gandía y La Safor. Estos son los resultados de Essencia Inmobiliaria.</p>
+      <div class="ei-stats-divider">
+        <p>Essencia Inmobiliaria · Gandía, La Safor</p>
+      </div>
+    </div>
+
+    <div class="ei-stats-grid">
+      <div class="ei-stat-item">
+        <div class="ei-stat-hover"></div>
+        <div class="ei-stat-value" data-val="2000" data-prefix="+" data-suffix="">+2000</div>
+        <div>
+          <p class="ei-stat-label">Ventas cerradas</p>
+          <p class="ei-stat-note">15 años en el mercado de Gandía</p>
+        </div>
+      </div>
+      
+      <div class="ei-stat-item">
+        <div class="ei-stat-hover"></div>
+        <div class="ei-stat-value" data-val="45" data-prefix="" data-suffix=" días">45 días</div>
+        <div>
+          <p class="ei-stat-label">Media hasta la venta</p>
+          <p class="ei-stat-note">Desde la captación hasta escrituras</p>
+        </div>
+      </div>
+
+      <div class="ei-stat-item">
+        <div class="ei-stat-hover"></div>
+        <div class="ei-stat-value" data-val="13" data-prefix="" data-suffix="M€">13M€</div>
+        <div>
+          <p class="ei-stat-label">En ventas este año</p>
+          <p class="ei-stat-note">Volumen de operaciones en 2025</p>
+        </div>
+      </div>
+
+      <div class="ei-stat-item">
+        <div class="ei-stat-hover"></div>
+        <div class="ei-stat-value" data-val="95" data-prefix="" data-suffix="%">95%</div>
+        <div>
+          <p class="ei-stat-label">Clientes satisfechos</p>
+          <p class="ei-stat-note">Según encuesta post-venta</p>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const formatNumber = (num) => Math.floor(num).toLocaleString('es-ES');
+    
+    const elements = document.querySelectorAll('.ei-stat-value');
+    
+    const animateValue = (el) => {
+      if (el.classList.contains('animated')) return;
+      el.classList.add('animated');
+      
+      const target = parseFloat(el.getAttribute('data-val'));
+      const prefix = el.getAttribute('data-prefix') || '';
+      const suffix = el.getAttribute('data-suffix') || '';
+      
+      const duration = 2000;
+      const start = performance.now();
+      
+      const update = (time) => {
+        const elapsed = time - start;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // easeOutQuart
+        const ease = 1 - Math.pow(1 - progress, 4);
+        
+        const current = target * ease;
+        el.textContent = prefix + formatNumber(current) + suffix;
+        
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          el.textContent = prefix + formatNumber(target) + suffix;
+        }
+      };
+      
+      requestAnimationFrame(update);
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateValue(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    elements.forEach(el => observer.observe(el));
+  });
+</script>

@@ -1,0 +1,470 @@
+<!-- ============================================================
+     PACK VISUAL PRO — Essencia Inmobiliaria
+     Pegar en: WordPress > Elementor > HTML Widget (o bloque HTML)
+     Fuentes necesarias (añadir en Customizer > Additional CSS o <head>):
+       https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800;900&display=swap
+       https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined
+     Vídeos/imágenes: rutas relativas a la raíz del servidor WP
+     ============================================================ -->
+
+<style>
+/* ── Reset & tokens ── */
+.pvp-wrap * { box-sizing: border-box; margin: 0; padding: 0; }
+.pvp-wrap {
+  --black:   #0a0a0a;
+  --white:   #ffffff;
+  --blue:    #C9F31D;  /* brand-blue-500 */
+  --gray400: #9ca3af;
+  --gray500: #6b7280;
+  --gray100: #f3f4f6;
+  font-family: 'Manrope', sans-serif;
+  color: var(--black);
+  background: #fff;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* ── Section base ── */
+.pvp-section { padding: 6rem 1.5rem; }
+@media(min-width:768px){ .pvp-section { padding: 6rem 3rem; } }
+
+/* ── Max widths ── */
+.pvp-inner      { max-width: 1280px; margin: 0 auto; }
+.pvp-inner-full { max-width: 1440px; margin: 0 auto; }
+
+/* ════════════════════════════════════════
+   1. CINE VIDEO — teaser con Phone Mockup
+   ════════════════════════════════════════ */
+.pvp-cine { background: #fff; }
+.pvp-cine-grid {
+  display: flex; flex-direction: column; align-items: center; gap: 4rem;
+}
+@media(min-width:768px){
+  .pvp-cine-grid { flex-direction: row; }
+  .pvp-cine-copy, .pvp-cine-phone { flex: 1; }
+}
+
+.pvp-badge-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; }
+.pvp-badge {
+  background: var(--blue); color: var(--black);
+  font-size: 10px; font-weight: 900; text-transform: uppercase;
+  letter-spacing: .12em; padding: 4px 12px; border-radius: 999px;
+}
+.pvp-badge-label {
+  font-size: 11px; font-weight: 700; color: var(--gray400);
+  text-transform: uppercase; letter-spacing: .12em;
+}
+
+.pvp-h1 {
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-weight: 900; line-height: .9; letter-spacing: -.04em;
+  margin-bottom: 1.5rem;
+}
+.pvp-h1 span { color: var(--blue); }
+.pvp-cine-desc { font-size: 1.1rem; color: var(--gray500); font-weight: 500; max-width: 28rem; margin-bottom: 2rem; }
+
+.pvp-feature-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+.pvp-feature-list li {
+  display: flex; align-items: center; gap: .75rem;
+  font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em;
+}
+.pvp-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--black); flex-shrink: 0; }
+
+/* Phone mockup */
+.pvp-phone-wrap { display: flex; justify-content: center; position: relative; }
+.pvp-phone {
+  position: relative;
+  width: 300px; height: 620px;
+  background: #1f2937;
+  border: 14px solid #111827;
+  border-radius: 2.5rem;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0,0,0,.35);
+}
+.pvp-phone-notch {
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 32px; background: #111827; z-index: 20;
+  display: flex; justify-content: center; border-radius: 2rem 2rem 0 0;
+}
+.pvp-phone-notch::after {
+  content: ''; display: block;
+  width: 120px; height: 18px;
+  background: #000; border-radius: 0 0 1rem 1rem;
+}
+.pvp-phone-screen {
+  position: absolute; inset: 0;
+  border-radius: 2rem; overflow: hidden;
+  background: #000;
+}
+.pvp-phone-screen video { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* Side buttons */
+.pvp-phone::before, .pvp-phone::after { content: ''; position: absolute; background: #374151; width: 3px; border-radius: 2px; }
+.pvp-phone::before { height: 46px; left: -17px; top: 124px; }
+.pvp-phone::after  { height: 64px; right: -17px; top: 142px; }
+
+/* Rotating rings */
+.pvp-ring-wrap { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; z-index: -1; }
+.pvp-ring {
+  position: absolute; border-radius: 50%; border: 1px solid #e5e7eb; opacity: .4;
+  animation: pvp-spin linear infinite;
+}
+.pvp-ring-1 { width: 480px; height: 480px; animation-duration: 20s; }
+.pvp-ring-2 { width: 680px; height: 680px; border-style: dashed; opacity: .2; animation-duration: 30s; animation-direction: reverse; }
+@keyframes pvp-spin { to { transform: rotate(360deg); } }
+
+/* ════════════════════════════════════════
+   2. GALERÍA EDITORIAL (Masonry)
+   ════════════════════════════════════════ */
+.pvp-gallery { background: #fff; }
+.pvp-gallery-header {
+  display: flex; flex-direction: column; justify-content: space-between;
+  align-items: flex-end; margin-bottom: 3rem;
+}
+@media(min-width:768px){ .pvp-gallery-header { flex-direction: row; } }
+.pvp-gallery-header h2 {
+  font-size: clamp(2.5rem,6vw,4rem); font-weight: 900;
+  letter-spacing: -.04em; line-height: 1;
+  margin-bottom: .75rem;
+}
+.pvp-gallery-header p { color: var(--gray500); max-width: 22rem; }
+
+/* Mobile carousel */
+.pvp-carousel-wrap { overflow-x: auto; display: flex; gap: 1rem; padding-bottom: 1rem; scroll-snap-type: x mandatory; }
+.pvp-carousel-wrap::-webkit-scrollbar { display: none; }
+.pvp-carousel-item {
+  flex-shrink: 0; width: 85vw; height: 300px;
+  border-radius: 8px; overflow: hidden; scroll-snap-align: center;
+}
+.pvp-carousel-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Desktop masonry grid */
+.pvp-masonry-grid {
+  display: none;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 300px;
+  gap: 1rem;
+}
+@media(min-width:768px){
+  .pvp-carousel-mob { display: none; }
+  .pvp-masonry-grid { display: grid; }
+}
+.pvp-masonry-item { position: relative; overflow: hidden; cursor: pointer; }
+.pvp-masonry-item img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .7s ease;
+  display: block;
+}
+.pvp-masonry-item:hover img { transform: scale(1.05); }
+.pvp-masonry-item .pvp-overlay {
+  position: absolute; inset: 0; background: rgba(0,0,0,0);
+  transition: background .3s;
+}
+.pvp-masonry-item:hover .pvp-overlay { background: rgba(0,0,0,.2); }
+.pvp-masonry-item.span2c { grid-column: span 2; }
+.pvp-masonry-item.span2r { grid-row: span 2; }
+
+/* ════════════════════════════════════════
+   3. VIDEO PROFESIONAL
+   ════════════════════════════════════════ */
+.pvp-video-section { background: #fff; padding: 6rem 0; display: flex; flex-direction: column; align-items: center; }
+.pvp-video-header { text-align: center; margin-bottom: 3rem; padding: 0 1.5rem; }
+.pvp-video-header h2 {
+  font-size: clamp(2.5rem,6vw,4rem); font-weight: 900;
+  letter-spacing: -.04em; margin-bottom: 1rem;
+}
+.pvp-video-header h2 span { color: var(--blue); }
+.pvp-video-header p { color: var(--gray500); max-width: 42rem; margin: 0 auto; font-size: 1.1rem; }
+
+.pvp-video-container {
+  position: relative; width: 90%; max-width: 1280px;
+  aspect-ratio: 16/9; border-radius: 12px; overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,.2); background: #000;
+  margin: 0 auto;
+  transition: border-radius .4s;
+}
+.pvp-video-container video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pvp-video-badge {
+  position: absolute; bottom: 2rem; left: 2rem;
+  background: var(--blue); color: var(--black);
+  font-size: 10px; font-weight: 900; text-transform: uppercase;
+  letter-spacing: .12em; padding: 6px 16px; border-radius: 999px;
+  margin-bottom: .5rem; display: inline-block;
+  z-index: 20; pointer-events: none;
+}
+.pvp-video-title {
+  position: absolute; bottom: 1rem; left: 2rem;
+  color: #fff; font-size: clamp(1.4rem, 3vw, 2.5rem);
+  font-weight: 900; letter-spacing: -.03em;
+  z-index: 20; pointer-events: none;
+  text-shadow: 0 2px 12px rgba(0,0,0,.6);
+  margin-top: 2.5rem;
+}
+
+/* ════════════════════════════════════════
+   4. BEFORE / AFTER SLIDER (Render con IA)
+   ════════════════════════════════════════ */
+.pvp-ba-section { background: var(--black); color: #fff; padding: 6rem 1.5rem; overflow: hidden; }
+@media(min-width:768px){ .pvp-ba-section { padding: 6rem 3rem; } }
+.pvp-ba-grid {
+  display: flex; flex-direction: column; gap: 4rem;
+  max-width: 1280px; margin: 0 auto;
+}
+@media(min-width:1024px){
+  .pvp-ba-grid { flex-direction: row; align-items: center; }
+  .pvp-ba-visual, .pvp-ba-copy { flex: 1; }
+  .pvp-ba-visual { order: 1; }
+  .pvp-ba-copy   { order: 2; }
+}
+
+/* Slider */
+.pvp-ba-slider {
+  position: relative; width: 100%; aspect-ratio: 4/3;
+  border-radius: 4px; overflow: hidden; cursor: ew-resize;
+  user-select: none; box-shadow: 0 25px 60px rgba(0,0,0,.4);
+}
+.pvp-ba-after, .pvp-ba-before-clip { position: absolute; inset: 0; }
+.pvp-ba-after img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pvp-ba-before-clip { overflow: hidden; pointer-events: none; z-index: 10; }
+.pvp-ba-before-clip img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pvp-ba-label {
+  position: absolute; top: 1rem; font-size: 10px; font-weight: 900;
+  text-transform: uppercase; letter-spacing: .12em;
+  background: var(--blue); color: var(--black);
+  padding: 4px 12px; border-radius: 999px; z-index: 30;
+}
+.pvp-ba-label-before { left: 1rem; }
+.pvp-ba-label-after  { right: 1rem; }
+.pvp-ba-handle {
+  position: absolute; top: 0; bottom: 0; width: 3px;
+  background: #fff; z-index: 40; transform: translateX(-50%);
+}
+.pvp-ba-knob {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px; height: 36px; border-radius: 50%;
+  background: #fff; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,.3);
+  font-size: 1rem; color: var(--black);
+}
+
+.pvp-ba-copy h2 {
+  font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900;
+  letter-spacing: -.04em; margin-bottom: 1.5rem;
+}
+.pvp-ba-copy p { color: var(--gray400); font-size: 1.1rem; line-height: 1.7; margin-bottom: 2rem; }
+.pvp-ba-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.pvp-ba-stat-num { font-size: 2rem; font-weight: 900; color: #fff; display: block; margin-bottom: .25rem; }
+.pvp-ba-stat-lbl { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--gray400); }
+</style>
+
+<div class="pvp-wrap">
+
+  <!-- ══ 1. CINE VIDEO ══ -->
+  <section class="pvp-section pvp-cine">
+    <div class="pvp-inner pvp-cine-grid">
+
+      <!-- Copy -->
+      <div class="pvp-cine-copy">
+        <div class="pvp-badge-row">
+          <span class="pvp-badge">Nuevo</span>
+          <span class="pvp-badge-label">Pack Visual Pro</span>
+        </div>
+
+        <h2 class="pvp-h1">Pack<br><span>Visual Pro</span></h2>
+
+        <p class="pvp-cine-desc">
+          No son solo fotos. Es una experiencia inmersiva. Creamos un «Portal» digital a tu vivienda con vídeos verticales estilo cine.
+        </p>
+
+        <ul class="pvp-feature-list">
+          <li><span class="pvp-dot"></span>Fotos y videos con DRON</li>
+          <li><span class="pvp-dot"></span>Render con IA</li>
+          <li><span class="pvp-dot"></span>Fotografía editorial</li>
+          <li><span class="pvp-dot"></span>Video profesional</li>
+          <li><span class="pvp-dot"></span>Planos en 3D</li>
+          <li><span class="pvp-dot"></span>Tour Virtual</li>
+        </ul>
+      </div>
+
+      <!-- Phone mockup -->
+      <div class="pvp-cine-phone">
+        <div class="pvp-phone-wrap">
+          <div class="pvp-phone">
+            <div class="pvp-phone-notch"></div>
+            <div class="pvp-phone-screen">
+              <video
+                id="pvp-cine-video"
+                src="/wp-content/uploads/essencia/Packpro_Essencia.mp4"
+                muted loop playsinline
+                style="width:100%;height:100%;object-fit:cover;"
+              ></video>
+            </div>
+          </div>
+          <div class="pvp-ring-wrap">
+            <div class="pvp-ring pvp-ring-1"></div>
+            <div class="pvp-ring pvp-ring-2"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 2. GALERÍA EDITORIAL ══ -->
+  <section class="pvp-section pvp-gallery">
+    <div class="pvp-inner-full">
+
+      <div class="pvp-gallery-header">
+        <div>
+          <h2>Fotografía<br>Editorial</h2>
+          <p>Cada ángulo cuenta una historia. Capturamos la esencia, no solo el espacio.</p>
+        </div>
+      </div>
+
+      <!-- Mobile carousel -->
+      <div class="pvp-carousel-mob">
+        <div class="pvp-carousel-wrap" id="pvp-carousel">
+          <div class="pvp-carousel-item"><img src="/wp-content/uploads/essencia/editorial/IMG32.jpg" alt="Cocina editorial" loading="lazy"></div>
+          <div class="pvp-carousel-item"><img src="/wp-content/uploads/essencia/editorial/IMG_0626.jpg" alt="Salón editorial" loading="lazy"></div>
+          <div class="pvp-carousel-item"><img src="/wp-content/uploads/essencia/editorial/IMG_0774-2.jpg" alt="Dormitorio editorial" loading="lazy"></div>
+          <div class="pvp-carousel-item"><img src="/wp-content/uploads/essencia/editorial/dji_fly_20260123_131308_0349_1769181794892_photo.jpg" alt="Exterior con piscina" loading="lazy"></div>
+        </div>
+      </div>
+
+      <!-- Desktop masonry -->
+      <div class="pvp-masonry-grid">
+        <div class="pvp-masonry-item span2c span2r">
+          <img src="/wp-content/uploads/essencia/editorial/IMG32.jpg" alt="Cocina editorial" loading="lazy">
+          <div class="pvp-overlay"></div>
+        </div>
+        <div class="pvp-masonry-item">
+          <img src="/wp-content/uploads/essencia/editorial/IMG_0626.jpg" alt="Salón editorial" loading="lazy">
+          <div class="pvp-overlay"></div>
+        </div>
+        <div class="pvp-masonry-item">
+          <img src="/wp-content/uploads/essencia/editorial/IMG_0774-2.jpg" alt="Dormitorio editorial" loading="lazy">
+          <div class="pvp-overlay"></div>
+        </div>
+        <div class="pvp-masonry-item span2c">
+          <img src="/wp-content/uploads/essencia/editorial/dji_fly_20260123_131308_0349_1769181794892_photo.jpg" alt="Exterior con piscina" loading="lazy">
+          <div class="pvp-overlay"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 3. VIDEO PROFESIONAL ══ -->
+  <section class="pvp-video-section">
+    <div class="pvp-video-header">
+      <h2>Video <span>Profesional</span></h2>
+      <p>Cada propiedad merece su propia narrativa visual. Producimos vídeos cinematográficos que conectan emocionalmente con el comprador ideal.</p>
+    </div>
+
+    <div class="pvp-video-container">
+      <video
+        id="pvp-main-video"
+        src="/wp-content/uploads/essencia/editorial/Video_Landing.mp4"
+        controls muted loop playsinline
+        style="width:100%;height:100%;object-fit:cover;"
+      ></video>
+      <span class="pvp-video-badge">Essencia Cinema</span>
+      <div class="pvp-video-title">Exhibición Inmobiliaria</div>
+    </div>
+  </section>
+
+  <!-- ══ 4. BEFORE / AFTER — Render con IA ══ -->
+  <section class="pvp-ba-section">
+    <div class="pvp-ba-grid">
+
+      <!-- Slider visual -->
+      <div class="pvp-ba-visual">
+        <div class="pvp-ba-slider" id="pvp-ba-slider">
+          <!-- After (base) -->
+          <div class="pvp-ba-after">
+            <img src="/wp-content/uploads/essencia/1.jpeg" alt="Propiedad renderizada con IA">
+          </div>
+          <span class="pvp-ba-label pvp-ba-label-after">Después</span>
+
+          <!-- Before (clipped) -->
+          <div class="pvp-ba-before-clip" id="pvp-ba-before">
+            <img src="/wp-content/uploads/essencia/2.jpeg" alt="Estado actual">
+            <span class="pvp-ba-label pvp-ba-label-before">Antes</span>
+          </div>
+
+          <!-- Handle -->
+          <div class="pvp-ba-handle" id="pvp-ba-handle" style="left:50%;">
+            <div class="pvp-ba-knob">⇔</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Copy -->
+      <div class="pvp-ba-copy">
+        <h2>Render con IA</h2>
+        <p>
+          Transformamos espacios vacíos o antiguos en hogares soñados. Gracias a la Inteligencia Artificial, mostramos el máximo potencial de su propiedad sin necesidad de obras físicas.
+        </p>
+        <div class="pvp-ba-stats">
+          <div>
+            <span class="pvp-ba-stat-num">100%</span>
+            <span class="pvp-ba-stat-lbl">Visualización</span>
+          </div>
+          <div>
+            <span class="pvp-ba-stat-num">x3</span>
+            <span class="pvp-ba-stat-lbl">Más Interés</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div><!-- /pvp-wrap -->
+
+<script>
+(function () {
+  /* ── Autoplay vídeos al hacer scroll ── */
+  function observeVideo(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        e.isIntersecting ? el.play().catch(function(){}) : el.pause();
+      });
+    }, { threshold: 0.4 });
+    io.observe(el);
+  }
+  observeVideo('pvp-cine-video');
+  observeVideo('pvp-main-video');
+
+  /* ── Before / After slider ── */
+  var slider   = document.getElementById('pvp-ba-slider');
+  var handle   = document.getElementById('pvp-ba-handle');
+  var before   = document.getElementById('pvp-ba-before');
+  var dragging = false;
+
+  function setPos(pct) {
+    pct = Math.min(Math.max(pct, 0), 100);
+    handle.style.left = pct + '%';
+    before.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+  }
+  setPos(50);
+
+  function getX(e) {
+    return e.touches ? e.touches[0].clientX : e.clientX;
+  }
+  function onMove(e) {
+    if (!dragging) return;
+    var rect = slider.getBoundingClientRect();
+    setPos(((getX(e) - rect.left) / rect.width) * 100);
+  }
+
+  slider.addEventListener('mousedown',  function(){ dragging = true; });
+  slider.addEventListener('touchstart', function(){ dragging = true; }, { passive: true });
+  window.addEventListener('mouseup',    function(){ dragging = false; });
+  window.addEventListener('touchend',   function(){ dragging = false; });
+  window.addEventListener('mousemove',  onMove);
+  window.addEventListener('touchmove',  onMove, { passive: true });
+})();
+</script>

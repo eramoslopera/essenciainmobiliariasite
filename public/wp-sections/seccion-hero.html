@@ -1,0 +1,250 @@
+<!-- ============================================================
+     SECCIÓN HERO — Essencia Inmobiliaria
+     Pegar en: WordPress > Elementor > HTML Widget
+     ============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800;900&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+<style>
+.ei-hero * { box-sizing: border-box; margin: 0; padding: 0; }
+.ei-hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5rem;
+  overflow: hidden;
+  font-family: 'Manrope', sans-serif;
+}
+.ei-hero-slides {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.ei-hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 0;
+}
+.ei-hero-slide.active {
+  opacity: 1;
+}
+.ei-hero-bg {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  transition: transform 8s linear;
+  transform: scale(1);
+}
+.ei-hero-slide.active .ei-hero-bg {
+  transform: scale(1.1);
+}
+
+.ei-hero-overlay1 { position: absolute; inset: 0; z-index: 1; background: rgba(255,255,255,0.4); }
+.ei-hero-overlay2 { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(255,255,255,0.6), rgba(255,255,255,0.4), transparent); }
+.ei-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ei-hero-badge {
+  display: inline-block;
+  padding: 0.25rem 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(12px);
+  color: #222222;
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 9999px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.05);
+}
+.ei-hero-title {
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 900;
+  color: #222222;
+  margin-bottom: 1.5rem;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  drop-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.ei-hero-title span { color: #22d3ee; font-weight: 800; }
+.ei-hero-subtitle {
+  font-size: clamp(1.125rem, 2vw, 1.25rem);
+  color: #111827; 
+  max-width: 42rem;
+  margin-bottom: 3rem;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+}
+.ei-hero-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+@media (min-width: 640px) {
+  .ei-hero-buttons {
+    flex-direction: row;
+  }
+}
+.ei-hero-btn {
+  height: 3.5rem !important;
+  padding: 0 2.5rem !important;
+  border-radius: 9999px !important;
+  font-size: 11px !important;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.2em !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+  border: none !important;
+  font-family: 'Manrope', sans-serif !important;
+  white-space: nowrap !important;
+}
+.ei-btn-dark {
+  background-color: #222222 !important;
+  color: #ffffff !important;
+  box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.05) !important;
+}
+.ei-btn-dark:hover { 
+  transform: translateY(-0.25rem) !important; 
+  box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.1) !important; 
+  background-color: #222222 !important;
+  color: #ffffff !important;
+}
+.ei-btn-dark:active {
+  transform: translateY(0) scale(0.98) !important;
+}
+.ei-btn-light {
+  background-color: rgba(255,255,255,0.7) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  color: #222222 !important;
+  border: 1px solid rgba(255,255,255,0.5) !important;
+  box-shadow: none !important;
+}
+.ei-btn-light:hover { 
+  background-color: #ffffff !important; 
+  border-color: #ffffff !important; 
+  transform: translateY(-0.25rem) !important; 
+  box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.1) !important; 
+  color: #222222 !important;
+}
+.ei-btn-light:active {
+  transform: translateY(0) scale(0.98) !important;
+}
+.ei-btn-light svg {
+  transition: transform 0.3s ease !important;
+}
+.ei-btn-light:hover svg {
+  transform: translateX(0.25rem) !important;
+}
+.ei-hero-dots {
+  display: flex;
+  gap: 1rem;
+  margin-top: 4rem;
+  z-index: 2;
+}
+.ei-hero-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #d1d5db;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.5s ease;
+}
+.ei-hero-dot:hover {
+  background: #9ca3af;
+}
+.ei-hero-dot.active {
+  background: #222222;
+  transform: scale(1.5);
+}
+</style>
+
+<div class="ei-hero">
+  <div class="ei-hero-slides" id="ei-hero-slides">
+    <div class="ei-hero-slide active">
+      <div class="ei-hero-bg" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD6CVDb-uj3cAC0Ob6Xoldojbr8fXAlqgRkajY38_fEYtheLsJfhvgNqCXQoidNSph5pxxTIA4A-xhr-pY90ZuV6kh2DC_7KoE4yBIYtDccfKzP1CcdpXDsNXLOROI7cvlTEDUDGK7e7POqLad-y3lLKyfffcbEcwqN9yGejMHM5xKcKUdYutySJ4gKxwHil_TPn5cms3boBRB4bDas5vt7CzfzSedfRnX3LOZiliuJrw2B0gk4vAdiAgkIfndu1DmSEjAfvSQw'); background-position: center;"></div>
+    </div>
+    <div class="ei-hero-slide">
+      <div class="ei-hero-bg" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDSY-PXU4Aos5QXaijac90faiHIS204YriutHKAaYujVG4SZWwVd-HQk8IKShLRCD2mrH-OIVWer2XgAErCzUC_oChNo4RnkugwMaJ3Y-zSOq4-4jfCFa4ISvMZbRaPTdOFCUDu2OiWp1iS4ocb6Hoi5XneGiWUooX_Q_oi2cHRd5pjRF8ffN10TAKH57NDYH0CIdA-DNBnj73Sz9ReE_PJrBw6i0hkrS7KR1gsgila22DVBrYFBJwsrMLzBagtmE9zU1ZrYHK8'); background-position: center 30%;"></div>
+    </div>
+    <div class="ei-hero-slide">
+      <div class="ei-hero-bg" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBTz0ljfPf17SA1GJ6uA8AFFp69r4QCIx9qAKheWPLsqb3SR9EiRThZW2pQrqT8Xq0ZMQkBXl7TkM-iW4Lv75dvy8PdbK9O30nJ35aX4fCg0S2feJ6JRYQQUGVRE_VdRjOjItcvyPHOCtbhJGoZS93wph_XgdsTjs-JRfjRxvz_Higm4ZVlH2KwIft4FCcypZ5tuZEmBATyNa2qENR5ZQOIjoGYF2i9mkiBN3wOiCJV8sOAVou3Y3J1JWjUk8qVNOGMTPeMEmtA'); background-position: center 60%;"></div>
+    </div>
+  </div>
+  
+  <div class="ei-hero-overlay1"></div>
+  <div class="ei-hero-overlay2"></div>
+  <div class="ei-hero-content">
+    <span class="ei-hero-badge">Gandía y Valencia</span>
+    <h1 class="ei-hero-title">Vendemos tu casa<br><span>En 45 Días.</span></h1>
+    <p class="ei-hero-subtitle">No solo listamos casas; diseñamos ventas. Tiempo medio de venta de 45 días para propiedades en Gandía y Valencia.</p>
+    <div class="ei-hero-buttons">
+      <a href="https://wa.me/34647803355?text=Hola%2C%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20vuestros%20servicios%20inmobiliarios" class="ei-hero-btn ei-btn-dark" target="_blank" rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><path d="M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm54.42,143.08a11.23,11.23,0,0,1-15.54,4.42,50.7,50.7,0,0,1-23-22.37,50.7,50.7,0,0,1-22.37-23,11.23,11.23,0,0,1,4.42-15.54l14.49-11.19a3.73,3.73,0,0,0,.61-3.62L119.06,66.41a9,9,0,0,0-15-2l-10-5.11a10,10,0,0,0-6.17,4c-12,16-11.23,37.38,2.44,55.61C102.34,143.07,123,161,148,168.69A45,45,0,0,0,161.51,170c14.61,0,27.24-8.8,32.32-22.18A10,10,0,0,0,191.84,141l-22-29.35a9,9,0,0,0-15-2l-14.49,11.19a3.73,3.73,0,0,0-3.62.61A57.5,57.5,0,0,0,111.24,129a3.73,3.73,0,0,0-.61,3.62L123,110.94a9,9,0,0,1,15,2Z"></path></svg>
+        Consulta gratuita
+      </a>
+      <a href="https://essenciainmobiliarialandingpage.vercel.app/" class="ei-hero-btn ei-btn-light" target="_blank" rel="noopener noreferrer">
+        Vende con nosotros
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path></svg>
+      </a>
+    </div>
+    
+    <div class="ei-hero-dots" id="ei-hero-dots">
+      <button class="ei-hero-dot active" aria-label="Ir a imagen 1"></button>
+      <button class="ei-hero-dot" aria-label="Ir a imagen 2"></button>
+      <button class="ei-hero-dot" aria-label="Ir a imagen 3"></button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const slides = document.querySelectorAll('#ei-hero-slides .ei-hero-slide');
+    const dots = document.querySelectorAll('#ei-hero-dots .ei-hero-dot');
+    let currentIndex = 0;
+    
+    function showSlide(index) {
+      slides.forEach(s => s.classList.remove('active'));
+      dots.forEach(d => d.classList.remove('active'));
+      slides[index].classList.add('active');
+      dots[index].classList.add('active');
+      currentIndex = index;
+    }
+    
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => showSlide(index));
+    });
+    
+    setInterval(() => {
+      let nextIndex = (currentIndex + 1) % slides.length;
+      showSlide(nextIndex);
+    }, 5000);
+  });
+</script>

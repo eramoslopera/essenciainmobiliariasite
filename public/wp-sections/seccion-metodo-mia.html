@@ -1,0 +1,410 @@
+<!-- =====================================================
+     ESSENCIA INMOBILIARIA — Sección Método MIA
+     Basado en: MiaMethodTeaser.tsx
+     Fuente: Manrope (Google Fonts)
+     Colores: editorial-black #222222 | brand-blue-600 #1fc0d9
+     Pegar como bloque "HTML Personalizado" en WordPress
+====================================================== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+/* Reset dentro del scope */
+#ess-mia-teaser *, #ess-mia-teaser *::before, #ess-mia-teaser *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Contenedor principal — full width, anula restricciones de WordPress */
+#ess-mia-teaser {
+  font-family: 'Manrope', sans-serif;
+  background: #F3F4F6;
+  padding: 80px 24px;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100% !important;
+  box-sizing: border-box;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Glow decorativo de fondo */
+#ess-mia-teaser .bg-glow {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 600px;
+  height: 600px;
+  background: #1fc0d9;
+  opacity: 0.03;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+}
+
+/* Inner wrapper — centrado pero no recorta en ningún ancho */
+#ess-mia-teaser .inner {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+/* Left column */
+#ess-mia-teaser .col-left {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* Label line */
+#ess-mia-teaser .label-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+#ess-mia-teaser .label-line {
+  width: 32px;
+  height: 1px;
+  background: #22d3ee;
+  display: block;
+}
+#ess-mia-teaser .label-text {
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #1fc0d9;
+}
+
+/* Heading */
+#ess-mia-teaser h2 {
+  font-size: clamp(44px, 7vw, 72px);
+  font-weight: 900;
+  color: #222222;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin-bottom: 24px;
+}
+
+/* Description */
+#ess-mia-teaser .description {
+  font-size: 17px;
+  color: #1f2937;
+  line-height: 1.7;
+  font-weight: 500;
+  max-width: 480px;
+  margin-bottom: 48px;
+}
+
+/* CTA Button */
+#ess-mia-teaser .cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+  background: #222222;
+  color: #fff;
+  height: 64px;
+  padding-left: 32px;
+  padding-right: 8px;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 20px 40px -15px rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+#ess-mia-teaser .cta-btn:hover {
+  background: #1fc0d9;
+  box-shadow: 0 20px 40px -10px rgba(31,192,217,0.4);
+}
+#ess-mia-teaser .cta-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+  white-space: nowrap;
+}
+#ess-mia-teaser .cta-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s, transform 0.3s;
+  flex-shrink: 0;
+}
+#ess-mia-teaser .cta-btn:hover .cta-icon {
+  background: #fff;
+}
+#ess-mia-teaser .cta-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: #fff;
+  stroke-width: 2.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke 0.3s;
+}
+#ess-mia-teaser .cta-btn:hover .cta-icon svg {
+  stroke: #1fc0d9;
+}
+
+/* Right column — steps grid */
+#ess-mia-teaser .col-right {
+  width: 100%;
+}
+#ess-mia-teaser .steps-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+/* Step card */
+#ess-mia-teaser .step-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #fff;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid #F3F4F6;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  transition: border-color 0.25s;
+}
+#ess-mia-teaser .step-card:hover {
+  border-color: #22d3ee;
+}
+
+/* Step number bubble */
+#ess-mia-teaser .step-num {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(34,34,34,0.07);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 900;
+  color: #222222;
+  flex-shrink: 0;
+}
+
+/* Step text */
+#ess-mia-teaser .step-subtitle {
+  font-size: 12px;
+  font-weight: 900;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #1fc0d9;
+  display: block;
+  margin-bottom: 2px;
+}
+#ess-mia-teaser .step-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: #222222;
+  line-height: 1.25;
+}
+
+/* ── Tablet & up: 2-column layout ─────────────────── */
+@media (min-width: 640px) {
+  #ess-mia-teaser .steps-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ── Desktop: side-by-side ────────────────────────── */
+@media (min-width: 1024px) {
+  #ess-mia-teaser {
+    padding: 96px 48px;
+  }
+  #ess-mia-teaser .inner {
+    flex-direction: row;
+    gap: 80px;
+    align-items: center;
+  }
+  #ess-mia-teaser .col-left {
+    width: 45%;
+    flex-shrink: 0;
+  }
+  #ess-mia-teaser .col-right {
+    flex: 1;
+  }
+}
+
+/* ── Tablet intermedio ────────────────────────────── */
+@media (min-width: 768px) and (max-width: 1023px) {
+  #ess-mia-teaser {
+    padding: 80px 32px;
+  }
+}
+
+/* ── Mobile ──────────────────────────────────────── */
+@media (max-width: 639px) {
+  #ess-mia-teaser {
+    padding: 56px 0;
+  }
+  #ess-mia-teaser .col-left {
+    padding: 0 16px;
+  }
+  #ess-mia-teaser h2 {
+    font-size: clamp(38px, 10vw, 52px);
+  }
+  #ess-mia-teaser .description {
+    font-size: 15px;
+  }
+  #ess-mia-teaser .steps-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 16px;
+    gap: 16px;
+    padding: 8px 16px 24px 16px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  #ess-mia-teaser .steps-grid::-webkit-scrollbar {
+    display: none;
+  }
+  #ess-mia-teaser .step-card {
+    flex: 0 0 260px;
+    scroll-snap-align: start;
+  }
+}
+</style>
+
+<section id="ess-mia-teaser">
+  <div class="bg-glow"></div>
+  <div class="inner">
+
+    <!-- LEFT: Texto y CTA -->
+    <div class="col-left">
+      <div class="label-row">
+        <span class="label-line"></span>
+        <span class="label-text">Nuestro Método Exclusivo</span>
+      </div>
+
+      <h2>Método MIA</h2>
+
+      <p class="description">
+        Nuestro enfoque combina arte con algoritmos. Preparamos, fotografiamos y distribuimos su propiedad como un evento mediático global.
+      </p>
+
+      <a class="cta-btn" href="https://essenciainmobiliarialandingpage.vercel.app/" target="_blank" rel="noopener">
+        <span class="cta-label">Vende con Essencia</span>
+        <span class="cta-icon">
+          <!-- Arrow Right icon (Phosphor style) -->
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </span>
+      </a>
+    </div>
+
+    <!-- RIGHT: Grid de pasos -->
+    <div class="col-right">
+      <div class="steps-grid">
+
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div>
+            <span class="step-subtitle">Con Vendedor</span>
+            <span class="step-title">Plan de Comunicación</span>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div>
+            <span class="step-subtitle">De Alto Impacto</span>
+            <span class="step-title">Plan de Marketing</span>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div>
+            <span class="step-subtitle">Artificial</span>
+            <span class="step-title">Uso Inteligencia</span>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">04</div>
+          <div>
+            <span class="step-subtitle">+400 Inmobiliarias</span>
+            <span class="step-title">Colaboración</span>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">05</div>
+          <div>
+            <span class="step-subtitle">Proceso Compra</span>
+            <span class="step-title">Gestión Integral</span>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">06</div>
+          <div>
+            <span class="step-subtitle">Con Dron</span>
+            <span class="step-title">Videos Profesionales</span>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">07</div>
+          <div>
+            <span class="step-subtitle">Renders, Tour 360°</span>
+            <span class="step-title">Fotografía, Planos</span>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">08</div>
+          <div>
+            <span class="step-subtitle">Nacionales e Int.</span>
+            <span class="step-title">RRSS, Portales</span>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">09</div>
+          <div>
+            <span class="step-subtitle">Legal | Fiscal | Tasación</span>
+            <span class="step-title">Pack Essencia</span>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">10</div>
+          <div>
+            <span class="step-subtitle">Firma y Post Venta</span>
+            <span class="step-title">Acompañamiento</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

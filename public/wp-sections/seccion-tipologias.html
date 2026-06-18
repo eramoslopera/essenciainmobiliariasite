@@ -1,0 +1,772 @@
+<!-- ============================================================
+     ESSENCIA INMOBILIARIA — Sección Búsqueda por Tipologías
+     Pegar en Elementor → Widget "HTML"
+     ============================================================ -->
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+  :root {
+    --eit-blue:      #1fc0d9;
+    --eit-blue-dk:   #17a8be;
+    --eit-black:     #222222;
+    --eit-gray-50:   #f9fafb;
+    --eit-gray-100:  #f3f4f6;
+    --eit-gray-200:  #e5e7eb;
+    --eit-gray-400:  #9ca3af;
+    --eit-gray-500:  #6b7280;
+    --eit-radius:    12px;
+    --eit-shadow:    0 4px 24px -6px rgba(0,0,0,0.08);
+    --eit-shadow-hover: 0 12px 40px -8px rgba(0,0,0,0.14);
+  }
+
+  /* ── Scope Namespace ── */
+  .eit-scope * { box-sizing: border-box; margin: 0; padding: 0; }
+  .eit-scope {
+    font-family: 'Manrope', sans-serif;
+    color: var(--eit-black);
+  }
+  .eit-scope a { text-decoration: none; color: inherit; }
+
+  /* ── Sección ── */
+  .eit-section {
+    background: #ffffff;
+    padding: 80px 24px;
+  }
+  .eit-inner { max-width: 1200px; margin: 0 auto; }
+
+  /* ── Cabecera ── */
+  .eit-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  .eit-eyebrow {
+    display: block;
+    color: var(--eit-blue);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .eit-title {
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 900;
+    color: var(--eit-black);
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+  }
+  .eit-title em {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+  }
+  .eit-ver-todo {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--eit-blue);
+    transition: color 0.2s, gap 0.2s;
+  }
+  .eit-ver-todo:hover {
+    color: var(--eit-blue-dk);
+    gap: 9px;
+  }
+
+  /* ── Grid de Tipologías ── */
+  .eit-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--eit-gray-200);
+    border: 1px solid var(--eit-gray-200);
+    border-radius: var(--eit-radius);
+    overflow: hidden;
+    list-style: none;
+    margin-bottom: 40px;
+  }
+  @media (min-width: 640px) {
+    .eit-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .eit-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  /* Botones del Grid */
+  .eit-btn {
+    background: #ffffff;
+    border: none;
+    padding: 28px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .eit-btn:hover {
+    background: var(--eit-gray-50);
+  }
+  .eit-btn-icon {
+    color: var(--eit-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+  .eit-btn:hover .eit-btn-icon {
+    transform: scale(1.08);
+  }
+  .eit-btn-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--eit-black);
+  }
+  .eit-btn-count {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--eit-gray-400);
+  }
+
+  /* Estado Activo */
+  .eit-btn.active {
+    background: var(--eit-black);
+  }
+  .eit-btn.active .eit-btn-icon {
+    color: var(--eit-blue);
+  }
+  .eit-btn.active .eit-btn-label {
+    color: #ffffff;
+  }
+  .eit-btn.active .eit-btn-count {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  /* ── Contenedor de Resultados ── */
+  .eit-results-wrap {
+    display: none; /* Se muestra con JS */
+  }
+  .eit-results-count {
+    font-size: 14px;
+    color: var(--eit-gray-500);
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+  .eit-results-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  @media (min-width: 640px) {
+    .eit-results-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .eit-results-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* ── Ficha de Propiedad (Cards) ── */
+  .eit-card {
+    background: #ffffff;
+    border-radius: var(--eit-radius);
+    overflow: hidden;
+    box-shadow: var(--eit-shadow);
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    height: 100%;
+  }
+  .eit-card:hover {
+    box-shadow: var(--eit-shadow-hover);
+    transform: translateY(-4px);
+  }
+  .eit-card-img-wrap {
+    position: relative;
+    aspect-ratio: 16/10;
+    overflow: hidden;
+    background: var(--eit-gray-100);
+  }
+  .eit-card-img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.6s ease;
+  }
+  .eit-card:hover .eit-card-img {
+    transform: scale(1.04);
+  }
+  
+  .eit-card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  .eit-card-loc {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--eit-gray-400);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .eit-card-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--eit-black);
+    line-height: 1.35;
+    margin-bottom: 16px;
+    min-height: 40px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: color 0.2s;
+  }
+  .eit-card:hover .eit-card-title {
+    color: var(--eit-blue);
+  }
+  .eit-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    border-top: 1px solid var(--eit-gray-100);
+    margin-top: auto;
+  }
+  .eit-card-price {
+    font-size: 17px;
+    font-weight: 900;
+    color: var(--eit-black);
+  }
+  .eit-card-specs {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--eit-gray-500);
+  }
+  .eit-card-spec-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .eit-card-spec-item svg {
+    flex-shrink: 0;
+  }
+
+  /* ── Botón Ver Más Resultados ── */
+  .eit-more-btn-wrap {
+    display: flex;
+    justify-content: center;
+  }
+  .eit-more-btn {
+    height: 48px;
+    padding: 0 32px;
+    background: var(--eit-black);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border-radius: 99px;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  }
+  .eit-more-btn:hover {
+    transform: translateY(-2px);
+    background: #000000;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  }
+  .eit-more-btn svg {
+    transition: transform 0.2s;
+  }
+  .eit-more-btn:hover svg {
+    transform: translateX(4px);
+  }
+
+  /* Skeleton Loading */
+  .eit-skeleton-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  @media (min-width: 640px) {
+    .eit-skeleton-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .eit-skeleton-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .eit-skeleton-card {
+    height: 320px;
+    border-radius: var(--eit-radius);
+    background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+    background-size: 200% 100%;
+    animation: eit-shimmer 1.5s infinite;
+  }
+  @keyframes eit-shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+</style>
+
+<div class="eit-scope">
+  <section class="eit-section">
+    <div class="eit-inner">
+
+      <!-- Cabecera -->
+      <div class="eit-header">
+        <div>
+          <span class="eit-eyebrow">Explora el catálogo</span>
+          <h2 class="eit-title">Busca por<br><em>tipología</em></h2>
+        </div>
+        <a href="/propiedades" class="eit-ver-todo">
+          Ver todas las propiedades
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+
+      <!-- Cuadrícula de Botones -->
+      <div class="eit-grid">
+        
+        <!-- Pisos -->
+        <button class="eit-btn" data-type="Apartment">
+          <span class="eit-btn-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <line x1="9" y1="3" x2="9" y2="21"/>
+              <line x1="15" y1="3" x2="15" y2="21"/>
+              <line x1="3" y1="9" x2="21" y2="9"/>
+              <line x1="3" y1="15" x2="21" y2="15"/>
+            </svg>
+          </span>
+          <span class="eit-btn-label">Pisos</span>
+          <span class="eit-btn-count" id="count-Apartment">-</span>
+        </button>
+
+        <!-- Casas -->
+        <button class="eit-btn" data-type="House">
+          <span class="eit-btn-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9.5L12 3l9 6.5V21H3V9.5z"/>
+              <rect x="9" y="14" width="6" height="7"/>
+            </svg>
+          </span>
+          <span class="eit-btn-label">Casas</span>
+          <span class="eit-btn-count" id="count-House">-</span>
+        </button>
+
+        <!-- Chalets -->
+        <button class="eit-btn" data-type="Villa">
+          <span class="eit-btn-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 12L12 2l10 10"/>
+              <path d="M4 10v10h16V10"/>
+              <path d="M10 22v-6h4v6"/>
+              <path d="M15 10h2v4h-2z"/>
+            </svg>
+          </span>
+          <span class="eit-btn-label">Chalets</span>
+          <span class="eit-btn-count" id="count-Villa">-</span>
+        </button>
+
+        <!-- Adosados -->
+        <button class="eit-btn" data-type="Townhouse">
+          <span class="eit-btn-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 11l5-5 4 4 4-4 5 5"/>
+              <rect x="1" y="11" width="8" height="10"/>
+              <rect x="9" y="11" width="6" height="10"/>
+              <rect x="15" y="11" width="8" height="10"/>
+            </svg>
+          </span>
+          <span class="eit-btn-label">Adosados</span>
+          <span class="eit-btn-count" id="count-Townhouse">-</span>
+        </button>
+
+        <!-- Locales -->
+        <button class="eit-btn" data-type="Commercial">
+          <span class="eit-btn-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="1"/>
+              <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+              <line x1="12" y1="12" x2="12" y2="17"/>
+              <line x1="9.5" y1="14.5" x2="14.5" y2="14.5"/>
+            </svg>
+          </span>
+          <span class="eit-btn-label">Locales</span>
+          <span class="eit-btn-count" id="count-Commercial">-</span>
+        </button>
+
+        <!-- Fincas / Terrenos -->
+        <button class="eit-btn" data-type="Estate">
+          <span class="eit-btn-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 21V9l9-6 9 6v12"/>
+              <path d="M9 21v-6h6v6"/>
+              <path d="M3 9h18"/>
+              <line x1="7" y1="13" x2="7" y2="13.5"/>
+              <line x1="17" y1="13" x2="17" y2="13.5"/>
+            </svg>
+          </span>
+          <span class="eit-btn-label">Fincas</span>
+          <span class="eit-btn-count" id="count-Estate">-</span>
+        </button>
+
+        <!-- Proyectos -->
+        <button class="eit-btn" data-type="Project">
+          <span class="eit-btn-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          </span>
+          <span class="eit-btn-label">Proyectos</span>
+          <span class="eit-btn-count" id="count-Project">-</span>
+        </button>
+
+        <!-- Ver Todo -->
+        <button class="eit-btn" data-type="all">
+          <span class="eit-btn-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+          </span>
+          <span class="eit-btn-label">Ver todo</span>
+          <span class="eit-btn-count" id="count-all">-</span>
+        </button>
+
+      </div>
+
+      <!-- Área de Resultados Filtrados -->
+      <div class="eit-results-wrap" id="eit-results-area">
+        <p class="eit-results-count" id="eit-results-count-label"></p>
+        
+        <div class="eit-results-grid" id="eit-results-grid">
+          <!-- Cards insertados por JS -->
+        </div>
+
+        <div class="eit-more-btn-wrap" id="eit-more-btn-wrap" style="display: none;">
+          <a href="#" id="eit-more-link" class="eit-more-btn">
+            Ver más resultados
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<script>
+  (function() {
+    // ── CONFIGURACIÓN DEL FEED XML ──
+    // En WordPress, reemplaza esta URL por la ruta real de tu feed XML (ej: '/wp-content/uploads/feeds/properties.xml' o tu PHP feed)
+    const XML_FEED_URL = '/api/feed';
+
+    let allProperties = [];
+    let selectedType = null;
+
+    // Elementos DOM
+    const resultsArea = document.getElementById('eit-results-area');
+    const resultsGrid = document.getElementById('eit-results-grid');
+    const countLabel = document.getElementById('eit-results-count-label');
+    const moreBtnWrap = document.getElementById('eit-more-btn-wrap');
+    const moreLink = document.getElementById('eit-more-link');
+
+    // Mapeo de tipos para el XML
+    const TYPE_MAPPING = {
+      'Apartment': 'Apartment',
+      'House': 'House',
+      'Villa': 'Villa',
+      'Townhouse': 'Townhouse',
+      'Commercial': 'Commercial',
+      'Estate': 'Estate',
+      'Project': 'Project'
+    };
+
+    // Inicialización
+    document.addEventListener('DOMContentLoaded', () => {
+      init();
+    });
+
+    async function init() {
+      // Iniciar con loading skeleton
+      showSkeleton();
+
+      allProperties = await fetchXMLProperties();
+      
+      // Contar totales y rellenar botones
+      updateCounts();
+
+      // Añadir listeners a los botones
+      const buttons = document.querySelectorAll('.eit-btn');
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const type = btn.getAttribute('data-type');
+          
+          // Toggle clase activa
+          buttons.forEach(b => b.classList.remove('active'));
+          
+          if (type === 'all') {
+            // "Ver todo" redirige o limpia
+            selectedType = null;
+            btn.classList.add('active');
+            renderFilteredProperties();
+          } else {
+            if (selectedType === type) {
+              selectedType = null; // deseleccionar
+            } else {
+              selectedType = type;
+              btn.classList.add('active');
+            }
+            renderFilteredProperties();
+          }
+        });
+      });
+      
+      // Ocultar skeleton una vez cargado
+      if (allProperties.length > 0) {
+        resultsArea.style.display = 'block';
+        // Seleccionar por defecto "Pisos" o renderizar vacío
+        renderFilteredProperties();
+      } else {
+        resultsGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: var(--eit-gray-400); padding: 40px 0;">No se pudieron cargar propiedades.</div>';
+      }
+    }
+
+    // Mostrar esqueleto de carga
+    function showSkeleton() {
+      resultsArea.style.display = 'block';
+      countLabel.textContent = 'Buscando propiedades...';
+      resultsGrid.innerHTML = `
+        <div class="eit-skeleton-grid">
+          <div class="eit-skeleton-card"></div>
+          <div class="eit-skeleton-card"></div>
+          <div class="eit-skeleton-card"></div>
+        </div>
+      `;
+    }
+
+    // Actualizar contadores de los botones
+    function updateCounts() {
+      const getAvailableCount = (type) => {
+        return allProperties.filter(p => p.status === 'available' && p.type === type).length;
+      };
+
+      const totalCount = allProperties.filter(p => p.status === 'available').length;
+      document.getElementById('count-all').textContent = totalCount;
+
+      Object.keys(TYPE_MAPPING).forEach(type => {
+        const countEl = document.getElementById(`count-${type}`);
+        if (countEl) {
+          countEl.textContent = getAvailableCount(type);
+        }
+      });
+    }
+
+    // Renderizar propiedades filtradas
+    function renderFilteredProperties() {
+      if (!selectedType) {
+        resultsArea.style.display = 'none';
+        return;
+      }
+
+      resultsArea.style.display = 'block';
+
+      const filtered = allProperties.filter(p => p.status === 'available' && p.type === selectedType);
+      
+      // Actualizar etiqueta
+      countLabel.textContent = `${filtered.length} ${filtered.length === 1 ? 'propiedad encontrada' : 'propiedades encontradas'}`;
+
+      if (filtered.length === 0) {
+        resultsGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: var(--eit-gray-400); padding: 48px 0; font-weight: 500;">No hay propiedades disponibles de este tipo actualmente.</div>';
+        moreBtnWrap.style.display = 'none';
+        return;
+      }
+
+      // Mostrar max 6
+      const visibleProps = filtered.slice(0, 6);
+      
+      resultsGrid.innerHTML = visibleProps.map(p => `
+        <div class="eit-card">
+          <a href="/property/${p.id}" class="eit-card-img-wrap">
+            ${p.image ? `
+              <div class="eit-card-img" style="background-image: url('${p.image}')"></div>
+            ` : `
+              <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--eit-gray-100);">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--eit-gray-400)" stroke-width="1.5">
+                  <rect x="3" y="3" width="18" height="18" rx="2"/>
+                  <circle cx="8.5" cy="8.5" r="1.5"/>
+                  <polyline points="21 15 16 10 5 21"/>
+                </svg>
+              </div>
+            `}
+          </a>
+          <div class="eit-card-body">
+            <p class="eit-card-loc">${p.location}</p>
+            <a href="/property/${p.id}" class="eit-card-title">${p.title}</a>
+            <div class="eit-card-footer">
+              <span class="eit-card-price">${p.price}</span>
+              <div class="eit-card-specs">
+                ${p.beds ? `
+                  <span class="eit-card-spec-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 7v13M22 7v13M2 14h20M6 14V7a4 4 0 018 0v7"/></svg>
+                    ${p.beds}
+                  </span>
+                ` : ''}
+                ${p.baths ? `
+                  <span class="eit-card-spec-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12h16a1 1 0 011 1v3a4 4 0 01-4 4H7a4 4 0 01-4-4v-3a1 1 0 011-1z"/><path d="M6 12V5a2 2 0 014 0v1"/></svg>
+                    ${p.baths}
+                  </span>
+                ` : ''}
+                ${p.size ? `
+                  <span class="eit-card-spec-item">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="1"/></svg>
+                    ${p.size}
+                  </span>
+                ` : ''}
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      // Mostrar botón "Ver más resultados" si hay más de 6
+      if (filtered.length > 6) {
+        moreBtnWrap.style.display = 'flex';
+        // Enlazar a la página de catálogo de WordPress filtrada
+        moreLink.setAttribute('href', `/propiedades?type=${selectedType}`);
+        moreLink.innerHTML = `
+          Ver los ${filtered.length} resultados
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        `;
+      } else {
+        moreBtnWrap.style.display = 'none';
+      }
+    }
+
+    // Lector y parser del feed XML
+    async function fetchXMLProperties() {
+      try {
+        const response = await fetch(XML_FEED_URL);
+        if (!response.ok) throw new Error('Error de conexión');
+        const text = await response.text();
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(text, "text/xml");
+        
+        const properties = [];
+        const propertyNodes = xmlDoc.getElementsByTagName("property");
+        
+        const toTitleCase = (str) => {
+          return str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substring(1).toLowerCase());
+        };
+
+        for (let i = 0; i < propertyNodes.length; i++) {
+          const node = propertyNodes[i];
+          try {
+            const getTag = (tagName) => {
+              const el = node.getElementsByTagName(tagName)[0];
+              return el ? el.textContent || "" : "";
+            };
+
+            const id = parseInt(getTag("id"));
+            if (!id) continue;
+
+            const location = toTitleCase(getTag("town")) + ", " + getTag("province");
+            const price = "€" + parseInt(getTag("price")).toLocaleString('es-ES');
+            const beds = parseInt(getTag("beds")) || 0;
+            const baths = parseInt(getTag("baths")) || 0;
+            const built = getTag("built");
+            const size = built && built !== '0' ? built + " m²" : "";
+
+            // Imagen destacada
+            const imagesNode = node.getElementsByTagName("images")[0];
+            const images = [];
+            if (imagesNode) {
+              const imageNodes = imagesNode.getElementsByTagName("image");
+              for (let j = 0; j < imageNodes.length; j++) {
+                const url = imageNodes[j].getElementsByTagName("url")[0]?.textContent;
+                if (url) images.push(url);
+              }
+            }
+            const image = images.length > 0 ? images[0] : (getTag("image") || "");
+
+            // Mapear Tipologías
+            const typeRaw = getTag("type").toLowerCase();
+            let type = 'Villa';
+            let typeEs = 'Villa';
+            if (typeRaw.includes("apartment") || typeRaw.includes("flat")) {
+              type = 'Apartment';
+              typeEs = 'Apartamento';
+            } else if (typeRaw.includes("villa") || typeRaw.includes("house")) {
+              type = 'Villa';
+              typeEs = 'Villa';
+            } else if (typeRaw.includes("land") || typeRaw.includes("plot")) {
+              type = 'Project';
+              typeEs = 'Parcela';
+            } else if (typeRaw.includes("commercial") || typeRaw.includes("business")) {
+              type = 'Commercial';
+              typeEs = 'Local Comercial';
+            } else if (typeRaw.includes("estate") || typeRaw.includes("finca")) {
+              type = 'Estate';
+              typeEs = 'Finca';
+            }
+
+            const title = typeEs + " en " + toTitleCase(getTag("town"));
+
+            // Estado
+            const stateRaw = getTag("state").toLowerCase();
+            let status = 'available';
+            if (stateRaw === 'sold' || stateRaw === 'stc' || stateRaw === 'sold stc') {
+              status = 'sold';
+            } else if (stateRaw === 'reserved' || stateRaw === 'under offer' || stateRaw === 'reserved-sold') {
+              status = 'reserved';
+            }
+
+            properties.push({
+              id,
+              title,
+              location,
+              price,
+              beds,
+              baths,
+              size,
+              image,
+              type,
+              status,
+              dateListed: getTag("date") ? getTag("date").split(" ")[0] : ""
+            });
+
+          } catch (e) {
+            // ignorar fallos en items individuales
+          }
+        }
+        return properties;
+      } catch (err) {
+        console.error("Error cargando feed:", err);
+        return [];
+      }
+    }
+  })();
+</script>
