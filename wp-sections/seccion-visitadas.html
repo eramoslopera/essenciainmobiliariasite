@@ -1,0 +1,551 @@
+<!-- ============================================================
+     ESSENCIA INMOBILIARIA — Sección Propiedades Visitadas Recientemente
+     Pegar en Elementor → Widget "HTML"
+     ============================================================ -->
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+  :root {
+    --eiv-blue:      #1fc0d9;
+    --eiv-blue-dk:   #17a8be;
+    --eiv-black:     #222222;
+    --eiv-gray-50:   #f9fafb;
+    --eiv-gray-100:  #f3f4f6;
+    --eiv-gray-200:  #e5e7eb;
+    --eiv-gray-400:  #9ca3af;
+    --eiv-gray-500:  #6b7280;
+    --eiv-radius:    12px;
+    --eiv-shadow:    0 4px 24px -6px rgba(0,0,0,0.08);
+    --eiv-shadow-hover: 0 12px 40px -8px rgba(0,0,0,0.14);
+  }
+
+  /* ── Scope Namespace ── */
+  .eiv-scope * { box-sizing: border-box; margin: 0; padding: 0; }
+  .eiv-scope {
+    font-family: 'Manrope', sans-serif;
+    color: var(--eiv-black);
+  }
+  .eiv-scope a { text-decoration: none; color: inherit; }
+
+  /* ── Sección ── */
+  .eiv-section {
+    background: #ffffff;
+    padding: 80px 0;
+    border-top: 1px solid var(--eiv-gray-100);
+    overflow: hidden;
+  }
+  .eiv-inner { max-width: 1440px; margin: 0 auto; }
+
+  /* ── Cabecera ── */
+  .eiv-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 0 24px;
+    margin-bottom: 40px;
+  }
+  @media (min-width: 1200px) {
+    .eiv-header { padding: 0 96px; }
+  }
+  .eiv-eyebrow {
+    display: block;
+    color: var(--eiv-blue);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .eiv-title {
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 900;
+    color: var(--eiv-black);
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+  }
+  .eiv-title em {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  /* Controles del carrusel */
+  .eiv-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .eiv-ctrl-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid var(--eiv-gray-200);
+    background: #ffffff;
+    color: var(--eiv-black);
+    transition: all 0.2s ease;
+  }
+  .eiv-ctrl-btn:hover {
+    background: var(--eiv-gray-50);
+    border-color: var(--eiv-black);
+  }
+  .eiv-ctrl-btn-next {
+    background: var(--eiv-black);
+    color: #ffffff;
+    border-color: var(--eiv-black);
+  }
+  .eiv-ctrl-btn-next:hover {
+    background: #000000;
+  }
+
+  /* ── Carrusel Horizontal ── */
+  .eiv-carousel-container {
+    position: relative;
+    width: 100%;
+  }
+  .eiv-carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 24px;
+    padding: 0 24px pb-4;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  .eiv-carousel::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+  @media (min-width: 1200px) {
+    .eiv-carousel { padding: 0 96px; }
+  }
+
+  .eiv-carousel-item {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    width: 85vw;
+  }
+  @media (min-width: 640px) {
+    .eiv-carousel-item { width: 360px; }
+  }
+
+  /* ── Ficha de Propiedad (Cards) ── */
+  .eiv-card {
+    background: #ffffff;
+    border-radius: var(--eiv-radius);
+    overflow: hidden;
+    box-shadow: var(--eiv-shadow);
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    height: 100%;
+    border: 1px solid var(--eiv-gray-100);
+  }
+  .eiv-card:hover {
+    box-shadow: var(--eiv-shadow-hover);
+    transform: translateY(-4px);
+  }
+  .eiv-card-img-wrap {
+    position: relative;
+    aspect-ratio: 16/10;
+    overflow: hidden;
+    background: var(--eiv-gray-100);
+  }
+  .eiv-card-img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.6s ease;
+  }
+  .eiv-card:hover .eiv-card-img {
+    transform: scale(1.04);
+  }
+  .eiv-card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  .eiv-card-loc {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--eiv-gray-400);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .eiv-card-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--eiv-black);
+    line-height: 1.35;
+    margin-bottom: 16px;
+    min-height: 40px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: color 0.2s;
+  }
+  .eiv-card:hover .eiv-card-title {
+    color: var(--eiv-blue);
+  }
+  .eiv-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    border-top: 1px solid var(--eiv-gray-100);
+    margin-top: auto;
+  }
+  .eiv-card-price {
+    font-size: 17px;
+    font-weight: 900;
+    color: var(--eiv-black);
+  }
+  .eiv-card-specs {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--eiv-gray-500);
+  }
+  .eiv-card-spec-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* ── Botón Ver Catálogo Completo ── */
+  .eiv-more-btn-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    padding: 0 24px;
+  }
+  .eiv-more-btn {
+    height: 48px;
+    padding: 0 32px;
+    background: #ffffff;
+    color: var(--eiv-black);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border-radius: 99px;
+    border: 1px solid var(--eiv-gray-200);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s, transform 0.2s, border-color 0.2s;
+  }
+  .eiv-more-btn:hover {
+    background: var(--eiv-gray-50);
+    border-color: var(--eiv-black);
+  }
+  
+  /* Skeleton Loading */
+  .eiv-skeleton-row {
+    display: flex;
+    gap: 24px;
+    padding: 0 24px;
+    overflow: hidden;
+  }
+  @media (min-width: 1200px) {
+    .eiv-skeleton-row { padding: 0 96px; }
+  }
+  .eiv-skeleton-card {
+    flex-shrink: 0;
+    width: 320px;
+    height: 340px;
+    border-radius: var(--eiv-radius);
+    background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+    background-size: 200% 100%;
+    animation: eiv-shimmer 1.5s infinite;
+  }
+  @keyframes eiv-shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+</style>
+
+<div class="eiv-scope">
+  <section class="eiv-section">
+    <div class="eiv-inner">
+
+      <!-- Cabecera -->
+      <div class="eiv-header">
+        <div>
+          <span class="eiv-eyebrow" id="eiv-tag">Novedades</span>
+          <h2 class="eiv-title" id="eiv-title-label">Últimas<br><em>propiedades</em></h2>
+        </div>
+        <!-- Controles -->
+        <div class="eiv-controls">
+          <button class="eiv-ctrl-btn eiv-ctrl-btn-prev" id="eiv-prev-btn" aria-label="Propiedades anteriores">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="eiv-ctrl-btn eiv-ctrl-btn-next" id="eiv-next-btn" aria-label="Siguientes propiedades">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Carrusel -->
+      <div class="eiv-carousel-container">
+        <div class="eiv-carousel" id="eiv-carousel-element">
+          <!-- Skeletons cargados por JS -->
+          <div class="eiv-skeleton-row">
+            <div class="eiv-skeleton-card"></div>
+            <div class="eiv-skeleton-card"></div>
+            <div class="eiv-skeleton-card"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ver Catálogo -->
+      <div class="eiv-more-btn-wrap">
+        <a href="/propiedades" class="eiv-more-btn">
+          Ver todas las propiedades
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<script>
+  (function() {
+    // ── CONFIGURACIÓN DEL FEED XML ──
+    const XML_FEED_URL = '/api/feed';
+
+    const carousel = document.getElementById('eiv-carousel-element');
+    const tagEl = document.getElementById('eiv-tag');
+    const titleEl = document.getElementById('eiv-title-label');
+    const prevBtn = document.getElementById('eiv-prev-btn');
+    const nextBtn = document.getElementById('eiv-next-btn');
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initRecentlyViewed();
+    });
+
+    async function initRecentlyViewed() {
+      const allProps = await fetchXMLProperties();
+      if (allProps.length === 0) {
+        carousel.innerHTML = '<div style="width:100%; text-align:center; color:var(--eiv-gray-400); padding:40px 0;">No se pudieron cargar propiedades.</div>';
+        return;
+      }
+
+      // Obtener historial de localStorage
+      let visitedProps = [];
+      try {
+        const KEY = 'ei_recently_viewed';
+        const storedIds = JSON.parse(localStorage.getItem(KEY) || '[]');
+        visitedProps = storedIds
+          .map(id => allProps.find(p => p.id === id))
+          .filter(p => p !== undefined && p.status === 'available');
+      } catch (e) {
+        console.warn("Error leyendo localStorage", e);
+      }
+
+      // Configurar datos según si hay visitas o no
+      let displayProperties = [];
+      let isShowingVisited = false;
+
+      if (visitedProps.length > 0) {
+        displayProperties = visitedProps.slice(0, 8);
+        isShowingVisited = true;
+        // Cambiar cabeceras
+        tagEl.textContent = 'Vistas recientemente';
+        titleEl.innerHTML = 'Últimas<br><em>visitadas</em>';
+      } else {
+        // Fallback: Mostrar las 8 más recientes añadidas
+        displayProperties = [...allProps]
+          .filter(p => p.status === 'available')
+          .sort((a, b) => {
+            if (!a.dateListed || !b.dateListed) return 0;
+            return new Date(b.dateListed).getTime() - new Date(a.dateListed).getTime();
+          })
+          .slice(0, 8);
+        
+        tagEl.textContent = 'Novedades';
+        titleEl.innerHTML = 'Últimas<br><em>propiedades</em>';
+      }
+
+      // Renderizar el carrusel
+      if (displayProperties.length === 0) {
+        carousel.innerHTML = '<div style="width:100%; text-align:center; color:var(--eiv-gray-400); padding:40px 0;">No hay propiedades disponibles.</div>';
+        return;
+      }
+
+      carousel.innerHTML = displayProperties.map(p => `
+        <div class="eiv-carousel-item">
+          <div class="eiv-card">
+            <a href="/property/${p.id}" class="eiv-card-img-wrap">
+              ${p.image ? `
+                <div class="eiv-card-img" style="background-image: url('${p.image}')"></div>
+              ` : `
+                <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--eiv-gray-100);">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--eiv-gray-400)" stroke-width="1.5">
+                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                    <circle cx="8.5" cy="8.5" r="1.5"/>
+                    <polyline points="21 15 16 10 5 21"/>
+                  </svg>
+                </div>
+              `}
+            </a>
+            <div class="eiv-card-body">
+              <p class="eiv-card-loc">${p.location}</p>
+              <a href="/property/${p.id}" class="eiv-card-title">${p.title}</a>
+              <div class="eiv-card-footer">
+                <span class="eiv-card-price">${p.price}</span>
+                <div class="eiv-card-specs">
+                  ${p.beds ? `
+                    <span class="eiv-card-spec-item" style="display:flex;align-items:center;gap:4px">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 7v13M22 7v13M2 14h20M6 14V7a4 4 0 018 0v7"/></svg>
+                      ${p.beds}
+                    </span>
+                  ` : ''}
+                  ${p.baths ? `
+                    <span class="eiv-card-spec-item" style="display:flex;align-items:center;gap:4px">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12h16a1 1 0 011 1v3a4 4 0 01-4 4H7a4 4 0 01-4-4v-3a1 1 0 011-1z"/><path d="M6 12V5a2 2 0 014 0v1"/></svg>
+                      ${p.baths}
+                    </span>
+                  ` : ''}
+                  ${p.size ? `
+                    <span class="eiv-card-spec-item" style="display:flex;align-items:center;gap:4px">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="1"/></svg>
+                      ${p.size}
+                    </span>
+                  ` : ''}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('') + `<div style="flex-shrink:0; width:1px;"></div>`;
+
+      // Eventos de los botones del carrusel
+      prevBtn.addEventListener('click', () => {
+        carousel.scrollBy({ left: -320, behavior: 'smooth' });
+      });
+
+      nextBtn.addEventListener('click', () => {
+        carousel.scrollBy({ left: 320, behavior: 'smooth' });
+      });
+    }
+
+    // Lector y parser del feed XML
+    async function fetchXMLProperties() {
+      try {
+        const response = await fetch(XML_FEED_URL);
+        if (!response.ok) throw new Error('Error de conexión');
+        const text = await response.text();
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(text, "text/xml");
+        
+        const properties = [];
+        const propertyNodes = xmlDoc.getElementsByTagName("property");
+        
+        const toTitleCase = (str) => {
+          return str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substring(1).toLowerCase());
+        };
+
+        for (let i = 0; i < propertyNodes.length; i++) {
+          const node = propertyNodes[i];
+          try {
+            const getTag = (tagName) => {
+              const el = node.getElementsByTagName(tagName)[0];
+              return el ? el.textContent || "" : "";
+            };
+
+            const id = parseInt(getTag("id"));
+            if (!id) continue;
+
+            const location = toTitleCase(getTag("town")) + ", " + getTag("province");
+            const price = "€" + parseInt(getTag("price")).toLocaleString('es-ES');
+            const beds = parseInt(getTag("beds")) || 0;
+            const baths = parseInt(getTag("baths")) || 0;
+            const built = getTag("built");
+            const size = built && built !== '0' ? built + " m²" : "";
+
+            // Imagen destacada
+            const imagesNode = node.getElementsByTagName("images")[0];
+            const images = [];
+            if (imagesNode) {
+              const imageNodes = imagesNode.getElementsByTagName("image");
+              for (let j = 0; j < imageNodes.length; j++) {
+                const url = imageNodes[j].getElementsByTagName("url")[0]?.textContent;
+                if (url) images.push(url);
+              }
+            }
+            const image = images.length > 0 ? images[0] : (getTag("image") || "");
+
+            // Mapear Tipologías
+            const typeRaw = getTag("type").toLowerCase();
+            let type = 'Villa';
+            let typeEs = 'Villa';
+            if (typeRaw.includes("apartment") || typeRaw.includes("flat")) {
+              type = 'Apartment';
+              typeEs = 'Apartamento';
+            } else if (typeRaw.includes("villa") || typeRaw.includes("house")) {
+              type = 'Villa';
+              typeEs = 'Villa';
+            } else if (typeRaw.includes("land") || typeRaw.includes("plot")) {
+              type = 'Project';
+              typeEs = 'Parcela';
+            } else if (typeRaw.includes("commercial") || typeRaw.includes("business")) {
+              type = 'Commercial';
+              typeEs = 'Local Comercial';
+            } else if (typeRaw.includes("estate") || typeRaw.includes("finca")) {
+              type = 'Estate';
+              typeEs = 'Finca';
+            }
+
+            const title = typeEs + " en " + toTitleCase(getTag("town"));
+
+            // Estado
+            const stateRaw = getTag("state").toLowerCase();
+            let status = 'available';
+            if (stateRaw === 'sold' || stateRaw === 'stc' || stateRaw === 'sold stc') {
+              status = 'sold';
+            } else if (stateRaw === 'reserved' || stateRaw === 'under offer' || stateRaw === 'reserved-sold') {
+              status = 'reserved';
+            }
+
+            properties.push({
+              id,
+              title,
+              location,
+              price,
+              beds,
+              baths,
+              size,
+              image,
+              type,
+              status,
+              dateListed: getTag("date") ? getTag("date").split(" ")[0] : ""
+            });
+
+          } catch (e) {
+            // ignorar
+          }
+        }
+        return properties;
+      } catch (err) {
+        console.error("Error cargando feed:", err);
+        return [];
+      }
+    }
+  })();
+</script>

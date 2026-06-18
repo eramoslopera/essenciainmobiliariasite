@@ -1,0 +1,440 @@
+<!-- ============================================================
+     ESSENCIA INMOBILIARIA — Sección Inmuebles Rebajados
+     Pegar en Elementor → Widget "HTML"
+     ============================================================ -->
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+  :root {
+    --eir-blue:      #1fc0d9;
+    --eir-blue-dk:   #17a8be;
+    --eir-black:     #222222;
+    --eir-gray-50:   #f9fafb;
+    --eir-gray-100:  #f3f4f6;
+    --eir-gray-200:  #e5e7eb;
+    --eir-gray-400:  #9ca3af;
+    --eir-gray-500:  #6b7280;
+    --eir-radius:    12px;
+    --eir-shadow:    0 4px 24px -6px rgba(0,0,0,0.08);
+    --eir-shadow-hover: 0 12px 40px -8px rgba(0,0,0,0.14);
+  }
+
+  /* ── Scope Namespace ── */
+  .eir-scope * { box-sizing: border-box; margin: 0; padding: 0; }
+  .eir-scope {
+    font-family: 'Manrope', sans-serif;
+    color: var(--eir-black);
+  }
+  .eir-scope a { text-decoration: none; color: inherit; }
+
+  /* ── Sección ── */
+  .eir-section {
+    background: var(--eir-gray-50);
+    padding: 80px 24px;
+    border-top: 1px solid var(--eir-gray-100);
+  }
+  .eir-inner { max-width: 1200px; margin: 0 auto; }
+
+  /* ── Cabecera ── */
+  .eir-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  .eir-eyebrow {
+    display: block;
+    color: var(--eir-blue);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .eir-title {
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 900;
+    color: var(--eir-black);
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+  }
+  .eir-title em {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+  }
+  .eir-header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  @media (min-width: 768px) {
+    .eir-header-right { align-items: flex-end; text-align: right; }
+  }
+  .eir-header-desc {
+    font-size: 14px;
+    color: var(--eir-gray-500);
+    font-weight: 500;
+    max-width: 320px;
+    line-height: 1.5;
+  }
+  .eir-ver-todo {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--eir-blue);
+    transition: color 0.2s, gap 0.2s;
+  }
+  .eir-ver-todo:hover {
+    color: var(--eir-blue-dk);
+    gap: 9px;
+  }
+
+  /* ── Grid de Propiedades ── */
+  .eir-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  @media (min-width: 640px) {
+    .eir-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .eir-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* ── Ficha de Propiedad (Cards) ── */
+  .eir-card {
+    background: #ffffff;
+    border-radius: var(--eir-radius);
+    overflow: hidden;
+    box-shadow: var(--eir-shadow);
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    height: 100%;
+  }
+  .eir-card:hover {
+    box-shadow: var(--eir-shadow-hover);
+    transform: translateY(-4px);
+  }
+  .eir-card-img-wrap {
+    position: relative;
+    aspect-ratio: 16/10;
+    overflow: hidden;
+    background: var(--eir-gray-100);
+  }
+  .eir-card-img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.6s ease;
+  }
+  .eir-card:hover .eir-card-img {
+    transform: scale(1.04);
+  }
+  .eir-card-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #fef3c7; /* Amber-100 */
+    color: #92400e; /* Amber-800 */
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 99px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .eir-card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  .eir-card-loc {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--eir-gray-400);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .eir-card-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--eir-black);
+    line-height: 1.35;
+    margin-bottom: 16px;
+    min-height: 40px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: color 0.2s;
+  }
+  .eir-card:hover .eir-card-title {
+    color: var(--eir-blue);
+  }
+  .eir-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    border-top: 1px solid var(--eir-gray-100);
+    margin-top: auto;
+  }
+  .eir-card-price {
+    font-size: 17px;
+    font-weight: 900;
+    color: var(--eir-black);
+  }
+  .eir-card-specs {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--eir-gray-500);
+  }
+  .eir-card-spec-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* Skeleton Loading */
+  .eir-skeleton-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  @media (min-width: 640px) {
+    .eir-skeleton-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .eir-skeleton-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .eir-skeleton-card {
+    height: 320px;
+    border-radius: var(--eir-radius);
+    background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+    background-size: 200% 100%;
+    animation: eir-shimmer 1.5s infinite;
+  }
+  @keyframes eir-shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+</style>
+
+<div class="eir-scope">
+  <section class="eir-section">
+    <div class="eir-inner">
+
+      <!-- Cabecera -->
+      <div class="eir-header">
+        <div>
+          <span class="eir-eyebrow">Oportunidades</span>
+          <h2 class="eir-title">Inmuebles<br><em>rebajados</em></h2>
+        </div>
+        <div class="eir-header-right">
+          <p class="eir-header-desc">Precios reducidos en propiedades seleccionadas. Oportunidades limitadas.</p>
+          <a href="/propiedades" class="eir-ver-todo">
+            Ver todo el catálogo
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Grid de Propiedades -->
+      <div class="eir-grid" id="eir-reduced-grid">
+        <!-- Skeleton inicial por JS -->
+        <div class="eir-skeleton-card"></div>
+        <div class="eir-skeleton-card"></div>
+        <div class="eir-skeleton-card"></div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<script>
+  (function() {
+    // ── CONFIGURACIÓN DEL FEED XML ──
+    const XML_FEED_URL = '/api/feed';
+
+    const grid = document.getElementById('eir-reduced-grid');
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadReducedProperties();
+    });
+
+    async function loadReducedProperties() {
+      const allProps = await fetchXMLProperties();
+      
+      // Filtrar por rebajadas
+      // En este demo tomamos las primeras 6 disponibles (en producción, puedes añadir filtros como p.isReduced === true)
+      const rebajadas = allProps.filter(p => p.status === 'available').slice(0, 6);
+
+      if (rebajadas.length === 0) {
+        grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: var(--eir-gray-400); padding: 48px 0; font-weight: 500;">No hay inmuebles rebajados disponibles actualmente.</div>';
+        return;
+      }
+
+      grid.innerHTML = rebajadas.map(p => `
+        <div class="eir-card">
+          <a href="/property/${p.id}" class="eir-card-img-wrap">
+            ${p.image ? `
+              <div class="eir-card-img" style="background-image: url('${p.image}')"></div>
+            ` : `
+              <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--eir-gray-100);">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--eir-gray-400)" stroke-width="1.5">
+                  <rect x="3" y="3" width="18" height="18" rx="2"/>
+                  <circle cx="8.5" cy="8.5" r="1.5"/>
+                  <polyline points="21 15 16 10 5 21"/>
+                </svg>
+              </div>
+            `}
+            <span class="eir-card-badge">Precio reducido</span>
+          </a>
+          <div class="eir-card-body">
+            <p class="eir-card-loc">${p.location}</p>
+            <a href="/property/${p.id}" class="eir-card-title">${p.title}</a>
+            <div class="eir-card-footer">
+              <span class="eir-card-price">${p.price}</span>
+              <div class="eir-card-specs">
+                ${p.beds ? `
+                  <span class="eir-card-spec-item" style="display:flex;align-items:center;gap:4px">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 7v13M22 7v13M2 14h20M6 14V7a4 4 0 018 0v7"/></svg>
+                    ${p.beds}
+                  </span>
+                ` : ''}
+                ${p.baths ? `
+                  <span class="eir-card-spec-item" style="display:flex;align-items:center;gap:4px">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12h16a1 1 0 011 1v3a4 4 0 01-4 4H7a4 4 0 01-4-4v-3a1 1 0 011-1z"/><path d="M6 12V5a2 2 0 014 0v1"/></svg>
+                    ${p.baths}
+                  </span>
+                ` : ''}
+                ${p.size ? `
+                  <span class="eir-card-spec-item" style="display:flex;align-items:center;gap:4px">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="1"/></svg>
+                    ${p.size}
+                  </span>
+                ` : ''}
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Lector y parser del feed XML
+    async function fetchXMLProperties() {
+      try {
+        const response = await fetch(XML_FEED_URL);
+        if (!response.ok) throw new Error('Error de conexión');
+        const text = await response.text();
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(text, "text/xml");
+        
+        const properties = [];
+        const propertyNodes = xmlDoc.getElementsByTagName("property");
+        
+        const toTitleCase = (str) => {
+          return str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substring(1).toLowerCase());
+        };
+
+        for (let i = 0; i < propertyNodes.length; i++) {
+          const node = propertyNodes[i];
+          try {
+            const getTag = (tagName) => {
+              const el = node.getElementsByTagName(tagName)[0];
+              return el ? el.textContent || "" : "";
+            };
+
+            const id = parseInt(getTag("id"));
+            if (!id) continue;
+
+            const location = toTitleCase(getTag("town")) + ", " + getTag("province");
+            const price = "€" + parseInt(getTag("price")).toLocaleString('es-ES');
+            const beds = parseInt(getTag("beds")) || 0;
+            const baths = parseInt(getTag("baths")) || 0;
+            const built = getTag("built");
+            const size = built && built !== '0' ? built + " m²" : "";
+
+            // Imagen destacada
+            const imagesNode = node.getElementsByTagName("images")[0];
+            const images = [];
+            if (imagesNode) {
+              const imageNodes = imagesNode.getElementsByTagName("image");
+              for (let j = 0; j < imageNodes.length; j++) {
+                const url = imageNodes[j].getElementsByTagName("url")[0]?.textContent;
+                if (url) images.push(url);
+              }
+            }
+            const image = images.length > 0 ? images[0] : (getTag("image") || "");
+
+            // Mapear Tipologías
+            const typeRaw = getTag("type").toLowerCase();
+            let typeEs = 'Villa';
+            if (typeRaw.includes("apartment") || typeRaw.includes("flat")) {
+              typeEs = 'Apartamento';
+            } else if (typeRaw.includes("villa") || typeRaw.includes("house")) {
+              typeEs = 'Villa';
+            } else if (typeRaw.includes("land") || typeRaw.includes("plot")) {
+              typeEs = 'Parcela';
+            } else if (typeRaw.includes("commercial") || typeRaw.includes("business")) {
+              typeEs = 'Local Comercial';
+            } else if (typeRaw.includes("estate") || typeRaw.includes("finca")) {
+              typeEs = 'Finca';
+            }
+
+            const title = typeEs + " en " + toTitleCase(getTag("town"));
+
+            // Estado
+            const stateRaw = getTag("state").toLowerCase();
+            let status = 'available';
+            if (stateRaw === 'sold' || stateRaw === 'stc' || stateRaw === 'sold stc') {
+              status = 'sold';
+            } else if (stateRaw === 'reserved' || stateRaw === 'under offer' || stateRaw === 'reserved-sold') {
+              status = 'reserved';
+            }
+
+            properties.push({
+              id,
+              title,
+              location,
+              price,
+              beds,
+              baths,
+              size,
+              image,
+              status
+            });
+
+          } catch (e) {
+            // ignorar
+          }
+        }
+        return properties;
+      } catch (err) {
+        console.error("Error cargando feed:", err);
+        return [];
+      }
+    }
+  })();
+</script>
