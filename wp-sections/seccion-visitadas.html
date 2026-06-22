@@ -480,16 +480,17 @@
             const size = built && built !== '0' ? built + " m²" : "";
 
             // Imagen destacada
+            const toHttps = (url) => url ? url.replace(/^http:\/\//i, 'https://') : '';
             const imagesNode = node.getElementsByTagName("images")[0];
             const images = [];
             if (imagesNode) {
               const imageNodes = imagesNode.getElementsByTagName("image");
               for (let j = 0; j < imageNodes.length; j++) {
                 const url = imageNodes[j].getElementsByTagName("url")[0]?.textContent;
-                if (url) images.push(url);
+                if (url) images.push(toHttps(url));
               }
             }
-            const image = images.length > 0 ? images[0] : (getTag("image") || "");
+            const image = images.length > 0 ? images[0] : toHttps(getTag("image") || "");
 
             // Mapear Tipologías
             const typeRaw = getTag("type").toLowerCase();
