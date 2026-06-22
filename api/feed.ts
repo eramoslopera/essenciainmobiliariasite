@@ -4,6 +4,18 @@ const CRM_FEED_URL =
   'https://procesos.apinmo.com/portal/kyeroagencias3/1909-kyero-eCSz1ipe-facilitea.xml';
 
 export default async function handler(_req: IncomingMessage, res: ServerResponse) {
+  // ── CORS: allow any origin (e.g. WordPress widgets fetching from Vercel) ──
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  // Pre-flight OPTIONS request
+  if ((_req as any).method === 'OPTIONS') {
+    res.writeHead(204);
+    res.end();
+    return;
+  }
+
   try {
     const upstream = await fetch(CRM_FEED_URL, {
       headers: {
