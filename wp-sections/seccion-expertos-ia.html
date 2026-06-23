@@ -1,0 +1,129 @@
+<!-- ============================================================
+     SECCIÓN EXPERTOS EN IA — Essencia Inmobiliaria
+     Pegar en: WordPress > Elementor > HTML Widget
+     ============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800;900&display=swap">
+<style>
+.ei-ai-wrap * { box-sizing: border-box; margin: 0; padding: 0; }
+.ei-ai-wrap {
+  background-color: #fff;
+  padding: 5rem 1.5rem;
+  overflow: hidden;
+  border-top: 1px solid #f3f4f6;
+  font-family: 'Manrope', sans-serif;
+}
+.ei-ai-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  text-align: center;
+}
+.ei-ai-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  color: #111827;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+}
+.ei-ai-title span {
+  color: #1fc0d9;
+}
+.ei-ai-desc {
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  color: #374151;
+  font-weight: 600;
+  line-height: 1.6;
+  max-width: 56rem;
+  margin: 0 auto 3rem auto;
+}
+.ei-ai-desc span {
+  color: #1fc0d9;
+  font-weight: 800;
+}
+.ei-ai-divider {
+  width: 100%;
+  height: 1px;
+  background-color: #f3f4f6;
+  margin-bottom: 3rem;
+}
+.ei-ai-logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+}
+@media (min-width: 768px) {
+  .ei-ai-logos {
+    gap: 4rem;
+  }
+}
+@media (min-width: 1024px) {
+  .ei-ai-logos {
+    gap: 5rem;
+  }
+}
+.ei-ai-logo-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: default;
+}
+.ei-ai-logo-item:hover {
+  transform: scale(1.05);
+}
+.ei-ai-logo-img {
+  width: auto;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+/* Logo Heights */
+.h-idealista { height: 32px; }
+.h-kyero { height: 40px; }
+.h-pisos { height: 28px; }
+.h-habitaclia { height: 40px; }
+.h-fotocasa { height: 96px; }
+.h-caixabank { height: 40px; }
+
+@media(min-width: 768px) {
+  .h-idealista { height: 40px; }
+  .h-kyero { height: 48px; }
+  .h-pisos { height: 36px; }
+  .h-habitaclia { height: 48px; }
+  .h-fotocasa { height: 112px; }
+  .h-caixabank { height: 48px; }
+}
+</style>
+
+<section class="ei-ai-wrap">
+  <div class="ei-ai-inner">
+    <h2 class="ei-ai-title">EXPERTOS EN IA<br><span>(INTELIGENCIA ARTIFICIAL)</span></h2>
+    <p class="ei-ai-desc"><span>ACELERA LA VENTA DE TU CASA X10.</span> Invertimos +4.000€ mensuales en marketing. Portales inmobiliarios, videollamadas, tours virtuales, planos, vídeos y hasta que el cliente pueda realizar la visita y la reserva desde el sillón de su casa.</p>
+    <div class="ei-ai-divider"></div>
+    <div class="ei-ai-logos">
+      <div class="ei-ai-logo-item">
+        <img src="https://essenciainmobiliariasite.vercel.app/logo-idealista.png" alt="idealista.com" class="ei-ai-logo-img h-idealista">
+      </div>
+      <div class="ei-ai-logo-item">
+        <img src="https://essenciainmobiliariasite.vercel.app/logo-kyero.png" alt="kyero" class="ei-ai-logo-img h-kyero">
+      </div>
+      <div class="ei-ai-logo-item">
+        <img src="https://essenciainmobiliariasite.vercel.app/logo-pisos.png" alt="pisos.com" class="ei-ai-logo-img h-pisos">
+      </div>
+      <div class="ei-ai-logo-item">
+        <img src="https://essenciainmobiliariasite.vercel.app/logo-habitaclia.jpg" alt="habitaclia" class="ei-ai-logo-img h-habitaclia">
+      </div>
+      <div class="ei-ai-logo-item">
+        <img src="https://essenciainmobiliariasite.vercel.app/logo-fotocasa.png" alt="Fotocasa Sello de Calidad" class="ei-ai-logo-img h-fotocasa">
+      </div>
+      <div class="ei-ai-logo-item">
+        <img src="https://essenciainmobiliariasite.vercel.app/logo-caixabank.jpg" alt="CaixaBank FaciliteaCasa" class="ei-ai-logo-img h-caixabank">
+      </div>
+    </div>
+  </div>
+</section>

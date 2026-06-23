@@ -1,6 +1,17 @@
 import os
 import re
 
+def save_html_section(filename, content):
+    # Escribir en wp-sections/
+    path1 = os.path.join("wp-sections", filename)
+    with open(path1, "w") as f:
+        f.write(content)
+    # Escribir en public/wp-sections/ si existe el directorio
+    path2 = os.path.join("public", "wp-sections", filename)
+    if os.path.exists(os.path.dirname(path2)):
+        with open(path2, "w") as f:
+            f.write(content)
+
 def update_asesores():
     path = "wp-sections/seccion-asesores.html"
     with open(path, "r") as f:
@@ -285,13 +296,19 @@ def generate_hero():
       let nextIndex = (currentIndex + 1) % slides.length;
       showSlide(nextIndex);
     }, 5000);
-function generate_contact() {
+  });
+</script>
+"""
+    save_html_section("seccion-hero.html", html)
+
+def generate_contact():
     html = """<!-- ============================================================
      SECCIÓN CONTACTO — Essencia Inmobiliaria
      Pegar en: WordPress > Elementor > HTML Widget
      ============================================================ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800;900&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
 <style>
 .ei-contact-wrap * { box-sizing: border-box; margin: 0; padding: 0; }
 .ei-contact-wrap {
@@ -300,6 +317,7 @@ function generate_contact() {
   position: relative;
   overflow: hidden;
   padding: 6rem 1.5rem;
+  border-top: 1px solid #f3f4f6;
 }
 .ei-contact-bg {
   position: absolute;
@@ -309,191 +327,312 @@ function generate_contact() {
   height: 100%;
   opacity: 0.05;
   pointer-events: none;
-  background: radial-gradient(ellipse at 80% 50%, #2563eb 0%, transparent 70%);
+  background: radial-gradient(ellipse at 80% 50%, #1fc0d9 0%, transparent 70%);
 }
 .ei-contact-inner {
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: 1.1fr 1fr;
   gap: 5rem;
   align-items: start;
 }
-@media(max-width: 1024px) {
-  .ei-contact-inner {
-    grid-template-columns: 1fr;
-    gap: 3.5rem;
-  }
-  .ei-contact-wrap {
-    padding: 4rem 1.5rem;
-  }
+@media(max-width: 1024px) { 
+  .ei-contact-inner { 
+    grid-template-columns: 1fr; 
+    gap: 4rem;
+  } 
 }
-.ei-profile-col {
+.ei-ct-badge { 
+  color: #1fc0d9; 
+  font-weight: 700; 
+  letter-spacing: 0.1em; 
+  text-transform: uppercase; 
+  font-size: 0.75rem; 
+  margin-bottom: 1.5rem; 
+  display: block; 
+}
+.ei-profile-card {
   display: flex;
-  flex-direction: column;
-}
-.ei-profile-img-wrap {
-  width: 100%;
-  aspect-ratio: 1.452; /* Proporción 1024x705 */
-  border-radius: 24px;
-  overflow: hidden;
-  box-shadow: 0 20px 48px -12px rgba(31,192,217,0.15);
-  border: 1px solid rgba(31,192,217,0.15);
-  margin-bottom: 2.25rem;
-  background: #f3f4f6;
-}
-.ei-profile-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 22%;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  display: block;
-}
-.ei-profile-img-wrap:hover .ei-profile-img {
-  transform: scale(1.04);
-}
-.ei-profile-title {
-  font-size: clamp(1.65rem, 3vw, 2.25rem);
-  font-weight: 800;
-  color: #111827;
-  line-height: 1.3;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1.5rem;
   margin-bottom: 2rem;
-  letter-spacing: -0.025em;
-}
-.ei-profile-title strong {
-  font-weight: 900;
-}
-.ei-profile-title span {
-  color: #1fc0d9;
-}
-.ei-contact-legal {
-  background-color: #f9fafb;
-  border: 1px solid #e5e7eb;
-  border-radius: 16px;
-  padding: 1.5rem;
-  font-size: 11px;
-  color: #4b5563;
-  line-height: 1.6;
-}
-.ei-contact-legal h5 {
-  font-size: 11px;
-  font-weight: 800;
-  color: #111827;
-  text-transform: uppercase;
-  margin-bottom: 0.75rem;
-  letter-spacing: 0.05em;
-  border-bottom: 1px solid #e5e7eb;
-  padding-bottom: 0.5rem;
-}
-.ei-contact-legal p {
-  margin-bottom: 0.5rem;
-}
-.ei-contact-legal p:last-child {
-  margin-bottom: 0;
-}
-.ei-contact-legal strong {
-  color: #1f2937;
-}
-.ei-contact-legal a {
-  color: #1fc0d9;
-  text-decoration: underline;
-  font-weight: 700;
-}
-
-.ei-form-col {
-  position: relative;
-  z-index: 2;
-}
-.ei-form-box {
-  background: #fff;
-  border: 1px solid #f3f4f6;
-  box-shadow: 0 20px 50px rgba(31,192,217,0.08);
-  border-radius: 28px;
-  padding: 2.75rem 2.25rem;
 }
 @media(max-width: 640px) {
-  .ei-form-box {
-    padding: 2rem 1.5rem;
+  .ei-profile-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 }
-.ei-form-group {
-  margin-bottom: 1.5rem;
+.ei-profile-img {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 2rem;
+  object-fit: cover;
+  object-position: top;
+  border: 1px solid #f3f4f6;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  flex-shrink: 0;
 }
-.ei-form-label {
-  display: block;
-  font-size: 11px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #374151;
-  margin-bottom: 0.5rem;
+@media(min-width: 768px) {
+  .ei-profile-img {
+    width: 8rem;
+    height: 8rem;
+  }
 }
-.ei-form-input {
-  width: 100%;
-  border: none;
-  border-bottom: 1px solid #e5e7eb;
-  padding: 0.75rem 0;
-  font-size: 0.95rem;
+.ei-profile-info h3 {
+  font-size: 1.5rem;
+  font-weight: 900;
   color: #111827;
-  background: transparent;
-  font-family: inherit;
-  transition: border-bottom-color 0.2s ease;
+  letter-spacing: -0.02em;
+  margin: 0;
 }
-.ei-form-input::placeholder {
-  color: #9ca3af;
-}
-.ei-form-input:focus {
-  outline: none;
-  border-bottom-color: #1fc0d9;
-}
-.ei-form-consent {
-  margin: 1.75rem 0;
-}
-.ei-consent-label {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.6rem;
-  font-size: 12px;
-  color: #4b5563;
-  cursor: pointer;
-  line-height: 1.4;
-}
-.ei-consent-label input {
-  margin-top: 3px;
-  cursor: pointer;
-  accent-color: #1fc0d9;
-}
-.ei-consent-label a {
-  color: #1fc0d9;
-  text-decoration: underline;
-  font-weight: 600;
-}
-.ei-form-submit {
-  width: 100%;
-  height: 3.5rem;
-  border-radius: 9999px;
-  background: #111827;
-  color: #fff;
-  font-weight: 800;
+.ei-profile-role {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.2em;
+  color: #1fc0d9;
+  margin-top: 0.375rem;
+}
+.ei-profile-meta {
   font-size: 11px;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+.ei-ct-message {
+  color: #374151;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+.ei-ct-message strong {
+  font-weight: 700;
+}
+.ei-ct-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+@media(max-width: 640px) {
+  .ei-ct-buttons {
+    justify-content: center;
+  }
+}
+.ei-ct-btn-cite {
+  height: 3rem;
+  padding: 0 2rem;
+  background-color: #111827;
+  color: #ffffff !important;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border-radius: 9999px;
   border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 10px 25px rgba(31,192,217,0.2);
+  transition: all 0.2s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
 }
-.ei-form-submit:hover {
-  background: #000;
-  transform: translateY(-2px);
-  box-shadow: 0 15px 30px rgba(31,192,217,0.3);
+.ei-ct-btn-cite:hover {
+  background-color: #1f2937;
+  transform: translateY(-1px);
+}
+.ei-ct-btn-cite:active {
+  transform: translateY(0);
+}
+.ei-ct-btn-wa {
+  height: 3rem;
+  padding: 0 2rem;
+  background-color: transparent;
+  color: #111827 !important;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border-radius: 9999px;
+  border: 1px solid #e5e7eb;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+.ei-ct-btn-wa:hover {
+  border-color: #111827;
+  background-color: #f9fafb;
+  transform: translateY(-1px);
+}
+.ei-ct-btn-wa:active {
+  transform: translateY(0);
+}
+
+/* GDPR Accordion */
+.ei-rgpd-accordion {
+  border: 1px solid #f3f4f6;
+  border-radius: 1rem;
+  padding: 1.25rem;
+  background-color: rgba(248, 250, 252, 0.6);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+.ei-rgpd-trigger {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  border: none;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #374151;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+}
+.ei-rgpd-trigger:focus {
+  outline: none;
+}
+.ei-rgpd-icon {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+  user-select: none;
+}
+.ei-rgpd-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, margin-top 0.3s ease, padding-top 0.3s ease;
+}
+.ei-rgpd-accordion.open .ei-rgpd-content {
+  max-height: 500px;
+  margin-top: 1.25rem;
+  border-top: 1px solid rgba(229, 231, 235, 0.5);
+  padding-top: 1.25rem;
+}
+.ei-rgpd-accordion.open .ei-rgpd-icon {
+  transform: rotate(180deg);
+}
+.ei-rgpd-info-item {
+  margin-bottom: 0.75rem;
+  font-size: 11px;
+  color: #4b5563;
+  line-height: 1.5;
+}
+.ei-rgpd-info-item:last-child {
+  margin-bottom: 0;
+}
+.ei-rgpd-info-item strong {
+  font-weight: 700;
+  color: #374151;
+}
+
+/* Form Styling */
+.ei-form-box { 
+  background: #fff; 
+  border: 1px solid #f3f4f6; 
+  box-shadow: 0 20px 40px rgba(31,192,217,0.06); 
+  border-radius: 1.5rem; 
+  padding: 2.5rem; 
+  position: relative; 
+  z-index: 2; 
+}
+@media(max-width: 640px) {
+  .ei-form-box {
+    padding: 1.5rem;
+  }
+}
+.ei-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+@media(max-width: 640px) {
+  .ei-form-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+.ei-form-group { 
+  margin-bottom: 1.5rem; 
+}
+.ei-form-label { 
+  display: block; 
+  font-size: 0.75rem; 
+  font-weight: 700; 
+  text-transform: uppercase; 
+  letter-spacing: 0.1em; 
+  color: #4b5563; 
+  margin-bottom: 0.25rem; 
+}
+.ei-form-input { 
+  width: 100%; 
+  border: none; 
+  border-bottom: 1px solid #e5e7eb; 
+  padding: 0.75rem 0; 
+  font-size: 0.875rem; 
+  color: #111827; 
+  background: transparent; 
+  font-family: inherit; 
+  border-radius: 0;
+  transition: border-bottom-color 0.2s ease;
+}
+.ei-form-input:focus { 
+  outline: none; 
+  border-bottom-color: #111827; 
+}
+.ei-form-input::placeholder { 
+  color: #9ca3af; 
+}
+.ei-form-submit { 
+  width: 100%; 
+  padding: 1.25rem; 
+  border-radius: 9999px; 
+  background: #111827; 
+  color: #fff; 
+  font-weight: 700; 
+  text-transform: uppercase; 
+  letter-spacing: 0.2em; 
+  font-size: 10px; 
+  border: none; 
+  cursor: pointer; 
+  margin-top: 1rem; 
+  transition: all 0.3s ease; 
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.ei-form-submit:hover { 
+  background: #000; 
+  transform: translateY(-2px); 
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1); 
 }
 .ei-form-submit:active {
-  transform: translateY(0) scale(0.98);
+  transform: translateY(0);
+}
+.ei-form-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.ei-form-privacy { 
+  font-size: 11px; 
+  color: #6b7280; 
+  text-align: center; 
+  margin-top: 1.25rem; 
 }
 </style>
 
@@ -501,102 +640,158 @@ function generate_contact() {
   <div class="ei-contact-bg"></div>
   <div class="ei-contact-inner">
     
-    <!-- Columna Izquierda: Foto de Carolina, Título y Privacidad (GDPR) -->
-    <div class="ei-profile-col">
-      <div class="ei-profile-img-wrap">
-        <img class="ei-profile-img" data-real-src="https://essenciainmobiliaria.com/wp-content/uploads/2021/04/Captura-de-pantalla-2021-04-23-a-las-23.43.04-e1619469684318-1024x705.jpg" alt="Carolina González — Essencia Inmobiliaria" />
-      </div>
-      <h2 class="ei-profile-title">
-        <strong>Hola, soy Carolina González,</strong><br><span>contacta a través del siguiente formulario</span>
-      </h2>
+    <!-- Left — Profile Card & GDPR Info -->
+    <div>
+      <span class="ei-ct-badge">Atención Personalizada</span>
       
-      <!-- Primera Capa de Protección de Datos (GDPR) -->
-      <div class="ei-contact-legal">
-        <h5>Información básica sobre protección de datos</h5>
-        <p><strong>Responsable del tratamiento:</strong> VIVIENDAS DE LA SAFOR SL</p>
-        <p><strong>Dirección del responsable:</strong> Calle Sant Vicent Ferrer 24, CP 46702, GANDIA (Valencia/València)</p>
-        <p><strong>Finalidad:</strong> Sus datos serán usados para poder atender sus solicitudes y prestarle nuestros servicios.</p>
-        <p><strong>Publicidad:</strong> Solo le enviaremos publicidad con su autorización previa, que podrá facilitarnos mediante la casilla correspondiente establecida al efecto.</p>
-        <p><strong>Legitimación:</strong> Únicamente trataremos sus datos con su consentimiento previo, que podrá facilitarnos mediante la casilla correspondiente establecida al efecto.</p>
-        <p><strong>Destinatarios:</strong> Con carácter general, sólo el personal de nuestra entidad que esté debidamente autorizado podrá tener conocimiento de la información que le pedimos.</p>
-        <p><strong>Derechos:</strong> Tiene derecho a saber qué información tenemos sobre usted, corregirla y eliminarla, tal y como se explica en la información adicional disponible en nuestra página web.</p>
-        <p><strong>Información adicional:</strong> Más información en el apartado “<a href="https://essenciainmobiliaria.com/privacy" target="_blank">POLÍTICA DE PRIVACIDAD</a>” de nuestra página web.</p>
+      <!-- Profile Card -->
+      <div class="ei-profile-card">
+        <img
+          src="https://essenciainmobiliariasite.vercel.app/carolina.jpg"
+          alt="Carolina González - Asesora Inmobiliaria"
+          class="ei-profile-img"
+        />
+        <div class="ei-profile-info">
+          <h3>Carolina González</h3>
+          <span class="ei-profile-role">Asesora Inmobiliaria & Marketing</span>
+          <p class="ei-profile-meta">ZONA: GANDÍA & COSTA · IDIOMAS: ES, EN</p>
+        </div>
+      </div>
+
+      <!-- Message block -->
+      <p class="ei-ct-message">
+        Hola, soy Carolina González. Estoy a tu disposición para diseñar la mejor estrategia de comercialización para tu propiedad con el <strong>Método MIA</strong>, o para ayudarte a encontrar el hogar ideal en Gandía y la costa de Valencia. Escríbeme directamente o solicita una cita.
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="ei-ct-buttons">
+        <button
+          id="ei-btn-cite-trigger"
+          class="ei-ct-btn-cite"
+        >
+          Pide tu cita
+        </button>
+        
+        <a
+          href="https://wa.me/34647803355?text=Hola%20Carolina%2C%20me%20gustar%C3%ADa%20recibir%20asesoramiento%20inmobiliario"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="ei-ct-btn-wa"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#22c55e" viewBox="0 0 256 256" style="vertical-align: middle;"><path d="M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm54.42,143.08a11.23,11.23,0,0,1-15.54,4.42,50.7,50.7,0,0,1-23-22.37,50.7,50.7,0,0,1-22.37-23,11.23,11.23,0,0,1,4.42-15.54l14.49-11.19a3.73,3.73,0,0,0,.61-3.62L119.06,66.41a9,9,0,0,0-15-2l-10-5.11a10,10,0,0,0-6.17,4c-12,16-11.23,37.38,2.44,55.61C102.34,143.07,123,161,148,168.69A45,45,0,0,0,161.51,170c14.61,0,27.24-8.8,32.32-22.18A10,10,0,0,0,191.84,141l-22-29.35a9,9,0,0,0-15-2l-14.49,11.19a3.73,3.73,0,0,0-3.62.61A57.5,57.5,0,0,0,111.24,129a3.73,3.73,0,0,0-.61,3.62L123,110.94a9,9,0,0,1,15,2Z"></path></svg>
+          WhatsApp directo
+        </a>
+      </div>
+
+      <!-- RGPD Accordion -->
+      <div class="ei-rgpd-accordion" id="ei-rgpd-accordion">
+        <button
+          id="ei-rgpd-trigger"
+          class="ei-rgpd-trigger"
+          aria-expanded="false"
+        >
+          <span>Información básica sobre protección de datos</span>
+          <span class="material-symbols-outlined ei-rgpd-icon">expand_more</span>
+        </button>
+        
+        <div class="ei-rgpd-content">
+          <div class="ei-rgpd-info-item"><strong>Responsable del tratamiento:</strong> VIVIENDAS DE LA SAFOR SL</div>
+          <div class="ei-rgpd-info-item"><strong>Dirección del responsable:</strong> Calle Sant Vicent Ferrer 24, CP 46702, GANDIA (Valencia/València)</div>
+          <div class="ei-rgpd-info-item"><strong>Finalidad:</strong> Sus datos serán usados para poder atender sus solicitudes y prestarle nuestros servicios.</div>
+          <div class="ei-rgpd-info-item"><strong>Publicidad:</strong> Solo le enviaremos publicidad con su autorización previa, que podrá facilitarnos mediante la casilla correspondiente establecida al efecto.</div>
+          <div class="ei-rgpd-info-item"><strong>Legitimación:</strong> Únicamente trataremos sus datos con su consentimiento previo, que podrá facilitarnos mediante la casilla correspondiente establecida al efecto.</div>
+          <div class="ei-rgpd-info-item"><strong>Destinatarios:</strong> Con carácter general, solo el personal de nuestra entidad que esté debidamente autorizado podrá tener conocimiento de la información que le pedimos.</div>
+          <div class="ei-rgpd-info-item"><strong>Derechos:</strong> Tiene derecho a saber qué información tenemos sobre usted, corregirla y eliminarla, tal y como se explica en la información adicional disponible en nuestra página web.</div>
+          <div class="ei-rgpd-info-item"><strong>Información adicional:</strong> Más información en el apartado "POLÍTICA DE PRIVACIDAD" de nuestra página web.</div>
+        </div>
       </div>
     </div>
     
-    <!-- Columna Derecha: Formulario de Contacto -->
-    <div class="ei-form-col">
-      <div class="ei-form-box">
-        <form action="https://formsubmit.co/santitorres@essenciainmobiliaria.com" method="POST">
-          <input type="hidden" name="_next" value="https://essenciainmobiliaria.com">
-          <input type="hidden" name="_subject" value="Nuevo Lead desde Landing Page">
-          
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem;">
-            <div class="ei-form-group">
-              <label class="ei-form-label">Nombre</label>
-              <input type="text" name="name" class="ei-form-input" placeholder="María García" required>
-            </div>
-            <div class="ei-form-group">
-              <label class="ei-form-label">Teléfono</label>
-              <input type="tel" name="phone" class="ei-form-input" placeholder="+34 600 000 000" required>
-            </div>
+    <!-- Right — Form Box -->
+    <div class="ei-form-box">
+      <form action="https://formsubmit.co/santitorres@essenciainmobiliaria.com" method="POST">
+        <input type="hidden" name="_next" value="https://essenciainmobiliaria.com">
+        <input type="hidden" name="_subject" value="Nuevo Lead desde Landing Page">
+        
+        <div class="ei-form-grid">
+          <div class="ei-form-group">
+            <label class="ei-form-label">Nombre</label>
+            <input type="text" name="name" id="form-name-home_page" class="ei-form-input" placeholder="María García" required>
           </div>
           <div class="ei-form-group">
-            <label class="ei-form-label">Email</label>
-            <input type="email" name="email" class="ei-form-input" placeholder="maria@example.com" required>
+            <label class="ei-form-label">Teléfono</label>
+            <input type="tel" name="phone" class="ei-form-input" placeholder="+34 600 000 000" required>
           </div>
-          <div class="ei-form-group">
-            <label class="ei-form-label">Motivo</label>
-            <select name="reason" class="ei-form-input" required style="background:transparent; appearance:none;">
-              <option value="Comprar">Comprar propiedad</option>
-              <option value="Vender">Vender propiedad</option>
-              <option value="Valoración">Valoración gratuita</option>
-              <option value="Invertir">Invertir</option>
-            </select>
-          </div>
-          <div class="ei-form-group">
-            <label class="ei-form-label">Mensaje</label>
-            <textarea name="message" class="ei-form-input" placeholder="¿En qué te podemos ayudar?" rows="3"></textarea>
-          </div>
-          
-          <!-- Consentimiento checkbox obligatorio -->
-          <div class="ei-form-consent">
-            <label class="ei-consent-label">
-              <input type="checkbox" name="privacy_consent" required>
-              <span>Acepto la <a href="https://essenciainmobiliaria.com/privacy" target="_blank">política de privacidad</a> y el tratamiento de mis datos.</span>
-            </label>
-          </div>
-          
-          <button type="submit" class="ei-form-submit">PIDE TU CITA</button>
-        </form>
-      </div>
+        </div>
+        <div class="ei-form-group">
+          <label class="ei-form-label">Email</label>
+          <input type="email" name="email" class="ei-form-input" placeholder="maria@example.com" required>
+        </div>
+        <div class="ei-form-group">
+          <label class="ei-form-label">Motivo</label>
+          <select name="reason" class="ei-form-input" required style="background:transparent; appearance:none;">
+            <option value="buy">Comprar propiedad</option>
+            <option value="sell">Vender propiedad</option>
+            <option value="valuation">Valoración gratuita</option>
+            <option value="invest">Invertir</option>
+          </select>
+        </div>
+        <div class="ei-form-group">
+          <label class="ei-form-label">Mensaje</label>
+          <textarea name="message" class="ei-form-input" placeholder="¿En qué te podemos ayudar?" rows="3"></textarea>
+        </div>
+        <button type="submit" class="ei-form-submit">
+          Enviar mensaje
+          <span class="material-symbols-outlined" style="font-size: 14px;">arrow_forward</span>
+        </button>
+        <p class="ei-form-privacy">Tu información está protegida. Nunca compartimos tus datos.</p>
+      </form>
     </div>
-    
   </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Evitar que Houzez bloquee la carga de la imagen
-  requestAnimationFrame(() => {
-    const img = document.querySelector('img[data-real-src]');
-    if (img) {
-      const realSrc = img.getAttribute('data-real-src');
-      img.removeAttribute('data-src');
-      img.classList.remove('houzez-lazyload');
-      img.src = realSrc;
-    }
-  });
+  // Accordion Toggle
+  const trigger = document.getElementById('ei-rgpd-trigger');
+  const accordion = document.getElementById('ei-rgpd-accordion');
+  if (trigger && accordion) {
+    trigger.addEventListener('click', function(e) {
+      e.preventDefault();
+      accordion.classList.toggle('open');
+      const isOpen = accordion.classList.contains('open');
+      trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      
+      const content = accordion.querySelector('.ei-rgpd-content');
+      if (isOpen) {
+        content.style.maxHeight = content.scrollHeight + 'px';
+      } else {
+        content.style.maxHeight = '0px';
+      }
+    });
+  }
 
+  // Scroll to Form Focus
+  const citeBtn = document.getElementById('ei-btn-cite-trigger');
+  const nameInput = document.getElementById('form-name-home_page');
+  if (citeBtn && nameInput) {
+    citeBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      nameInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      nameInput.focus();
+    });
+  }
+
+  // Form Submit handler
   const form = document.querySelector('.ei-form-box form');
   if (form) {
     form.addEventListener('submit', async function(e) {
       e.preventDefault(); // Pause submission to save to Supabase
       
       const btn = form.querySelector('.ei-form-submit');
-      const originalText = btn.textContent;
-      btn.textContent = 'Enviando...';
+      const originalText = btn.innerHTML;
+      btn.innerHTML = 'Enviando...';
       btn.disabled = true;
 
       const fd = new FormData(form);
@@ -626,7 +821,11 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 """
-    with open("wp-sections/seccion-formulario-contacto.html", "w") as f:
+    save_html_section("seccion-formulario-contacto.html", html)
+
+def generate_stats():
+    html = """<!-- ============================================================
+     SECCIÓN ESTADÍSTICAS — Essencia Inmobiliaria
      Pegar en: WordPress > Elementor > HTML Widget
      ============================================================ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -882,25 +1081,146 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 </script>
 """
-    with open("wp-sections/seccion-estadisticas.html", "w") as f:
-        f.write(html)
+    save_html_section("seccion-estadisticas.html", html)
+
+def generate_ai_portals():
+    html = """<!-- ============================================================
+     SECCIÓN EXPERTOS EN IA — Essencia Inmobiliaria
+     Pegar en: WordPress > Elementor > HTML Widget
+     ============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800;900&display=swap">
+<style>
+.ei-ai-wrap * { box-sizing: border-box; margin: 0; padding: 0; }
+.ei-ai-wrap {
+  background-color: #fff;
+  padding: 5rem 1.5rem;
+  overflow: hidden;
+  border-top: 1px solid #f3f4f6;
+  font-family: 'Manrope', sans-serif;
+}
+.ei-ai-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  text-align: center;
+}
+.ei-ai-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  color: #111827;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+}
+.ei-ai-title span {
+  color: #1fc0d9;
+}
+.ei-ai-desc {
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  color: #374151;
+  font-weight: 600;
+  line-height: 1.6;
+  max-width: 56rem;
+  margin: 0 auto 3rem auto;
+}
+.ei-ai-desc span {
+  color: #1fc0d9;
+  font-weight: 800;
+}
+.ei-ai-divider {
+  width: 100%;
+  height: 1px;
+  background-color: #f3f4f6;
+  margin-bottom: 3rem;
+}
+.ei-ai-logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+}
+@media (min-width: 768px) {
+  .ei-ai-logos {
+    gap: 4rem;
+  }
+}
+@media (min-width: 1024px) {
+  .ei-ai-logos {
+    gap: 5rem;
+  }
+}
+.ei-ai-logo-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: default;
+}
+.ei-ai-logo-item:hover {
+  transform: scale(1.05);
+}
+.ei-ai-logo-img {
+  width: auto;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+/* Logo Heights */
+.h-idealista { height: 32px; }
+.h-kyero { height: 40px; }
+.h-pisos { height: 28px; }
+.h-habitaclia { height: 40px; }
+.h-fotocasa { height: 96px; }
+.h-caixabank { height: 40px; }
+
+@media(min-width: 768px) {
+  .h-idealista { height: 40px; }
+  .h-kyero { height: 48px; }
+  .h-pisos { height: 36px; }
+  .h-habitaclia { height: 48px; }
+  .h-fotocasa { height: 112px; }
+  .h-caixabank { height: 48px; }
+}
+</style>
+
+<section class="ei-ai-wrap">
+  <div class="ei-ai-inner">
+    <h2 class="ei-ai-title">EXPERTOS EN IA<br><span>(INTELIGENCIA ARTIFICIAL)</span></h2>
+    <p class="ei-ai-desc"><span>ACELERA LA VENTA DE TU CASA X10.</span> Invertimos +4.000€ mensuales en marketing. Portales inmobiliarios, videollamadas, tours virtuales, planos, vídeos y hasta que el cliente pueda realizar la visita y la reserva desde el sillón de su casa.</p>
+    <div class="ei-ai-divider"></div>
+    <div class="ei-ai-logos">
+      <div class="ei-ai-logo-item">
+        <img src="https://essenciainmobiliariasite.vercel.app/logo-idealista.png" alt="idealista.com" class="ei-ai-logo-img h-idealista">
+      </div>
+      <div class="ei-ai-logo-item">
+        <img src="https://essenciainmobiliariasite.vercel.app/logo-kyero.png" alt="kyero" class="ei-ai-logo-img h-kyero">
+      </div>
+      <div class="ei-ai-logo-item">
+        <img src="https://essenciainmobiliariasite.vercel.app/logo-pisos.png" alt="pisos.com" class="ei-ai-logo-img h-pisos">
+      </div>
+      <div class="ei-ai-logo-item">
+        <img src="https://essenciainmobiliariasite.vercel.app/logo-habitaclia.jpg" alt="habitaclia" class="ei-ai-logo-img h-habitaclia">
+      </div>
+      <div class="ei-ai-logo-item">
+        <img src="https://essenciainmobiliariasite.vercel.app/logo-fotocasa.png" alt="Fotocasa Sello de Calidad" class="ei-ai-logo-img h-fotocasa">
+      </div>
+      <div class="ei-ai-logo-item">
+        <img src="https://essenciainmobiliariasite.vercel.app/logo-caixabank.jpg" alt="CaixaBank FaciliteaCasa" class="ei-ai-logo-img h-caixabank">
+      </div>
+    </div>
+  </div>
+</section>
+"""
+    save_html_section("seccion-expertos-ia.html", html)
 
 if __name__ == "__main__":
     update_asesores()
     update_mia()
     generate_hero()
     generate_stats()
+    generate_ai_portals()
     generate_contact()
-    
-    # Sincronizar todos los archivos de wp-sections/ a public/wp-sections/
-    import shutil
-    src_dir = "wp-sections"
-    dst_dir = "public/wp-sections"
-    if os.path.exists(src_dir):
-        os.makedirs(dst_dir, exist_ok=True)
-        for item in os.listdir(src_dir):
-            s = os.path.join(src_dir, item)
-            d = os.path.join(dst_dir, item)
-            if os.path.isfile(s):
-                shutil.copy2(s, d)
-    print("All WP HTML sections generated, updated and synced to public/wp-sections.")
+    print("All WP HTML sections generated and updated.")
