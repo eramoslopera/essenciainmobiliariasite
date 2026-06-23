@@ -338,7 +338,7 @@
           <span class="eit-eyebrow">Explora el catálogo</span>
           <h2 class="eit-title">Busca por<br><em>tipología</em></h2>
         </div>
-        <a href="/propiedades" class="eit-ver-todo">
+        <a href="https://essenciainmobiliaria.com/buscadoressenciainmobiliaria/" class="eit-ver-todo">
           Ver todas las propiedades
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -664,11 +664,25 @@
         });
       });
 
+      // Mapa de tipo interno → slug real de WordPress (/tipo-inmueble/[slug]/)
+      const TYPE_SLUG_MAP = {
+        'Apartment':  'piso',
+        'House':      'casa',
+        'Villa':      'chalet',
+        'Townhouse':  'adosado',
+        'Commercial': 'local-comercial',
+        'Estate':     'finca',
+        'Project':    null, // sin página propia → buscador general
+      };
+
       // Mostrar botón "Ver más resultados" si hay más de 6
       if (filtered.length > 6) {
         moreBtnWrap.style.display = 'flex';
-        // Enlazar a la página de catálogo de WordPress filtrada
-        moreLink.setAttribute('href', `/propiedades?type=${selectedType}`);
+        const slug = TYPE_SLUG_MAP[selectedType];
+        const href = slug
+          ? `https://essenciainmobiliaria.com/tipo-inmueble/${slug}/`
+          : 'https://essenciainmobiliaria.com/buscadoressenciainmobiliaria/';
+        moreLink.setAttribute('href', href);
         moreLink.innerHTML = `
           Ver los ${filtered.length} resultados
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
