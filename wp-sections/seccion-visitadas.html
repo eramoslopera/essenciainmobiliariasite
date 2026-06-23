@@ -392,7 +392,7 @@
       carousel.innerHTML = displayProperties.map(p => `
         <div class="eiv-carousel-item">
           <div class="eiv-card">
-            <a href="/property/${p.id}" class="eiv-card-img-wrap">
+            <a href="${p.url}" class="eiv-card-img-wrap">
               ${p.image ? `
                 <${'img'} class="eiv-card-img" data-real-src="${p.image}" alt="${p.title}" />
               ` : `
@@ -407,7 +407,7 @@
             </a>
             <div class="eiv-card-body">
               <p class="eiv-card-loc">${p.location}</p>
-              <a href="/property/${p.id}" class="eiv-card-title">${p.title}</a>
+              <a href="${p.url}" class="eiv-card-title">${p.title}</a>
               <div class="eiv-card-footer">
                 <span class="eiv-card-price">${p.price}</span>
                 <div class="eiv-card-specs">
@@ -506,23 +506,35 @@
 
             // Mapear Tipologías
             const typeRaw = getTag("type").toLowerCase();
-            let type = 'Villa';
             let typeEs = 'Villa';
-            if (typeRaw.includes("apartment") || typeRaw.includes("flat")) {
-              type = 'Apartment';
+            let typeSlug = 'chalet';
+            if (typeRaw.includes("apartment") || typeRaw.includes("flat") || typeRaw.includes("penthouse") || typeRaw.includes("duplex") || typeRaw.includes("ground floor")) {
               typeEs = 'Apartamento';
-            } else if (typeRaw.includes("villa") || typeRaw.includes("house")) {
-              type = 'Villa';
-              typeEs = 'Villa';
-            } else if (typeRaw.includes("land") || typeRaw.includes("plot")) {
-              type = 'Project';
-              typeEs = 'Parcela';
+              typeSlug = typeRaw.includes("penthouse") ? 'atico' : typeRaw.includes("duplex") ? 'duplex' : 'piso';
+            } else if (typeRaw.includes("terraced") || typeRaw.includes("townhouse")) {
+              typeEs = 'Adosado';
+              typeSlug = 'adosado';
+            } else if (typeRaw.includes("villa")) {
+              typeEs = 'Chalet';
+              typeSlug = 'chalet';
+            } else if (typeRaw.includes("house")) {
+              typeEs = 'Casa';
+              typeSlug = 'casa';
             } else if (typeRaw.includes("commercial") || typeRaw.includes("business")) {
-              type = 'Commercial';
               typeEs = 'Local Comercial';
-            } else if (typeRaw.includes("estate") || typeRaw.includes("finca")) {
-              type = 'Estate';
+              typeSlug = 'local-comercial';
+            } else if (typeRaw.includes("industrial")) {
+              typeEs = 'Nave Industrial';
+              typeSlug = 'nave-industrial';
+            } else if (typeRaw.includes("garage")) {
+              typeEs = 'Garaje';
+              typeSlug = 'garaje';
+            } else if (typeRaw.includes("plot") || typeRaw.includes("land") || typeRaw.includes("urban")) {
+              typeEs = 'Terreno';
+              typeSlug = 'terreno-urbano';
+            } else if (typeRaw.includes("estate") || typeRaw.includes("finca") || typeRaw.includes("building")) {
               typeEs = 'Finca';
+              typeSlug = 'finca';
             }
 
             const title = typeEs + " en " + toTitleCase(getTag("town"));
@@ -536,6 +548,17 @@
               status = 'reserved';
             }
 
+            // URL real de WordPress
+            const refRaw = getTag("ref") || '';
+            const refSlug = refRaw.split('/')[0].toLowerCase().trim();
+            const opRaw = getTag("operation_type").toLowerCase();
+            const opSlug = (opRaw.includes('rent') && !opRaw.includes('sale')) ? 'alquiler' : 'venta';
+            const provinceSlug = getTag("province").toLowerCase().trim().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            const townSlug = getTag("town").toLowerCase().trim().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-');
+            const wpUrl = refSlug
+              ? `https://essenciainmobiliaria.com/inmueble/${opSlug}/${typeSlug}/${provinceSlug}/${townSlug}/${refSlug}/`
+              : `https://essenciainmobiliaria.com/buscadoressenciainmobiliaria/`;
+
             properties.push({
               id,
               title,
@@ -545,7 +568,7 @@
               baths,
               size,
               image,
-              type,
+              url: wpUrl,
               status,
               dateListed: getTag("date") ? getTag("date").split(" ")[0] : ""
             });
