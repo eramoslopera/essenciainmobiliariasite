@@ -285,13 +285,7 @@ def generate_hero():
       let nextIndex = (currentIndex + 1) % slides.length;
       showSlide(nextIndex);
     }, 5000);
-  });
-</script>
-"""
-    with open("wp-sections/seccion-hero.html", "w") as f:
-        f.write(html)
-        
-def generate_contact():
+function generate_contact() {
     html = """<!-- ============================================================
      SECCIÓN CONTACTO — Essencia Inmobiliaria
      Pegar en: WordPress > Elementor > HTML Widget
@@ -318,110 +312,283 @@ def generate_contact():
   background: radial-gradient(ellipse at 80% 50%, #2563eb 0%, transparent 70%);
 }
 .ei-contact-inner {
-  max-width: 1440px;
+  max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 5rem;
+  align-items: start;
 }
-@media(max-width: 1024px) { .ei-contact-inner { grid-template-columns: 1fr; } }
-.ei-ct-badge { color: #2563eb; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.75rem; margin-bottom: 1rem; display: block; }
-.ei-ct-title { font-size: clamp(2.25rem, 4vw, 3rem); font-weight: 900; color: #111827; line-height: 1.1; margin-bottom: 1.5rem; }
-.ei-ct-title span { color: #2563eb; }
-.ei-ct-subtitle { color: #374151; font-size: 1.125rem; line-height: 1.6; margin-bottom: 2.5rem; }
-.ei-ct-info { display: flex; flex-direction: column; gap: 1.25rem; }
-.ei-ct-item { display: flex; align-items: center; gap: 1rem; }
-.ei-ct-icon { width: 2.5rem; height: 2.5rem; border-radius: 50%; background: #eff6ff; display: flex; align-items: center; justify-content: center; color: #2563eb; font-weight: bold; flex-shrink: 0; }
-.ei-ct-item-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: #4b5563; margin-bottom: 0.125rem; font-weight: 700; }
-.ei-ct-item-val { color: #111827; font-weight: 600; text-decoration: none; }
+@media(max-width: 1024px) {
+  .ei-contact-inner {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+  .ei-contact-wrap {
+    padding: 4rem 1.5rem;
+  }
+}
+.ei-profile-col {
+  display: flex;
+  flex-direction: column;
+}
+.ei-profile-img-wrap {
+  width: 100%;
+  aspect-ratio: 1.452; /* Proporción 1024x705 */
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 48px -12px rgba(31,192,217,0.15);
+  border: 1px solid rgba(31,192,217,0.15);
+  margin-bottom: 2.25rem;
+  background: #f3f4f6;
+}
+.ei-profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+}
+.ei-profile-img-wrap:hover .ei-profile-img {
+  transform: scale(1.04);
+}
+.ei-profile-title {
+  font-size: clamp(1.65rem, 3vw, 2.25rem);
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.3;
+  margin-bottom: 2rem;
+  letter-spacing: -0.025em;
+}
+.ei-profile-title strong {
+  font-weight: 900;
+}
+.ei-profile-title span {
+  color: #1fc0d9;
+}
+.ei-contact-legal {
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 1.5rem;
+  font-size: 11px;
+  color: #4b5563;
+  line-height: 1.6;
+}
+.ei-contact-legal h5 {
+  font-size: 11px;
+  font-weight: 800;
+  color: #111827;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+}
+.ei-contact-legal p {
+  margin-bottom: 0.5rem;
+}
+.ei-contact-legal p:last-child {
+  margin-bottom: 0;
+}
+.ei-contact-legal strong {
+  color: #1f2937;
+}
+.ei-contact-legal a {
+  color: #1fc0d9;
+  text-decoration: underline;
+  font-weight: 700;
+}
 
-.ei-form-box { background: #fff; border: 1px solid #f3f4f6; box-shadow: 0 20px 40px rgba(31,192,217,0.1); border-radius: 1.5rem; padding: 2rem; position: relative; z-index: 2; }
-.ei-form-group { margin-bottom: 1.25rem; }
-.ei-form-label { display: block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #374151; margin-bottom: 0.25rem; }
-.ei-form-input { width: 100%; border: none; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 0; font-size: 0.875rem; color: #111827; background: transparent; font-family: inherit; }
-.ei-form-input::placeholder { color: #6b7280; } /* updated contrast */
-.ei-form-input:focus { outline: none; border-bottom-color: #111827; }
-.ei-form-submit { width: 100%; padding: 1rem; border-radius: 9999px; background: #111827; color: #fff; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.75rem; border: none; cursor: pointer; margin-top: 1.5rem; transition: 0.3s; box-shadow: 0 10px 25px rgba(31,192,217,0.3); }
-.ei-form-submit:hover { background: #000; transform: translateY(-2px); box-shadow: 0 20px 40px rgba(31,192,217,0.4); }
-.ei-form-privacy { font-size: 0.75rem; color: #4b5563; text-align: center; margin-top: 1rem; } /* updated contrast */
+.ei-form-col {
+  position: relative;
+  z-index: 2;
+}
+.ei-form-box {
+  background: #fff;
+  border: 1px solid #f3f4f6;
+  box-shadow: 0 20px 50px rgba(31,192,217,0.08);
+  border-radius: 28px;
+  padding: 2.75rem 2.25rem;
+}
+@media(max-width: 640px) {
+  .ei-form-box {
+    padding: 2rem 1.5rem;
+  }
+}
+.ei-form-group {
+  margin-bottom: 1.5rem;
+}
+.ei-form-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+.ei-form-input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 0.75rem 0;
+  font-size: 0.95rem;
+  color: #111827;
+  background: transparent;
+  font-family: inherit;
+  transition: border-bottom-color 0.2s ease;
+}
+.ei-form-input::placeholder {
+  color: #9ca3af;
+}
+.ei-form-input:focus {
+  outline: none;
+  border-bottom-color: #1fc0d9;
+}
+.ei-form-consent {
+  margin: 1.75rem 0;
+}
+.ei-consent-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 12px;
+  color: #4b5563;
+  cursor: pointer;
+  line-height: 1.4;
+}
+.ei-consent-label input {
+  margin-top: 3px;
+  cursor: pointer;
+  accent-color: #1fc0d9;
+}
+.ei-consent-label a {
+  color: #1fc0d9;
+  text-decoration: underline;
+  font-weight: 600;
+}
+.ei-form-submit {
+  width: 100%;
+  height: 3.5rem;
+  border-radius: 9999px;
+  background: #111827;
+  color: #fff;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 11px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(31,192,217,0.2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.ei-form-submit:hover {
+  background: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(31,192,217,0.3);
+}
+.ei-form-submit:active {
+  transform: translateY(0) scale(0.98);
+}
 </style>
 
 <div class="ei-contact-wrap" id="contacto">
   <div class="ei-contact-bg"></div>
   <div class="ei-contact-inner">
-    <div>
-      <span class="ei-ct-badge">Atención Personalizada</span>
-      <h2 class="ei-ct-title">Hablemos de tu<br><span>próxima propiedad</span></h2>
-      <p class="ei-ct-subtitle">Déjanos tus datos y un asesor especializado se pondrá en contacto contigo para ofrecerte una valoración o mostrarte las mejores opciones.</p>
-      <div class="ei-ct-info">
-        <div class="ei-ct-item">
-          <div class="ei-ct-icon">☎</div>
-          <div>
-            <div class="ei-ct-item-label">Teléfono</div>
-            <a href="tel:+34647803355" class="ei-ct-item-val">+34 647 803 355</a>
-          </div>
-        </div>
-        <div class="ei-ct-item">
-          <div class="ei-ct-icon">✉</div>
-          <div>
-            <div class="ei-ct-item-label">Email</div>
-            <a href="mailto:santitorres@essenciainmobiliaria.com" class="ei-ct-item-val">santitorres@essenciainmobiliaria.com</a>
-          </div>
-        </div>
-        <div class="ei-ct-item">
-          <div class="ei-ct-icon">📍</div>
-          <div>
-            <div class="ei-ct-item-label">Oficina</div>
-            <div class="ei-ct-item-val">C/ Sant Vicent Ferrer 24, Gandia, Valencia</div>
-          </div>
-        </div>
+    
+    <!-- Columna Izquierda: Foto de Carolina, Título y Privacidad (GDPR) -->
+    <div class="ei-profile-col">
+      <div class="ei-profile-img-wrap">
+        <img class="ei-profile-img" data-real-src="https://essenciainmobiliaria.com/wp-content/uploads/2021/04/Captura-de-pantalla-2021-04-23-a-las-23.43.04-e1619469684318-1024x705.jpg" alt="Carolina González — Essencia Inmobiliaria" />
+      </div>
+      <h2 class="ei-profile-title">
+        <strong>Hola, soy Carolina González,</strong><br><span>contacta a través del siguiente formulario</span>
+      </h2>
+      
+      <!-- Primera Capa de Protección de Datos (GDPR) -->
+      <div class="ei-contact-legal">
+        <h5>Información básica sobre protección de datos</h5>
+        <p><strong>Responsable del tratamiento:</strong> VIVIENDAS DE LA SAFOR SL</p>
+        <p><strong>Dirección del responsable:</strong> Calle Sant Vicent Ferrer 24, CP 46702, GANDIA (Valencia/València)</p>
+        <p><strong>Finalidad:</strong> Sus datos serán usados para poder atender sus solicitudes y prestarle nuestros servicios.</p>
+        <p><strong>Publicidad:</strong> Solo le enviaremos publicidad con su autorización previa, que podrá facilitarnos mediante la casilla correspondiente establecida al efecto.</p>
+        <p><strong>Legitimación:</strong> Únicamente trataremos sus datos con su consentimiento previo, que podrá facilitarnos mediante la casilla correspondiente establecida al efecto.</p>
+        <p><strong>Destinatarios:</strong> Con carácter general, sólo el personal de nuestra entidad que esté debidamente autorizado podrá tener conocimiento de la información que le pedimos.</p>
+        <p><strong>Derechos:</strong> Tiene derecho a saber qué información tenemos sobre usted, corregirla y eliminarla, tal y como se explica en la información adicional disponible en nuestra página web.</p>
+        <p><strong>Información adicional:</strong> Más información en el apartado “<a href="https://essenciainmobiliaria.com/privacy" target="_blank">POLÍTICA DE PRIVACIDAD</a>” de nuestra página web.</p>
       </div>
     </div>
     
-    <div class="ei-form-box">
-      <form action="https://formsubmit.co/santitorres@essenciainmobiliaria.com" method="POST">
-        <!-- Opcional: configuraciones de formsubmit -->
-        <input type="hidden" name="_next" value="https://essenciainmobiliaria.com">
-        <input type="hidden" name="_subject" value="Nuevo Lead desde Landing Page">
-        
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem;">
-          <div class="ei-form-group">
-            <label class="ei-form-label">Nombre</label>
-            <input type="text" name="name" class="ei-form-input" placeholder="María García" required>
+    <!-- Columna Derecha: Formulario de Contacto -->
+    <div class="ei-form-col">
+      <div class="ei-form-box">
+        <form action="https://formsubmit.co/santitorres@essenciainmobiliaria.com" method="POST">
+          <input type="hidden" name="_next" value="https://essenciainmobiliaria.com">
+          <input type="hidden" name="_subject" value="Nuevo Lead desde Landing Page">
+          
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem;">
+            <div class="ei-form-group">
+              <label class="ei-form-label">Nombre</label>
+              <input type="text" name="name" class="ei-form-input" placeholder="María García" required>
+            </div>
+            <div class="ei-form-group">
+              <label class="ei-form-label">Teléfono</label>
+              <input type="tel" name="phone" class="ei-form-input" placeholder="+34 600 000 000" required>
+            </div>
           </div>
           <div class="ei-form-group">
-            <label class="ei-form-label">Teléfono</label>
-            <input type="tel" name="phone" class="ei-form-input" placeholder="+34 600 000 000" required>
+            <label class="ei-form-label">Email</label>
+            <input type="email" name="email" class="ei-form-input" placeholder="maria@example.com" required>
           </div>
-        </div>
-        <div class="ei-form-group">
-          <label class="ei-form-label">Email</label>
-          <input type="email" name="email" class="ei-form-input" placeholder="maria@example.com" required>
-        </div>
-        <div class="ei-form-group">
-          <label class="ei-form-label">Motivo</label>
-          <select name="reason" class="ei-form-input" required style="background:transparent; appearance:none;">
-            <option value="Comprar">Comprar propiedad</option>
-            <option value="Vender">Vender propiedad</option>
-            <option value="Valoración">Valoración gratuita</option>
-            <option value="Invertir">Invertir</option>
-          </select>
-        </div>
-        <div class="ei-form-group">
-          <label class="ei-form-label">Mensaje</label>
-          <textarea name="message" class="ei-form-input" placeholder="¿En qué te podemos ayudar?" rows="3"></textarea>
-        </div>
-        <button type="submit" class="ei-form-submit">Enviar mensaje →</button>
-        <p class="ei-form-privacy">Tu información está protegida. Nunca compartimos tus datos.</p>
-      </form>
+          <div class="ei-form-group">
+            <label class="ei-form-label">Motivo</label>
+            <select name="reason" class="ei-form-input" required style="background:transparent; appearance:none;">
+              <option value="Comprar">Comprar propiedad</option>
+              <option value="Vender">Vender propiedad</option>
+              <option value="Valoración">Valoración gratuita</option>
+              <option value="Invertir">Invertir</option>
+            </select>
+          </div>
+          <div class="ei-form-group">
+            <label class="ei-form-label">Mensaje</label>
+            <textarea name="message" class="ei-form-input" placeholder="¿En qué te podemos ayudar?" rows="3"></textarea>
+          </div>
+          
+          <!-- Consentimiento checkbox obligatorio -->
+          <div class="ei-form-consent">
+            <label class="ei-consent-label">
+              <input type="checkbox" name="privacy_consent" required>
+              <span>Acepto la <a href="https://essenciainmobiliaria.com/privacy" target="_blank">política de privacidad</a> y el tratamiento de mis datos.</span>
+            </label>
+          </div>
+          
+          <button type="submit" class="ei-form-submit">PIDE TU CITA</button>
+        </form>
+      </div>
     </div>
+    
   </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  // Evitar que Houzez bloquee la carga de la imagen
+  requestAnimationFrame(() => {
+    const img = document.querySelector('img[data-real-src]');
+    if (img) {
+      const realSrc = img.getAttribute('data-real-src');
+      img.removeAttribute('data-src');
+      img.classList.remove('houzez-lazyload');
+      img.src = realSrc;
+    }
+  });
+
   const form = document.querySelector('.ei-form-box form');
   if (form) {
     form.addEventListener('submit', async function(e) {
@@ -460,11 +627,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 """
     with open("wp-sections/seccion-formulario-contacto.html", "w") as f:
-        f.write(html)
-
-def generate_stats():
-    html = """<!-- ============================================================
-     SECCIÓN ESTADÍSTICAS — Essencia Inmobiliaria
      Pegar en: WordPress > Elementor > HTML Widget
      ============================================================ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -729,4 +891,16 @@ if __name__ == "__main__":
     generate_hero()
     generate_stats()
     generate_contact()
-    print("All WP HTML sections generated and updated.")
+    
+    # Sincronizar todos los archivos de wp-sections/ a public/wp-sections/
+    import shutil
+    src_dir = "wp-sections"
+    dst_dir = "public/wp-sections"
+    if os.path.exists(src_dir):
+        os.makedirs(dst_dir, exist_ok=True)
+        for item in os.listdir(src_dir):
+            s = os.path.join(src_dir, item)
+            d = os.path.join(dst_dir, item)
+            if os.path.isfile(s):
+                shutil.copy2(s, d)
+    print("All WP HTML sections generated, updated and synced to public/wp-sections.")

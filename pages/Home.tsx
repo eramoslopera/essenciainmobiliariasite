@@ -10,6 +10,7 @@ import ContactForm from '../components/ContactForm';
 import AdvisorsSection from '../components/AdvisorsSection';
 import FAQSection from '../components/FAQSection';
 import BlogTeaser from '../components/BlogTeaser';
+import AISection from '../components/AISection';
 import { motion } from 'framer-motion';
 import { WhatsappLogo } from '@phosphor-icons/react';
 
@@ -36,6 +37,7 @@ const HERO_IMAGES = [
 const Home: React.FC = () => {
   const { t } = useLanguage();
   const [heroIndex, setHeroIndex] = useState(0);
+  const [rgpdOpen, setRgpdOpen] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -163,62 +165,116 @@ const Home: React.FC = () => {
       {/* ================= BLOG TEASER ================= */}
       <BlogTeaser />
 
+      {/* ================= AI & PORTALS SHOWCASE ================= */}
+      <AISection />
+
       {/* ================= CONTACT FORM SECTION ================= */}
-      <section className="py-16 md:py-24 bg-white relative overflow-hidden">
+      <section className="py-20 md:py-28 bg-white relative overflow-hidden border-t border-gray-100">
         {/* Decorative geometric accent */}
         <div className="absolute right-0 top-0 w-1/2 h-full opacity-5 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 80% 50%, #2563eb 0%, transparent 70%)' }} />
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-24">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Left — copy */}
+        <div className="max-w-[1240px] mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-16 lg:gap-20 items-start">
+            
+            {/* Left — Carolina González Profile & GDPR Info */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col"
             >
-              <span className="text-brand-blue-600 font-bold tracking-widest uppercase text-xs mb-4 block">{t('home.contact.tag')}</span>
-              <h2 className="text-4xl md:text-5xl font-black text-editorial-black mb-6 leading-tight">
-                {t('home.contact.title').split('\n').map((line, i, arr) =>
-                  i < arr.length - 1
-                    ? <span key={i}>{line}<br /></span>
-                    : <span key={i} className="text-brand-blue-600">{line}</span>
-                )}
-              </h2>
-              <p className="text-gray-700 text-lg leading-relaxed mb-10">
-                {t('home.contact.subtitle')}
-              </p>
-              <div className="space-y-5">
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-brand-blue-50 flex items-center justify-center shrink-0">
-                    <span className="material-symbols-outlined text-brand-blue-600 text-base">call</span>
-                  </div>
-                  <div>
-                    <p className="text-xs uppercase tracking-widest text-gray-600 mb-0.5">{t('common.phone')}</p>
-                    <a href="tel:+34647803355" className="text-editorial-black font-semibold hover:text-brand-blue-600 transition-colors">+34 647 803 355</a>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-brand-blue-50 flex items-center justify-center shrink-0">
-                    <span className="material-symbols-outlined text-brand-blue-600 text-base">mail</span>
-                  </div>
-                  <div>
-                    <p className="text-xs uppercase tracking-widest text-gray-600 mb-0.5">{t('common.email')}</p>
-                    <a href="mailto:santitorres@essenciainmobiliaria.com" className="text-editorial-black font-semibold hover:text-brand-blue-600 transition-colors">santitorres@essenciainmobiliaria.com</a>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-brand-blue-50 flex items-center justify-center shrink-0">
-                    <span className="material-symbols-outlined text-brand-blue-600 text-base">location_on</span>
-                  </div>
-                  <div>
-                    <p className="text-xs uppercase tracking-widest text-gray-600 mb-0.5">{t('footer.office') || 'Oficina'}</p>
-                    <p className="text-editorial-black font-semibold">C/ Sant Vicent Ferrer 24, Gandia, Valencia</p>
-                  </div>
+              <span className="text-brand-blue-600 font-bold tracking-widest uppercase text-xs mb-6 block">
+                Atención Personalizada
+              </span>
+              
+              {/* Profile Card */}
+              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 mb-8">
+                <img
+                  src="/carolina.jpg"
+                  alt="Carolina González - Asesora Inmobiliaria"
+                  className="w-28 h-28 md:w-32 md:h-32 rounded-[2rem] object-cover object-top border border-gray-100 shadow-md shrink-0"
+                />
+                <div className="text-center sm:text-left">
+                  <h3 className="text-2xl font-black text-editorial-black tracking-tight leading-tight">
+                    Carolina González
+                  </h3>
+                  <span className="inline-block text-[10px] font-black uppercase tracking-[0.2em] text-brand-blue-600 mt-1.5">
+                    Asesora Inmobiliaria & Marketing
+                  </span>
+                  <p className="text-xs text-gray-500 uppercase tracking-wider mt-2 font-semibold">
+                    ZONA: GANDÍA & COSTA · IDIOMAS: ES, EN
+                  </p>
                 </div>
               </div>
+
+              {/* Message block */}
+              <p className="text-gray-700 text-lg leading-relaxed mb-8">
+                Hola, soy Carolina González. Estoy a tu disposición para diseñar la mejor estrategia de comercialización para tu propiedad con el <strong>Método MIA</strong>, o para ayudarte a encontrar el hogar ideal en Gandía y la costa de Valencia. Escríbeme directamente o solicita una cita.
+              </p>
+
+              {/* Action Buttons */}
+              <div className="flex flex-wrap gap-4 mb-8">
+                <button
+                  onClick={() => {
+                    const inputEl = document.getElementById('form-name-home_page');
+                    if (inputEl) {
+                      inputEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                      inputEl.focus();
+                    }
+                  }}
+                  className="h-12 px-8 bg-editorial-black text-white text-[10px] font-black uppercase tracking-[0.15em] rounded-full hover:bg-gray-900 active:scale-[0.98] transition-all duration-200 shadow-sm"
+                >
+                  Pide tu cita
+                </button>
+                
+                <a
+                  href="https://wa.me/34647803355?text=Hola%20Carolina%2C%20me%20gustar%C3%ADa%20recibir%20asesoramiento%20inmobiliario"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="h-12 px-8 border border-gray-200 hover:border-editorial-black text-editorial-black text-[10px] font-black uppercase tracking-[0.15em] rounded-full active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2"
+                >
+                  <WhatsappLogo weight="fill" className="w-4 h-4 text-green-500" />
+                  WhatsApp directo
+                </a>
+              </div>
+
+              {/* RGPD Accordion */}
+              <div className="border border-gray-100 rounded-2xl p-5 bg-[#F8FAFC]/60 shadow-sm">
+                <button
+                  onClick={() => setRgpdOpen(!rgpdOpen)}
+                  className="w-full flex justify-between items-center text-xs font-bold uppercase tracking-[0.1em] text-gray-700 focus:outline-none"
+                  aria-expanded={rgpdOpen}
+                >
+                  <span>Información básica sobre protección de datos</span>
+                  <span 
+                    className="material-symbols-outlined text-lg transition-transform duration-300"
+                    style={{ transform: rgpdOpen ? 'rotate(180deg)' : 'rotate(0)' }}
+                  >
+                    expand_more
+                  </span>
+                </button>
+                
+                {rgpdOpen && (
+                  <motion.div 
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    className="mt-5 space-y-3.5 text-[11px] text-gray-600 leading-relaxed border-t border-gray-200/50 pt-5 text-left"
+                  >
+                    <p><strong>Responsable del tratamiento:</strong> VIVIENDAS DE LA SAFOR SL</p>
+                    <p><strong>Dirección del responsable:</strong> Calle Sant Vicent Ferrer 24, CP 46702, GANDIA (Valencia/València)</p>
+                    <p><strong>Finalidad:</strong> Sus datos serán usados para poder atender sus solicitudes y prestarle nuestros servicios.</p>
+                    <p><strong>Publicidad:</strong> Solo le enviaremos publicidad con su autorización previa, que podrá facilitarnos mediante la casilla correspondiente establecida al efecto.</p>
+                    <p><strong>Legitimación:</strong> Únicamente trataremos sus datos con su consentimiento previo, que podrá facilitarnos mediante la casilla correspondiente establecida al efecto.</p>
+                    <p><strong>Destinatarios:</strong> Con carácter general, solo el personal de nuestra entidad que esté debidamente autorizado podrá tener conocimiento de la información que le pedimos.</p>
+                    <p><strong>Derechos:</strong> Tiene derecho a saber qué información tenemos sobre usted, corregirla y eliminarla, tal y como se explica en la información adicional disponible en nuestra página web.</p>
+                    <p><strong>Información adicional:</strong> Más información en el apartado "POLÍTICA DE PRIVACIDAD" de nuestra página web.</p>
+                  </motion.div>
+                )}
+              </div>
+
             </motion.div>
 
-            {/* Right — form */}
+            {/* Right — Contact Form */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -227,6 +283,7 @@ const Home: React.FC = () => {
             >
               <ContactForm theme="light" />
             </motion.div>
+
           </div>
         </div>
       </section>
