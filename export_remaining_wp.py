@@ -1171,16 +1171,16 @@ def generate_ai_portals():
 }
 /* Logo Heights & Max Widths */
 .h-idealista {
-  height: 32px !important;
-  max-width: 140px !important;
+  height: 44px !important;
+  max-width: 180px !important;
 }
 .h-kyero {
   height: 40px !important;
   max-width: 140px !important;
 }
 .h-pisos {
-  height: 28px !important;
-  max-width: 140px !important;
+  height: 40px !important;
+  max-width: 160px !important;
 }
 .h-habitaclia {
   height: 40px !important;
@@ -1198,16 +1198,16 @@ def generate_ai_portals():
 
 @media(min-width: 768px) {
   .h-idealista {
-    height: 40px !important;
-    max-width: 180px !important;
+    height: 56px !important;
+    max-width: 220px !important;
   }
   .h-kyero {
     height: 48px !important;
     max-width: 180px !important;
   }
   .h-pisos {
-    height: 36px !important;
-    max-width: 180px !important;
+    height: 50px !important;
+    max-width: 200px !important;
   }
   .h-habitaclia {
     height: 48px !important;
