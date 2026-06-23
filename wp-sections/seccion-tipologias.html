@@ -529,10 +529,8 @@
           buttons.forEach(b => b.classList.remove('active'));
           
           if (type === 'all') {
-            // "Ver todo" redirige o limpia
-            selectedType = null;
-            btn.classList.add('active');
-            renderFilteredProperties();
+            // "Ver todo" navega al buscador general de WordPress
+            window.location.href = 'https://essenciainmobiliaria.com/buscadoressenciainmobiliaria/';
           } else {
             if (selectedType === type) {
               selectedType = null; // deseleccionar
