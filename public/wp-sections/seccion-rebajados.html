@@ -135,8 +135,7 @@
   .eir-card-img {
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background-position: center;
+    object-fit: cover;
     transition: transform 0.6s ease;
   }
   .eir-card:hover .eir-card-img {
@@ -280,9 +279,11 @@
 
     const grid = document.getElementById('eir-reduced-grid');
 
-    document.addEventListener('DOMContentLoaded', () => {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadReducedProperties);
+    } else {
       loadReducedProperties();
-    });
+    }
 
     async function loadReducedProperties() {
       const allProps = await fetchXMLProperties();
@@ -300,7 +301,7 @@
         <div class="eir-card">
           <a href="/property/${p.id}" class="eir-card-img-wrap">
             ${p.image ? `
-              <div class="eir-card-img" style="background-image: url('${p.image}')"></div>
+              <img class="eir-card-img" src="${p.image}" alt="${p.title}" loading="lazy" />
             ` : `
               <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--eir-gray-100);">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--eir-gray-400)" stroke-width="1.5">
@@ -378,18 +379,17 @@
             const size = built && built !== '0' ? built + " m²" : "";
 
             // Imagen destacada
-            const IMG_PROXY = 'https://essencia-inmobiliaria.vercel.app/api/image';
-            const toProxyUrl = (url) => url ? `${IMG_PROXY}?url=${encodeURIComponent(url)}` : '';
+            const cleanUrl = (url) => url ? url.trim().replace(/^http:/i, 'https:') : '';
             const imagesNode = node.getElementsByTagName("images")[0];
             const images = [];
             if (imagesNode) {
               const imageNodes = imagesNode.getElementsByTagName("image");
               for (let j = 0; j < imageNodes.length; j++) {
                 const url = imageNodes[j].getElementsByTagName("url")[0]?.textContent;
-                if (url) images.push(toProxyUrl(url));
+                if (url) images.push(cleanUrl(url));
               }
             }
-            const image = images.length > 0 ? images[0] : toProxyUrl(getTag("image") || "");
+            const image = images.length > 0 ? images[0] : cleanUrl(getTag("image"));
 
             // Mapear Tipologías
             const typeRaw = getTag("type").toLowerCase();

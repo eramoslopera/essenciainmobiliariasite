@@ -137,17 +137,21 @@
     color: var(--eit-gray-400);
   }
 
-  /* Estado Activo */
-  .eit-btn.active {
+  /* Estado Activo / Hover de "Ver todo" */
+  .eit-btn.active,
+  .eit-btn[data-type="all"]:hover {
     background: var(--eit-black);
   }
-  .eit-btn.active .eit-btn-icon {
+  .eit-btn.active .eit-btn-icon,
+  .eit-btn[data-type="all"]:hover .eit-btn-icon {
     color: var(--eit-blue);
   }
-  .eit-btn.active .eit-btn-label {
+  .eit-btn.active .eit-btn-label,
+  .eit-btn[data-type="all"]:hover .eit-btn-label {
     color: #ffffff;
   }
-  .eit-btn.active .eit-btn-count {
+  .eit-btn.active .eit-btn-count,
+  .eit-btn[data-type="all"]:hover .eit-btn-count {
     color: rgba(255, 255, 255, 0.6);
   }
 
