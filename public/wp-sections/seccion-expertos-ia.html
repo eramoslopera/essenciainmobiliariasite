@@ -77,26 +77,65 @@
   transform: scale(1.05);
 }
 .ei-ai-logo-img {
-  width: auto;
+  width: auto !important;
+  max-width: 100% !important;
   object-fit: contain;
   user-select: none;
   -webkit-user-drag: none;
 }
-/* Logo Heights */
-.h-idealista { height: 32px; }
-.h-kyero { height: 40px; }
-.h-pisos { height: 28px; }
-.h-habitaclia { height: 40px; }
-.h-fotocasa { height: 96px; }
-.h-caixabank { height: 40px; }
+/* Logo Heights & Max Widths */
+.h-idealista {
+  height: 32px !important;
+  max-width: 140px !important;
+}
+.h-kyero {
+  height: 40px !important;
+  max-width: 140px !important;
+}
+.h-pisos {
+  height: 28px !important;
+  max-width: 140px !important;
+}
+.h-habitaclia {
+  height: 40px !important;
+  max-width: 160px !important;
+}
+.h-fotocasa {
+  height: 96px !important;
+  width: 96px !important;
+  max-width: 96px !important;
+}
+.h-caixabank {
+  height: 40px !important;
+  max-width: 160px !important;
+}
 
 @media(min-width: 768px) {
-  .h-idealista { height: 40px; }
-  .h-kyero { height: 48px; }
-  .h-pisos { height: 36px; }
-  .h-habitaclia { height: 48px; }
-  .h-fotocasa { height: 112px; }
-  .h-caixabank { height: 48px; }
+  .h-idealista {
+    height: 40px !important;
+    max-width: 180px !important;
+  }
+  .h-kyero {
+    height: 48px !important;
+    max-width: 180px !important;
+  }
+  .h-pisos {
+    height: 36px !important;
+    max-width: 180px !important;
+  }
+  .h-habitaclia {
+    height: 48px !important;
+    max-width: 200px !important;
+  }
+  .h-fotocasa {
+    height: 112px !important;
+    width: 112px !important;
+    max-width: 112px !important;
+  }
+  .h-caixabank {
+    height: 48px !important;
+    max-width: 200px !important;
+  }
 }
 </style>
 
