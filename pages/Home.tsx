@@ -159,19 +159,19 @@ const Home: React.FC = () => {
       {/* ================= ADVISORS SECTION ================= */}
       <AdvisorsSection />
 
+      {/* ================= AI & PORTALS SHOWCASE ================= */}
+      <AISection />
+
       {/* ================= FAQ SECTION ================= */}
       <FAQSection />
 
       {/* ================= BLOG TEASER ================= */}
       <BlogTeaser />
 
-      {/* ================= AI & PORTALS SHOWCASE ================= */}
-      <AISection />
-
       {/* ================= CONTACT FORM SECTION ================= */}
       <section className="py-20 md:py-28 bg-white relative overflow-hidden border-t border-gray-100">
         {/* Decorative geometric accent */}
-        <div className="absolute right-0 top-0 w-1/2 h-full opacity-5 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 80% 50%, #2563eb 0%, transparent 70%)' }} />
+        <div className="absolute right-0 top-0 w-1/2 h-full opacity-5 pointer-events-none" style={{ background: 'radial-gradient(ellipse at 80% 50%, #1fc0d9 0%, transparent 70%)' }} />
         <div className="max-w-[1240px] mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-16 lg:gap-20 items-start">
             

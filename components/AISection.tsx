@@ -128,7 +128,7 @@ export default function AISection() {
     <section className="relative py-20 md:py-28 bg-[#F8FAFC] border-t border-gray-100 overflow-hidden">
       {/* Background decoration */}
       <div className="absolute left-10 top-1/4 w-[350px] h-[350px] bg-brand-blue-500/5 rounded-full blur-[80px] pointer-events-none" />
-      <div className="absolute right-10 bottom-1/4 w-[450px] h-[450px] bg-blue-400/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute right-10 bottom-1/4 w-[450px] h-[450px] bg-brand-blue-400/5 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-[1240px] mx-auto px-6 relative z-10">
         
@@ -142,7 +142,7 @@ export default function AISection() {
             </span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-editorial-black mb-6 tracking-tight leading-[1.05]">
               Expertos en IA <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue-600 to-blue-500">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue-600 to-brand-blue-400">
                 (Inteligencia Artificial)
               </span>
             </h2>
