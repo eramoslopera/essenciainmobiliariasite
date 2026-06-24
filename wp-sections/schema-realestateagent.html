@@ -1,199 +1,262 @@
 <!-- ============================================================
-     ESSENCIA INMOBILIARIA — Schema.org Markup para WordPress
+     ESSENCIA INMOBILIARIA — Schema.org unificado para WordPress
+     Versión: @graph (estructura moderna — un solo script)
+     
      Instrucciones:
-     1. En WordPress > Apariencia > Editor de temas > functions.php
-        (o via plugin "Code Snippets") pega la versión PHP de abajo.
-     2. Alternativamente: en Elementor, añade un widget "HTML"
-        al footer y pega este bloque completo.
+     1. OPCIÓN A (recomendada): Plugin "Code Snippets" (gratuito)
+        → Nuevo snippet → tipo "HTML" → pegar este bloque completo
+        → ejecutar "Solo en el front-end" → solo en la portada.
+     
+     2. OPCIÓN B: Elementor → widget "HTML" en el footer de la home.
+     
+     3. OPCIÓN C: functions.php (Apariencia > Editor de temas):
+        Envuelve el bloque en la función PHP al final de este archivo.
+
+     NOTA: Yoast ya emite WebSite y BreadcrumbList.
+     Este bloque añade RealEstateAgent y FAQPage, que Yoast
+     no genera, sin conflicto alguno.
      ============================================================ -->
 
-<!-- SCHEMA 1: RealEstateAgent (LocalBusiness subtype) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "RealEstateAgent",
-  "@id": "https://essenciainmobiliaria.com/#realestateagent",
-  "name": "Essencia Inmobiliaria",
-  "alternateName": "Essencia Inmobiliaria Gandia",
-  "url": "https://essenciainmobiliaria.com",
-  "logo": {
-    "@type": "ImageObject",
-    "url": "https://essenciainmobiliaria.com/wp-content/uploads/2023/04/Diseño-sin-título.svg",
-    "width": 263,
-    "height": 110
-  },
-  "image": "https://essenciainmobiliaria.com/wp-content/uploads/2021/03/logo-big-es1.png",
-  "description": "Inmobiliaria premium en Gandia y Valencia especializada en venta de propiedades de lujo. Con el Método MIA (Marketing de Alto Impacto) vendemos tu vivienda en una media de 45 días al mayor precio posible.",
-  "telephone": "+34647803355",
-  "email": "santitorres@essenciainmobiliaria.com",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "C/ Sant Vicent Ferrer 24",
-    "addressLocality": "Gandia",
-    "addressRegion": "Valencia",
-    "postalCode": "46701",
-    "addressCountry": "ES"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 38.9675,
-    "longitude": -0.1813
-  },
-  "openingHoursSpecification": [
+  "@graph": [
     {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      "opens": "09:00",
-      "closes": "19:00"
-    }
-  ],
-  "priceRange": "€€€",
-  "currenciesAccepted": "EUR",
-  "paymentAccepted": "Cash, Credit Card, Bank Transfer",
-  "areaServed": [
-    {
-      "@type": "City",
-      "name": "Gandia",
-      "@id": "https://www.wikidata.org/wiki/Q185729"
-    },
-    {
-      "@type": "City",
-      "name": "Valencia",
-      "@id": "https://www.wikidata.org/wiki/Q8818"
-    },
-    {
-      "@type": "City",
-      "name": "Oliva"
-    },
-    {
-      "@type": "City",
-      "name": "Dénia"
-    }
-  ],
-  "knowsAbout": [
-    "Venta de viviendas",
-    "Home staging",
-    "Valoración inmobiliaria",
-    "Marketing inmobiliario",
-    "Compra de propiedades de lujo",
-    "Asesoría inmobiliaria en Valencia"
-  ],
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Servicios Inmobiliarios Essencia",
-    "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Venta de propiedades",
-          "description": "Venta de viviendas con el Método MIA — Marketing de Alto Impacto. Tiempo medio de venta: 45 días."
-        }
+      "@type": "RealEstateAgent",
+      "@id": "https://essenciainmobiliaria.com/#realestateagent",
+      "name": "Essencia Inmobiliaria",
+      "alternateName": "Essencia Inmobiliaria Gandía",
+      "legalName": "Viviendas de la Safor SL",
+      "url": "https://essenciainmobiliaria.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://essenciainmobiliaria.com/wp-content/uploads/2023/04/Diseño-sin-título.svg",
+        "width": 263,
+        "height": 110
       },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Valoración gratuita",
-          "description": "Valoración precisa de su propiedad basada en datos de mercado actuales y comparables reales."
-        }
+      "image": "https://essenciainmobiliaria.com/wp-content/uploads/2023/04/Diseño-sin-título.svg",
+      "description": "Inmobiliaria en Gandía y La Safor especializada en venta de viviendas con el Método MIA. Más de 15 años de experiencia, media de 45 días hasta la venta y servicio 360º incluido: fotografía profesional, dron 4K, tour virtual, renders con IA y gestión legal y fiscal completa.",
+      "telephone": "+34647803355",
+      "email": "santitorres@essenciainmobiliaria.com",
+      "foundingDate": "2010",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Carrer Sant Vicent Ferrer, 24",
+        "addressLocality": "Gandía",
+        "addressRegion": "Valencia",
+        "postalCode": "46702",
+        "addressCountry": "ES"
       },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Home Staging profesional",
-          "description": "Puesta en escena profesional de la vivienda para maximizar el precio de venta."
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 38.9643,
+        "longitude": -0.1846
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "19:00"
         }
-      }
-    ]
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.6",
-    "bestRating": "5",
-    "worstRating": "1",
-    "ratingCount": "349",
-    "reviewCount": "349"
-  },
-  "sameAs": [
-    "https://www.instagram.com/essencia_inmobiliaria/",
-    "https://www.facebook.com/essenciainmobiliariagandia",
-    "https://www.linkedin.com/in/santi-torres-essencia-a9497311/"
-  ]
-}
-</script>
-
-<!-- SCHEMA 2: FAQPage — activa rich snippets de preguntas en Google -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "name": "Preguntas frecuentes — Essencia Inmobiliaria",
-  "mainEntity": [
+      ],
+      "priceRange": "€€€",
+      "currenciesAccepted": "EUR",
+      "paymentAccepted": "Cash, Credit Card, Bank Transfer",
+      "areaServed": [
+        { "@type": "City", "name": "Gandía", "@id": "https://www.wikidata.org/wiki/Q185729" },
+        { "@type": "City", "name": "Oliva" },
+        { "@type": "City", "name": "Dénia" },
+        { "@type": "City", "name": "Bellreguard" },
+        { "@type": "City", "name": "Piles" },
+        { "@type": "City", "name": "Miramar" },
+        { "@type": "City", "name": "Salem" },
+        { "@type": "City", "name": "Beniarjó" },
+        { "@type": "AdministrativeArea", "name": "La Safor" },
+        { "@type": "AdministrativeArea", "name": "Costa de Valencia" }
+      ],
+      "knowsAbout": [
+        "Venta de viviendas en Gandía",
+        "Método MIA",
+        "Pack Visual Pro",
+        "Home staging",
+        "Valoración inmobiliaria",
+        "Marketing inmobiliario con IA",
+        "Tour virtual 360",
+        "Renders con inteligencia artificial",
+        "Asesoría fiscal y legal inmobiliaria",
+        "Inversión inmobiliaria en La Safor"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servicios inmobiliarios Essencia",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Venta de viviendas con Método MIA",
+              "description": "Venta de viviendas con el Método MIA — Marketing de Alto Impacto. Tiempo medio de venta: 45 días al mayor precio posible."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Pack Visual Pro — fotografía, dron 4K, tour virtual, renders IA, planos 3D",
+              "description": "Reportaje completo con fotografía profesional, dron 4K, tour virtual 360, renders con IA y planos 3D para maximizar el impacto del anuncio."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Valoración gratuita online",
+              "description": "Valoración precisa de su propiedad basada en datos de mercado actuales y comparables reales en Gandía y La Safor."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Gestión legal y fiscal integral",
+              "description": "Gestión completa de contratos de arras, certificados, cargas y coordinación con la notaría hasta la entrega de llaves."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Asesoría de inversión inmobiliaria",
+              "description": "Análisis de rentabilidad y oportunidades de inversión inmobiliaria en La Safor y Costa de Valencia."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Intermediación hipotecaria",
+              "description": "Ayuda para obtener las mejores condiciones de financiación para compradores de vivienda en Gandía."
+            }
+          }
+        ]
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.6",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": "349",
+        "reviewCount": "349"
+      },
+      "sameAs": [
+        "https://www.instagram.com/essencia_inmobiliaria/",
+        "https://www.facebook.com/essenciainmobiliariagandia",
+        "https://www.linkedin.com/in/santi-torres-essencia-a9497311/",
+        "https://www.youtube.com/user/essenciaportal"
+      ]
+    },
     {
-      "@type": "Question",
-      "name": "¿Cómo determinan el precio de mi propiedad?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Utilizamos datos de mercado en tiempo real, comparables vendidos recientemente y nuestra experiencia local para fijar un precio competitivo y realista."
+      "@type": "WebSite",
+      "@id": "https://essenciainmobiliaria.com/#website",
+      "url": "https://essenciainmobiliaria.com",
+      "name": "Essencia Inmobiliaria Gandía",
+      "publisher": { "@id": "https://essenciainmobiliaria.com/#realestateagent" },
+      "inLanguage": "es-ES",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://essenciainmobiliaria.com/buscadoressenciainmobiliaria/?s={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
       }
     },
     {
-      "@type": "Question",
-      "name": "¿Trabajan con contrato de exclusividad?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Sí, para garantizar la máxima inversión en marketing y dedicación de nuestro equipo, trabajamos con mandatos de venta exclusivos."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Cuánto tiempo tardará en venderse?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "El tiempo medio varía según la propiedad, pero nuestra estrategia de marketing intensiva suele reducir los plazos del mercado significativamente. Nuestra media actual es de 45 días."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Qué incluye su comisión?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Incluye valoración, home staging, fotografía profesional, marketing internacional, gestión de visitas y trámites legales hasta la firma."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Debo reformar antes de vender?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No siempre. Realizamos un diagnóstico para recomendar solo las mejoras que aumenten realmente el valor de venta."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Cómo filtran a los compradores?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Verificamos la identidad y capacidad financiera de cada interesado antes de organizar una visita física."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Se encargan de los trámites legales?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Absolutamente. Nuestro departamento jurídico supervisa contratos, certificados y coordina con la notaría."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Qué pasa si no se vende?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Si no vendemos su propiedad en el plazo acordado, no cobramos nada. Asumimos el riesgo de la inversión en marketing."
-      }
+      "@type": "FAQPage",
+      "@id": "https://essenciainmobiliaria.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Cómo valoran o tasan el precio de mi vivienda en Gandía?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Utilizamos datos de mercado en tiempo real, propiedades comparables vendidas recientemente y nuestra experiencia local para fijar un precio competitivo y realista, asegurando que vendas rápido sin perder dinero."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuáles son los honorarios de la inmobiliaria y qué incluyen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Incluyen la valoración técnica, home staging, reportaje fotográfico profesional, posicionamiento internacional, gestión de visitas y todos los trámites legales hasta la firma ante notario."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto tiempo se tarda en vender un piso o casa en Gandía?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El tiempo medio varía según la propiedad, pero gracias a nuestra estrategia de marketing intensiva (Método MIA), solemos reducir los plazos del mercado a un promedio de 45 días."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué gastos e impuestos debo pagar al vender mi casa?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Principalmente la Plusvalía Municipal y el IRPF sobre la ganancia patrimonial (19%-28%). Nuestro departamento fiscal le hará un cálculo exacto y le asesorará sobre posibles exenciones, como reinversión en vivienda habitual o mayores de 65 años."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué ventajas tiene firmar un contrato de exclusividad inmobiliaria?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La exclusividad nos permite invertir el 100% en el marketing de su vivienda, destacarla en portales premium y evitar que el inmueble se devalúe por estar duplicado con precios diferentes en el mercado."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Se encargan ustedes de todos los trámites legales y la notaría?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Nuestro departamento jurídico redacta los contratos de arras, gestiona los certificados pendientes, liquida posibles cargas y coordina todo directamente con la notaría hasta la entrega de llaves."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué pasa si firmo y mi casa no se vende en el plazo acordado?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Trabajamos a éxito. Si no logramos vender su propiedad en el plazo acordado, no le cobramos ningún honorario. Nosotros asumimos totalmente el riesgo de la inversión en marketing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Debo reformar mi vivienda antes de ponerla a la venta?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No siempre. Realizamos un diagnóstico previo para recomendar solo las mejoras que realmente aumenten el valor de venta y la velocidad de cierre, evitando inversiones innecesarias."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo verifican la solvencia de los compradores?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Verificamos la identidad y capacidad financiera de cada interesado antes de organizar una visita física, garantizando que solo visiten su propiedad compradores realmente cualificados."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué documentos necesito para vender mi propiedad en Gandía?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Necesitará la escritura de propiedad, el DNI de los titulares, el recibo del IBI, el certificado de eficiencia energética (CEE) y la cédula de habitabilidad. Si es un piso, también el certificado de estar al corriente con la comunidad. Nosotros nos encargamos de recopilar y gestionar toda esta documentación técnica y legal."
+          }
+        }
+      ]
     }
   ]
 }
@@ -201,27 +264,22 @@
 
 <!--
 =================================================================
-INSTRUCCIONES PARA WORDPRESS (via functions.php o Code Snippets)
+OPCIÓN C — Inyección vía functions.php (copia este fragmento PHP)
 =================================================================
-Añade este código PHP en Apariencia > Editor de temas > functions.php
-o usa el plugin "Code Snippets" (más seguro):
-
 <?php
 function essencia_inject_schema() {
-    if ( is_front_page() || is_home() ) {
-        // El bloque completo anterior va aquí entre heredoc PHP
-        echo <<<'SCHEMA'
-        [PEGAR AQUÍ EL CONTENIDO HTML COMPLETO DE ARRIBA]
-SCHEMA;
-    }
+    if ( is_front_page() || is_home() ) { ?>
+<script type="application/ld+json">
+{ ... pega aquí el JSON del bloque @graph de arriba ... }
+</script>
+<?php }
 }
 add_action( 'wp_head', 'essencia_inject_schema' );
 
-NOTA IMPORTANTE:
-- Yoast ya genera: WebPage, WebSite, Organization, BreadcrumbList
-- Este bloque AÑADE: RealEstateAgent (reemplaza semánticamente a Organization)
-  y FAQPage. NO hay conflicto — son schemas complementarios.
-- Si Yoast genera un Organization duplicado, puedes desactivarlo en:
-  Yoast SEO > Apariencia en buscadores > Tu organización > tipo = "Persona"
-  y luego volver a "Organización" para forzar re-indexación.
+NOTA:
+- Yoast ya genera: WebSite, WebPage, BreadcrumbList, Organization.
+- Este schema AÑADE: RealEstateAgent (semánticamente más específico)
+  y FAQPage (rich snippets de preguntas). Son complementarios, sin conflicto.
+- El @graph con @id permite a Google cruzar las entidades entre sí,
+  lo que mejora la comprensión de la entidad de negocio.
 ================================================================= -->

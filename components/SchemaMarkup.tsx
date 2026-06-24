@@ -27,10 +27,10 @@ const SchemaMarkup: React.FC = () => {
         "email": "santitorres@essenciainmobiliaria.com",
         "address": {
             "@type": "PostalAddress",
-            "streetAddress": "C/ Sant Vicent Ferrer 24",
-            "addressLocality": "Gandia",
+            "streetAddress": "Carrer Sant Vicent Ferrer, 24",
+            "addressLocality": "Gandía",
             "addressRegion": "Valencia",
-            "postalCode": "46701",
+            "postalCode": "46702",
             "addressCountry": "ES"
         },
         "geo": {
