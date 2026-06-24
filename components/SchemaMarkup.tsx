@@ -109,10 +109,11 @@ const SchemaMarkup: React.FC = () => {
         },
         "aggregateRating": {
             "@type": "AggregateRating",
-            "ratingValue": "4.9",
+            "ratingValue": "4.6",
             "bestRating": "5",
-            "ratingCount": "47",
-            "reviewCount": "47"
+            "worstRating": "1",
+            "ratingCount": "349",
+            "reviewCount": "349"
         },
         "sameAs": [
             "https://www.instagram.com/essencia_inmobiliaria/",

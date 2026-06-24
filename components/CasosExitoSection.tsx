@@ -104,15 +104,37 @@ const GoogleIcon: React.FC<{ size?: number }> = ({ size = 16 }) => (
   </svg>
 );
 
-const Stars: React.FC<{ size?: number }> = ({ size = 13 }) => (
-  <div className="flex gap-0.5" aria-label="5 estrellas">
-    {[1,2,3,4,5].map(s => (
-      <svg key={s} width={size} height={size} viewBox="0 0 24 24" fill="#FBBC05" aria-hidden="true">
-        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-      </svg>
-    ))}
-  </div>
-);
+const Stars: React.FC<{ size?: number; rating?: number }> = ({ size = 13, rating = 5 }) => {
+  const full = Math.floor(rating);
+  const partial = Math.round((rating - full) * 10) / 10;
+  const empty = 5 - full - (partial > 0 ? 1 : 0);
+  const starPath = "M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z";
+  return (
+    <div className="flex gap-0.5" aria-label={`${rating} estrellas de 5`}>
+      {Array.from({ length: full }).map((_, i) => (
+        <svg key={`f${i}`} width={size} height={size} viewBox="0 0 24 24" fill="#FBBC05" aria-hidden="true">
+          <path d={starPath}/>
+        </svg>
+      ))}
+      {partial > 0 && (
+        <svg key="partial" width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
+          <defs>
+            <clipPath id="partial-star-clip">
+              <rect x="0" y="0" width={`${partial * 100}%`} height="100%"/>
+            </clipPath>
+          </defs>
+          <path d={starPath} fill="#E5E7EB"/>
+          <path d={starPath} fill="#FBBC05" clipPath="url(#partial-star-clip)"/>
+        </svg>
+      )}
+      {Array.from({ length: empty }).map((_, i) => (
+        <svg key={`e${i}`} width={size} height={size} viewBox="0 0 24 24" fill="#E5E7EB" aria-hidden="true">
+          <path d={starPath}/>
+        </svg>
+      ))}
+    </div>
+  );
+};
 
 const ImagePlaceholder: React.FC = () => (
   <div
@@ -562,10 +584,10 @@ const CasosExitoSection: React.FC = () => {
               <GoogleIcon size={20} />
               <div>
                 <div className="flex items-center gap-1">
-                  <Stars size={14} />
-                  <span className="text-[11px] font-black text-editorial-black ml-1">5.0</span>
+                  <Stars size={14} rating={4.6} />
+                  <span className="text-[11px] font-black text-editorial-black ml-1">4.6</span>
                 </div>
-                <p className="text-[10px] text-gray-400 font-medium">Reseñas en Google</p>
+                <p className="text-[10px] text-gray-400 font-medium">349 reseñas en Google</p>
               </div>
             </div>
             <a
