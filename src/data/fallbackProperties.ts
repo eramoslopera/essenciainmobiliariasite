@@ -1,0 +1,90 @@
+import { Property } from '../types/property';
+
+export const fallbackProperties: Property[] = [
+  {
+    id: 'fallback-1',
+    title: 'Ático Dúplex de Lujo en Playa de Gandía',
+    location: 'Playa de Gandía, Valencia',
+    price: '€320.000',
+    beds: 3,
+    baths: 2,
+    size: '140 m²',
+    plot: '40 m²',
+    pool: true,
+    image: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80'
+    ],
+    type: 'Apartment',
+    dateListed: '2026-04-01',
+    lat: 38.995,
+    lng: -0.165,
+    status: 'sold',
+    priceFreq: 'sale',
+    ref: 'V-AT-908',
+  },
+  {
+    id: 'fallback-2',
+    title: 'Chalet Moderno con Piscina Privada',
+    location: 'Real de Gandía, Valencia',
+    price: '€475.000',
+    beds: 4,
+    baths: 3,
+    size: '220 m²',
+    plot: '600 m²',
+    pool: true,
+    image: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80'
+    ],
+    type: 'Villa',
+    dateListed: '2026-04-15',
+    lat: 38.950,
+    lng: -0.190,
+    status: 'reserved',
+    priceFreq: 'sale',
+    ref: 'V-CH-754',
+  },
+  {
+    id: 'fallback-3',
+    title: 'Piso Exclusivo Reformado en el Centro',
+    location: 'Gandía Centro, Valencia',
+    price: '€185.000',
+    beds: 3,
+    baths: 2,
+    size: '115 m²',
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'
+    ],
+    type: 'Apartment',
+    dateListed: '2026-03-10',
+    lat: 38.968,
+    lng: -0.180,
+    status: 'sold',
+    priceFreq: 'sale',
+    ref: 'V-PI-621',
+  },
+  {
+    id: 'fallback-4',
+    title: 'Adosado de Diseño cerca del Mar',
+    location: 'Oliva Nova, Valencia',
+    price: '€295.000',
+    beds: 3,
+    baths: 2,
+    size: '135 m²',
+    plot: '120 m²',
+    pool: true,
+    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80'
+    ],
+    type: 'Townhouse',
+    dateListed: '2026-03-25',
+    lat: 38.920,
+    lng: -0.115,
+    status: 'sold',
+    priceFreq: 'sale',
+    ref: 'V-AD-840',
+  }
+];

@@ -6,6 +6,7 @@ import SEOHead from '../components/SEOHead';
 import MiaMethodTeaser from '../components/MiaMethodTeaser';
 import CasosExitoSection from '../components/CasosExitoSection';
 import PropiedadesSection from '../components/PropiedadesSection';
+import PropiedadesVendidasSection from '../components/PropiedadesVendidasSection';
 import ContactForm from '../components/ContactForm';
 import AdvisorsSection from '../components/AdvisorsSection';
 import FAQSection from '../components/FAQSection';
@@ -154,6 +155,9 @@ const Home: React.FC = () => {
 
       {/* ── Secciones de propiedades: Tipologías + Rebajados + Recientes ── */}
       <PropiedadesSection />
+
+      {/* ── Secciones de propiedades vendidas y reservadas ── */}
+      <PropiedadesVendidasSection />
 
 
       {/* ================= ADVISORS SECTION ================= */}
