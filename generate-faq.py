@@ -314,7 +314,7 @@ template = f"""<!-- ============================================================
 <div class="ess-faq-wrap">
   <section class="ess-faq-section">
     <div class="ess-faq-header">
-      <span class="ess-faq-badge">Transparencia Total</span>
+      <span class="ess-faq-badge">FAQ</span>
       <h2 class="ess-faq-title">Dudas<br>Resueltas.</h2>
     </div>
 
