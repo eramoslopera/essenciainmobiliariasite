@@ -1,0 +1,248 @@
+<!-- ============================================================
+     SECCIÓN BENTO SERVICIOS VENDER — Essencia Inmobiliaria
+     Pegar en: WordPress > Elementor > HTML Widget
+     ============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800;900&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+<style>
+.eiv-bento * { box-sizing: border-box; margin: 0; padding: 0; }
+.eiv-bento {
+  width: 100%;
+  background-color: #111827;
+  color: #ffffff;
+  padding: 6rem 1.5rem;
+  font-family: 'Manrope', sans-serif;
+}
+.eiv-bento-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+.eiv-bento-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #1fc0d9;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.eiv-bento-title {
+  font-size: clamp(2.25rem, 4vw, 3.25rem);
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 4rem;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: #ffffff;
+}
+.eiv-bento-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 768px) {
+  .eiv-bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.eiv-bento-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 2.5rem;
+  padding: 2.5rem;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 320px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.eiv-bento-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(31, 192, 217, 0.08) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.eiv-bento-card:hover {
+  border-color: rgba(31, 192, 217, 0.4);
+  transform: translateY(-6px) scale(1.005);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3);
+}
+.eiv-bento-card:active {
+  transform: translateY(-6px) scale(0.99);
+}
+.eiv-bento-card:hover::before {
+  opacity: 1;
+}
+@media (min-width: 768px) {
+  .col-span-2 {
+    grid-column: span 2 / span 2;
+  }
+}
+.eiv-card-content {
+  position: relative;
+  z-index: 1;
+}
+.eiv-bento-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  color: #1fc0d9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+.eiv-bento-card:hover .eiv-bento-icon {
+  background: #1fc0d9;
+  color: #111827;
+}
+.eiv-bento-card-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+.eiv-bento-card-desc {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+.eiv-bento-bullets {
+  position: relative;
+  z-index: 1;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.grid-bullets {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+@media (min-width: 640px) {
+  .grid-bullets {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.eiv-bento-bullet {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 12px;
+  font-weight: 700;
+  color: #e5e7eb;
+}
+.eiv-bento-bullet span.material-symbols-outlined {
+  color: #1fc0d9;
+  font-size: 16px;
+}
+.eiv-bento-footer {
+  text-align: center;
+  margin-top: 4rem;
+}
+.eiv-bento-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 3.5rem;
+  padding: 0 2.5rem;
+  border-radius: 9999px;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  background-color: #ffffff;
+  color: #111827;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 20px 40px -15px rgba(0,0,0,0.05);
+}
+.eiv-bento-btn:hover {
+  background-color: #f3f4f6;
+  transform: translateY(-2px);
+}
+</style>
+
+<div class="eiv-bento">
+  <div class="eiv-bento-inner">
+    <span class="eiv-bento-label">EXCELENCIA 360º</span>
+    <h2 class="eiv-bento-title">El Plan Todo Incluido para Vender tu Vivienda</h2>
+    
+    <div class="eiv-bento-grid">
+      <!-- Bloque 1: Marketing (ancho 2) -->
+      <div class="eiv-bento-card col-span-2">
+        <div class="eiv-card-content">
+          <div class="eiv-bento-icon"><span class="material-symbols-outlined">photo_camera</span></div>
+          <h3 class="eiv-bento-card-title">Marketing Editorial de Lujo</h3>
+          <p class="eiv-bento-card-desc">Posicionamos tu propiedad como una obra de arte. Reportajes fotográficos y de video con calidad de revista de diseño, tomas con dron 4K y Home Staging virtual para cautivar a compradores exigentes.</p>
+        </div>
+        <ul class="eiv-bento-bullets grid-bullets">
+          <li class="eiv-bento-bullet"><span class="material-symbols-outlined">check_circle</span>Fotografía y video 4K profesional</li>
+          <li class="eiv-bento-bullet"><span class="material-symbols-outlined">check_circle</span>Sindicación premium internacional</li>
+          <li class="eiv-bento-bullet"><span class="material-symbols-outlined">check_circle</span>Campañas publicitarias hiper-segmentadas</li>
+        </ul>
+      </div>
+
+      <!-- Bloque 2: Legal (ancho 1) -->
+      <div class="eiv-bento-card">
+        <div class="eiv-card-content">
+          <div class="eiv-bento-icon"><span class="material-symbols-outlined">gavel</span></div>
+          <h3 class="eiv-bento-card-title">Defensa Legal Completa</h3>
+          <p class="eiv-bento-card-desc">Tramitamos todos los documentos necesarios de forma gratuita: certificado energético, cédula de habitabilidad y auditoría urbanística completa para una venta segura.</p>
+        </div>
+        <ul class="eiv-bento-bullets">
+          <li class="eiv-bento-bullet"><span class="material-symbols-outlined">check_circle</span>Certificado de Eficiencia Energética</li>
+          <li class="eiv-bento-bullet"><span class="material-symbols-outlined">check_circle</span>Cédula de habitabilidad</li>
+          <li class="eiv-bento-bullet"><span class="material-symbols-outlined">check_circle</span>Verificación registral y de cargas</li>
+        </ul>
+      </div>
+
+      <!-- Bloque 3: Fiscal (ancho 1) -->
+      <div class="eiv-bento-card">
+        <div class="eiv-card-content">
+          <div class="eiv-bento-icon"><span class="material-symbols-outlined">account_balance</span></div>
+          <h3 class="eiv-bento-card-title">Fiscalidad e Impuestos</h3>
+          <p class="eiv-bento-card-desc">Calculamos de forma exacta y anticipada tu incremento patrimonial y plusvalías. Te guiamos y representamos legalmente en notaría durante la firma final.</p>
+        </div>
+        <ul class="eiv-bento-bullets">
+          <li class="eiv-bento-bullet"><span class="material-symbols-outlined">check_circle</span>Cálculo de Plusvalía municipal</li>
+          <li class="eiv-bento-bullet"><span class="material-symbols-outlined">check_circle</span>Estudio fiscal de IRPF y exenciones</li>
+          <li class="eiv-bento-bullet"><span class="material-symbols-outlined">check_circle</span>Firma y representación ante notario</li>
+        </ul>
+      </div>
+
+      <!-- Bloque 4: Tecnología (ancho 2) -->
+      <div class="eiv-bento-card col-span-2">
+        <div class="eiv-card-content">
+          <div class="eiv-bento-icon"><span class="material-symbols-outlined">insights</span></div>
+          <h3 class="eiv-bento-card-title">Tecnología de Vanguardia</h3>
+          <p class="eiv-bento-card-desc">Maximizamos la difusión de tu propiedad. Sincronizamos tus inmuebles en más de 120 portales nacionales e internacionales y cualificamos los prospectos mediante visitas virtuales en 3D antes de organizar visitas presenciales.</p>
+        </div>
+        <ul class="eiv-bento-bullets grid-bullets">
+          <li class="eiv-bento-bullet"><span class="material-symbols-outlined">check_circle</span>Visita virtual 3D interactiva</li>
+          <li class="eiv-bento-bullet"><span class="material-symbols-outlined">check_circle</span>Sincronización en 120+ portales</li>
+          <li class="eiv-bento-bullet"><span class="material-symbols-outlined">check_circle</span>Cualificación previa del comprador</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="eiv-bento-footer">
+      <a href="https://essenciainmobiliaria.com/valuation" class="eiv-bento-btn">
+        VALORACIÓN GRATUITA
+        <span class="material-symbols-outlined" style="font-size: 14px;">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+</div>

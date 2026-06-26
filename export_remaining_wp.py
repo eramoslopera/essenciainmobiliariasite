@@ -1255,6 +1255,970 @@ def generate_ai_portals():
 """
     save_html_section("seccion-expertos-ia.html", html)
 
+def generate_vender_hero():
+    html = """<!-- ============================================================
+     SECCIÓN HERO VENDER — Essencia Inmobiliaria
+     Pegar en: WordPress > Elementor > HTML Widget
+     ============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+<style>
+.eiv-hero * { box-sizing: border-box; margin: 0; padding: 0; }
+.eiv-hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8rem 0 5rem 0;
+  overflow: hidden;
+  font-family: 'Manrope', sans-serif;
+  background-color: #ffffff;
+}
+.eiv-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD6CVDb-uj3cAC0Ob6Xoldojbr8fXAlqgRkajY38_fEYtheLsJfhvgNqCXQoidNSph5pxxTIA4A-xhr-pY90ZuV6kh2DC_7KoE4yBIYtDccfKzP1CcdpXDsNXLOROI7cvlTEDUDGK7e7POqLad-y3lLKyfffcbEcwqN9yGejMHM5xKcKUdYutySJ4gKxwHil_TPn5cms3boBRB4bDas5vt7CzfzSedfRnX3LOZiliuJrw2B0gk4vAdiAgkIfndu1DmSEjAfvSQw");
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.02);
+}
+.eiv-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to right, #ffffff 0%, rgba(255,255,255,0.98) 50%, rgba(255,255,255,0.4) 100%);
+}
+@media (max-width: 1023px) {
+  .eiv-hero-overlay {
+    background: linear-gradient(to bottom, #ffffff 0%, rgba(255,255,255,0.98) 70%, rgba(255,255,255,0.8) 100%);
+  }
+}
+.eiv-hero-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+@media (min-width: 1024px) {
+  .eiv-hero-container {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 4rem;
+  }
+}
+.eiv-hero-left {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Animaciones Staggered CSS para el Hero Left */
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.eiv-hero-left > * {
+  animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+.eiv-hero-left > :nth-child(1) { animation-delay: 0.1s; }
+.eiv-hero-left > :nth-child(2) { animation-delay: 0.22s; }
+.eiv-hero-left > :nth-child(3) { animation-delay: 0.34s; }
+.eiv-hero-left > :nth-child(4) { animation-delay: 0.46s; }
+.eiv-hero-left > :nth-child(5) { animation-delay: 0.58s; }
+
+.eiv-hero-badge {
+  display: inline-block;
+  padding: 0.4rem 1.25rem;
+  margin-bottom: 1.5rem;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: #111827;
+  color: #ffffff;
+  border-radius: 9999px;
+}
+.eiv-hero-title {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 900;
+  color: #111827;
+  margin-bottom: 1.5rem;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+.eiv-hero-title em {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #1fc0d9;
+}
+.eiv-hero-desc {
+  font-size: 1.125rem;
+  color: #374151;
+  max-width: 45rem;
+  margin-bottom: 2rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+.eiv-hero-bullets {
+  list-style: none;
+  margin-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.eiv-hero-bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 14px;
+  font-weight: 700;
+  color: #374151;
+}
+.eiv-hero-bullet-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #f0fdfa;
+  border: 1px solid rgba(31, 192, 217, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1fc0d9;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+.eiv-hero-bullet-icon span {
+  font-size: 11px;
+  font-weight: 900;
+}
+.eiv-hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.eiv-hero-btn {
+  height: 3.5rem;
+  padding: 0 2.5rem;
+  border-radius: 9999px;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+.eiv-btn-dark {
+  background-color: #111827;
+  color: #ffffff;
+  box-shadow: 0 20px 40px -15px rgba(17, 24, 39, 0.2);
+  border: none;
+}
+.eiv-btn-dark:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 25px 45px -10px rgba(17, 24, 39, 0.3);
+}
+.eiv-btn-light {
+  background-color: rgba(255,255,255,0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #111827;
+  border: 1px solid #e5e7eb;
+}
+.eiv-btn-light:hover {
+  transform: translateY(-2px);
+  border-color: #111827;
+  background-color: #ffffff;
+}
+.eiv-btn-light svg {
+  color: #22c55e;
+}
+
+/* Right side: floating card */
+.eiv-hero-right {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.eiv-card-glow {
+  position: absolute;
+  inset: -1rem;
+  background: radial-gradient(circle, rgba(31, 192, 217, 0.08) 0%, transparent 70%);
+  border-radius: 3rem;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.eiv-floating-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 2.5rem;
+  border: 1px solid #f3f4f6;
+  padding: 1.5rem;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 20px 50px rgba(0,0,0,0.06);
+  max-width: 380px;
+  width: 100%;
+  animation: float 6s ease-in-out infinite;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+.eiv-floating-card:hover {
+  transform: scale(1.02) translateY(-15px);
+  animation-play-state: paused;
+}
+.eiv-floating-card:active {
+  transform: scale(0.98) translateY(-15px);
+}
+
+.eiv-card-img-wrap {
+  position: relative;
+  border-radius: 2rem;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  margin-bottom: 1.5rem;
+}
+.eiv-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.eiv-card-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: #111827;
+  color: #ffffff;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border-radius: 9999px;
+}
+.eiv-card-ref {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(4px);
+  color: #374151;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.eiv-card-title {
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.25;
+  margin-bottom: 1rem;
+}
+.eiv-card-stats {
+  padding-top: 1rem;
+  border-top: 1px solid #f3f4f6;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+.eiv-card-stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #9ca3af;
+  text-transform: uppercase;
+}
+.eiv-card-stat-row span:last-child {
+  font-weight: 900;
+}
+.eiv-text-blue { color: #1fc0d9; }
+.eiv-text-green { color: #16a34a; }
+.eiv-text-dark { color: #111827; }
+</style>
+
+<section class="eiv-hero">
+  <div class="eiv-hero-bg"></div>
+  <div class="eiv-hero-overlay"></div>
+  <div class="eiv-hero-container">
+    
+    <div class="eiv-hero-left">
+      <span class="eiv-hero-badge">EDICIÓN VENDEDORES</span>
+      <h1 class="eiv-hero-title">Tu Estrategia.<br><em>Tus Resultados.</em></h1>
+      <p class="eiv-hero-desc">Orquestamos la venta de tu propiedad con la precisión de un reloj suizo y el alcance de una firma de medios internacional.</p>
+      
+      <ul class="eiv-hero-bullets">
+        <li class="eiv-hero-bullet">
+          <div class="eiv-hero-bullet-icon"><span>✓</span></div>
+          <span><strong>Venta rápida verificada:</strong> Media de 45 días por transacción en la comarca de Gandía y Valencia.</span>
+        </li>
+        <li class="eiv-hero-bullet">
+          <div class="eiv-hero-bullet-icon"><span>✓</span></div>
+          <span><strong>Marketing editorial premium:</strong> Home staging profesional, tomas con dron 4K y recorridos en 3D.</span>
+        </li>
+        <li class="eiv-hero-bullet">
+          <div class="eiv-hero-bullet-icon"><span>✓</span></div>
+          <span><strong>Defensa legal y fiscal 360º:</strong> Gestión de plusvalías, trámites de herencia y notaría incluidos.</span>
+        </li>
+      </ul>
+      
+      <div class="eiv-hero-buttons">
+        <a href="https://essenciainmobiliaria.com/valuation" class="eiv-hero-btn eiv-btn-dark">VALORACIÓN GRATUITA</a>
+        <a href="https://wa.me/34647803355?text=Hola%2C%20me%20gustar%C3%ADa%20recibir%20asesoramiento%20para%20vender%20mi%20vivienda" target="_blank" rel="noopener noreferrer" class="eiv-hero-btn eiv-btn-light">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 4px;"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.004 5.319 5.322.002 11.838.002c3.158 0 6.128 1.232 8.361 3.466 2.233 2.233 3.465 5.203 3.465 8.361 0 6.518-5.317 11.838-11.838 11.838-2.006 0-3.978-.511-5.727-1.488L0 24zm6.59-4.846c1.6.95 3.197 1.45 4.675 1.45 5.378 0 9.755-4.377 9.755-9.755 0-5.378-4.377-9.755-9.755-9.755-5.38 0-9.757 4.377-9.757 9.755 0 1.636.467 3.238 1.354 4.654L1.73 19.86l4.917-1.291zM17.47 14.397c-.322-.162-1.905-.94-2.2-.108c-.295.342-.76.94-.93 1.134-.175.195-.349.21-.67.049a8.47 8.47 0 0 1-2.482-1.53c-1.927-1.72-3.23-3.846-3.602-4.484c-.372-.64.085-.926.27-.123.164.323.37.77.56 1.109c.19.342.164.64.049.885-.115.244-.94 2.263-1.15 2.766-.206.495-.413.418-.567.418-.147 0-.315-.015-.483-.015a.93.93 0 0 1-.677.315c-.244.259-.93.91-.93 2.217s.95 2.563 1.085 2.748c.135.185 1.87 2.854 4.53 4.004c.633.273 1.125.437 1.512.56.637.203 1.218.175 1.678.105c.513-.075 1.905-.78 2.174-1.53c.27-.75.27-1.395.19-1.53c-.08-.135-.295-.323-.62-.485z"/></svg>
+          CONSULTA WHATSAPP
+        </a>
+      </div>
+    </div>
+    
+    <div class="eiv-hero-right">
+      <div class="eiv-card-glow"></div>
+      <div class="eiv-floating-card">
+        <div class="eiv-card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=600&q=80" alt="Chalet vendido" class="eiv-card-img">
+          <span class="eiv-card-badge">VENDIDO · MÉTODO MIA</span>
+          <span class="eiv-card-ref">Ref: V-CH-754</span>
+        </div>
+        <h3 class="eiv-card-title">Chalet Moderno con Piscina Privada</h3>
+        <div class="eiv-card-stats">
+          <div class="eiv-card-stat-row">
+            <span>PLAZO DE VENTA</span>
+            <span class="eiv-text-blue">15 DÍAS</span>
+          </div>
+          <div class="eiv-card-stat-row">
+            <span>PRECIO DE CIERRE</span>
+            <span class="eiv-text-green">100% SOLICITADO</span>
+          </div>
+          <div class="eiv-card-stat-row">
+            <span>IMPACTO TOTAL</span>
+            <span class="eiv-text-dark">+2M IMPACTOS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section>
+"""
+    save_html_section("seccion-vender-hero.html", html)
+
+def generate_vender_bento():
+    html = """<!-- ============================================================
+     SECCIÓN BENTO SERVICIOS VENDER — Essencia Inmobiliaria
+     Pegar en: WordPress > Elementor > HTML Widget
+     ============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800;900&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+<style>
+.eiv-bento * { box-sizing: border-box; margin: 0; padding: 0; }
+.eiv-bento {
+  width: 100%;
+  background-color: #111827;
+  color: #ffffff;
+  padding: 6rem 1.5rem;
+  font-family: 'Manrope', sans-serif;
+}
+.eiv-bento-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+.eiv-bento-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #1fc0d9;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.eiv-bento-title {
+  font-size: clamp(2.25rem, 4vw, 3.25rem);
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 4rem;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: #ffffff;
+}
+.eiv-bento-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 768px) {
+  .eiv-bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.eiv-bento-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 2.5rem;
+  padding: 2.5rem;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 320px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.eiv-bento-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(31, 192, 217, 0.08) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.eiv-bento-card:hover {
+  border-color: rgba(31, 192, 217, 0.4);
+  transform: translateY(-6px) scale(1.005);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3);
+}
+.eiv-bento-card:active {
+  transform: translateY(-6px) scale(0.99);
+}
+.eiv-bento-card:hover::before {
+  opacity: 1;
+}
+@media (min-width: 768px) {
+  .col-span-2 {
+    grid-column: span 2 / span 2;
+  }
+}
+.eiv-card-content {
+  position: relative;
+  z-index: 1;
+}
+.eiv-bento-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  color: #1fc0d9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+.eiv-bento-card:hover .eiv-bento-icon {
+  background: #1fc0d9;
+  color: #111827;
+}
+.eiv-bento-card-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+.eiv-bento-card-desc {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+.eiv-bento-bullets {
+  position: relative;
+  z-index: 1;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.grid-bullets {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+@media (min-width: 640px) {
+  .grid-bullets {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.eiv-bento-bullet {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 12px;
+  font-weight: 700;
+  color: #e5e7eb;
+}
+.eiv-bento-bullet span.material-symbols-outlined {
+  color: #1fc0d9;
+  font-size: 16px;
+}
+.eiv-bento-footer {
+  text-align: center;
+  margin-top: 4rem;
+}
+.eiv-bento-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 3.5rem;
+  padding: 0 2.5rem;
+  border-radius: 9999px;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  background-color: #ffffff;
+  color: #111827;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 20px 40px -15px rgba(0,0,0,0.05);
+}
+.eiv-bento-btn:hover {
+  background-color: #f3f4f6;
+  transform: translateY(-2px);
+}
+</style>
+
+<div class="eiv-bento">
+  <div class="eiv-bento-inner">
+    <span class="eiv-bento-label">EXCELENCIA 360º</span>
+    <h2 class="eiv-bento-title">El Plan Todo Incluido para Vender tu Vivienda</h2>
+    
+    <div class="eiv-bento-grid">
+      <!-- Bloque 1: Marketing (ancho 2) -->
+      <div class="eiv-bento-card col-span-2">
+        <div class="eiv-card-content">
+          <div class="eiv-bento-icon"><span class="material-symbols-outlined">photo_camera</span></div>
+          <h3 class="eiv-bento-card-title">Marketing Editorial de Lujo</h3>
+          <p class="eiv-bento-card-desc">Posicionamos tu propiedad como una obra de arte. Reportajes fotográficos y de video con calidad de revista de diseño, tomas con dron 4K y Home Staging virtual para cautivar a compradores exigentes.</p>
+        </div>
+        <ul class="eiv-bento-bullets grid-bullets">
+          <li class="eiv-bento-bullet"><span class="material-symbols-outlined">check_circle</span>Fotografía y video 4K profesional</li>
+          <li class="eiv-bento-bullet"><span class="material-symbols-outlined">check_circle</span>Sindicación premium internacional</li>
+          <li class="eiv-bento-bullet"><span class="material-symbols-outlined">check_circle</span>Campañas publicitarias hiper-segmentadas</li>
+        </ul>
+      </div>
+
+      <!-- Bloque 2: Legal (ancho 1) -->
+      <div class="eiv-bento-card">
+        <div class="eiv-card-content">
+          <div class="eiv-bento-icon"><span class="material-symbols-outlined">gavel</span></div>
+          <h3 class="eiv-bento-card-title">Defensa Legal Completa</h3>
+          <p class="eiv-bento-card-desc">Tramitamos todos los documentos necesarios de forma gratuita: certificado energético, cédula de habitabilidad y auditoría urbanística completa para una venta segura.</p>
+        </div>
+        <ul class="eiv-bento-bullets">
+          <li class="eiv-bento-bullet"><span class="material-symbols-outlined">check_circle</span>Certificado de Eficiencia Energética</li>
+          <li class="eiv-bento-bullet"><span class="material-symbols-outlined">check_circle</span>Cédula de habitabilidad</li>
+          <li class="eiv-bento-bullet"><span class="material-symbols-outlined">check_circle</span>Verificación registral y de cargas</li>
+        </ul>
+      </div>
+
+      <!-- Bloque 3: Fiscal (ancho 1) -->
+      <div class="eiv-bento-card">
+        <div class="eiv-card-content">
+          <div class="eiv-bento-icon"><span class="material-symbols-outlined">account_balance</span></div>
+          <h3 class="eiv-bento-card-title">Fiscalidad e Impuestos</h3>
+          <p class="eiv-bento-card-desc">Calculamos de forma exacta y anticipada tu incremento patrimonial y plusvalías. Te guiamos y representamos legalmente en notaría durante la firma final.</p>
+        </div>
+        <ul class="eiv-bento-bullets">
+          <li class="eiv-bento-bullet"><span class="material-symbols-outlined">check_circle</span>Cálculo de Plusvalía municipal</li>
+          <li class="eiv-bento-bullet"><span class="material-symbols-outlined">check_circle</span>Estudio fiscal de IRPF y exenciones</li>
+          <li class="eiv-bento-bullet"><span class="material-symbols-outlined">check_circle</span>Firma y representación ante notario</li>
+        </ul>
+      </div>
+
+      <!-- Bloque 4: Tecnología (ancho 2) -->
+      <div class="eiv-bento-card col-span-2">
+        <div class="eiv-card-content">
+          <div class="eiv-bento-icon"><span class="material-symbols-outlined">insights</span></div>
+          <h3 class="eiv-bento-card-title">Tecnología de Vanguardia</h3>
+          <p class="eiv-bento-card-desc">Maximizamos la difusión de tu propiedad. Sincronizamos tus inmuebles en más de 120 portales nacionales e internacionales y cualificamos los prospectos mediante visitas virtuales en 3D antes de organizar visitas presenciales.</p>
+        </div>
+        <ul class="eiv-bento-bullets grid-bullets">
+          <li class="eiv-bento-bullet"><span class="material-symbols-outlined">check_circle</span>Visita virtual 3D interactiva</li>
+          <li class="eiv-bento-bullet"><span class="material-symbols-outlined">check_circle</span>Sincronización en 120+ portales</li>
+          <li class="eiv-bento-bullet"><span class="material-symbols-outlined">check_circle</span>Cualificación previa del comprador</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="eiv-bento-footer">
+      <a href="https://essenciainmobiliaria.com/valuation" class="eiv-bento-btn">
+        VALORACIÓN GRATUITA
+        <span class="material-symbols-outlined" style="font-size: 14px;">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+</div>
+"""
+    save_html_section("seccion-vender-bento.html", html)
+
+def generate_vender_vendidos():
+    html = """<!-- ============================================================
+     SECCIÓN VENDIDOS VENDER — Essencia Inmobiliaria
+     Pegar en: WordPress > Elementor > HTML Widget
+     ============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800;900&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+<style>
+.eiv-sold * { box-sizing: border-box; margin: 0; padding: 0; }
+.eiv-sold {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 6rem 1.5rem;
+  font-family: 'Manrope', sans-serif;
+  overflow: hidden;
+}
+.eiv-sold-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+.eiv-sold-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 3rem;
+}
+.eiv-sold-lbl {
+  display: block;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #1fc0d9;
+  margin-bottom: 0.75rem;
+}
+.eiv-sold-title {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #111827;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+.eiv-sold-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+.eiv-sold-ctrl-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.eiv-ctrl-prev {
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  color: #111827;
+}
+.eiv-ctrl-prev:hover {
+  background: #f9fafb;
+}
+.eiv-ctrl-next {
+  background: #111827;
+  color: #ffffff;
+  border: none;
+}
+.eiv-ctrl-next:hover {
+  background: #000000;
+}
+.eiv-sold-carousel {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 2rem;
+  snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.eiv-sold-carousel::-webkit-scrollbar {
+  display: none;
+}
+.eiv-sold-item {
+  snap-align: start;
+  flex-shrink: 0;
+  width: 85vw;
+  max-width: 400px;
+  background: #ffffff;
+  border-radius: 2rem;
+  border: 1px solid #f3f4f6;
+  overflow: hidden;
+  box-shadow: 0 4px 24px -6px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: block;
+}
+.eiv-sold-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px -8px rgba(0,0,0,0.14);
+}
+.eiv-item-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 256px;
+  overflow: hidden;
+}
+.eiv-item-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.eiv-sold-item:hover .eiv-item-img {
+  transform: scale(1.03);
+}
+.eiv-item-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: #111827;
+  color: #ffffff;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  padding: 0.4rem 0.8rem;
+  border-radius: 9999px;
+}
+.eiv-item-ref {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: rgba(255,255,255,0.95);
+  color: #374151;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+}
+.eiv-item-body {
+  padding: 1.5rem;
+}
+.eiv-item-loc {
+  font-size: 11px;
+  font-weight: 700;
+  color: #9ca3af;
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+}
+.eiv-item-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.eiv-item-footer {
+  padding-top: 1rem;
+  border-top: 1px solid #f3f4f6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.eiv-item-price-wrap {
+  display: flex;
+  align-items: baseline;
+}
+.eiv-item-price-old {
+  font-size: 12px;
+  font-weight: 900;
+  color: #9ca3af;
+  text-decoration: line-through;
+  margin-right: 0.5rem;
+}
+.eiv-item-price-badge {
+  font-size: 9px;
+  font-weight: 900;
+  color: #16a34a;
+  background: #f0fdf4;
+  border: 1px solid rgba(22, 163, 74, 0.2);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+.eiv-item-spec {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 11px;
+  font-weight: 700;
+  color: #6b7280;
+}
+.eiv-item-spec span.material-symbols-outlined {
+  font-size: 14px;
+}
+.eiv-sold-footer {
+  text-align: center;
+  margin-top: 3rem;
+}
+.eiv-sold-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 3rem;
+  padding: 0 2.5rem;
+  border-radius: 9999px;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  background-color: #111827;
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 20px 40px -15px rgba(17,24,39,0.2);
+}
+.eiv-sold-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 25px 45px -10px rgba(17,24,39,0.3);
+}
+</style>
+
+<div class="eiv-sold">
+  <div class="eiv-sold-inner">
+    <div class="eiv-sold-header">
+      <div>
+        <span class="eiv-sold-lbl">Prueba de éxito</span>
+        <h2 class="eiv-sold-title">Inmuebles vendidos recientemente</h2>
+      </div>
+      <div class="eiv-sold-controls">
+        <button class="eiv-sold-ctrl-btn eiv-ctrl-prev" id="eiv-prev-btn">
+          <span class="material-symbols-outlined">arrow_back</span>
+        </button>
+        <button class="eiv-sold-ctrl-btn eiv-ctrl-next" id="eiv-next-btn">
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="eiv-sold-carousel" id="eiv-carousel">
+      <!-- Item 1 -->
+      <a href="https://wa.me/34647803355?text=Hola%2C%20estoy%20interesado%20en%20una%20propiedad%20similar%20a%20la%20referencia%20V-AT-908" target="_blank" rel="noopener noreferrer" class="eiv-sold-item">
+        <div class="eiv-item-img-wrap">
+          <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=600&q=80" alt="Ático vendido" class="eiv-item-img">
+          <span class="eiv-item-badge">VENDIDA</span>
+          <span class="eiv-item-ref">Ref: V-AT-908</span>
+        </div>
+        <div class="eiv-item-body">
+          <p class="eiv-item-loc">Playa de Gandía, Valencia</p>
+          <h3 class="eiv-item-title">Ático Dúplex de Lujo en Playa de Gandía</h3>
+          <div class="eiv-item-footer">
+            <div class="eiv-item-price-wrap">
+              <span class="eiv-item-price-old">€320.000</span>
+              <span class="eiv-item-price-badge">Vendido</span>
+            </div>
+            <div class="eiv-item-spec">
+              <span class="material-symbols-outlined">home</span>
+              <span>140 m²</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Item 2 -->
+      <a href="https://wa.me/34647803355?text=Hola%2C%20estoy%20interesado%20en%20una%20propiedad%20similar%20a%20la%20referencia%20V-PI-621" target="_blank" rel="noopener noreferrer" class="eiv-sold-item">
+        <div class="eiv-item-img-wrap">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" alt="Piso vendido" class="eiv-item-img">
+          <span class="eiv-item-badge">VENDIDA</span>
+          <span class="eiv-item-ref">Ref: V-PI-621</span>
+        </div>
+        <div class="eiv-item-body">
+          <p class="eiv-item-loc">Gandía Centro, Valencia</p>
+          <h3 class="eiv-item-title">Piso Exclusivo Reformado en el Centro</h3>
+          <div class="eiv-item-footer">
+            <div class="eiv-item-price-wrap">
+              <span class="eiv-item-price-old">€185.000</span>
+              <span class="eiv-item-price-badge">Vendido</span>
+            </div>
+            <div class="eiv-item-spec">
+              <span class="material-symbols-outlined">home</span>
+              <span>115 m²</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Item 3 -->
+      <a href="https://wa.me/34647803355?text=Hola%2C%20estoy%20interesado%20en%20una%20propiedad%20similar%20a%20la%20referencia%20V-AD-840" target="_blank" rel="noopener noreferrer" class="eiv-sold-item">
+        <div class="eiv-item-img-wrap">
+          <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=600&q=80" alt="Adosado vendido" class="eiv-item-img">
+          <span class="eiv-item-badge">VENDIDA</span>
+          <span class="eiv-item-ref">Ref: V-AD-840</span>
+        </div>
+        <div class="eiv-item-body">
+          <p class="eiv-item-loc">Oliva Nova, Valencia</p>
+          <h3 class="eiv-item-title">Adosado de Diseño cerca del Mar</h3>
+          <div class="eiv-item-footer">
+            <div class="eiv-item-price-wrap">
+              <span class="eiv-item-price-old">€295.000</span>
+              <span class="eiv-item-price-badge">Vendido</span>
+            </div>
+            <div class="eiv-item-spec">
+              <span class="material-symbols-outlined">home</span>
+              <span>135 m²</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="eiv-sold-footer">
+      <a href="https://wa.me/34647803355?text=Hola%2C%20quiero%20vender%20mi%20propiedad%20con%20vuestro%20m%C3%A9todo%20exitoso" target="_blank" rel="noopener noreferrer" class="eiv-sold-btn">
+        Quiero vender mi casa
+        <span class="material-symbols-outlined" style="font-size: 14px;">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const carousel = document.getElementById('eiv-carousel');
+  const prevBtn = document.getElementById('eiv-prev-btn');
+  const nextBtn = document.getElementById('eiv-next-btn');
+
+  if (carousel && prevBtn && nextBtn) {
+    prevBtn.addEventListener('click', function() {
+      carousel.scrollBy({ left: -320, behavior: 'smooth' });
+    });
+    nextBtn.addEventListener('click', function() {
+      carousel.scrollBy({ left: 320, behavior: 'smooth' });
+    });
+  }
+});
+</script>
+"""
+    save_html_section("seccion-vender-vendidos.html", html)
+
 if __name__ == "__main__":
     update_asesores()
     update_mia()
@@ -1262,4 +2226,8 @@ if __name__ == "__main__":
     generate_stats()
     generate_ai_portals()
     generate_contact()
+    generate_vender_hero()
+    generate_vender_bento()
+    generate_vender_vendidos()
     print("All WP HTML sections generated and updated.")
+
