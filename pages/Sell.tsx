@@ -250,19 +250,28 @@ const Sell: React.FC = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-[10px] font-black tracking-[0.25em] uppercase text-gray-500 text-center mb-4"
+            className="text-[10px] font-black tracking-[0.25em] uppercase text-brand-blue-500 text-center mb-4 block"
           >
-            {t('sell.package.desc') || "EXCELENCIA 360º"}
+            EXCELENCIA 360º
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-black text-center mb-16 tracking-tighter max-w-3xl mx-auto leading-tight"
+            className="text-4xl md:text-5xl font-black text-center mb-6 tracking-tighter max-w-3xl mx-auto leading-tight"
           >
-            {t('sell.package.title') || "El Plan Todo Incluido para Vender tu Vivienda"}
+            {t('sell.package.title') || "Servicio Completo"}
           </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-gray-400 text-base md:text-lg text-center max-w-2xl mx-auto mb-16 leading-relaxed"
+          >
+            {t('sell.package.desc') || "Manejamos la complejidad. Usted disfruta del cierre. Un enfoque integral que cubre cada detalle legal y creativo."}
+          </motion.p>
 
           {/* Bento Grid */}
           <motion.div
